@@ -1930,6 +1930,139 @@ function PortfolioPage({
 
 // ── Case Study Wrapper ────────────────────────────────────────────────────────
 
+function CaseStudyOutro({
+  nextWork,
+  onBack,
+  onNavigate,
+}: {
+  nextWork: WorkItem | null;
+  onBack: () => void;
+  onNavigate: (slug: string) => void;
+}) {
+  return (
+    <section
+      className="px-6 md:px-10 lg:px-16"
+      style={{
+        background: BG,
+        borderTop: "1px solid rgba(242,241,236,0.08)",
+        borderBottom: "1px solid rgba(242,241,236,0.08)",
+      }}
+    >
+      <div className="mx-auto max-w-[1152px] py-14 md:py-16 lg:py-20">
+        {nextWork?.slug && (
+          <motion.button
+            onClick={() => onNavigate(nextWork.slug!)}
+            className="group flex w-full items-start justify-between gap-8 text-left"
+            style={{
+              background: "transparent",
+              border: 0,
+              borderBottom: "1px solid rgba(242,241,236,0.08)",
+              cursor: "pointer",
+              padding: "0 0 clamp(56px, 8vw, 112px)",
+            }}
+            whileHover={{ x: 4 }}
+            transition={{ type: "spring", stiffness: 260, damping: 24 }}
+          >
+            <span className="flex min-w-0 flex-col gap-5">
+              <span
+                style={{
+                  fontFamily: "'Space Mono', monospace",
+                  fontSize: 12,
+                  color: DIM,
+                  letterSpacing: "0.06em",
+                }}
+              >
+                Next project
+              </span>
+              <span
+                className="max-w-[860px]"
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontWeight: 500,
+                  fontSize: "clamp(34px, 5vw, 64px)",
+                  lineHeight: 1,
+                  color: FG,
+                  letterSpacing: 0,
+                }}
+              >
+                {nextWork.title}
+              </span>
+            </span>
+            <motion.span
+              className="mt-1 flex shrink-0 items-center justify-center rounded-full"
+              style={{
+                width: 44,
+                height: 44,
+                border: "1px solid rgba(242,241,236,0.1)",
+                background: BG2,
+                color: PURPLE,
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: 20,
+              }}
+              animate={{ x: [0, 3, 0], y: [0, -3, 0] }}
+              transition={{
+                duration: 2.6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              ↗
+            </motion.span>
+          </motion.button>
+        )}
+
+        <motion.button
+          onClick={onBack}
+          className="group mt-14 flex w-full items-end justify-between gap-8 text-left md:mt-16"
+          style={{
+            background: "transparent",
+            border: 0,
+            cursor: "pointer",
+            padding: 0,
+          }}
+          whileHover={{ x: -4 }}
+          transition={{ type: "spring", stiffness: 260, damping: 24 }}
+        >
+          <span className="flex min-w-0 flex-col gap-3">
+            <span
+              style={{
+                fontFamily: "'Space Mono', monospace",
+                fontSize: 12,
+                color: PURPLE,
+              }}
+            >
+              ← Back to portfolio
+            </span>
+            <span
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 500,
+                fontSize: "clamp(34px, 4.8vw, 56px)",
+                lineHeight: 1,
+                color: FG,
+                letterSpacing: 0,
+              }}
+            >
+              View all work
+            </span>
+          </span>
+          <span
+            className="hidden shrink-0 text-right sm:block"
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 11,
+              color: DIM,
+              letterSpacing: "0.04em",
+            }}
+          >
+            Selected cases
+          </span>
+        </motion.button>
+      </div>
+    </section>
+  );
+}
+
 function CaseStudyPage({
   slug,
   onBack,
@@ -2036,6 +2169,9 @@ function CaseStudyPage({
         [data-name="nRow"]:hover p, [data-name="top"]:hover p { color: #cc6ef8; }
         /* Hide the static per-case-study copyright rows — the shared
            FooterSection below provides the real site footer. */
+        [data-name="fw"],
+        [data-name="nextWork"],
+        [data-name="NextProject"],
         [data-name="foot"],
         [data-name="foot-wrap"] [data-name="footer"] { display: none; }
       `}</style>
@@ -2089,6 +2225,11 @@ function CaseStudyPage({
           )}
         </div>
       </div>
+      <CaseStudyOutro
+        nextWork={nextWork}
+        onBack={onBack}
+        onNavigate={onNavigate}
+      />
       <FooterSection />
     </div>
   );
