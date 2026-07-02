@@ -2089,6 +2089,7 @@ function CaseStudyPage({
           )}
         </div>
       </div>
+      <FooterSection />
     </div>
   );
 }
