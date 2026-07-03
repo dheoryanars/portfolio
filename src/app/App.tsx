@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useHeroParallax, useWorkCardParallax, useAboutParallax, useContactParallax, useProcessParallax } from "./components/parallax";
+import { useHeroParallax, useWorkCardParallax, useAboutParallax, useContactParallax, useProcessParallax, useCaseStudyParallax } from "./components/parallax";
 import {
   motion,
   useInView,
@@ -2073,6 +2073,7 @@ function CaseStudyPage({
   onNavigate: (slug: string) => void;
 }) {
   const Component = CASE_STUDIES[slug];
+  const caseStudyParallaxRef = useCaseStudyParallax(slug);
 
   // Next project in work-grid order (wraps around at the end)
   const workIndex = WORKS.findIndex((w) => w.slug === slug);
@@ -2172,10 +2173,13 @@ function CaseStudyPage({
         [data-name="fw"],
         [data-name="nextWork"],
         [data-name="NextProject"],
+        [data-name="Footer"],
+        [data-name="footer"],
         [data-name="foot"],
+        [data-name="foot-wrap"],
         [data-name="foot-wrap"] [data-name="footer"] { display: none; }
       `}</style>
-      <div className="overflow-x-auto">
+      <div ref={caseStudyParallaxRef} className="overflow-x-auto">
         <div
           style={{
             minWidth: 1280,

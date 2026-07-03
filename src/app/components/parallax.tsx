@@ -251,3 +251,117 @@ export function useProcessParallax(index: number) {
 
   return ref;
 }
+
+// Case studies: shared depth pass for imported Figma sections.
+export function useCaseStudyParallax(slug: string) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const skipNames = new Set([
+      "nav",
+      "nrow",
+      "nextwork",
+      "nextproject",
+      "footer",
+      "foot",
+      "fw",
+      "foot-wrap",
+    ]);
+
+    const ctx = gsap.context(() => {
+      const caseRoot = ref.current?.querySelector<HTMLElement>(
+        '[data-name^="case-study"]',
+      );
+      if (!caseRoot) return;
+
+      const sections = Array.from(caseRoot.children).filter(
+        (child): child is HTMLElement => {
+          if (!(child instanceof HTMLElement)) return false;
+          const name = child.dataset.name || "";
+          const normalizedName = name.toLowerCase();
+          if (!name || skipNames.has(normalizedName)) return false;
+          const rect = child.getBoundingClientRect();
+          return rect.width >= 900 && rect.height >= 120;
+        },
+      );
+
+      sections.forEach((section, index) => {
+        const normalizedName = (section.dataset.name || "").toLowerCase();
+        const isHero = normalizedName.includes("hero");
+        gsap.set(section, { willChange: "transform, opacity" });
+        gsap.fromTo(
+          section,
+          {
+            y: isHero ? 0 : 42,
+            opacity: isHero ? 1 : 0.72,
+          },
+          {
+            y: isHero ? -34 : 0,
+            opacity: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: section,
+              start: isHero ? "top top" : "top 88%",
+              end: isHero ? "bottom top" : "top 42%",
+              scrub: isHero ? 1.4 : 1,
+            },
+            delay: index * 0.015,
+          },
+        );
+      });
+
+      const mediaCandidates = Array.from(
+        caseRoot.querySelectorAll<HTMLElement>(
+          [
+            "img",
+            "[data-name]",
+          ].join(","),
+        ),
+      ).filter((el) => {
+        const name = (
+          el.getAttribute("data-name") ||
+          el.tagName ||
+          ""
+        ).toLowerCase();
+        const looksLikeMedia =
+          el.tagName.toLowerCase() === "img" ||
+          /(image|cover|thumb|screen|dashboard|viewport|clip|mockup|rectangle)/.test(
+            name,
+          );
+        const rect = el.getBoundingClientRect();
+        return looksLikeMedia && rect.width >= 320 && rect.height >= 160;
+      });
+
+      mediaCandidates.slice(0, 18).forEach((media, index) => {
+        gsap.set(media, { willChange: "transform" });
+        gsap.fromTo(
+          media,
+          {
+            y: index % 2 === 0 ? 20 : 10,
+            scale: 1.01,
+          },
+          {
+            y: index % 2 === 0 ? -34 : -22,
+            scale: 1.025,
+            ease: "none",
+            scrollTrigger: {
+              trigger: media,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1.6,
+            },
+          },
+        );
+      });
+
+      window.setTimeout(() => ScrollTrigger.refresh(), 120);
+    }, ref);
+
+    return () => ctx.revert();
+  }, [slug]);
+
+  return ref;
+}
