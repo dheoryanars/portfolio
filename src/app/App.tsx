@@ -104,6 +104,11 @@ const CASE_META: Record<string, { problem: string; outcome: string }> = {
 type CaseMobileDetail = {
   summary: string;
   focus: string[];
+  sections: {
+    kicker: string;
+    title: string;
+    body: string;
+  }[];
   proof: string[];
 };
 
@@ -115,6 +120,38 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       "Merged disconnected operational tools into one admin surface.",
       "Made order status, pricing, and production context easier to scan.",
       "Used AI-assisted development to move faster from product logic to shipped UI.",
+    ],
+    sections: [
+      {
+        kicker: "00 — The Problem",
+        title: "The problem",
+        body: "The original workflow depended on scattered spreadsheets, chat, and manual context. The case starts by showing why a unified operational view was needed.",
+      },
+      {
+        kicker: "01 — Overview",
+        title: "System, screen by screen",
+        body: "The overview introduces the main operating surfaces: dashboard, internal calculator, order detail, customer list, pricing settings, and team members.",
+      },
+      {
+        kicker: "02 — Before this OS",
+        title: "The team was flying blind",
+        body: "This section maps the old pain points around buyer conversion, reorder risk, production workload, and disconnected customer data.",
+      },
+      {
+        kicker: "03 — Key Screens",
+        title: "From dashboard to team roles",
+        body: "The visual walkthrough explains the main screens and how each one supports daily operations across sales, finance, production, and admin work.",
+      },
+      {
+        kicker: "04 — Key Design Decisions",
+        title: "Why it works the way it does",
+        body: "Design decisions cover business pulse over raw data, sales insight inside the calculator, and segmentation as the default customer view.",
+      },
+      {
+        kicker: "05 — Outcomes",
+        title: "One source of truth",
+        body: "The outcome ties together the shipped OS, documentation pages, business rules, role structure, and the engineering-ready design spec.",
+      },
     ],
     proof: [
       "Built around real staff workflows instead of isolated dashboard screens.",
@@ -129,6 +166,48 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       "Made quoting visible during sales conversations.",
       "Designed the flow for WordPress and WooCommerce usage.",
     ],
+    sections: [
+      {
+        kicker: "00 — The Problem",
+        title: "The problem",
+        body: "Custom label pricing was hard to explain and easy to misquote because every variable changed the final price.",
+      },
+      {
+        kicker: "01 — Context",
+        title: "What is KitaLabel?",
+        body: "The case explains the product, the sales context, and why label buyers needed clearer self-serve pricing.",
+      },
+      {
+        kicker: "02 — The Challenge",
+        title: "Pricing custom labels is uniquely complex",
+        body: "This section breaks down material, shape, size, finishing, quantity, and artwork variables that make the calculator difficult.",
+      },
+      {
+        kicker: "03 — The Solution",
+        title: "A self-service pricing plugin",
+        body: "The solution turns the quote into a guided web flow built for WordPress and WooCommerce.",
+      },
+      {
+        kicker: "04 — Beyond Design",
+        title: "Designed it. Built it.",
+        body: "This section covers the AI-assisted frontend engineering work and the first implementation pass.",
+      },
+      {
+        kicker: "05 — Key Design Decisions",
+        title: "Why it works the way it does",
+        body: "The case explains the main decision points behind configuration, instant pricing, upload handling, and checkout behavior.",
+      },
+      {
+        kicker: "06 — The Complete Flow",
+        title: "From configuration to checkout",
+        body: "The full flow follows the customer from product choices and design upload through promo code, quote, or checkout.",
+      },
+      {
+        kicker: "07 — Outcomes",
+        title: "Self-serve quoting",
+        body: "The result removed manual spreadsheet quoting from standard orders and made pricing visible 24/7.",
+      },
+    ],
     proof: [
       "Removed spreadsheet dependency from the pricing journey.",
       "Gave customers a clearer path from configuration to checkout.",
@@ -141,6 +220,43 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       "Designed the product from zero across four delivery phases.",
       "Created reusable product patterns for a large SaaS surface.",
       "Connected technical CDP modules to user-facing workflows.",
+    ],
+    sections: [
+      {
+        kicker: "00 — The Problem",
+        title: "The problem",
+        body: "Read/See needed a full CDP product without an existing design system, product patterns, or established screen language.",
+      },
+      {
+        kicker: "01 — Overview",
+        title: "The product",
+        body: "The overview introduces the dashboard product, the delivery phases, and the product surfaces needed to support customer data workflows.",
+      },
+      {
+        kicker: "02 — Design Process",
+        title: "How the product was built",
+        body: "This section shows the progression from low-fidelity structure to high-fidelity product screens and stakeholder-ready prototypes.",
+      },
+      {
+        kicker: "03 — Key Screens",
+        title: "The core product surfaces",
+        body: "The case walks through dashboards, customer profiles, activation screens, and data management areas.",
+      },
+      {
+        kicker: "04 — Onboarding Experience",
+        title: "Getting users to first value",
+        body: "The onboarding section covers profile completion, product tour, source and destination guidance, and knowledge-base support.",
+      },
+      {
+        kicker: "05 — Full Scope",
+        title: "What was designed",
+        body: "This section summarizes the modules, patterns, and system coverage across the full 700+ screen scope.",
+      },
+      {
+        kicker: "06 — Outcomes",
+        title: "Complete product delivery",
+        body: "The outcome connects the shipped hi-fi product, wireframe foundation, and consistent brand system.",
+      },
     ],
     proof: [
       "Covered 700 plus screens across the product scope.",
@@ -155,6 +271,88 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       "Designed status visibility for staff handling high-volume documents.",
       "Created separate but consistent flows for invoice, document, and purchase work.",
     ],
+    sections: [
+      {
+        kicker: "00 — The Problem",
+        title: "The problem",
+        body: "CMIS started from manual enterprise approval work: documents, invoices, and purchase requests moving through paper and email.",
+      },
+      {
+        kicker: "01 — Overview",
+        title: "Three modules, one suite",
+        body: "The overview introduces DMS, Purchase Request, and Tanda Terima Invoice as connected enterprise workflows.",
+      },
+      {
+        kicker: "02 — Document Lifecycle",
+        title: "From creation to controlled distribution",
+        body: "The DMS module explains how documents move through draft, review, approval, revision, watermarking, and controlled release.",
+      },
+      {
+        kicker: "03 — Key Screens",
+        title: "The DMS in detail",
+        body: "This section covers the practical screens for document lists, detail views, approvals, and permission states.",
+      },
+      {
+        kicker: "04 — Watermark System",
+        title: "Document status, visually enforced",
+        body: "The watermark section shows how controlled, obsolete, draft, and uncontrolled states become visible in the document itself.",
+      },
+      {
+        kicker: "05 — Module 02 · Purchase Request",
+        title: "Procurement split by request type",
+        body: "The purchase request module introduces separate tracks for materials, tools, equipment, and non-tool procurement.",
+      },
+      {
+        kicker: "06 — Approval Workflow",
+        title: "From request to order",
+        body: "This section follows requests through approval, purchasing decisions, and order creation.",
+      },
+      {
+        kicker: "07 — Non Tool Module",
+        title: "Cross-category procurement tracking",
+        body: "The non-tool module captures procurement needs that do not fit standard material or equipment flows.",
+      },
+      {
+        kicker: "08 — Procurement Module",
+        title: "Purchase requests for materials and supplies",
+        body: "This section shows the material procurement path and how staff track requests through fulfillment.",
+      },
+      {
+        kicker: "09 — Tool Module",
+        title: "Purchase requests for tools and equipment",
+        body: "The tool module handles assets that need different review, fulfillment, and inventory logic.",
+      },
+      {
+        kicker: "10 — Module 03 · Invoice TTI",
+        title: "Invoice handover control",
+        body: "The TTI module covers courier-to-customer invoice delivery and proof of handover.",
+      },
+      {
+        kicker: "11 — Before & After",
+        title: "From legacy to modern",
+        body: "This section compares old invoice handling with a cleaner digital tracking model.",
+      },
+      {
+        kicker: "12 — TTI Workflow",
+        title: "From invoice selection to confirmed delivery",
+        body: "The workflow follows invoice selection, courier sheet generation, delivery status, and confirmation.",
+      },
+      {
+        kicker: "13 — TTI Key Screens",
+        title: "The TTI system in detail",
+        body: "This section highlights screens for invoice lists, delivery sheets, confirmation, and monitoring.",
+      },
+      {
+        kicker: "14 — Courier Sheet",
+        title: "Operational handoff",
+        body: "The courier delivery sheet brings the digital workflow back into the physical delivery process.",
+      },
+      {
+        kicker: "15 — Outcomes",
+        title: "Structured enterprise workflows",
+        body: "The outcome connects the three modules into a more auditable and visible enterprise suite.",
+      },
+    ],
     proof: [
       "Introduced auditable progress through each request lifecycle.",
       "Helped enterprise teams move from legacy handling to digital tracking.",
@@ -167,6 +365,43 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       "Centered the product around opened, forwarded, and ignored email signals.",
       "Designed a simple extension UI instead of a heavy email platform.",
       "Created landing-page messaging for quick product understanding.",
+    ],
+    sections: [
+      {
+        kicker: "00 — The Problem",
+        title: "The problem",
+        body: "Outreach users needed lightweight visibility into email behavior without adopting a full ESP platform.",
+      },
+      {
+        kicker: "01 — Overview",
+        title: "The product",
+        body: "The overview positions SONAR as a small extension and landing page built around fast email tracking signals.",
+      },
+      {
+        kicker: "02 — Pages Designed",
+        title: "Responsive web presence",
+        body: "This section covers the landing-page narrative, responsive mobile flow, trust cues, and product explanation.",
+      },
+      {
+        kicker: "03 — Key Screens",
+        title: "Screens that tell the story",
+        body: "The screen walkthrough shows how the extension and web page communicate tracking, activity, and user value.",
+      },
+      {
+        kicker: "04 — Pricing Architecture",
+        title: "Three tiers, one clear path forward",
+        body: "Pricing is structured around free, pro, and advanced tiers so the product can scale from trial to power use.",
+      },
+      {
+        kicker: "05 — Hero Illustration",
+        title: "Anchoring the product in familiar territory",
+        body: "The hero places the extension inside a recognizable inbox context so users understand it quickly.",
+      },
+      {
+        kicker: "06 — Outcomes",
+        title: "Lightweight tracking story",
+        body: "The outcome ties together web messaging, extension UI, and the solo-user outreach use case.",
+      },
     ],
     proof: [
       "Kept the experience focused on fast outreach visibility.",
@@ -181,6 +416,38 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       "Reduced inconsistent button, input, modal, and table decisions.",
       "Built a shared foundation used across multiple products.",
     ],
+    sections: [
+      {
+        kicker: "00 — The Problem",
+        title: "The problem",
+        body: "Teams were rebuilding the same UI decisions repeatedly without shared documentation or component logic.",
+      },
+      {
+        kicker: "01 — Overview",
+        title: "The system",
+        body: "The overview introduces the design system as a reusable source of truth for product teams.",
+      },
+      {
+        kicker: "02 — Foundation",
+        title: "The tokens underneath",
+        body: "This section covers color, typography, spacing, radius, and reusable foundations that make components consistent.",
+      },
+      {
+        kicker: "03 — Component Library",
+        title: "Atoms to organisms",
+        body: "The component library section shows how buttons, inputs, modals, tables, and screen patterns are assembled.",
+      },
+      {
+        kicker: "04 — Methodology",
+        title: "Built on atomic design",
+        body: "The methodology explains how atoms, molecules, organisms, and templates keep the system scalable.",
+      },
+      {
+        kicker: "05 — Outcomes",
+        title: "Reusable product foundation",
+        body: "The result is a single source of truth used across product work and future interface decisions.",
+      },
+    ],
     proof: [
       "Reduced repeated component work during new screen design.",
       "Supported consistency across Mailtarget App and CMIS surfaces.",
@@ -193,6 +460,38 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       "Unified inconsistent product surfaces under one component language.",
       "Improved campaign builder, contact management, and automation flows.",
       "Turned a fragmented product into a calmer operating workspace.",
+    ],
+    sections: [
+      {
+        kicker: "00 — The Problem",
+        title: "The problem",
+        body: "The app had grown without a cohesive system, so similar product areas behaved and looked inconsistent.",
+      },
+      {
+        kicker: "01 — Context",
+        title: "What is Mailtarget?",
+        body: "The context section explains Mailtarget as a transactional email product serving developers and business users.",
+      },
+      {
+        kicker: "02 — UX Model",
+        title: "Why Sandbox to Production?",
+        body: "This section explains the two-environment model that lets users test safely before production verification.",
+      },
+      {
+        kicker: "03 — Research",
+        title: "What competitors got right and wrong",
+        body: "The research section compares common email-product patterns and identifies opportunities for clearer UX.",
+      },
+      {
+        kicker: "04 — Decisions",
+        title: "Why each surface works the way it does",
+        body: "Decision sections cover activity logs, API configuration, dashboard behavior, and product status patterns.",
+      },
+      {
+        kicker: "05 — Outcomes",
+        title: "Unified SaaS product system",
+        body: "The outcome connects the redesigned product surfaces into one consistent UI language.",
+      },
     ],
     proof: [
       "Created consistent UI behavior across core platform areas.",
@@ -207,6 +506,43 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       "Designed responsive pages and custom illustrations.",
       "Structured the site around enterprise buyer understanding.",
     ],
+    sections: [
+      {
+        kicker: "00 — The Problem",
+        title: "The problem",
+        body: "Read/See needed a public website to explain a technical CDP product model to enterprise buyers.",
+      },
+      {
+        kicker: "01 — Overview",
+        title: "The product",
+        body: "The overview introduces the Connect, Collect, Activate model and the role of the marketing site.",
+      },
+      {
+        kicker: "02 — Design Process",
+        title: "Three phases to final",
+        body: "This section follows the website from low-fidelity structure through illustration, UI, and final design.",
+      },
+      {
+        kicker: "03 — The Three Pillars",
+        title: "Connect · Collect · Activate",
+        body: "The pillars section explains the product model and how the site communicates each phase.",
+      },
+      {
+        kicker: "04 — Use Cases & Responsive",
+        title: "Built for every customer, every device",
+        body: "Responsive and use-case sections show how the story adapts across customers and screen sizes.",
+      },
+      {
+        kicker: "05 — Full Scope",
+        title: "What was delivered",
+        body: "This section summarizes the screens, illustrations, responsive states, and design library delivered.",
+      },
+      {
+        kicker: "06 — Outcomes",
+        title: "Clear public product story",
+        body: "The outcome connects the responsive marketing site to a stronger inbound presence.",
+      },
+    ],
     proof: [
       "Moved from low-fidelity planning through high-fidelity delivery.",
       "Created a clearer inbound presence for the product.",
@@ -219,6 +555,38 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       "Balanced developer-first API messaging with accessible marketing copy.",
       "Designed mobile simulations to explain the product journey.",
       "Created a site structure for stakeholder sign-off.",
+    ],
+    sections: [
+      {
+        kicker: "00 — The Problem",
+        title: "The problem",
+        body: "Mailtarget needed to explain an email API clearly to developers while still being understandable for business readers.",
+      },
+      {
+        kicker: "01 — Overview",
+        title: "The product",
+        body: "The overview frames the site around email API positioning, feature pages, and buyer education.",
+      },
+      {
+        kicker: "02 — Scope of Work",
+        title: "What was designed",
+        body: "Scope covers landing pages, product pages, API messaging, mobile simulation, and supporting visual systems.",
+      },
+      {
+        kicker: "03 — Key Screens",
+        title: "Designing for every audience",
+        body: "Key screens show how the site addresses discovery, developers, marketers, and technical product evaluation.",
+      },
+      {
+        kicker: "04 — Process",
+        title: "From discovery to delivery",
+        body: "The process section connects research, architecture, hi-fi design, responsive work, and stakeholder sign-off.",
+      },
+      {
+        kicker: "05 — Outcomes",
+        title: "Developer-first marketing site",
+        body: "The outcome clarifies API integration value while keeping the site accessible for non-technical decision makers.",
+      },
     ],
     proof: [
       "Clarified API integration value without losing non-technical readers.",
@@ -2360,6 +2728,68 @@ function MobileCaseStudyArticle({
                   {item}
                 </p>
               </div>
+            ))}
+          </div>
+        </section>
+
+        <section
+          className="grid gap-5 border-t pt-7"
+          style={{ borderColor: "rgba(242,241,236,0.1)" }}
+        >
+          <h2
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: 28,
+              fontWeight: 500,
+              lineHeight: 1.05,
+              color: FG,
+              letterSpacing: 0,
+            }}
+          >
+            Full case flow
+          </h2>
+          <div className="grid gap-6">
+            {detail.sections.map((section) => (
+              <article
+                key={`${section.kicker}-${section.title}`}
+                className="grid gap-3 border-t pt-5"
+                style={{ borderColor: "rgba(242,241,236,0.08)" }}
+              >
+                <span
+                  style={{
+                    fontFamily: "'Space Mono', monospace",
+                    fontSize: 11,
+                    color: PURPLE,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {section.kicker}
+                </span>
+                <h3
+                  style={{
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontSize: 22,
+                    fontWeight: 500,
+                    lineHeight: 1.15,
+                    color: FG,
+                    letterSpacing: 0,
+                  }}
+                >
+                  {section.title}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontSize: 17,
+                    lineHeight: 1.55,
+                    color: MUTED,
+                    letterSpacing: 0,
+                  }}
+                >
+                  {section.body}
+                </p>
+              </article>
             ))}
           </div>
         </section>
