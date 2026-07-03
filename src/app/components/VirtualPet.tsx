@@ -165,11 +165,27 @@ function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value));
 }
 
+function isSmallViewport() {
+  return window.innerWidth < 768;
+}
+
 function pickMessage(list: string[], seed: number) {
   return list[Math.abs(seed) % list.length];
 }
 
-function buildCaseIntro(caseStudy: NonNullable<CaseStudySignal>) {
+function firstSentence(text: string) {
+  const [sentence] = text.split(/(?<=\.)\s+/);
+  return sentence || text;
+}
+
+function buildCaseIntro(
+  caseStudy: NonNullable<CaseStudySignal>,
+  compact = false,
+) {
+  if (compact) {
+    return `Now viewing ${caseStudy.title}. ${firstSentence(caseStudy.outcome)}`;
+  }
+
   const message = CASE_STUDY_MESSAGES[caseStudy.slug]?.intro;
 
   return (
@@ -198,6 +214,7 @@ export default function VirtualPet({
   const [reactionKey, setReactionKey] = useState(0);
   const [message, setMessage] = useState<string | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
+  const [mobileViewport, setMobileViewport] = useState(() => isSmallViewport());
   const lastPointerRef = useRef(Date.now());
   const lastMessageRef = useRef(Date.now());
   const readCaseRef = useRef<Set<string>>(new Set());
@@ -216,6 +233,14 @@ export default function VirtualPet({
   useEffect(() => {
     window.localStorage.setItem("dheory-pet-charge", String(charge));
   }, [charge]);
+
+  useEffect(() => {
+    const handleResize = () => setMobileViewport(isSmallViewport());
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const speak = useCallback((nextMessage: string, duration = 4200) => {
     setContactOpen(false);
@@ -264,7 +289,7 @@ export default function VirtualPet({
         );
       }
 
-      const mobile = window.innerWidth < 768;
+      const mobile = isSmallViewport();
       const anchorX = window.innerWidth - (mobile ? 48 : 72);
       const anchorY = window.innerHeight - (mobile ? 48 : 72);
       x.set(clamp((event.clientX - anchorX) * 0.08, -18, 18));
@@ -299,13 +324,18 @@ export default function VirtualPet({
 
   useEffect(() => {
     if (!caseStudy) return;
-    if (window.innerWidth < 768) return;
+
+    const mobile = isSmallViewport();
 
     const timer = window.setTimeout(() => {
-      react("proud", buildCaseIntro(caseStudy), 7600);
-      x.set(-6);
-      y.set(-8);
-    }, 900);
+      react(
+        "proud",
+        buildCaseIntro(caseStudy, mobile),
+        mobile ? 5000 : 7600,
+      );
+      x.set(mobile ? -4 : -6);
+      y.set(mobile ? -14 : -8);
+    }, mobile ? 1200 : 900);
 
     return () => window.clearTimeout(timer);
   }, [
@@ -320,7 +350,8 @@ export default function VirtualPet({
 
   useEffect(() => {
     if (!caseStudy) return;
-    if (window.innerWidth < 768) return;
+
+    const mobile = isSmallViewport();
 
     const handleScroll = () => {
       if (readCaseRef.current.has(caseStudy.slug)) return;
@@ -329,9 +360,9 @@ export default function VirtualPet({
         document.documentElement.scrollHeight - window.innerHeight;
       const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
 
-      if (progress > 0.28) {
+      if (progress > (mobile ? 0.42 : 0.28)) {
         readCaseRef.current.add(caseStudy.slug);
-        react("thinking", buildReadingNote(caseStudy), 7200);
+        react("thinking", buildReadingNote(caseStudy), mobile ? 5200 : 7200);
       }
     };
 
@@ -473,23 +504,37 @@ export default function VirtualPet({
           <motion.span
             key={message}
             aria-live="polite"
-            className="absolute bottom-[76px] right-0 text-left md:bottom-[86px]"
+            className={
+              mobileViewport && !contactOpen
+                ? "absolute bottom-0 right-[72px] text-left"
+                : "absolute bottom-[76px] right-0 text-left md:bottom-[86px]"
+            }
             style={{
-              width: "min(320px, calc(100vw - 32px))",
+              width: mobileViewport && !contactOpen
+                ? "min(248px, calc(100vw - 72px))"
+                : mobileViewport
+                ? "min(272px, calc(100vw - 32px))"
+                : "min(320px, calc(100vw - 32px))",
               maxWidth: "calc(100vw - 32px)",
+              maxHeight: contactOpen
+                ? "min(68vh, 520px)"
+                : mobileViewport
+                  ? "min(32vh, 260px)"
+                  : "min(44vh, 360px)",
               border: "1px solid rgba(242,241,236,0.1)",
               borderRadius: 10,
               background:
                 "linear-gradient(180deg, rgba(18,18,18,0.9), rgba(10,10,10,0.82))",
               boxShadow:
                 "0 18px 48px rgba(0,0,0,0.32), 0 0 34px rgba(204,110,248,0.1)",
-              padding: "12px 14px",
+              padding: mobileViewport ? "10px 12px" : "12px 14px",
               color: FG,
               fontFamily: "'Space Mono', monospace",
-              fontSize: 11,
-              lineHeight: 1.5,
+              fontSize: mobileViewport ? 10.5 : 11,
+              lineHeight: mobileViewport ? 1.42 : 1.5,
               letterSpacing: 0,
               whiteSpace: "normal",
+              overflowY: contactOpen ? "auto" : "visible",
               overflowWrap: "break-word",
               pointerEvents: contactOpen ? "auto" : "none",
             }}

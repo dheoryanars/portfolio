@@ -101,6 +101,132 @@ const CASE_META: Record<string, { problem: string; outcome: string }> = {
   },
 };
 
+type CaseMobileDetail = {
+  summary: string;
+  focus: string[];
+  proof: string[];
+};
+
+const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
+  "kitalabel-bos": {
+    summary:
+      "A custom internal operating system for orders, pricing, customers, and production visibility.",
+    focus: [
+      "Merged disconnected operational tools into one admin surface.",
+      "Made order status, pricing, and production context easier to scan.",
+      "Used AI-assisted development to move faster from product logic to shipped UI.",
+    ],
+    proof: [
+      "Built around real staff workflows instead of isolated dashboard screens.",
+      "Reduced context switching between spreadsheets, chat, and ad-hoc tracking.",
+    ],
+  },
+  kitalabel: {
+    summary:
+      "A customer-facing web plugin that turns custom label quoting into a clearer guided flow.",
+    focus: [
+      "Translated complex pricing rules into step-by-step configuration.",
+      "Made quoting visible during sales conversations.",
+      "Designed the flow for WordPress and WooCommerce usage.",
+    ],
+    proof: [
+      "Removed spreadsheet dependency from the pricing journey.",
+      "Gave customers a clearer path from configuration to checkout.",
+    ],
+  },
+  "readsee-dashboard": {
+    summary:
+      "A full CDP product design system covering onboarding, campaigns, customer data, and activation.",
+    focus: [
+      "Designed the product from zero across four delivery phases.",
+      "Created reusable product patterns for a large SaaS surface.",
+      "Connected technical CDP modules to user-facing workflows.",
+    ],
+    proof: [
+      "Covered 700 plus screens across the product scope.",
+      "Delivered interactive prototypes for stakeholder review.",
+    ],
+  },
+  "cmis-suite": {
+    summary:
+      "Enterprise workflow tools for invoices, documents, purchase requests, and approval tracking.",
+    focus: [
+      "Replaced paper and email approval chains with structured flows.",
+      "Designed status visibility for staff handling high-volume documents.",
+      "Created separate but consistent flows for invoice, document, and purchase work.",
+    ],
+    proof: [
+      "Introduced auditable progress through each request lifecycle.",
+      "Helped enterprise teams move from legacy handling to digital tracking.",
+    ],
+  },
+  sonar: {
+    summary:
+      "A lightweight email tracking extension and web presence for solo outreach workflows.",
+    focus: [
+      "Centered the product around opened, forwarded, and ignored email signals.",
+      "Designed a simple extension UI instead of a heavy email platform.",
+      "Created landing-page messaging for quick product understanding.",
+    ],
+    proof: [
+      "Kept the experience focused on fast outreach visibility.",
+      "Separated free, pro, and advanced tiers into a clearer purchase path.",
+    ],
+  },
+  "design-system": {
+    summary:
+      "A reusable UI foundation for product teams repeatedly designing the same interface patterns.",
+    focus: [
+      "Organized repeated components into documented tokens and patterns.",
+      "Reduced inconsistent button, input, modal, and table decisions.",
+      "Built a shared foundation used across multiple products.",
+    ],
+    proof: [
+      "Reduced repeated component work during new screen design.",
+      "Supported consistency across Mailtarget App and CMIS surfaces.",
+    ],
+  },
+  "mailtarget-app": {
+    summary:
+      "A SaaS email marketing product redesign spanning campaigns, contacts, and automation.",
+    focus: [
+      "Unified inconsistent product surfaces under one component language.",
+      "Improved campaign builder, contact management, and automation flows.",
+      "Turned a fragmented product into a calmer operating workspace.",
+    ],
+    proof: [
+      "Created consistent UI behavior across core platform areas.",
+      "Supported a broader product redesign during 2023-2024.",
+    ],
+  },
+  "readsee-website": {
+    summary:
+      "A marketing website explaining Read/See's Connect, Collect, and Activate product model.",
+    focus: [
+      "Turned a complex CDP model into a public-facing product story.",
+      "Designed responsive pages and custom illustrations.",
+      "Structured the site around enterprise buyer understanding.",
+    ],
+    proof: [
+      "Moved from low-fidelity planning through high-fidelity delivery.",
+      "Created a clearer inbound presence for the product.",
+    ],
+  },
+  "mailtarget-web": {
+    summary:
+      "A marketing website positioning Mailtarget's email API for developer and business audiences.",
+    focus: [
+      "Balanced developer-first API messaging with accessible marketing copy.",
+      "Designed mobile simulations to explain the product journey.",
+      "Created a site structure for stakeholder sign-off.",
+    ],
+    proof: [
+      "Clarified API integration value without losing non-technical readers.",
+      "Delivered responsive marketing screens for the email product.",
+    ],
+  },
+};
+
 const PROCESS_STEPS = [
   {
     num: "01 Discover",
@@ -2064,29 +2190,36 @@ function CaseStudyOutro({
   );
 }
 
-function MobileCaseStudySummary({
+function MobileCaseStudyArticle({
   work,
   meta,
+  detail,
 }: {
   work: WorkItem | null;
   meta: { problem: string; outcome: string } | null;
+  detail: CaseMobileDetail | null;
 }) {
-  if (!work || !meta) return null;
+  if (!work || !meta || !detail) return null;
 
   return (
     <section
-      className="px-6 pb-10 pt-24 md:hidden"
+      className="px-5 pb-16 pt-24 lg:hidden"
       style={{
         background: BG,
         borderBottom: "1px solid rgba(242,241,236,0.08)",
       }}
     >
-      <div className="flex flex-col gap-8">
-        <div className="flex flex-col gap-4">
+      <motion.div
+        className="mx-auto flex max-w-[520px] flex-col gap-10"
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease }}
+      >
+        <header className="flex flex-col gap-5">
           <span
             style={{
               fontFamily: "'Space Mono', monospace",
-              fontSize: 11,
+              fontSize: 12,
               color: PURPLE,
               letterSpacing: "0.08em",
               textTransform: "uppercase",
@@ -2097,9 +2230,9 @@ function MobileCaseStudySummary({
           <h1
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: "clamp(36px, 12vw, 54px)",
+              fontSize: "clamp(42px, 13vw, 64px)",
               fontWeight: 500,
-              lineHeight: 0.96,
+              lineHeight: 0.94,
               color: FG,
               letterSpacing: 0,
             }}
@@ -2111,45 +2244,159 @@ function MobileCaseStudySummary({
               fontFamily: "'Space Mono', monospace",
               fontSize: 12,
               color: DIM,
-              lineHeight: 1.55,
+              lineHeight: 1.6,
             }}
           >
             {work.category}
           </p>
-        </div>
+          <p
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: 20,
+              lineHeight: 1.45,
+              color: MUTED,
+              letterSpacing: 0,
+            }}
+          >
+            {detail.summary}
+          </p>
+        </header>
 
-        <div className="grid gap-7">
+        <figure
+          className="overflow-hidden rounded"
+          style={{
+            border: "1px solid rgba(242,241,236,0.08)",
+            background: BG2,
+          }}
+        >
+          <img
+            src={work.thumb}
+            alt={`${work.title} preview`}
+            style={{
+              display: "block",
+              width: "100%",
+              aspectRatio: "4 / 3",
+              objectFit: "cover",
+            }}
+          />
+        </figure>
+
+        <div className="grid gap-9">
           {[
-            { label: "Problem", body: meta.problem },
-            { label: "Outcome", body: meta.outcome },
-          ].map((item) => (
-            <div key={item.label} className="grid gap-3">
-              <span
+            ["Problem", meta.problem],
+            ["Outcome", meta.outcome],
+          ].map(([label, body]) => (
+            <section
+              key={label}
+              className="grid gap-4 border-t pt-6"
+              style={{ borderColor: "rgba(242,241,236,0.1)" }}
+            >
+              <h2
                 style={{
                   fontFamily: "'Space Mono', monospace",
-                  fontSize: 11,
+                  fontSize: 12,
                   color: DIM,
                   textTransform: "uppercase",
                   letterSpacing: "0.08em",
                 }}
               >
-                {item.label}
-              </span>
+                {label}
+              </h2>
               <p
                 style={{
                   fontFamily: "'Space Grotesk', sans-serif",
-                  fontSize: 18,
+                  fontSize: 20,
                   color: FG,
-                  lineHeight: 1.45,
+                  lineHeight: 1.5,
                   letterSpacing: 0,
                 }}
               >
-                {item.body}
+                {body}
               </p>
-            </div>
+            </section>
           ))}
         </div>
-      </div>
+
+        <section
+          className="grid gap-5 border-t pt-7"
+          style={{ borderColor: "rgba(242,241,236,0.1)" }}
+        >
+          <h2
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: 28,
+              fontWeight: 500,
+              lineHeight: 1.05,
+              color: FG,
+              letterSpacing: 0,
+            }}
+          >
+            What changed
+          </h2>
+          <div className="grid gap-5">
+            {detail.focus.map((item, index) => (
+              <div
+                key={item}
+                className="grid grid-cols-[32px_1fr] gap-4 border-t pt-5"
+                style={{ borderColor: "rgba(242,241,236,0.08)" }}
+              >
+                <span
+                  style={{
+                    fontFamily: "'Space Mono', monospace",
+                    fontSize: 12,
+                    color: PURPLE,
+                  }}
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <p
+                  style={{
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontSize: 18,
+                    lineHeight: 1.5,
+                    color: MUTED,
+                  }}
+                >
+                  {item}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section
+          className="grid gap-4 border-t pt-7"
+          style={{ borderColor: "rgba(242,241,236,0.1)" }}
+        >
+          <h2
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 12,
+              color: DIM,
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+            }}
+          >
+            Proof points
+          </h2>
+          <div className="grid gap-3">
+            {detail.proof.map((item) => (
+              <p
+                key={item}
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: 18,
+                  lineHeight: 1.5,
+                  color: FG,
+                  letterSpacing: 0,
+                }}
+              >
+                {item}
+              </p>
+            ))}
+          </div>
+        </section>
+      </motion.div>
     </section>
   );
 }
@@ -2239,6 +2486,7 @@ function CaseStudyPage({
   const workIndex = WORKS.findIndex((w) => w.slug === slug);
   const currentWork = workIndex >= 0 ? WORKS[workIndex] : null;
   const currentMeta = CASE_META[slug] ?? null;
+  const currentMobileDetail = CASE_MOBILE_DETAILS[slug] ?? null;
   const nextWork =
     workIndex >= 0
       ? WORKS[(workIndex + 1) % WORKS.length]
@@ -2341,7 +2589,12 @@ function CaseStudyPage({
         [data-name="foot-wrap"],
         [data-name="foot-wrap"] [data-name="footer"] { display: none; }
       `}</style>
-      <MobileCaseStudySummary work={currentWork} meta={currentMeta} />
+      <MobileCaseStudyArticle
+        work={currentWork}
+        meta={currentMeta}
+        detail={currentMobileDetail}
+      />
+      <div className="hidden lg:block">
       <ResponsiveCaseStudyFrame
         frameRef={caseStudyParallaxRef}
         onClick={handleDelegatedClick}
@@ -2386,6 +2639,7 @@ function CaseStudyPage({
           </div>
         )}
       </ResponsiveCaseStudyFrame>
+      </div>
       <CaseStudyOutro
         nextWork={nextWork}
         onBack={onBack}
