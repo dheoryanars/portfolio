@@ -264,8 +264,9 @@ export default function VirtualPet({
         );
       }
 
-      const anchorX = window.innerWidth - 72;
-      const anchorY = window.innerHeight - 72;
+      const mobile = window.innerWidth < 768;
+      const anchorX = window.innerWidth - (mobile ? 48 : 72);
+      const anchorY = window.innerHeight - (mobile ? 48 : 72);
       x.set(clamp((event.clientX - anchorX) * 0.08, -18, 18));
       y.set(clamp((event.clientY - anchorY) * 0.08, -18, 18));
     };
@@ -298,6 +299,7 @@ export default function VirtualPet({
 
   useEffect(() => {
     if (!caseStudy) return;
+    if (window.innerWidth < 768) return;
 
     const timer = window.setTimeout(() => {
       react("proud", buildCaseIntro(caseStudy), 7600);
@@ -318,6 +320,7 @@ export default function VirtualPet({
 
   useEffect(() => {
     if (!caseStudy) return;
+    if (window.innerWidth < 768) return;
 
     const handleScroll = () => {
       if (readCaseRef.current.has(caseStudy.slug)) return;
@@ -446,12 +449,12 @@ export default function VirtualPet({
   return (
     <motion.div
       aria-label="Equinox contact helper"
-      className="fixed bottom-5 right-5 z-[70] hidden size-[74px] items-center justify-center overflow-visible md:flex"
+      className="fixed bottom-4 right-4 z-[70] flex size-[64px] items-center justify-center overflow-visible md:bottom-5 md:right-5 md:size-[74px]"
       style={{
         x: springX,
         y: springY,
       }}
-      initial={{ opacity: 0, y: 24, scale: 0.9 }}
+      initial={{ opacity: 0, scale: 0.9 }}
       animate={{
         opacity: 1,
         scale:
@@ -470,9 +473,9 @@ export default function VirtualPet({
           <motion.span
             key={message}
             aria-live="polite"
-            className="absolute bottom-[86px] right-0 text-left"
+            className="absolute bottom-[76px] right-0 text-left md:bottom-[86px]"
             style={{
-              width: 320,
+              width: "min(320px, calc(100vw - 32px))",
               maxWidth: "calc(100vw - 32px)",
               border: "1px solid rgba(242,241,236,0.1)",
               borderRadius: 10,
@@ -603,7 +606,7 @@ export default function VirtualPet({
         onClick={handlePet}
         onPointerEnter={handlePetEnter}
         onPointerLeave={handlePetLeave}
-        className="relative flex size-[74px] items-center justify-center overflow-visible"
+        className="relative flex size-[64px] items-center justify-center overflow-visible md:size-[74px]"
         style={{
           border: "1px solid rgba(242,241,236,0.11)",
           background:
@@ -640,7 +643,7 @@ export default function VirtualPet({
 
       <motion.span
         aria-hidden
-        className="relative flex size-[48px] items-center justify-center"
+        className="relative flex size-[42px] items-center justify-center md:size-[48px]"
         animate={{
           y: mood === "sleepy" ? [2, 5, 2] : [0, -3, 0],
           rotate:

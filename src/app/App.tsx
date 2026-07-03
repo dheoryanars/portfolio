@@ -2064,6 +2064,165 @@ function CaseStudyOutro({
   );
 }
 
+function MobileCaseStudySummary({
+  work,
+  meta,
+}: {
+  work: WorkItem | null;
+  meta: { problem: string; outcome: string } | null;
+}) {
+  if (!work || !meta) return null;
+
+  return (
+    <section
+      className="px-6 pb-10 pt-24 md:hidden"
+      style={{
+        background: BG,
+        borderBottom: "1px solid rgba(242,241,236,0.08)",
+      }}
+    >
+      <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-4">
+          <span
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 11,
+              color: PURPLE,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+            }}
+          >
+            {work.num} / {work.year}
+          </span>
+          <h1
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: "clamp(36px, 12vw, 54px)",
+              fontWeight: 500,
+              lineHeight: 0.96,
+              color: FG,
+              letterSpacing: 0,
+            }}
+          >
+            {work.title}
+          </h1>
+          <p
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 12,
+              color: DIM,
+              lineHeight: 1.55,
+            }}
+          >
+            {work.category}
+          </p>
+        </div>
+
+        <div className="grid gap-7">
+          {[
+            { label: "Problem", body: meta.problem },
+            { label: "Outcome", body: meta.outcome },
+          ].map((item) => (
+            <div key={item.label} className="grid gap-3">
+              <span
+                style={{
+                  fontFamily: "'Space Mono', monospace",
+                  fontSize: 11,
+                  color: DIM,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                }}
+              >
+                {item.label}
+              </span>
+              <p
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: 18,
+                  color: FG,
+                  lineHeight: 1.45,
+                  letterSpacing: 0,
+                }}
+              >
+                {item.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ResponsiveCaseStudyFrame({
+  children,
+  onClick,
+  frameRef,
+}: {
+  children: React.ReactNode;
+  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
+  frameRef: React.RefObject<HTMLDivElement>;
+}) {
+  const innerRef = useRef<HTMLDivElement>(null);
+  const [layout, setLayout] = useState({ scale: 1, height: 0 });
+  const baseWidth = 1280;
+
+  useEffect(() => {
+    const updateLayout = () => {
+      const viewportWidth = window.innerWidth;
+      const nextScale = Math.min(1, viewportWidth / baseWidth);
+      const contentHeight = innerRef.current?.scrollHeight ?? 0;
+      setLayout({
+        scale: nextScale,
+        height: contentHeight ? contentHeight * nextScale : 0,
+      });
+    };
+
+    updateLayout();
+
+    const observer = new ResizeObserver(updateLayout);
+    if (innerRef.current) observer.observe(innerRef.current);
+
+    window.addEventListener("resize", updateLayout);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateLayout);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={frameRef}
+      className="overflow-hidden"
+      style={{ width: "100%" }}
+    >
+      <div
+        style={{
+          height: layout.height || undefined,
+          minHeight: layout.height ? undefined : "100vh",
+          overflow: "hidden",
+          width: "100%",
+        }}
+      >
+        <div
+          ref={innerRef}
+          style={{
+            minWidth: baseWidth,
+            width: baseWidth,
+            margin: layout.scale === 1 ? "0 auto" : 0,
+            transform:
+              layout.scale === 1 ? undefined : `scale(${layout.scale})`,
+            transformOrigin: "top left",
+          }}
+          onClick={onClick}
+        >
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function CaseStudyPage({
   slug,
   onBack,
@@ -2078,6 +2237,8 @@ function CaseStudyPage({
 
   // Next project in work-grid order (wraps around at the end)
   const workIndex = WORKS.findIndex((w) => w.slug === slug);
+  const currentWork = workIndex >= 0 ? WORKS[workIndex] : null;
+  const currentMeta = CASE_META[slug] ?? null;
   const nextWork =
     workIndex >= 0
       ? WORKS[(workIndex + 1) % WORKS.length]
@@ -2120,7 +2281,7 @@ function CaseStudyPage({
   }, [slug]);
 
   return (
-    <div style={{ background: BG, minHeight: "100vh" }}>
+    <div style={{ background: BG, minHeight: "100vh", overflowX: "hidden" }}>
       <motion.button
         onClick={onBack}
         className="fixed top-5 left-5 z-50 flex items-center gap-2"
@@ -2180,56 +2341,51 @@ function CaseStudyPage({
         [data-name="foot-wrap"],
         [data-name="foot-wrap"] [data-name="footer"] { display: none; }
       `}</style>
-      <div ref={caseStudyParallaxRef} className="overflow-x-auto">
-        <div
-          style={{
-            minWidth: 1280,
-            width: "fit-content",
-            margin: "0 auto",
-          }}
-          onClick={handleDelegatedClick}
-        >
-          {Component ? (
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+      <MobileCaseStudySummary work={currentWork} meta={currentMeta} />
+      <ResponsiveCaseStudyFrame
+        frameRef={caseStudyParallaxRef}
+        onClick={handleDelegatedClick}
+      >
+        {Component ? (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Component />
+          </motion.div>
+        ) : (
+          <div className="flex flex-col items-center justify-center min-h-screen gap-6 px-6">
+            <span
+              style={{
+                fontFamily: "'Space Mono', monospace",
+                fontSize: 14,
+                color: DIM,
+              }}
             >
-              <Component />
-            </motion.div>
-          ) : (
-            <div className="flex flex-col items-center justify-center min-h-screen gap-6 px-6">
-              <span
-                style={{
-                  fontFamily: "'Space Mono', monospace",
-                  fontSize: 14,
-                  color: DIM,
-                }}
-              >
-                Case study coming soon
-              </span>
-              <motion.button
-                onClick={onBack}
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.97 }}
-                style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  fontWeight: 500,
-                  fontSize: 14,
-                  color: PURPLE,
-                  border: `1px solid ${PURPLE}`,
-                  borderRadius: 32,
-                  padding: "12px 24px",
-                  background: "transparent",
-                  cursor: "pointer",
-                }}
-              >
-                ← Back to portfolio
-              </motion.button>
-            </div>
-          )}
-        </div>
-      </div>
+              Case study coming soon
+            </span>
+            <motion.button
+              onClick={onBack}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 500,
+                fontSize: 14,
+                color: PURPLE,
+                border: `1px solid ${PURPLE}`,
+                borderRadius: 32,
+                padding: "12px 24px",
+                background: "transparent",
+                cursor: "pointer",
+              }}
+            >
+              ← Back to portfolio
+            </motion.button>
+          </div>
+        )}
+      </ResponsiveCaseStudyFrame>
       <CaseStudyOutro
         nextWork={nextWork}
         onBack={onBack}
@@ -2243,7 +2399,12 @@ function CaseStudyPage({
 // ── App ───────────────────────────────────────────────────────────────────────
 
 export default function App() {
-  const [page, setPage] = useState<"home" | string>("home");
+  const pageFromHash = () => {
+    const match = window.location.hash.match(/^#\/work\/([^/]+)$/);
+    const slug = match?.[1];
+    return slug && CASE_STUDIES[slug] ? slug : "home";
+  };
+  const [page, setPage] = useState<"home" | string>(() => pageFromHash());
   const currentWork =
     page === "home" ? null : WORKS.find((work) => work.slug === page) ?? null;
   const currentMeta = page === "home" ? null : CASE_META[page] ?? null;
@@ -2259,13 +2420,29 @@ export default function App() {
         }
       : null;
 
+  useEffect(() => {
+    const handleHashChange = () => {
+      setPage(pageFromHash());
+      window.scrollTo(0, 0);
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+    window.addEventListener("popstate", handleHashChange);
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+      window.removeEventListener("popstate", handleHashChange);
+    };
+  }, []);
+
   const navigateTo = (slug: string) => {
     setPage(slug);
+    window.history.pushState(null, "", `#/work/${slug}`);
     window.scrollTo(0, 0);
   };
 
   const goHome = () => {
     setPage("home");
+    window.history.pushState(null, "", "#/");
     window.scrollTo(0, 0);
   };
 
