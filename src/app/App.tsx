@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useHeroParallax, useWorkCardParallax, useAboutParallax, useContactParallax, useProcessParallax, useCaseStudyParallax } from "./components/parallax";
+import VirtualPet from "./components/VirtualPet";
 import {
   motion,
   useInView,
@@ -2255,32 +2256,35 @@ export default function App() {
   };
 
   return (
-    <AnimatePresence mode="wait">
-      {page === "home" ? (
-        <motion.div
-          key="home"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <PortfolioPage onNavigate={navigateTo} />
-        </motion.div>
-      ) : (
-        <motion.div
-          key={page}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <CaseStudyPage
-            slug={page}
-            onBack={goHome}
-            onNavigate={navigateTo}
-          />
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <>
+      <AnimatePresence mode="wait">
+        {page === "home" ? (
+          <motion.div
+            key="home"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <PortfolioPage onNavigate={navigateTo} />
+          </motion.div>
+        ) : (
+          <motion.div
+            key={page}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <CaseStudyPage
+              slug={page}
+              onBack={goHome}
+              onNavigate={navigateTo}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <VirtualPet />
+    </>
   );
 }
