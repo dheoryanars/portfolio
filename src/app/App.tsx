@@ -2244,6 +2244,20 @@ function CaseStudyPage({
 
 export default function App() {
   const [page, setPage] = useState<"home" | string>("home");
+  const currentWork =
+    page === "home" ? null : WORKS.find((work) => work.slug === page) ?? null;
+  const currentMeta = page === "home" ? null : CASE_META[page] ?? null;
+  const petCaseStudy =
+    currentWork && currentMeta && currentWork.slug
+      ? {
+          slug: currentWork.slug,
+          title: currentWork.title,
+          category: currentWork.category,
+          year: currentWork.year,
+          problem: currentMeta.problem,
+          outcome: currentMeta.outcome,
+        }
+      : null;
 
   const navigateTo = (slug: string) => {
     setPage(slug);
@@ -2284,7 +2298,7 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
-      <VirtualPet />
+      <VirtualPet caseStudy={petCaseStudy} />
     </>
   );
 }
