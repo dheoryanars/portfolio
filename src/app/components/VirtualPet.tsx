@@ -335,7 +335,7 @@ export default function VirtualPet({
       );
       x.set(mobile ? -4 : -6);
       y.set(mobile ? -14 : -8);
-    }, mobile ? 1200 : 900);
+    }, mobile ? 3200 : 900);
 
     return () => window.clearTimeout(timer);
   }, [

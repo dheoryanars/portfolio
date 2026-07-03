@@ -2635,6 +2635,7 @@ function MobileCaseStudyArticle({
           style={{
             border: "1px solid rgba(242,241,236,0.08)",
             background: BG2,
+            boxShadow: "0 24px 70px rgba(0,0,0,0.28)",
           }}
         >
           <img
@@ -2648,6 +2649,114 @@ function MobileCaseStudyArticle({
             }}
           />
         </figure>
+
+        <section
+          className="grid gap-4 border-t pt-7"
+          style={{ borderColor: "rgba(242,241,236,0.1)" }}
+        >
+          <h2
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: 28,
+              fontWeight: 500,
+              lineHeight: 1.05,
+              color: FG,
+              letterSpacing: 0,
+            }}
+          >
+            Visual index
+          </h2>
+          <div className="grid gap-3">
+            {[
+              {
+                label: "Hero preview",
+                title: work.title,
+                body: "Main project thumbnail and product atmosphere.",
+              },
+              {
+                label: "Key sections",
+                title: `${detail.sections.length} case sections`,
+                body: "Problem, context, process, screens, decisions, and outcomes are preserved below.",
+              },
+              {
+                label: "Design artifacts",
+                title: "Cards and evidence",
+                body: "Each mobile section now includes a compact artifact card so the story keeps its visual rhythm.",
+              },
+            ].map((card, index) => (
+              <div
+                key={card.label}
+                className="grid grid-cols-[92px_1fr] gap-4 overflow-hidden rounded"
+                style={{
+                  border: "1px solid rgba(242,241,236,0.08)",
+                  background: "rgba(242,241,236,0.035)",
+                }}
+              >
+                <div
+                  className="relative min-h-[92px] overflow-hidden"
+                  style={{ background: BG2 }}
+                >
+                  <img
+                    src={work.thumb}
+                    alt=""
+                    aria-hidden
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      opacity: index === 0 ? 0.9 : 0.42,
+                      filter: index === 0 ? "none" : "saturate(0.7)",
+                    }}
+                  />
+                  <span
+                    className="absolute bottom-2 left-2"
+                    style={{
+                      fontFamily: "'Space Mono', monospace",
+                      fontSize: 10,
+                      color: PURPLE,
+                    }}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <div className="flex flex-col justify-center gap-2 py-4 pr-4">
+                  <span
+                    style={{
+                      fontFamily: "'Space Mono', monospace",
+                      fontSize: 10,
+                      color: DIM,
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {card.label}
+                  </span>
+                  <h3
+                    style={{
+                      fontFamily: "'Space Grotesk', sans-serif",
+                      fontSize: 17,
+                      fontWeight: 500,
+                      lineHeight: 1.15,
+                      color: FG,
+                    }}
+                  >
+                    {card.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: "'Space Grotesk', sans-serif",
+                      fontSize: 14,
+                      lineHeight: 1.45,
+                      color: MUTED,
+                    }}
+                  >
+                    {card.body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
         <div className="grid gap-9">
           {[
@@ -2749,46 +2858,94 @@ function MobileCaseStudyArticle({
             Full case flow
           </h2>
           <div className="grid gap-6">
-            {detail.sections.map((section) => (
+            {detail.sections.map((section, index) => (
               <article
                 key={`${section.kicker}-${section.title}`}
-                className="grid gap-3 border-t pt-5"
-                style={{ borderColor: "rgba(242,241,236,0.08)" }}
+                className="grid gap-4 overflow-hidden rounded"
+                style={{
+                  border: "1px solid rgba(242,241,236,0.08)",
+                  background: "rgba(242,241,236,0.03)",
+                }}
               >
-                <span
+                <div
+                  className="relative min-h-[132px] overflow-hidden"
                   style={{
-                    fontFamily: "'Space Mono', monospace",
-                    fontSize: 11,
-                    color: PURPLE,
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
+                    background:
+                      "linear-gradient(135deg, rgba(204,110,248,0.16), rgba(242,241,236,0.025))",
                   }}
                 >
-                  {section.kicker}
-                </span>
-                <h3
-                  style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
-                    fontSize: 22,
-                    fontWeight: 500,
-                    lineHeight: 1.15,
-                    color: FG,
-                    letterSpacing: 0,
-                  }}
-                >
-                  {section.title}
-                </h3>
-                <p
-                  style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
-                    fontSize: 17,
-                    lineHeight: 1.55,
-                    color: MUTED,
-                    letterSpacing: 0,
-                  }}
-                >
-                  {section.body}
-                </p>
+                  <img
+                    src={work.thumb}
+                    alt=""
+                    aria-hidden
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      opacity: 0.22,
+                      filter: "saturate(0.75) contrast(1.05)",
+                    }}
+                  />
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, rgba(10,10,10,0.05), rgba(10,10,10,0.72))",
+                    }}
+                  />
+                  <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-4">
+                    <span
+                      style={{
+                        fontFamily: "'Space Mono', monospace",
+                        fontSize: 11,
+                        color: PURPLE,
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {section.kicker}
+                    </span>
+                    <span
+                      className="flex size-8 items-center justify-center rounded-full"
+                      style={{
+                        border: "1px solid rgba(242,241,236,0.12)",
+                        background: "rgba(10,10,10,0.5)",
+                        color: PURPLE,
+                        fontFamily: "'Space Mono', monospace",
+                        fontSize: 10,
+                      }}
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                </div>
+                <div className="grid gap-3 px-4 pb-5">
+                  <h3
+                    style={{
+                      fontFamily: "'Space Grotesk', sans-serif",
+                      fontSize: 22,
+                      fontWeight: 500,
+                      lineHeight: 1.15,
+                      color: FG,
+                      letterSpacing: 0,
+                    }}
+                  >
+                    {section.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: "'Space Grotesk', sans-serif",
+                      fontSize: 17,
+                      lineHeight: 1.55,
+                      color: MUTED,
+                      letterSpacing: 0,
+                    }}
+                  >
+                    {section.body}
+                  </p>
+                </div>
               </article>
             ))}
           </div>
