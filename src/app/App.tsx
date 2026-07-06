@@ -2558,14 +2558,117 @@ function CaseStudyOutro({
   );
 }
 
+function CaseImagePreview({
+  image,
+  onClose,
+}: {
+  image: { src: string; title: string } | null;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    if (!image) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [image, onClose]);
+
+  return (
+    <AnimatePresence>
+      {image && (
+        <motion.div
+          className="fixed inset-0 z-[90] flex items-center justify-center p-4 md:p-8"
+          style={{
+            background: "rgba(5,5,5,0.88)",
+            backdropFilter: "blur(18px)",
+            WebkitBackdropFilter: "blur(18px)",
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+        >
+          <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${image.title} preview`}
+            className="relative flex max-h-[88vh] w-full max-w-[1100px] flex-col gap-3"
+            initial={{ opacity: 0, scale: 0.96, y: 18 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: 12 }}
+            transition={{ duration: 0.28, ease }}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              aria-label="Close preview"
+              onClick={onClose}
+              className="absolute right-3 top-3 z-10 flex size-10 items-center justify-center rounded-full"
+              style={{
+                border: "1px solid rgba(242,241,236,0.14)",
+                background: "rgba(10,10,10,0.72)",
+                color: FG,
+                cursor: "pointer",
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: 20,
+              }}
+            >
+              ×
+            </button>
+            <div
+              className="overflow-hidden rounded"
+              style={{
+                border: "1px solid rgba(242,241,236,0.1)",
+                background: BG2,
+                boxShadow: "0 28px 90px rgba(0,0,0,0.55)",
+              }}
+            >
+              <img
+                src={image.src}
+                alt={image.title}
+                style={{
+                  display: "block",
+                  maxHeight: "82vh",
+                  width: "100%",
+                  objectFit: "contain",
+                }}
+              />
+            </div>
+            <span
+              style={{
+                fontFamily: "'Space Mono', monospace",
+                fontSize: 11,
+                color: DIM,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+              }}
+            >
+              {image.title}
+            </span>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 function MobileCaseStudyArticle({
   work,
   meta,
   detail,
+  onPreview,
 }: {
   work: WorkItem | null;
   meta: { problem: string; outcome: string } | null;
   detail: CaseMobileDetail | null;
+  onPreview: (src: string, title: string) => void;
 }) {
   if (!work || !meta || !detail) return null;
 
@@ -2630,25 +2733,44 @@ function MobileCaseStudyArticle({
           </p>
         </header>
 
-        <figure
-          className="overflow-hidden rounded"
+        <button
+          type="button"
+          aria-label={`Preview ${work.title}`}
+          onClick={() => onPreview(work.thumb, work.title)}
+          className="group overflow-hidden rounded text-left"
           style={{
             border: "1px solid rgba(242,241,236,0.08)",
             background: BG2,
             boxShadow: "0 24px 70px rgba(0,0,0,0.28)",
+            cursor: "zoom-in",
+            padding: 0,
           }}
         >
-          <img
-            src={work.thumb}
-            alt={`${work.title} preview`}
-            style={{
-              display: "block",
-              width: "100%",
-              aspectRatio: "4 / 3",
-              objectFit: "cover",
-            }}
-          />
-        </figure>
+          <span className="relative block">
+            <img
+              src={work.thumb}
+              alt={`${work.title} preview`}
+              style={{
+                display: "block",
+                width: "100%",
+                aspectRatio: "4 / 3",
+                objectFit: "cover",
+              }}
+            />
+            <span
+              className="absolute right-3 top-3 flex size-9 items-center justify-center rounded-full"
+              style={{
+                border: "1px solid rgba(242,241,236,0.14)",
+                background: "rgba(10,10,10,0.62)",
+                color: PURPLE,
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: 18,
+              }}
+            >
+              ↗
+            </span>
+          </span>
+        </button>
 
         <section
           className="grid gap-4 border-t pt-7"
@@ -2684,12 +2806,19 @@ function MobileCaseStudyArticle({
                 body: "Each mobile section now includes a compact artifact card so the story keeps its visual rhythm.",
               },
             ].map((card, index) => (
-              <div
+              <button
+                type="button"
+                onClick={() =>
+                  onPreview(work.thumb, `${work.title} · ${card.label}`)
+                }
+                aria-label={`Preview ${card.label}`}
                 key={card.label}
-                className="grid grid-cols-[92px_1fr] gap-4 overflow-hidden rounded"
+                className="grid grid-cols-[92px_1fr] gap-4 overflow-hidden rounded text-left"
                 style={{
                   border: "1px solid rgba(242,241,236,0.08)",
                   background: "rgba(242,241,236,0.035)",
+                  cursor: "zoom-in",
+                  padding: 0,
                 }}
               >
                 <div
@@ -2753,7 +2882,7 @@ function MobileCaseStudyArticle({
                     {card.body}
                   </p>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </section>
@@ -2859,12 +2988,19 @@ function MobileCaseStudyArticle({
           </h2>
           <div className="grid gap-6">
             {detail.sections.map((section, index) => (
-              <article
+              <button
+                type="button"
+                onClick={() =>
+                  onPreview(work.thumb, `${work.title} · ${section.title}`)
+                }
+                aria-label={`Preview ${section.title}`}
                 key={`${section.kicker}-${section.title}`}
-                className="grid gap-4 overflow-hidden rounded"
+                className="grid gap-4 overflow-hidden rounded text-left"
                 style={{
                   border: "1px solid rgba(242,241,236,0.08)",
                   background: "rgba(242,241,236,0.03)",
+                  cursor: "zoom-in",
+                  padding: 0,
                 }}
               >
                 <div
@@ -2946,7 +3082,7 @@ function MobileCaseStudyArticle({
                     {section.body}
                   </p>
                 </div>
-              </article>
+              </button>
             ))}
           </div>
         </section>
@@ -3068,6 +3204,10 @@ function CaseStudyPage({
 }) {
   const Component = CASE_STUDIES[slug];
   const caseStudyParallaxRef = useCaseStudyParallax(slug);
+  const [previewImage, setPreviewImage] = useState<{
+    src: string;
+    title: string;
+  } | null>(null);
 
   // Next project in work-grid order (wraps around at the end)
   const workIndex = WORKS.findIndex((w) => w.slug === slug);
@@ -3078,6 +3218,9 @@ function CaseStudyPage({
     workIndex >= 0
       ? WORKS[(workIndex + 1) % WORKS.length]
       : null;
+  const openPreview = (src: string, title: string) => {
+    setPreviewImage({ src, title });
+  };
 
   // The imported case study components are static — delegate clicks
   // on their "Next project" rows and "Back to top" buttons.
@@ -3085,6 +3228,29 @@ function CaseStudyPage({
     e: React.MouseEvent<HTMLDivElement>,
   ) => {
     const target = e.target as HTMLElement;
+    const scopedImages = Array.from(
+      e.currentTarget.querySelectorAll("img"),
+    ) as HTMLImageElement[];
+    const image =
+      (target.closest("img") as HTMLImageElement | null) ??
+      scopedImages.find((candidate) => {
+        const rect = candidate.getBoundingClientRect();
+        return (
+          e.clientX >= rect.left &&
+          e.clientX <= rect.right &&
+          e.clientY >= rect.top &&
+          e.clientY <= rect.bottom
+        );
+      });
+
+    if (image?.src) {
+      openPreview(
+        image.src,
+        image.alt || currentWork?.title || "Case preview",
+      );
+      return;
+    }
+
     const row = target.closest(
       '[data-name="nRow"], [data-name="top"]',
     );
@@ -3165,6 +3331,7 @@ function CaseStudyPage({
       <style>{`
         [data-name="nRow"], [data-name="top"] { cursor: pointer; }
         [data-name="nRow"]:hover p, [data-name="top"]:hover p { color: #cc6ef8; }
+        .case-study-preview-scope img { cursor: zoom-in; }
         /* Hide the static per-case-study copyright rows — the shared
            FooterSection below provides the real site footer. */
         [data-name="fw"],
@@ -3180,8 +3347,9 @@ function CaseStudyPage({
         work={currentWork}
         meta={currentMeta}
         detail={currentMobileDetail}
+        onPreview={openPreview}
       />
-      <div className="hidden lg:block">
+      <div className="case-study-preview-scope hidden lg:block">
       <ResponsiveCaseStudyFrame
         frameRef={caseStudyParallaxRef}
         onClick={handleDelegatedClick}
@@ -3233,6 +3401,10 @@ function CaseStudyPage({
         onNavigate={onNavigate}
       />
       <FooterSection />
+      <CaseImagePreview
+        image={previewImage}
+        onClose={() => setPreviewImage(null)}
+      />
     </div>
   );
 }
