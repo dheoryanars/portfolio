@@ -1,11 +1,11 @@
-import imgIc from "./8a4870ed4598428516c20a8da98f7ea190ded8f5.png";
-import imgIc1 from "./fa8c691607452f17c7b2bd39850c5bd0997dc3ba.png";
-import imgIc2 from "./8abfa0725b27eaf22df0d00cc4309407b0da6a48.png";
-import imgIc3 from "./ae8cfe8b4c9b1c42253fa101bb67f28c3c95c5cb.png";
-import imgIc4 from "./617bd414fbe358be0fc7f87e1df094717aaecbc0.png";
-import imgIc5 from "./b07f8287abc96631c4d51ba440830c0399be1259.png";
-import imgIc6 from "./b05d29373cc345e398c752a29c128716838b96ca.png";
-import imgIc7 from "./6cc5122402166c5e08c8123826ada299ef099d3c.png";
+const imgIc = "/case-studies/kitalabel/image-01.png";
+const imgIc1 = "/case-studies/kitalabel/image-02.png";
+const imgIc2 = "/case-studies/kitalabel/image-03.png";
+const imgIc3 = "/case-studies/kitalabel/image-04.png";
+const imgIc4 = "/case-studies/kitalabel/image-05.png";
+const imgIc5 = "/case-studies/kitalabel/image-06.png";
+const imgIc6 = "/case-studies/kitalabel/image-07.png";
+const imgIc7 = "/case-studies/kitalabel/image-08.png";
 
 function Nl() {
   return (

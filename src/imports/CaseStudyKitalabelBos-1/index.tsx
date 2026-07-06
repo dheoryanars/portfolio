@@ -1,7 +1,7 @@
 import svgPaths from "./svg-jhm7sf8zhm";
-import imgLogo from "./ef1befd342c69e368fa246aa928868af9a895e2a.png";
-import imgRectangle from "./893d8ea8e9d15477c5b99a45ff6d6678b0811caa.png";
-import imgRectangle1 from "./9912265a84762a0811265af34eef304f5d9d5cf3.png";
+const imgLogo = "/case-studies/kitalabel-bos/image-01.png";
+const imgRectangle = "/case-studies/kitalabel-bos/image-02.png";
+const imgRectangle1 = "/case-studies/kitalabel-bos/image-03.png";
 
 function Frame() {
   return (

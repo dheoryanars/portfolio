@@ -1,5 +1,5 @@
 import svgPaths from "./svg-csb78eiqwr";
-import imgHeroMockup from "./d32907777f6c34bece2fc38609ac17e41a5423f7.png";
+const imgHeroMockup = "/case-studies/sonar/image-01.png";
 
 function Logo() {
   return (

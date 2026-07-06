@@ -1,6 +1,6 @@
-import imgHeroCover from "./216cb3665cb88f5d896931c9ac724e8b7d03c465.png";
-import imgIaAtoms from "./1bb7f98638518a479864fe50f712558fb92f9f49.png";
-import imgIaMolecules from "./603ddddf88d0cbae6182d1d75cecc52d73d76dc0.png";
+const imgHeroCover = "/case-studies/design-system/image-01.png";
+const imgIaAtoms = "/case-studies/design-system/image-02.png";
+const imgIaMolecules = "/case-studies/design-system/image-03.png";
 
 function Nl() {
   return (

@@ -1,11 +1,11 @@
-import imgIc from "./f5728e0c0f125a9f27cc996599b4c0c2f26077e7.png";
-import imgIc1 from "./1db4e3cd608ef84c562ed6bf83889765e10a6f71.png";
-import imgIc2 from "./cfe8aee1065b042a5392432dd528a30489c710e5.png";
-import imgIc3 from "./b926f2e25d5ccd5441323548094529ff991892ee.png";
-import imgIc4 from "./5934b88309de74f60b1a32955e584c73c2f8f26c.png";
-import imgIc5 from "./bcdecf49f14701f992cf7b64f5947e50bfe4395d.png";
-import imgIc6 from "./77f21461393952d20989329640aab03d4e86908b.png";
-import imgIc7 from "./3bc278cdd6e7c7410d84a29f40c4b7d9d22ba5d1.png";
+const imgIc = "/case-studies/mailtarget-web/image-01.png";
+const imgIc1 = "/case-studies/mailtarget-web/image-02.png";
+const imgIc2 = "/case-studies/mailtarget-web/image-03.png";
+const imgIc3 = "/case-studies/mailtarget-web/image-04.png";
+const imgIc4 = "/case-studies/mailtarget-web/image-05.png";
+const imgIc5 = "/case-studies/mailtarget-web/image-06.png";
+const imgIc6 = "/case-studies/mailtarget-web/image-07.png";
+const imgIc7 = "/case-studies/mailtarget-web/image-08.png";
 
 function Nl() {
   return (

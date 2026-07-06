@@ -1,11 +1,11 @@
-import imgHeroImg from "./395730873ac44982c12eb4af4f1eb1b5a2e0cc33.png";
-import imgRectangle from "./e947049d96a7acd2a2d68cfdfb2ad51920165048.png";
-import imgRectangle1 from "./d0fe2f8f76bc77156aef43eaffd8c8a4c3caff51.png";
-import imgRectangle2 from "./bc39a53a4890bf9dac68d68f06d708585c05328c.png";
-import imgRectangle3 from "./c6920dda22f70fed7ecdafd6aaadf232aad6b2b9.png";
-import imgRectangle4 from "./dd856729ca356219a634395765301265cbd7bdab.png";
-import imgRectangle5 from "./804212df949c4e8960bdb706936ff51053265b8d.png";
-import imgRectangle6 from "./3cda8467f4c411885363beb9d236acc04239a306.png";
+const imgHeroImg = "/case-studies/mailtarget-app/image-01.png";
+const imgRectangle = "/case-studies/mailtarget-app/image-02.png";
+const imgRectangle1 = "/case-studies/mailtarget-app/image-03.png";
+const imgRectangle2 = "/case-studies/mailtarget-app/image-04.png";
+const imgRectangle3 = "/case-studies/mailtarget-app/image-05.png";
+const imgRectangle4 = "/case-studies/mailtarget-app/image-06.png";
+const imgRectangle5 = "/case-studies/mailtarget-app/image-07.png";
+const imgRectangle6 = "/case-studies/mailtarget-app/image-08.png";
 
 function Frame() {
   return (

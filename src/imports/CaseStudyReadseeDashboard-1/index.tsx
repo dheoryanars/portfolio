@@ -1,13 +1,13 @@
-import imgIc from "./d10c9b34891f46a07d01247ced2582ec52191e24.png";
-import imgIc1 from "./68e065525b398817bce7302a202f2a2eb6a15e51.png";
-import imgIc2 from "./81c4151b339c970c66ba854e9c1767385179bb31.png";
-import imgIc3 from "./d946c0fe3792e9840235316acd35b85dcb867a06.png";
-import imgIc4 from "./8ee6a1f2edffbde2f8c45cf8fa006ca634631e59.png";
-import imgIc5 from "./d5a239171c1dbafb689ce1a8421def520202f55b.png";
-import imgIc6 from "./e8fcecccd6c6507740210a313a1e7a403b75b0a1.png";
-import imgIc7 from "./e5992425d1ac6c843912001129eccc656d62b3b8.png";
-import imgIc8 from "./61a8a1006e36f59c0912212334ff0dbb284cb355.png";
-import imgIc9 from "./feb8e020e720736f42f543c1fceb45fcde256678.png";
+const imgIc = "/case-studies/readsee-dashboard/image-01.png";
+const imgIc1 = "/case-studies/readsee-dashboard/image-02.png";
+const imgIc2 = "/case-studies/readsee-dashboard/image-03.png";
+const imgIc3 = "/case-studies/readsee-dashboard/image-04.png";
+const imgIc4 = "/case-studies/readsee-dashboard/image-05.png";
+const imgIc5 = "/case-studies/readsee-dashboard/image-06.png";
+const imgIc6 = "/case-studies/readsee-dashboard/image-07.png";
+const imgIc7 = "/case-studies/readsee-dashboard/image-08.png";
+const imgIc8 = "/case-studies/readsee-dashboard/image-09.png";
+const imgIc9 = "/case-studies/readsee-dashboard/image-10.png";
 
 function Nl() {
   return (

@@ -1,11 +1,11 @@
-import imgIc from "./b89f1f70b39fa929571556bd757ce95cbd900e08.png";
-import imgIc1 from "./4a27a71db71d35e0273565a766db01aaf54dfe80.png";
-import imgIc2 from "./d6fcd66c8874371710ba540353d33f14d25046ad.png";
-import imgIc3 from "./c64b1f95e490866ada6ed7cf77db495589c0a688.png";
-import imgIc4 from "./0fa7cef323150769f6d54a8253ae6ddcba58f511.png";
-import imgIc5 from "./ebb99be09d8a94211f0d2fca2660f6c387511150.png";
-import imgIc6 from "./962ede38ae2a7bb2ea033cce08c13c3ae3a6eb6a.png";
-import imgIc7 from "./d3368a35c475779f9783164b9f95a72b4e0f41ee.png";
+const imgIc = "/case-studies/readsee-website/image-01.png";
+const imgIc1 = "/case-studies/readsee-website/image-02.png";
+const imgIc2 = "/case-studies/readsee-website/image-03.png";
+const imgIc3 = "/case-studies/readsee-website/image-04.png";
+const imgIc4 = "/case-studies/readsee-website/image-05.png";
+const imgIc5 = "/case-studies/readsee-website/image-06.png";
+const imgIc6 = "/case-studies/readsee-website/image-07.png";
+const imgIc7 = "/case-studies/readsee-website/image-08.png";
 
 function Nl() {
   return (

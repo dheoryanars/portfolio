@@ -7,15 +7,6 @@ import {
   AnimatePresence,
 } from "motion/react";
 import svgPaths from "@/imports/PortfolioDheoryan-1/svg-t4dtk4ouv6";
-import imgThumb0 from "@/imports/PortfolioDheoryan-1/43b0ce12d21a60eb9993e06d77a00cd1268f2008.png";
-import imgThumb1 from "@/imports/PortfolioDheoryan-1/5afa8b14b3d4b89cc94f7f4d27af1b446345d65c.png";
-import imgThumb2 from "@/imports/PortfolioDheoryan-1/5a423e25c3bf151b49fdebbcd4f8bca1ce4158c1.png";
-import imgThumb3 from "@/imports/PortfolioDheoryan-1/c5a8d734c74e5bb1faed601daf6b25204a007425.png";
-import imgThumb4 from "@/imports/PortfolioDheoryan-1/6ae195432613bb0670429b2419f2e152f15f03ce.png";
-import imgThumb5 from "@/imports/PortfolioDheoryan-1/52ec9a81c233b1ed8c2f248435b4ffac8fa78eba.png";
-import imgThumb6 from "@/imports/PortfolioDheoryan-1/6f0259f83281b2b8a8b3723dc90a1a73f92347a8.png";
-import imgThumb7 from "@/imports/PortfolioDheoryan-1/7ac6762698247e2cc7db8f3a0ebbacda97a5e747.png";
-import imgThumb8 from "@/imports/PortfolioDheoryan-1/413bc02e22083b9f7ab13cd8e136d095b0b976cd.png";
 import CaseStudySonar from "@/imports/CaseStudySonar-1/index";
 import CaseStudyDesignSystem from "@/imports/CaseStudyDesignSystem-1/index";
 import CaseStudyMailtargetWeb from "@/imports/CaseStudyMailtargetWeb-1/index";
@@ -38,15 +29,15 @@ type WorkItem = {
 };
 
 const WORKS: WorkItem[] = [
-  { num: "01", title: "KitaLabel Business OS",      category: "B2B Admin Panel · AI-Assisted Development",           year: "2026",      slug: "kitalabel-bos",    thumb: imgThumb0 },
-  { num: "02", title: "KitaLabel Price Calculator", category: "Web Plugin · AI-Assisted Development",                year: "2025",      slug: "kitalabel",        thumb: imgThumb1 },
-  { num: "03", title: "Read/See Dashboard",         category: "SaaS · CDP Product Design",                          year: "2022–2023", slug: "readsee-dashboard", thumb: imgThumb8 },
-  { num: "04", title: "CMIS — Enterprise Suite",    category: "Enterprise · Document, Invoice & Purchase Flows",     year: "2024–2025", slug: "cmis-suite",       thumb: imgThumb2 },
-  { num: "05", title: "SONAR",                      category: "Email tracker Chrome extension — web design & landing page", year: "2024", slug: "sonar",          thumb: imgThumb3 },
-  { num: "06", title: "Universal Design System",    category: "Design System · Component Library",                   year: "2023–2024", slug: "design-system",    thumb: imgThumb4 },
-  { num: "07", title: "Mailtarget App",             category: "SaaS · Email API",                                    year: "2023–2024", slug: "mailtarget-app",   thumb: imgThumb5 },
-  { num: "08", title: "Read/See Website",           category: "Marketing · Customer Data Platform",                  year: "2023",      slug: "readsee-website",  thumb: imgThumb6 },
-  { num: "09", title: "Mailtarget Website",         category: "Marketing · Email API",                               year: "2023",      slug: "mailtarget-web",   thumb: imgThumb7 },
+  { num: "01", title: "KitaLabel Business OS",      category: "B2B Admin Panel · AI-Assisted Development",           year: "2026",      slug: "kitalabel-bos",    thumb: "/thumbnails/kitalabel-bos.png" },
+  { num: "02", title: "KitaLabel Price Calculator", category: "Web Plugin · AI-Assisted Development",                year: "2025",      slug: "kitalabel",        thumb: "/thumbnails/kitalabel.png" },
+  { num: "03", title: "Read/See Dashboard",         category: "SaaS · CDP Product Design",                          year: "2022–2023", slug: "readsee-dashboard", thumb: "/thumbnails/readsee-dashboard.png" },
+  { num: "04", title: "CMIS — Enterprise Suite",    category: "Enterprise · Document, Invoice & Purchase Flows",     year: "2024–2025", slug: "cmis-suite",       thumb: "/thumbnails/cmis-suite.png" },
+  { num: "05", title: "SONAR",                      category: "Email tracker Chrome extension — web design & landing page", year: "2024", slug: "sonar",          thumb: "/thumbnails/sonar.png" },
+  { num: "06", title: "Universal Design System",    category: "Design System · Component Library",                   year: "2023–2024", slug: "design-system",    thumb: "/thumbnails/design-system.png" },
+  { num: "07", title: "Mailtarget App",             category: "SaaS · Email API",                                    year: "2023–2024", slug: "mailtarget-app",   thumb: "/thumbnails/mailtarget-app.png" },
+  { num: "08", title: "Read/See Website",           category: "Marketing · Customer Data Platform",                  year: "2023",      slug: "readsee-website",  thumb: "/thumbnails/readsee-website.png" },
+  { num: "09", title: "Mailtarget Website",         category: "Marketing · Email API",                               year: "2023",      slug: "mailtarget-web",   thumb: "/thumbnails/mailtarget-web.png" },
 ];
 
 const CASE_STUDIES: Record<string, React.ComponentType> = {
