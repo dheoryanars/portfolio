@@ -1031,12 +1031,12 @@ function HeroSection() {
 
       <motion.div
         ref={metaRef}
-        className="relative z-10 grid w-full gap-3 sm:grid-cols-[auto_minmax(280px,560px)] sm:items-start sm:justify-between"
+        className="relative z-10 grid w-full gap-3 justify-items-center text-center sm:justify-items-stretch sm:text-left sm:grid-cols-[auto_minmax(280px,560px)] sm:items-start sm:justify-between"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.6 }}
       >
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 justify-center sm:justify-start">
           <motion.span
             className="inline-block size-2 rounded-full"
             style={{ background: "#22C55E" }}
