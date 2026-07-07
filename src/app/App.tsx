@@ -396,7 +396,7 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       "Enterprise approvals pulled out of email chains and paper signatures into three auditable digital workflows.",
     focus: [
       "My role: product designer on the CMIS project team.",
-      "Designed one consistent workflow grammar across three different modules.",
+      "Redesigned the live Procurement Menu v1 across all four tracks.",
       "Made document validity visible inside the document itself (watermarks).",
     ],
     sections: [
@@ -427,16 +427,26 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       },
       {
         kicker: "05 — Module 02 · Purchase Request",
-        title: "Procurement, redesigned from v1",
-        body: "This module wasn't born digital — a Procurement Menu v1 already existed. I redesigned all four tracks — materials, tools, equipment, and non-tool — on one request grammar, with each track keeping the review and fulfillment rules its purchases actually need, from request through approval to order.",
+        title: "Redesigning a system already in use",
+        body: "Procurement wasn't born digital — a Procurement Menu v1 was live and straining. One dense table carried every action, destructive red buttons stacked on every row, status hid in colored text, and seeing a request's detail meant leaving the list. Redesigning a system people already depend on is a different job from designing a new one.",
       },
       {
-        kicker: "06 — Module 03 · Invoice TTI",
+        kicker: "06 — The Redesign",
+        title: "Four tracks, one calmer grammar",
+        body: "I redesigned all four tracks — materials, tools, equipment, and non-tool — on one interaction model: tabbed views with search and filters, rows that expand to show a request's full detail in place, batch selection, and one primary action per screen. Status became visible chips instead of buried text.",
+      },
+      {
+        kicker: "07 — The Iteration",
+        title: "Versioned in the open",
+        body: "The redesign shipped through review cycles, not one big reveal — v1.1, then v1.1.2, with meeting notes captured beside the flows in the design file. Every improvement traces back to a discussion the team actually had.",
+      },
+      {
+        kicker: "08 — Module 03 · Invoice TTI",
         title: "Proof of handover, not hope of handover",
         body: "Invoice delivery used to end at 'the courier took it.' TTI tracks invoice selection, courier sheet generation, delivery status, and confirmed handover — and the printed courier sheet keeps the physical step inside the digital trail.",
       },
       {
-        kicker: "07 — Outcomes",
+        kicker: "09 — Outcomes",
         title: "Auditable by default",
         body: "Every request now carries its own history: who created it, who approved it, where it stopped. Enterprise staff moved from chasing signatures to reading statuses.",
       },
