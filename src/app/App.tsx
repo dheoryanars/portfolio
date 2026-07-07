@@ -427,8 +427,8 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       },
       {
         kicker: "05 — Module 02 · Purchase Request",
-        title: "Procurement split by what's being bought",
-        body: "Materials, tools, equipment, and non-tool needs each follow different review and fulfillment logic, so the module splits into four tracks — same request grammar, different rules per track, from request through approval to order.",
+        title: "Procurement, redesigned from v1",
+        body: "This module wasn't born digital — a Procurement Menu v1 already existed. I redesigned all four tracks — materials, tools, equipment, and non-tool — on one request grammar, with each track keeping the review and fulfillment rules its purchases actually need, from request through approval to order.",
       },
       {
         kicker: "06 — Module 03 · Invoice TTI",
