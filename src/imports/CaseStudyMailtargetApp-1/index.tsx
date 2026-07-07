@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const imgHeroImg = "/case-studies/mailtarget-app/image-01.png";
 const imgRectangle = "/case-studies/mailtarget-app/image-02.png";
 const imgRectangle1 = "/case-studies/mailtarget-app/image-03.png";
@@ -296,6 +298,246 @@ function SectionHeader2() {
   );
 }
 
+const sandboxProductionSteps = [
+  {
+    number: "01",
+    title: "Sign Up",
+    detail: "Email or Google OAuth starts the account without blocking exploration.",
+    environment: "Entry",
+    gate: "No verification yet",
+    sandboxState: "Open",
+    productionState: "Locked",
+    metric: "0 risk emails",
+    insight: "Reduce entry friction before users understand the product.",
+  },
+  {
+    number: "02",
+    title: "Sandbox Config",
+    detail: "API key, Base URL, and 300 emails/day limit let developers integrate safely.",
+    environment: "Sandbox",
+    gate: "Authorized recipients only",
+    sandboxState: "Active",
+    productionState: "Locked",
+    metric: "300/day limit",
+    insight: "Testing is useful, but real recipients stay protected.",
+  },
+  {
+    number: "03",
+    title: "Data Completion",
+    detail: "User and business details turn an anonymous test account into a known sender.",
+    environment: "Verification",
+    gate: "Identity check",
+    sandboxState: "Active",
+    productionState: "Preparing",
+    metric: "2-step form",
+    insight: "Ask for trust signals after value is already clear.",
+  },
+  {
+    number: "04",
+    title: "Domain Authentication",
+    detail: "CNAME/TXT records prove ownership before Mailtarget allows real sending.",
+    environment: "Verification",
+    gate: "DNS ownership",
+    sandboxState: "Active",
+    productionState: "Reviewing",
+    metric: "CNAME + TXT",
+    insight: "Protect deliverability before traffic reaches real inboxes.",
+  },
+  {
+    number: "05",
+    title: "Production Unlocked",
+    detail: "Verified users move to unlimited recipients with billing activated.",
+    environment: "Production",
+    gate: "Trusted sender",
+    sandboxState: "Available",
+    productionState: "Live",
+    metric: "Real delivery",
+    insight: "The user graduates only after the system can trust the sender.",
+  },
+];
+
+function EnvironmentPanel({
+  title,
+  state,
+  tone,
+  active,
+  items,
+}: {
+  title: string;
+  state: string;
+  tone: string;
+  active: boolean;
+  items: string[];
+}) {
+  return (
+    <div
+      className="relative rounded-[16px] shrink-0 w-full"
+      style={{
+        background: active ? `${tone}14` : "#10100f",
+        boxShadow: active ? `0 0 36px ${tone}1f` : "none",
+      }}
+    >
+      <div className="content-stretch flex flex-col gap-[18px] min-h-[220px] overflow-clip p-[22px] relative rounded-[inherit]">
+        <div className="content-stretch flex items-start justify-between gap-[16px] relative shrink-0 w-full">
+          <div className="content-stretch flex flex-col gap-[5px] items-start relative shrink-0">
+            <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[11px] tracking-[1.1px] uppercase" style={{ color: tone }}>{title}</p>
+            <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#f2f1ec] text-[22px] whitespace-nowrap">{state}</p>
+          </div>
+          <div className="rounded-full shrink-0 size-[12px]" style={{ background: tone, boxShadow: `0 0 18px ${tone}` }} />
+        </div>
+
+        <div className="content-stretch flex flex-col gap-[10px] items-start relative shrink-0 w-full">
+          {items.map((item) => (
+            <div className="content-stretch flex gap-[10px] items-start relative shrink-0 w-full" key={item}>
+              <span className="block rounded-full shrink-0 size-[6px] mt-[8px]" style={{ background: tone }} />
+              <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[21px] relative shrink-0 text-[#a0a09a] text-[13px] w-full">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div aria-hidden className="absolute border border-solid inset-0 pointer-events-none rounded-[16px]" style={{ borderColor: active ? `${tone}66` : "rgba(242,241,236,0.1)" }} />
+    </div>
+  );
+}
+
+function SandboxProductionModel() {
+  const [activeIndex, setActiveIndex] = useState(1);
+  const active = sandboxProductionSteps[activeIndex];
+  const progress = `${(activeIndex / (sandboxProductionSteps.length - 1)) * 100}%`;
+  const isSandbox = active.environment === "Sandbox" || active.environment === "Entry";
+  const isProduction = active.environment === "Production";
+
+  return (
+    <div className="content-stretch flex flex-col gap-[28px] items-start relative shrink-0 w-full" data-name="sandbox-production-model">
+      <div className="grid grid-cols-1 lg:grid-cols-[0.78fr_1fr] gap-[36px] relative shrink-0 w-full">
+        <div className="content-stretch flex flex-col gap-[18px] items-start relative shrink-0 w-full">
+          <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[30px] relative shrink-0 text-[#f2f1ec] text-[20px] w-full">
+            Transactional email is trust-sensitive: one bad setup can send test mail to real customers or damage domain reputation.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-[10px] relative shrink-0 w-full">
+            <div className="bg-[#141414] relative rounded-[12px] shrink-0">
+              <div className="content-stretch flex flex-col gap-[8px] overflow-clip p-[16px] relative rounded-[inherit]">
+                <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic text-[#cc6ef8] text-[10px] tracking-[1px] uppercase">Problem</p>
+                <p className="[word-break:break-word] font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[18px] text-[#f2f1ec] text-[13px]">Testing can harm real users</p>
+              </div>
+            </div>
+            <div className="bg-[#141414] relative rounded-[12px] shrink-0">
+              <div className="content-stretch flex flex-col gap-[8px] overflow-clip p-[16px] relative rounded-[inherit]">
+                <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic text-[#ff9f43] text-[10px] tracking-[1px] uppercase">Decision</p>
+                <p className="[word-break:break-word] font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[18px] text-[#f2f1ec] text-[13px]">Start safe in Sandbox</p>
+              </div>
+            </div>
+            <div className="bg-[#141414] relative rounded-[12px] shrink-0">
+              <div className="content-stretch flex flex-col gap-[8px] overflow-clip p-[16px] relative rounded-[inherit]">
+                <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic text-[#6aa8ff] text-[10px] tracking-[1px] uppercase">Outcome</p>
+                <p className="[word-break:break-word] font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[18px] text-[#f2f1ec] text-[13px]">Unlock Production after trust</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-[#10100f] relative rounded-[18px] shrink-0 w-full">
+            <div className="content-stretch flex flex-col gap-[18px] overflow-clip p-[22px] relative rounded-[inherit]">
+              <div className="content-stretch flex items-center justify-between gap-[16px] relative shrink-0 w-full">
+                <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic text-[#6f6f68] text-[11px] tracking-[1.1px] uppercase">Current state</p>
+                <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic text-[#cc6ef8] text-[11px] whitespace-nowrap">{active.number} / 05</p>
+              </div>
+              <div className="content-stretch flex flex-col gap-[8px] relative shrink-0 w-full">
+                <p className="[word-break:break-word] font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] text-[#f2f1ec] text-[24px]">{active.title}</p>
+                <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[24px] text-[#a0a09a] text-[15px] w-full">{active.detail}</p>
+              </div>
+              <div className="grid grid-cols-2 gap-[10px] relative shrink-0 w-full">
+                <div className="rounded-[10px] bg-[#0a0a0a] p-[14px]">
+                  <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic text-[#6f6f68] text-[10px] tracking-[1px] uppercase">Gate</p>
+                  <p className="[word-break:break-word] font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[18px] mt-[6px] text-[#f2f1ec] text-[13px]">{active.gate}</p>
+                </div>
+                <div className="rounded-[10px] bg-[#0a0a0a] p-[14px]">
+                  <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic text-[#6f6f68] text-[10px] tracking-[1px] uppercase">Signal</p>
+                  <p className="[word-break:break-word] font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[18px] mt-[6px] text-[#f2f1ec] text-[13px]">{active.metric}</p>
+                </div>
+              </div>
+              <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[18px] not-italic text-[#cc6ef8] text-[11px] w-full">{active.insight}</p>
+            </div>
+            <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[18px]" />
+          </div>
+        </div>
+
+        <div className="content-stretch flex flex-col gap-[18px] items-start relative shrink-0 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_92px_1fr] gap-[14px] items-stretch relative shrink-0 w-full">
+            <EnvironmentPanel
+              active={isSandbox}
+              items={["300 emails/day limit", "Authorized recipients only", "Visible Sandbox badge"]}
+              state={active.sandboxState}
+              title="Sandbox"
+              tone="#ff9f43"
+            />
+
+            <div className="bg-[#141414] min-h-[180px] relative rounded-[16px] shrink-0">
+              <div className="content-stretch flex md:flex-col gap-[10px] h-full items-center justify-center overflow-clip p-[14px] relative rounded-[inherit]">
+                <div className="rounded-full size-[44px] flex items-center justify-center" style={{ background: active.environment === "Verification" ? "rgba(204,110,248,0.18)" : "rgba(242,241,236,0.06)" }}>
+                  <p className="font-['Space_Mono:Bold',sans-serif] leading-[normal] not-italic text-[#cc6ef8] text-[14px]">↔</p>
+                </div>
+                <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[16px] not-italic text-[#a0a09a] text-[10px] text-center tracking-[0.8px] uppercase">Verification gate</p>
+              </div>
+              <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[16px]" />
+            </div>
+
+            <EnvironmentPanel
+              active={isProduction}
+              items={["Domain authenticated", "Real recipient sending", "Billing and reputation controls"]}
+              state={active.productionState}
+              title="Production"
+              tone="#6aa8ff"
+            />
+          </div>
+
+          <div className="bg-[#10100f] relative rounded-[18px] shrink-0 w-full">
+            <div className="content-stretch flex flex-col gap-[18px] overflow-clip p-[18px] relative rounded-[inherit]">
+              <div className="h-[6px] bg-[rgba(242,241,236,0.08)] overflow-clip relative rounded-full shrink-0 w-full">
+                <div className="absolute bg-[#cc6ef8] h-full left-0 top-0 rounded-full transition-all duration-300" style={{ width: progress }} />
+              </div>
+              <div className="content-stretch flex flex-col gap-[10px] relative shrink-0 w-full">
+                {sandboxProductionSteps.map((step, index) => {
+                  const selected = activeIndex === index;
+                  return (
+                    <button
+                      className="group relative rounded-[12px] shrink-0 text-left transition-all duration-200 w-full"
+                      key={step.number}
+                      onClick={() => setActiveIndex(index)}
+                      onFocus={() => setActiveIndex(index)}
+                      onMouseEnter={() => setActiveIndex(index)}
+                      style={{
+                        background: selected ? "rgba(204,110,248,0.12)" : "#0a0a0a",
+                        border: `1px solid ${selected ? "rgba(204,110,248,0.62)" : "rgba(242,241,236,0.08)"}`,
+                        cursor: "pointer",
+                        padding: 0,
+                      }}
+                      type="button"
+                    >
+                      <div className="content-stretch flex gap-[14px] items-center overflow-clip p-[14px] relative rounded-[inherit]">
+                        <div className="content-stretch flex items-center justify-center rounded-full shrink-0 size-[34px]" style={{ background: selected ? "#cc6ef8" : "rgba(204,110,248,0.18)" }}>
+                          <p className="font-['Space_Mono:Bold',sans-serif] leading-[normal] not-italic text-[#f2f1ec] text-[12px] whitespace-nowrap">{step.number}</p>
+                        </div>
+                        <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col gap-[4px] items-start min-w-px relative">
+                          <div className="content-stretch flex items-center justify-between gap-[12px] relative shrink-0 w-full">
+                            <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px]">{step.title}</p>
+                            <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#6f6f68] text-[10px] uppercase whitespace-nowrap">{step.environment}</p>
+                          </div>
+                          <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[18px] relative shrink-0 text-[#a0a09a] text-[12px] w-full">{step.detail}</p>
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+            <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[18px]" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Frame13() {
   return (
     <div className="content-stretch flex flex-[1_0_0] flex-col items-start min-w-px relative" data-name="Frame">
@@ -488,7 +730,7 @@ function Component02UxModel() {
   return (
     <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[48px] items-start px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="02-ux-model">
       <SectionHeader2 />
-      <Frame12 />
+      <SandboxProductionModel />
     </div>
   );
 }

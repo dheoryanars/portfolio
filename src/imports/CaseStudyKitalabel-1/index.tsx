@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const imgIc = "/case-studies/kitalabel/image-01.png";
 const imgIc1 = "/case-studies/kitalabel/image-02.png";
 const imgIc2 = "/case-studies/kitalabel/image-03.png";
@@ -325,20 +327,239 @@ function Rv7() {
   );
 }
 
+const pricingInputs = [
+  {
+    label: "Shape",
+    detail: "Die-cut setup",
+    tone: "#cc6ef8",
+    impact: "Circle, oval, rectangle, square, and irregular shapes each need different cutting assumptions.",
+    formula: "shape cost",
+  },
+  {
+    label: "Material",
+    detail: "Substrate cost",
+    tone: "#64c8ff",
+    impact: "Paper, white film, silver film, and transparent film all change the base material cost.",
+    formula: "material base",
+  },
+  {
+    label: "Lamination",
+    detail: "Finish cost",
+    tone: "#f8c46e",
+    impact: "Glossy and matte finishes change both the surface treatment and the final unit price.",
+    formula: "finish add-on",
+  },
+  {
+    label: "Size",
+    detail: "Area per label",
+    tone: "#7cf0a1",
+    impact: "Custom width and height affect material usage, label yield, and price per unit.",
+    formula: "Lebar Desain x Tinggi Desain",
+  },
+  {
+    label: "Print Direction",
+    detail: "Press efficiency",
+    tone: "#ff8dff",
+    impact: "Roll orientation affects how efficiently the job can run on press.",
+    formula: "roll direction",
+  },
+  {
+    label: "Output Type",
+    detail: "Finishing cost",
+    tone: "#a7a7ff",
+    impact: "Roll and sheet outputs require different finishing work after printing.",
+    formula: "roll / sheet",
+  },
+  {
+    label: "Design Variants",
+    detail: "Setup effort",
+    tone: "#f87171",
+    impact: "More artwork variants increase prepress setup and checking time before production.",
+    formula: "variant count",
+  },
+  {
+    label: "Quantity",
+    detail: "Tiered pricing",
+    tone: "#cc6ef8",
+    impact: "The price scale is non-linear because 1,000, 2,000, 3,000, 5,000, and custom tiers behave differently.",
+    formula: "tier scale",
+  },
+];
+
+function PricingVariableCard({
+  label,
+  detail,
+  tone,
+  active,
+  onActivate,
+}: {
+  label: string;
+  detail: string;
+  tone: string;
+  active: boolean;
+  onActivate: () => void;
+}) {
+  return (
+    <button
+      className="min-h-[74px] relative rounded-[10px] shrink-0 text-left transition-all duration-200 w-[136px]"
+      data-name="pricing-variable"
+      onClick={onActivate}
+      onFocus={onActivate}
+      onMouseEnter={onActivate}
+      style={{
+        background: active ? "rgba(204,110,248,0.12)" : "#141414",
+        border: `1px solid ${active ? tone : "rgba(242,241,236,0.1)"}`,
+        boxShadow: active ? `0 0 0 1px ${tone}33, 0 12px 30px rgba(0,0,0,0.24)` : "none",
+        cursor: "pointer",
+        padding: 0,
+      }}
+      type="button"
+    >
+      <div className="content-stretch flex flex-col gap-[8px] h-full items-start justify-between overflow-clip px-[12px] py-[11px] relative rounded-[inherit]">
+        <div className="flex gap-[6px] items-center relative shrink-0">
+          <span className="block rounded-full shrink-0 size-[7px]" style={{ background: tone }} />
+          <p
+            className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[10px] tracking-[0.8px] whitespace-nowrap"
+            style={{ color: active ? tone : "#6f6f68" }}
+          >
+            INPUT
+          </p>
+        </div>
+        <div className="content-stretch flex flex-col gap-[3px] items-start relative shrink-0">
+          <p className="[word-break:break-word] font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[13px] whitespace-nowrap">{label}</p>
+          <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[16px] relative shrink-0 text-[#9a9a93] text-[11px] w-[112px]">{detail}</p>
+        </div>
+      </div>
+    </button>
+  );
+}
+
+function PricingComplexityMap() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = pricingInputs[activeIndex];
+  const connectorPaths = [
+    "M28 34 C76 36 84 72 113 93",
+    "M28 80 C74 82 86 92 113 100",
+    "M28 126 C74 123 86 112 113 107",
+    "M28 172 C76 158 84 126 113 115",
+    "M202 34 C154 36 146 72 117 93",
+    "M202 80 C156 82 144 92 117 100",
+    "M202 126 C156 123 144 112 117 107",
+    "M202 172 C154 158 146 126 117 115",
+  ];
+
+  return (
+    <div className="bg-[#10100f] relative rounded-[16px] shrink-0 w-[564px]" data-name="pricingComplexityMap">
+      <div className="content-stretch flex flex-col gap-[18px] items-start overflow-clip p-[24px] relative rounded-[inherit] size-full">
+        <div className="content-stretch flex items-start justify-between relative shrink-0 w-full">
+          <div className="content-stretch flex flex-col gap-[6px] items-start relative shrink-0 w-[318px]">
+            <p className="[word-break:break-word] font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px]">Why is label pricing hard to self-serve?</p>
+            <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[21px] relative shrink-0 text-[#9a9a93] text-[13px] w-[318px]">A quote is not one formula. It is a chain of specs, production rules, and tier logic that all change the final price.</p>
+          </div>
+          <div className="bg-[rgba(204,110,248,0.1)] relative rounded-[28px] shrink-0">
+            <div className="content-stretch flex items-center justify-center overflow-clip px-[12px] py-[7px] relative rounded-[inherit]">
+              <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[11px] whitespace-nowrap">8 variables</p>
+            </div>
+            <div aria-hidden className="absolute border border-[rgba(204,110,248,0.35)] border-solid inset-0 pointer-events-none rounded-[28px]" />
+          </div>
+        </div>
+
+        <div className="content-stretch flex items-center justify-between relative shrink-0 w-full">
+          <div className="content-stretch flex flex-col gap-[9px] items-start relative shrink-0">
+            {pricingInputs.slice(0, 4).map((item, index) => (
+              <PricingVariableCard
+                active={activeIndex === index}
+                key={item.label}
+                onActivate={() => setActiveIndex(index)}
+                {...item}
+              />
+            ))}
+          </div>
+
+          <div className="content-stretch flex flex-col gap-[14px] items-center justify-center relative shrink-0 w-[200px]">
+            <div className="relative h-[190px] shrink-0 w-[230px]">
+            <div className="absolute bg-[rgba(204,110,248,0.08)] h-[190px] left-[20px] rounded-full top-0 w-[190px]" />
+            <div className="absolute bg-[rgba(100,200,255,0.07)] h-[126px] left-[52px] rounded-full top-[32px] w-[126px]" />
+            <svg className="absolute h-[190px] left-0 top-0 w-[230px]" fill="none" viewBox="0 0 230 190">
+              {connectorPaths.map((path, index) => (
+                <path
+                  d={path}
+                  key={path}
+                  stroke={pricingInputs[index].tone}
+                  strokeLinecap="round"
+                  strokeOpacity={activeIndex === index ? 0.9 : 0.16}
+                  strokeWidth={activeIndex === index ? 1.8 : 1}
+                />
+              ))}
+            </svg>
+
+            <div className="absolute bg-[#0a0a0a] h-[132px] left-[49px] rounded-full top-[29px] w-[132px]">
+              <div className="absolute blur-[16px] h-[84px] left-[24px] rounded-full top-[24px] w-[84px]" style={{ background: `${active.tone}33` }} />
+              <div className="absolute content-stretch flex flex-col gap-[7px] h-full items-center justify-center left-0 top-0 w-full">
+                <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#6f6f68] text-[9px] tracking-[1px] whitespace-nowrap">PRICE ENGINE</p>
+                <p className="[word-break:break-word] font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[28px] whitespace-nowrap">Rp ?</p>
+                <p
+                  className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[12px] not-italic relative shrink-0 text-[9px] text-center w-[92px]"
+                  style={{ color: active.tone }}
+                >
+                  {active.formula}
+                </p>
+              </div>
+              <div aria-hidden className="absolute border border-solid inset-0 pointer-events-none rounded-full" style={{ borderColor: `${active.tone}88` }} />
+            </div>
+            </div>
+
+            <div className="bg-[#141414] min-h-[108px] relative rounded-[12px] shrink-0 w-[196px]">
+              <div className="content-stretch flex flex-col gap-[8px] items-start overflow-clip p-[14px] relative rounded-[inherit]">
+                <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[10px] tracking-[0.9px] whitespace-nowrap" style={{ color: active.tone }}>ACTIVE VARIABLE</p>
+                <p className="[word-break:break-word] font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">{active.label}</p>
+                <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[17px] relative shrink-0 text-[#9a9a93] text-[12px] w-[168px]">{active.impact}</p>
+              </div>
+              <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[12px]" />
+            </div>
+          </div>
+
+          <div className="content-stretch flex flex-col gap-[9px] items-start relative shrink-0">
+            {pricingInputs.slice(4).map((item, index) => (
+              <PricingVariableCard
+                active={activeIndex === index + 4}
+                key={item.label}
+                onActivate={() => setActiveIndex(index + 4)}
+                {...item}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="content-stretch flex gap-[8px] items-stretch relative shrink-0 w-full">
+          <div className="bg-[#141414] min-h-[76px] relative rounded-[10px] shrink-0 w-[166px]">
+            <div className="content-stretch flex flex-col gap-[7px] items-start overflow-clip p-[14px] relative rounded-[inherit]">
+              <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[10px] tracking-[0.8px] whitespace-nowrap">CUSTOMER SEES</p>
+              <p className="[word-break:break-word] font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[17px] relative shrink-0 text-[#f2f1ec] text-[13px] w-[136px]">No instant answer</p>
+            </div>
+          </div>
+          <div className="bg-[#141414] min-h-[76px] relative rounded-[10px] shrink-0 w-[166px]">
+            <div className="content-stretch flex flex-col gap-[7px] items-start overflow-clip p-[14px] relative rounded-[inherit]">
+              <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#64c8ff] text-[10px] tracking-[0.8px] whitespace-nowrap">SALES DOES</p>
+              <p className="[word-break:break-word] font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[17px] relative shrink-0 text-[#f2f1ec] text-[13px] w-[136px]">Manual spreadsheet math</p>
+            </div>
+          </div>
+          <div className="bg-[#141414] min-h-[76px] relative rounded-[10px] shrink-0 w-[166px]">
+            <div className="content-stretch flex flex-col gap-[7px] items-start overflow-clip p-[14px] relative rounded-[inherit]">
+              <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#f8c46e] text-[10px] tracking-[0.8px] whitespace-nowrap">BUSINESS RISK</p>
+              <p className="[word-break:break-word] font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[17px] relative shrink-0 text-[#f2f1ec] text-[13px] w-[136px]">Drop-off before checkout</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[16px]" />
+    </div>
+  );
+}
+
 function Pr() {
   return (
-    <div className="content-stretch flex flex-col gap-[20px] items-start overflow-clip relative shrink-0 w-[564px]" data-name="pr">
-      <p className="[word-break:break-word] font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Why is label pricing hard to self-serve?</p>
-      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[24px] relative shrink-0 text-[#9a9a93] text-[15px] w-[564px]">{`A single label's price depends on the combination of all these variables — a small change in any one of them can shift the price significantly:`}</p>
-      <Rv />
-      <Rv1 />
-      <Rv2 />
-      <Rv3 />
-      <Rv4 />
-      <Rv5 />
-      <Rv6 />
-      <Rv7 />
-    </div>
+    <PricingComplexityMap />
   );
 }
 
@@ -651,7 +872,7 @@ function Dec() {
 
 function S() {
   return (
-    <div className="bg-[#0a0a0a] h-[60px] relative shrink-0 w-[192px]" data-name="s">
+    <div className="bg-[#0a0a0a] h-[52px] sm:h-[60px] relative shrink-0 w-full lg:w-[192px]" data-name="s">
       <div className="[word-break:break-word] content-stretch flex flex-col items-center justify-center leading-[normal] overflow-clip relative rounded-[inherit] size-full whitespace-nowrap">
         <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#cc6ef8] text-[11px]">1</p>
         <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#f2f1ec] text-[12px]">Configure Specs</p>
@@ -663,7 +884,7 @@ function S() {
 
 function S1() {
   return (
-    <div className="bg-[#141414] h-[60px] relative shrink-0 w-[192px]" data-name="s">
+    <div className="bg-[#141414] h-[52px] sm:h-[60px] relative shrink-0 w-full lg:w-[192px]" data-name="s">
       <div className="[word-break:break-word] content-stretch flex flex-col items-center justify-center leading-[normal] overflow-clip relative rounded-[inherit] size-full whitespace-nowrap">
         <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#cc6ef8] text-[11px]">2</p>
         <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#f2f1ec] text-[12px]">Cek Harga</p>
@@ -675,7 +896,7 @@ function S1() {
 
 function S2() {
   return (
-    <div className="bg-[#141414] h-[60px] relative shrink-0 w-[192px]" data-name="s">
+    <div className="bg-[#141414] h-[52px] sm:h-[60px] relative shrink-0 w-full lg:w-[192px]" data-name="s">
       <div className="[word-break:break-word] content-stretch flex flex-col items-center justify-center leading-[normal] overflow-clip relative rounded-[inherit] size-full whitespace-nowrap">
         <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#cc6ef8] text-[11px]">3</p>
         <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#f2f1ec] text-[12px]">Upload File</p>
@@ -687,7 +908,7 @@ function S2() {
 
 function S3() {
   return (
-    <div className="bg-[#141414] h-[60px] relative shrink-0 w-[192px]" data-name="s">
+    <div className="bg-[#141414] h-[52px] sm:h-[60px] relative shrink-0 w-full lg:w-[192px]" data-name="s">
       <div className="[word-break:break-word] content-stretch flex flex-col items-center justify-center leading-[normal] overflow-clip relative rounded-[inherit] size-full whitespace-nowrap">
         <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#cc6ef8] text-[11px]">4</p>
         <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#f2f1ec] text-[12px]">Tambah ke Keranjang</p>
@@ -699,7 +920,7 @@ function S3() {
 
 function S4() {
   return (
-    <div className="bg-[#141414] h-[60px] relative shrink-0 w-[192px]" data-name="s">
+    <div className="bg-[#141414] h-[52px] sm:h-[60px] relative shrink-0 w-full lg:w-[192px]" data-name="s">
       <div className="[word-break:break-word] content-stretch flex flex-col items-center justify-center leading-[normal] overflow-clip relative rounded-[inherit] size-full whitespace-nowrap">
         <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#cc6ef8] text-[11px]">5</p>
         <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#f2f1ec] text-[12px]">Checkout</p>
@@ -711,7 +932,7 @@ function S4() {
 
 function S5() {
   return (
-    <div className="[word-break:break-word] bg-[#141414] content-stretch flex flex-col h-[60px] items-center justify-center leading-[normal] overflow-clip relative shrink-0 w-[192px] whitespace-nowrap" data-name="s">
+    <div className="[word-break:break-word] bg-[#141414] content-stretch flex flex-col h-[52px] sm:h-[60px] items-center justify-center leading-[normal] overflow-clip relative shrink-0 w-full lg:w-[192px] whitespace-nowrap" data-name="s">
       <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#cc6ef8] text-[11px]">6</p>
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#f2f1ec] text-[12px]">{`Bayar & Pesan`}</p>
     </div>
@@ -720,13 +941,89 @@ function S5() {
 
 function FlowStrip() {
   return (
-    <div className="bg-[#141414] content-stretch flex h-[60px] items-start overflow-clip relative rounded-[8px] shrink-0 w-[1152px]" data-name="flowStrip">
+    <div className="bg-[#141414] grid grid-cols-2 sm:grid-cols-3 lg:flex h-auto lg:h-[60px] items-start overflow-clip relative rounded-[8px] shrink-0 w-full max-w-[1152px]" data-name="flowStrip">
       <S />
       <S1 />
       <S2 />
       <S3 />
       <S4 />
       <S5 />
+    </div>
+  );
+}
+
+const completeFlowSteps = [
+  {
+    number: "01",
+    label: "Configure Specs",
+    title: "Customer builds the label spec",
+    body: "Shape, material, lamination, size, print direction, output type, design variants, and quantity are configured before any price appears.",
+    image: imgIc2,
+  },
+  {
+    number: "02",
+    label: "Cek Harga",
+    title: "Customer requests the real price",
+    body: "The calculator waits for an explicit check-price action, then calculates all quantity tiers from the selected production variables.",
+    image: imgIc3,
+  },
+  {
+    number: "03",
+    label: "Upload File",
+    title: "Customer attaches design files",
+    body: "The upload area keeps file requirements close to the action so customers understand bleed, cut line, CMYK, DPI, and font outline rules.",
+    image: imgIc4,
+  },
+  {
+    number: "04",
+    label: "Tambah ke Keranjang",
+    title: "Priced specs become a cart item",
+    body: "Once price and files are ready, the configured label order is added to cart with its selected specs, files, and calculated subtotal intact.",
+    image: imgIc5,
+  },
+  {
+    number: "05",
+    label: "Checkout",
+    title: "Billing and courier details complete the order",
+    body: "The checkout step collects billing information, shows attached design files, and lets the customer select courier services with live prices.",
+    image: imgIc6,
+  },
+  {
+    number: "06",
+    label: "Bayar & Pesan",
+    title: "Customer pays or requests a quote",
+    body: "Promo code, payment summary, final order action, and quote request live in one place so the customer can finish without a sales conversation.",
+    image: imgIc7,
+  },
+];
+
+function CompleteFlowCard({
+  step,
+}: {
+  step: {
+    number: string;
+    label: string;
+    title: string;
+    body: string;
+    image: string;
+  };
+}) {
+  return (
+    <div className="bg-[#141414] min-h-[372px] relative rounded-[8px] shrink-0 w-full" data-name="complete-flow-card">
+      <div className="content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
+        <div className="bg-[#f7f4ef] h-[184px] md:h-[204px] lg:h-[184px] relative shrink-0 w-full">
+          <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={step.image} />
+        </div>
+        <div className="[word-break:break-word] content-stretch flex flex-col gap-[7px] items-start overflow-clip p-[20px] relative shrink-0 w-full">
+          <div className="content-stretch flex items-center justify-between gap-[16px] relative shrink-0 w-full">
+            <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[11px] whitespace-nowrap">{`Step ${step.number}`}</p>
+            <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink text-[#6f6f68] text-[10px] text-right">{step.label}</p>
+          </div>
+          <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] w-full">{step.title}</p>
+          <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">{step.body}</p>
+        </div>
+      </div>
+      <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
   );
 }
@@ -823,19 +1120,20 @@ function Cflo2() {
 
 function FlowRow() {
   return (
-    <div className="content-stretch flex gap-[24px] items-start overflow-clip relative shrink-0 w-[1152px]" data-name="flowRow">
-      <Cflo />
-      <Cflo1 />
-      <Cflo2 />
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[20px] lg:gap-[24px] relative shrink-0 w-full max-w-[1152px]" data-name="flowRow">
+      {completeFlowSteps.map((step) => (
+        <CompleteFlowCard key={step.number} step={step} />
+      ))}
     </div>
   );
 }
 
 function Flow() {
   return (
-    <div className="bg-[#0a0a0a] content-stretch flex flex-col gap-[32px] items-start overflow-clip px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="flow">
-      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">06 — The Complete Flow</p>
-      <p className="[word-break:break-word] font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#f2f1ec] text-[46px] tracking-[-0.92px] whitespace-nowrap">From configuration to checkout</p>
+    <div className="bg-[#0a0a0a] content-stretch flex flex-col gap-[32px] items-start overflow-clip px-[22px] sm:px-[32px] lg:px-[64px] py-[72px] lg:py-[100px] relative shrink-0 w-full lg:w-[1280px]" data-name="flow">
+      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px]">06 — The Complete Flow</p>
+      <p className="[word-break:break-word] font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[38px] md:leading-[normal] relative shrink-0 text-[#f2f1ec] text-[34px] md:text-[46px] tracking-[-0.68px] md:tracking-[-0.92px] w-full">From configuration to checkout</p>
+      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[26px] md:leading-[28px] relative shrink-0 text-[#9a9a93] text-[15px] md:text-[17px] w-full max-w-[860px]">The full flow starts before checkout: customers configure production specs, calculate a real price, upload print-ready files, add the order to cart, then complete payment or request a quote.</p>
       <FlowStrip />
       <FlowRow />
     </div>
