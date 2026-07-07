@@ -1776,8 +1776,8 @@ function AboutSection() {
                   label: "Projects shipped",
                 },
                 {
-                  num: 5,
-                  suffix: "+",
+                  num: 2,
+                  suffix: "",
                   label: "Design systems built",
                 },
               ].map((s) => (
