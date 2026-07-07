@@ -32,7 +32,7 @@ type WorkItem = {
 const WORKS: WorkItem[] = [
   { num: "01", title: "KitaLabel Business OS",      category: "B2B Admin Panel · AI-Assisted Development",           year: "2026",      slug: "kitalabel-bos",    thumb: "/thumbnails/kitalabel-bos.png" },
   { num: "02", title: "KitaLabel Price Calculator", category: "Web Plugin · AI-Assisted Development",                year: "2025",      slug: "kitalabel",        thumb: "/thumbnails/kitalabel.png" },
-  { num: "03", title: "Read/See Dashboard",         category: "SaaS · CDP Product Design",                          year: "2022–2023", slug: "readsee-dashboard", thumb: "/thumbnails/readsee-dashboard.png" },
+  { num: "03", title: "Read/See",                   category: "SaaS · CDP Product Design",                          year: "2022–2023", slug: "readsee-dashboard", thumb: "/thumbnails/readsee-dashboard.png" },
   { num: "04", title: "CMIS — Enterprise Suite",    category: "Enterprise · Document, Invoice & Purchase Flows",     year: "2024–2025", slug: "cmis-suite",       thumb: "/thumbnails/cmis-suite.png" },
   { num: "05", title: "Universal Design System",    category: "Design System · Component Library",                   year: "2023–2024", slug: "design-system",    thumb: "/thumbnails/design-system.png" },
   { num: "06", title: "Mailtarget App",             category: "SaaS · Email API",                                    year: "2023–2024", slug: "mailtarget-app",   thumb: "/thumbnails/mailtarget-app.png" },
@@ -152,7 +152,7 @@ const CASE_HERO_DETAILS: Record<string, CaseHeroDetail> = {
     ],
   },
   "readsee-dashboard": {
-    eyebrow: "Read/See Dashboard",
+    eyebrow: "Read/See",
     headline: "700 screens didn't need 700 designs.",
     summary:
       "A CDP built from zero across 4 phases — the pattern system carried the scale, from authentication to campaign activation. Product and public marketing site, one story.",
@@ -1370,13 +1370,73 @@ function WorkSection({ onNavigate }: { onNavigate: (slug: string) => void }) {
           </motion.div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {WORKS.map((item, i) => (
+        {/* Featured: the four strongest cases, 2x2 so each gets weight */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {WORKS.slice(0, 4).map((item, i) => (
             <WorkCard key={item.num} item={item} index={i} onNavigate={onNavigate} />
           ))}
         </div>
+
+        {/* Archive: supporting work, compact rows */}
+        {WORKS.length > 4 && (
+          <div className="mt-16">
+            <div className="flex gap-3 items-start mb-6">
+              <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, color: PURPLE }}>+</span>
+              <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, color: MUTED, textTransform: "uppercase" }}>More work</span>
+            </div>
+            <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+              {WORKS.slice(4).map((item, i) => (
+                <ArchiveRow key={item.num} item={item} index={i} onNavigate={onNavigate} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
+  );
+}
+
+function ArchiveRow({ item, index, onNavigate }: { item: WorkItem; index: number; onNavigate: (slug: string) => void }) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-20px" }}
+      transition={{ duration: 0.4, delay: index * 0.06, ease }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onClick={() => item.slug && onNavigate(item.slug)}
+      className="flex flex-wrap items-baseline gap-x-6 gap-y-1 py-5"
+      style={{
+        borderBottom: "1px solid rgba(255,255,255,0.08)",
+        cursor: item.slug ? "pointer" : "default",
+        background: hovered ? "rgba(255,255,255,0.03)" : "transparent",
+        transition: "background 0.25s",
+        paddingLeft: hovered ? 12 : 0,
+        paddingRight: 12,
+      }}
+    >
+      <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, color: DIM, width: 28 }}>{item.num}</span>
+      <span
+        style={{
+          fontFamily: "'Space Grotesk', sans-serif",
+          fontWeight: 500,
+          fontSize: "clamp(18px, 2.2vw, 24px)",
+          color: hovered ? PURPLE : FG,
+          transition: "color 0.25s",
+        }}
+      >
+        {item.title}
+      </span>
+      <span className="hidden md:inline" style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, color: DIM, flex: 1 }}>
+        {item.category}
+      </span>
+      <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, color: MUTED, marginLeft: "auto" }}>
+        {item.year} {item.slug ? "→" : ""}
+      </span>
+    </motion.div>
   );
 }
 
@@ -3982,7 +4042,7 @@ function CaseStudyPage({
   );
 }
 
-// ── App ───────────────────────────────────────────────────────────────────────
+// ── App ───────────────────────────────────
 
 export default function App() {
   const pageFromHash = () => {
