@@ -1677,7 +1677,11 @@ function AboutSection() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="flex-shrink-0 w-full lg:w-[440px] rounded overflow-hidden"
             style={{
-              height: "clamp(280px, 40vw, 550px)",
+              // Match the portrait's native 4:5 shape so mobile doesn't crop
+              // to a landscape strip; maxHeight keeps tablets/desktop in check
+              // (440px lg width × 550px cap = the same 4:5).
+              aspectRatio: "4 / 5",
+              maxHeight: 550,
               border: "1px solid rgba(255,255,255,0.06)",
             }}
           >
