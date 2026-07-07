@@ -635,9 +635,17 @@ const EXPERIENCE = [
 const MARQUEE_ITEMS = [
   "Product Design",
   "✳",
+  "Vibe Code",
+  "✳",
   "Design Systems",
   "✳",
   "SaaS Platforms",
+  "✳",
+  "Internal Tools",
+  "✳",
+  "AI Workflows",
+  "✳",
+  "B2B Systems",
   "✳",
   "Prototyping",
   "✳",
@@ -1008,14 +1016,14 @@ function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-between overflow-hidden px-6 md:px-10 lg:px-16 pt-36 pb-16"
+      className="relative min-h-screen flex flex-col justify-between overflow-hidden px-6 md:px-10 lg:px-16 pt-32 pb-14 sm:pt-36 sm:pb-16"
       style={{ background: BG, isolation: "isolate" }}
     >
       <HeroDigitalTexture />
 
       <motion.div
         ref={metaRef}
-        className="relative z-10 flex flex-wrap items-start justify-between gap-3"
+        className="relative z-10 grid w-full gap-3 sm:grid-cols-[auto_minmax(280px,560px)] sm:items-start sm:justify-between"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.6 }}
@@ -1042,13 +1050,15 @@ function HeroSection() {
           </span>
         </div>
         <span
+          className="max-w-[560px] sm:justify-self-end sm:text-right"
           style={{
             fontFamily: "'Space Mono', monospace",
             fontSize: 12,
             color: DIM,
+            lineHeight: 1.6,
           }}
         >
-          Product Designer · Web Apps &amp; Design Systems · Based in Jakarta, Indonesia
+          Product Designer · Web Apps &amp; Design Systems · Based in Bekasi, Indonesia
         </span>
       </motion.div>
 
@@ -1056,41 +1066,48 @@ function HeroSection() {
         variants={stagger}
         initial="hidden"
         animate="show"
-        className="relative z-10 flex flex-col gap-12 lg:gap-16"
+        className="relative z-10 mx-auto flex max-w-[1420px] flex-col items-center gap-8 text-center sm:gap-10"
       >
         <motion.h1
           ref={headlineRef}
           variants={fadeUp}
+          className="max-w-[1380px] text-center"
           style={{
             fontFamily: "'Space Grotesk', sans-serif",
             fontWeight: 500,
-            fontSize: "clamp(48px, 8.5vw, 120px)",
-            lineHeight: 0.92,
+            fontSize: "clamp(48px, 7.4vw, 112px)",
+            lineHeight: 0.95,
             color: FG,
+            letterSpacing: 0,
           }}
         >
           {"Crafting "}
           <em
+            className="hero-glitch-word"
+            data-text="clarity"
             style={{
               fontFamily: "'Instrument Serif', serif",
               fontStyle: "italic",
+              fontWeight: 400,
               color: PURPLE,
             }}
           >
             clarity
           </em>
-          {" for complex software."}
+          {" for"}
+          <br className="hidden md:block" />
+          {" complex software."}
         </motion.h1>
 
         <motion.div
           variants={fadeUp}
-          className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-start"
+          className="flex max-w-[640px] flex-col items-center gap-6 text-center"
         >
           <p
-            className="max-w-[580px]"
+            className="max-w-[640px] text-center"
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: "clamp(16px,1.5vw,20px)",
+              fontSize: "clamp(16px,1.35vw,20px)",
               lineHeight: 1.5,
               color: MUTED,
             }}
@@ -1110,7 +1127,7 @@ function HeroSection() {
             }
           </p>
 
-          <div className="flex flex-wrap gap-4 flex-shrink-0">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             <motion.button
               onClick={() => scrollTo("work")}
               whileHover={{
@@ -1997,7 +2014,7 @@ function DeprecatedFooterSection() {
               },
               {
                 title: "Status",
-                links: ["Jakarta", "Available", "Design systems"],
+                links: ["Bekasi", "Available", "Design systems"],
               },
             ].map((group) => (
               <div key={group.title} className="flex flex-col gap-3">

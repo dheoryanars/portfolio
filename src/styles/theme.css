@@ -206,3 +206,125 @@
     line-height: 1.5;
   }
 }
+
+.hero-glitch-word {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+  text-shadow:
+    0 0 18px rgba(204, 110, 248, 0.28),
+    0 0 44px rgba(204, 110, 248, 0.18);
+  animation: clarity-glitch-base 5.8s infinite steps(1, end);
+}
+
+.hero-glitch-word::before,
+.hero-glitch-word::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  z-index: -1;
+}
+
+.hero-glitch-word::before {
+  color: #ff8dff;
+  text-shadow: 0 0 16px rgba(255, 141, 255, 0.45);
+  animation: clarity-glitch-top 4.6s infinite steps(1, end);
+}
+
+.hero-glitch-word::after {
+  color: #79f7ff;
+  text-shadow: 0 0 14px rgba(121, 247, 255, 0.35);
+  animation: clarity-glitch-bottom 4.6s infinite steps(1, end);
+}
+
+@keyframes clarity-glitch-base {
+  0%, 72%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  73% {
+    transform: translate3d(1px, -1px, 0);
+  }
+
+  74% {
+    transform: translate3d(-1px, 1px, 0);
+  }
+
+  75% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes clarity-glitch-top {
+  0%, 70%, 100% {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  71% {
+    opacity: 0.72;
+    clip-path: inset(8% 0 72% 0);
+    transform: translate3d(-4px, -1px, 0);
+  }
+
+  72% {
+    opacity: 0.48;
+    clip-path: inset(34% 0 48% 0);
+    transform: translate3d(3px, 1px, 0);
+  }
+
+  73% {
+    opacity: 0.65;
+    clip-path: inset(58% 0 28% 0);
+    transform: translate3d(-2px, 0, 0);
+  }
+
+  74% {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes clarity-glitch-bottom {
+  0%, 70%, 100% {
+    opacity: 0;
+    clip-path: inset(100% 0 0 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  71% {
+    opacity: 0.52;
+    clip-path: inset(72% 0 8% 0);
+    transform: translate3d(4px, 1px, 0);
+  }
+
+  72% {
+    opacity: 0.72;
+    clip-path: inset(46% 0 34% 0);
+    transform: translate3d(-3px, -1px, 0);
+  }
+
+  73% {
+    opacity: 0.5;
+    clip-path: inset(24% 0 62% 0);
+    transform: translate3d(2px, 0, 0);
+  }
+
+  74% {
+    opacity: 0;
+    clip-path: inset(100% 0 0 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glitch-word,
+  .hero-glitch-word::before,
+  .hero-glitch-word::after {
+    animation: none;
+  }
+}
