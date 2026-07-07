@@ -6,6 +6,7 @@ import {
   useInView,
   AnimatePresence,
 } from "motion/react";
+import { Layers } from "lucide-react";
 import svgPaths from "@/imports/PortfolioDheoryan-1/svg-t4dtk4ouv6";
 import CaseStudySonar from "@/imports/CaseStudySonar-1/index";
 import CaseStudyDesignSystem from "@/imports/CaseStudyDesignSystem-1/index";
@@ -33,12 +34,18 @@ const WORKS: WorkItem[] = [
   { num: "02", title: "KitaLabel Price Calculator", category: "Web Plugin · AI-Assisted Development",                year: "2025",      slug: "kitalabel",        thumb: "/thumbnails/kitalabel.png" },
   { num: "03", title: "Read/See Dashboard",         category: "SaaS · CDP Product Design",                          year: "2022–2023", slug: "readsee-dashboard", thumb: "/thumbnails/readsee-dashboard.png" },
   { num: "04", title: "CMIS — Enterprise Suite",    category: "Enterprise · Document, Invoice & Purchase Flows",     year: "2024–2025", slug: "cmis-suite",       thumb: "/thumbnails/cmis-suite.png" },
-  { num: "05", title: "SONAR",                      category: "Email tracker Chrome extension — web design & landing page", year: "2024", slug: "sonar",          thumb: "/thumbnails/sonar.png" },
-  { num: "06", title: "Universal Design System",    category: "Design System · Component Library",                   year: "2023–2024", slug: "design-system",    thumb: "/thumbnails/design-system.png" },
-  { num: "07", title: "Mailtarget App",             category: "SaaS · Email API",                                    year: "2023–2024", slug: "mailtarget-app",   thumb: "/thumbnails/mailtarget-app.png" },
-  { num: "08", title: "Read/See Website",           category: "Marketing · Customer Data Platform",                  year: "2023",      slug: "readsee-website",  thumb: "/thumbnails/readsee-website.png" },
-  { num: "09", title: "Mailtarget Website",         category: "Marketing · Email API",                               year: "2023",      slug: "mailtarget-web",   thumb: "/thumbnails/mailtarget-web.png" },
+  { num: "05", title: "Universal Design System",    category: "Design System · Component Library",                   year: "2023–2024", slug: "design-system",    thumb: "/thumbnails/design-system.png" },
+  { num: "06", title: "Mailtarget App",             category: "SaaS · Email API",                                    year: "2023–2024", slug: "mailtarget-app",   thumb: "/thumbnails/mailtarget-app.png" },
 ];
+
+// SONAR hidden for now (2026-07): too thin to sit beside the product cases.
+// Its import, CASE_META / CASE_HERO_DETAILS / CASE_MOBILE_DETAILS entries are
+// kept below so it can be restored (re-add to WORKS + CASE_STUDIES) once the
+// story is reworked around deliberate scoping.
+
+// Marketing-site cases merged into their product siblings (2026-07 restructure):
+// readsee-website → readsee-dashboard, mailtarget-web → mailtarget-app.
+// Their imported desktop visuals render below the sibling case via MERGED_PUBLIC_STORY.
 
 const CASE_STUDIES: Record<string, React.ComponentType> = {
   "kitalabel-bos":     CaseStudyKitalabelBos,
@@ -47,9 +54,30 @@ const CASE_STUDIES: Record<string, React.ComponentType> = {
   "cmis-suite":        CaseStudyCmisSuiteImport,
   "mailtarget-app":    CaseStudyMailtargetApp,
   kitalabel:           CaseStudyKitalabel,
-  "readsee-website":   CaseStudyReadsee,
-  "mailtarget-web":    CaseStudyMailtargetWeb,
-  sonar:               CaseStudySonar,
+  // sonar hidden — see note above WORKS. Restore: `sonar: CaseStudySonar,`
+};
+void CaseStudySonar; // keep import alive while sonar is hidden
+
+// Desktop visuals of the merged marketing-site cases, appended to the
+// bottom of their product sibling's case page as "The public story".
+const MERGED_PUBLIC_STORY: Record<
+  string,
+  { component: React.ComponentType; kicker: string; title: string; blurb: string }
+> = {
+  "readsee-dashboard": {
+    component: CaseStudyReadsee,
+    kicker: "Part two — The public story",
+    title: "The same product, told to buyers",
+    blurb:
+      "The dashboard needed a public face. I designed Read/See's marketing site around the Connect → Collect → Activate model — custom illustrations, full responsive states, the product story translated for enterprise buyers.",
+  },
+  "mailtarget-app": {
+    component: CaseStudyMailtargetWeb,
+    kicker: "Part two — The public story",
+    title: "Positioning the API in public",
+    blurb:
+      "The redesigned platform needed marketing that matched. I designed Mailtarget's site to speak to developers first without losing business readers — API messaging, feature pages, and mobile simulations of the product journey.",
+  },
 };
 
 // Problem + Outcome copy for each case study
@@ -59,36 +87,139 @@ const CASE_META: Record<string, { problem: string; outcome: string }> = {
     outcome: "Unified operations into a single B2B OS — replacing 4 disconnected tools. Delivered as an AI-assisted development project in 2026. Internal adoption ongoing.",
   },
   "design-system": {
-    problem: "The product team was designing the same components repeatedly across products — buttons, inputs, modals — each slightly different, none documented. Every new screen required re-inventing solved problems.",
-    outcome: "Component library adopted across product teams. Reduced per-screen design time by eliminating repeated component work. Foundation now used in Mailtarget App and CMIS.",
+    problem: "The product team was designing the same components repeatedly across products — buttons, inputs, modals — each slightly different, none documented. Every new screen re-answered questions the team had already answered.",
+    outcome: "Component decisions now happen once, in the system — not per screen. Built as a team effort where I owned the design side, the foundation carried real products: Read/See's 700+ screen CDP and Mailtarget App's core flows both run on it.",
   },
   "readsee-dashboard": {
-    problem: "Read/See needed a full CDP product from zero — no existing design system, no established patterns, and a scope covering authentication through campaign activation across 700+ screens in 4 phases.",
-    outcome: "Full product shipped across 700+ screens and 4 phases, covering all CDP modules from sign-up through campaign activation. Delivered with interactive prototype for stakeholder review.",
+    problem: "Read/See needed a full CDP product from zero — no design system, no established patterns, and a scope running from authentication to campaign activation. Treating each of 700+ screens as a new design problem would have sunk the project.",
+    outcome: "The product shipped across 4 phases because the patterns did the heavy lifting — core surfaces designed once, reused across every module. I owned the design side within the Read/See team; stakeholders reviewed clickable prototypes, not static mockups. I also designed the public marketing site that tells the same story to buyers.",
   },
   "cmis-suite": {
-    problem: "Enterprise staff were processing invoices, documents, and purchase requests through email chains and paper approvals — no audit trail, no status visibility, no structured workflow.",
-    outcome: "Three enterprise workflows — invoice, document, and purchase request — digitised and shipped. Replaced email-based approvals with a structured, auditable digital flow.",
+    problem: "Enterprise staff moved invoices, documents, and purchase requests through email chains and paper signatures. When something stalled, nobody could say where it was, who had it, or which version was real.",
+    outcome: "Three workflows — documents, purchase requests, invoice handover — became structured digital flows where every request shows its status and history. I owned the design within the project team; the watermark system makes a document's validity visible inside the document itself.",
   },
   "mailtarget-app": {
-    problem: "Mailtarget's existing email marketing product lacked a cohesive design system, resulting in inconsistent UI patterns across its campaign builder, contact management, and automation flows.",
-    outcome: "SaaS email platform redesigned with a unified component system. Consistent UI patterns shipped across campaign builder, contact management, and automation flows 2023–2024.",
+    problem: "Mailtarget's platform had grown feature by feature without a system — campaign builder, contacts, and automation each looked and behaved like different products, and users paid the relearning cost on every switch.",
+    outcome: "One component language now runs all three core flows, shipped through 2023–2024. Learn the campaign builder and you already know contacts and automation. I owned the design within the Mailtarget team, and also designed the marketing site that positions the API publicly.",
   },
   kitalabel: {
     problem: "Sales teams were manually calculating custom label pricing using spreadsheets shared over WhatsApp — error-prone, slow, and invisible to customers during the quoting process.",
     outcome: "Price calculator deployed as a web plugin in 2025. Removed manual spreadsheet quoting from the sales process and made pricing transparent during customer conversations.",
   },
-  "readsee-website": {
-    problem: "Read/See had no marketing website to explain its 3-pillar product model (Connect, Collect, Activate) to enterprise buyers — the product had no public presence to drive inbound leads.",
-    outcome: "Marketing site shipped with Lo-Fi through Hi-Fi execution, full mobile responsive design, and custom illustrations communicating the Connect → Collect → Activate product model.",
-  },
-  "mailtarget-web": {
-    problem: "Mailtarget needed a marketing site that clearly positioned its email API for developer buyers while remaining accessible to non-technical marketing decision makers.",
-    outcome: "Launched marketing site with developer-first positioning and clear API integration messaging. Built with mobile simulation and prototype for stakeholder sign-off.",
-  },
   sonar: {
     problem: "Email marketers had no visibility into whether their outreach emails were opened, forwarded, or ignored — tracking was buried inside full ESP platforms and unavailable as a lightweight browser tool.",
     outcome: "Email tracking extension shipped as a Chrome plugin in 2024. Designed a lightweight web presence and extension UI for the solo-user outreach tracking use case.",
+  },
+};
+
+type CaseHeroDetail = {
+  eyebrow: string;
+  headline: string;
+  summary: string;
+  previewLabel: string;
+  previewCaption: string;
+  tags: string[];
+  stats: { value: string; label: string }[];
+};
+
+const CASE_HERO_DETAILS: Record<string, CaseHeroDetail> = {
+  "kitalabel-bos": {
+    eyebrow: "Kitalabel Business OS",
+    headline: "A single operating layer for custom label production.",
+    summary:
+      "A custom internal OS that brings orders, pricing, customers, and production visibility into one working surface.",
+    previewLabel: "Operations overview",
+    previewCaption: "Orders, pricing, customers, and production status in one admin surface",
+    tags: ["Admin OS", "AI-assisted", "Operations"],
+    stats: [
+      { value: "4", label: "tools replaced" },
+      { value: "2026", label: "delivery" },
+      { value: "1", label: "source of truth" },
+    ],
+  },
+  kitalabel: {
+    eyebrow: "Kitalabel Price Calculator",
+    headline: "A self-serve pricing flow for custom label orders.",
+    summary:
+      "A customer-facing plugin that turns label quoting from spreadsheet handoff into guided configuration and checkout.",
+    previewLabel: "Pricing flow",
+    previewCaption: "From label specs to price visibility, upload, cart, and checkout",
+    tags: ["Web plugin", "WooCommerce", "Pricing"],
+    stats: [
+      { value: "24/7", label: "pricing access" },
+      { value: "5", label: "quote tiers" },
+      { value: "0", label: "spreadsheet handoff" },
+    ],
+  },
+  "readsee-dashboard": {
+    eyebrow: "Read/See Dashboard",
+    headline: "700 screens didn't need 700 designs.",
+    summary:
+      "A CDP built from zero across 4 phases — the pattern system carried the scale, from authentication to campaign activation. Product and public marketing site, one story.",
+    previewLabel: "Product dashboard",
+    previewCaption: "A modular CDP workspace for connecting, collecting, and activating data",
+    tags: ["SaaS", "CDP", "0 → 1", "Product + marketing"],
+    stats: [
+      { value: "700+", label: "screens shipped" },
+      { value: "4", label: "delivery phases" },
+      { value: "1", label: "pattern system behind it all" },
+    ],
+  },
+  "cmis-suite": {
+    eyebrow: "CMIS Enterprise Suite",
+    headline: "Where is my document? Now the document answers.",
+    summary:
+      "Paper-and-email approvals became structured workflows — and a watermark system that makes each document's status visible inside the document itself.",
+    previewLabel: "Workflow suite",
+    previewCaption: "Structured request handling for enterprise document operations",
+    tags: ["Enterprise", "Workflow", "DMS", "Audit trail"],
+    stats: [
+      { value: "3", label: "modules shipped" },
+      { value: "4", label: "procurement tracks" },
+      { value: "4", label: "watermark states" },
+    ],
+  },
+  sonar: {
+    eyebrow: "SONAR",
+    headline: "A lightweight signal layer for email outreach.",
+    summary:
+      "A Chrome extension and web experience that gives email marketers simple visibility into outreach activity.",
+    previewLabel: "Extension story",
+    previewCaption: "Tracking signals made small enough for everyday outreach",
+    tags: ["Chrome extension", "Tracking", "Web"],
+    stats: [
+      { value: "2024", label: "launch" },
+      { value: "3", label: "pricing tiers" },
+      { value: "1", label: "extension" },
+    ],
+  },
+  "design-system": {
+    eyebrow: "Universal Design System",
+    headline: "Design it once, or redesign it forever.",
+    summary:
+      "The foundation under the other case studies on this site — tokens, components, patterns, and governance rules that carried Mailtarget, SONAR, and Read/See.",
+    previewLabel: "System overview",
+    previewCaption: "Single source of truth",
+    tags: ["Foundations", "Components", "Patterns", "Tools"],
+    stats: [
+      { value: "8+", label: "color palettes" },
+      { value: "20+", label: "type tokens" },
+      { value: "3+", label: "products" },
+    ],
+  },
+  "mailtarget-app": {
+    eyebrow: "Mailtarget App",
+    headline: "Three products' worth of UI, unified into one.",
+    summary:
+      "Campaign builder, contacts, and automation had drifted apart. The redesign made them one platform — learn one flow, know them all. Plus the marketing site that sells it.",
+    previewLabel: "SaaS workspace",
+    previewCaption: "A unified product language for transactional email operations",
+    tags: ["SaaS", "Email API", "Design system", "Product + marketing"],
+    stats: [
+      { value: "3", label: "core flows unified" },
+      { value: "2", label: "environments (sandbox → production)" },
+      { value: "2023–24", label: "shipped through" },
+    ],
   },
 };
 
@@ -206,147 +337,114 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
   },
   "readsee-dashboard": {
     summary:
-      "A full CDP product design system covering onboarding, campaigns, customer data, and activation.",
+      "A team-built CDP where I owned the design — the pattern system that kept 700+ screens consistent.",
     focus: [
-      "Designed the product from zero across four delivery phases.",
-      "Created reusable product patterns for a large SaaS surface.",
-      "Connected technical CDP modules to user-facing workflows.",
+      "My role: product designer on the Read/See team — patterns, screens, prototypes.",
+      "Designed the patterns first, then let them generate the screens.",
+      "Designed the public marketing site as part two of the same story.",
     ],
     sections: [
       {
         kicker: "00 — The Problem",
-        title: "The problem",
-        body: "Read/See needed a full CDP product without an existing design system, product patterns, or established screen language.",
+        title: "Scope that sinks designers",
+        body: "Read/See had no design system, no patterns, no screen language — and needed a full CDP from authentication to campaign activation. Treating each screen as a new design problem was the fastest way to fail.",
       },
       {
-        kicker: "01 — Overview",
-        title: "The product",
-        body: "The overview introduces the dashboard product, the delivery phases, and the product surfaces needed to support customer data workflows.",
+        kicker: "01 — The Strategy",
+        title: "Design the patterns, not the screens",
+        body: "I didn't design 700 screens. I designed the core surfaces — tables, forms, detail views, empty states — once, then applied them module by module. The screens multiplied; the design decisions didn't.",
       },
       {
         kicker: "02 — Design Process",
-        title: "How the product was built",
-        body: "This section shows the progression from low-fidelity structure to high-fidelity product screens and stakeholder-ready prototypes.",
+        title: "Lo-fi sign-off before hi-fi pixels",
+        body: "Every module ran the same route: low-fidelity structure first, stakeholder sign-off, then high-fidelity screens and a clickable prototype. Feedback landed while changes were still cheap.",
       },
       {
         kicker: "03 — Key Screens",
-        title: "The core product surfaces",
-        body: "The case walks through dashboards, customer profiles, activation screens, and data management areas.",
+        title: "Learn one module, know them all",
+        body: "Dashboards, customer profiles, segmentation, and activation each got a dedicated surface — but they share one layout grammar. A user who learns the first module has already learned the rest.",
       },
       {
         kicker: "04 — Onboarding Experience",
-        title: "Getting users to first value",
-        body: "The onboarding section covers profile completion, product tour, source and destination guidance, and knowledge-base support.",
+        title: "First value means connected data",
+        body: "A CDP is empty until data flows in, so onboarding pushes hard toward the first source connection: profile completion, product tour, source and destination guidance, and a knowledge base for the gaps.",
       },
       {
         kicker: "05 — Full Scope",
-        title: "What was designed",
-        body: "This section summarizes the modules, patterns, and system coverage across the full 700+ screen scope.",
+        title: "Four phases, one system",
+        body: "The four delivery phases took the product from sign-up to campaign activation — 700+ screens, every CDP module, held together by a single pattern system rather than 700 separate decisions.",
       },
       {
-        kicker: "06 — Outcomes",
-        title: "Complete product delivery",
-        body: "The outcome connects the shipped hi-fi product, wireframe foundation, and consistent brand system.",
+        kicker: "06 — The Public Story",
+        title: "The same product, told to buyers",
+        body: "The product needed a public face, so I designed the marketing site too — the Connect → Collect → Activate model explained with custom illustrations and full responsive states. One story, two audiences.",
+      },
+      {
+        kicker: "07 — Outcomes",
+        title: "Shipped, prototyped, reusable",
+        body: "The product shipped hi-fi with a wireframe foundation and stakeholder-reviewed prototypes. The pattern thinking outlived the project — it fed the Universal Design System used across later products.",
       },
     ],
     proof: [
-      "Covered 700 plus screens across the product scope.",
-      "Delivered interactive prototypes for stakeholder review.",
+      "700+ screens shipped from one reusable pattern system.",
+      "Stakeholders reviewed clickable prototypes, not static mockups.",
+      "Product and marketing site designed as one continuous story.",
     ],
   },
   "cmis-suite": {
     summary:
-      "Enterprise workflow tools for invoices, documents, purchase requests, and approval tracking.",
+      "Enterprise approvals pulled out of email chains and paper signatures into three auditable digital workflows.",
     focus: [
-      "Replaced paper and email approval chains with structured flows.",
-      "Designed status visibility for staff handling high-volume documents.",
-      "Created separate but consistent flows for invoice, document, and purchase work.",
+      "My role: product designer on the CMIS project team.",
+      "Designed one consistent workflow grammar across three different modules.",
+      "Made document validity visible inside the document itself (watermarks).",
     ],
     sections: [
       {
         kicker: "00 — The Problem",
-        title: "The problem",
-        body: "CMIS started from manual enterprise approval work: documents, invoices, and purchase requests moving through paper and email.",
+        title: "Nobody knew where anything was",
+        body: "Documents, invoices, and purchase requests moved through email chains and physical signatures. When something stalled, staff couldn't say where it was, who was holding it, or which version was the real one.",
       },
       {
-        kicker: "01 — Overview",
-        title: "Three modules, one suite",
-        body: "The overview introduces DMS, Purchase Request, and Tanda Terima Invoice as connected enterprise workflows.",
+        kicker: "01 — The Suite",
+        title: "Three modules, one workflow grammar",
+        body: "DMS, Purchase Request, and Invoice TTI cover very different work — but I designed them on one shared grammar: request → review → approval → tracked result. Staff who learn one module can operate all three.",
       },
       {
-        kicker: "02 — Document Lifecycle",
-        title: "From creation to controlled distribution",
-        body: "The DMS module explains how documents move through draft, review, approval, revision, watermarking, and controlled release.",
+        kicker: "02 — Deep Dive · DMS",
+        title: "A document's life, made visible",
+        body: "The document module is the deepest: every file moves through draft, review, approval, revision, and controlled release. Each step leaves a trace, so 'where is it?' became a question the system answers, not a colleague.",
       },
       {
-        kicker: "03 — Key Screens",
-        title: "The DMS in detail",
-        body: "This section covers the practical screens for document lists, detail views, approvals, and permission states.",
+        kicker: "03 — The Watermark System",
+        title: "The document polices itself",
+        body: "The status problem followed printed copies: an approved PDF looks identical to an obsolete one. So the status lives in the document — controlled, draft, obsolete, and uncontrolled each get a visible watermark. An outdated printout exposes itself.",
       },
       {
-        kicker: "04 — Watermark System",
-        title: "Document status, visually enforced",
-        body: "The watermark section shows how controlled, obsolete, draft, and uncontrolled states become visible in the document itself.",
+        kicker: "04 — DMS Key Screens",
+        title: "Lists, approvals, permissions",
+        body: "Document lists show status at a glance; detail views carry the full history; approval screens force a decision; permission states control who can even see a controlled file. Visibility everywhere, edit rights almost nowhere.",
       },
       {
         kicker: "05 — Module 02 · Purchase Request",
-        title: "Procurement split by request type",
-        body: "The purchase request module introduces separate tracks for materials, tools, equipment, and non-tool procurement.",
+        title: "Procurement split by what's being bought",
+        body: "Materials, tools, equipment, and non-tool needs each follow different review and fulfillment logic, so the module splits into four tracks — same request grammar, different rules per track, from request through approval to order.",
       },
       {
-        kicker: "06 — Approval Workflow",
-        title: "From request to order",
-        body: "This section follows requests through approval, purchasing decisions, and order creation.",
+        kicker: "06 — Module 03 · Invoice TTI",
+        title: "Proof of handover, not hope of handover",
+        body: "Invoice delivery used to end at 'the courier took it.' TTI tracks invoice selection, courier sheet generation, delivery status, and confirmed handover — and the printed courier sheet keeps the physical step inside the digital trail.",
       },
       {
-        kicker: "07 — Non Tool Module",
-        title: "Cross-category procurement tracking",
-        body: "The non-tool module captures procurement needs that do not fit standard material or equipment flows.",
-      },
-      {
-        kicker: "08 — Procurement Module",
-        title: "Purchase requests for materials and supplies",
-        body: "This section shows the material procurement path and how staff track requests through fulfillment.",
-      },
-      {
-        kicker: "09 — Tool Module",
-        title: "Purchase requests for tools and equipment",
-        body: "The tool module handles assets that need different review, fulfillment, and inventory logic.",
-      },
-      {
-        kicker: "10 — Module 03 · Invoice TTI",
-        title: "Invoice handover control",
-        body: "The TTI module covers courier-to-customer invoice delivery and proof of handover.",
-      },
-      {
-        kicker: "11 — Before & After",
-        title: "From legacy to modern",
-        body: "This section compares old invoice handling with a cleaner digital tracking model.",
-      },
-      {
-        kicker: "12 — TTI Workflow",
-        title: "From invoice selection to confirmed delivery",
-        body: "The workflow follows invoice selection, courier sheet generation, delivery status, and confirmation.",
-      },
-      {
-        kicker: "13 — TTI Key Screens",
-        title: "The TTI system in detail",
-        body: "This section highlights screens for invoice lists, delivery sheets, confirmation, and monitoring.",
-      },
-      {
-        kicker: "14 — Courier Sheet",
-        title: "Operational handoff",
-        body: "The courier delivery sheet brings the digital workflow back into the physical delivery process.",
-      },
-      {
-        kicker: "15 — Outcomes",
-        title: "Structured enterprise workflows",
-        body: "The outcome connects the three modules into a more auditable and visible enterprise suite.",
+        kicker: "07 — Outcomes",
+        title: "Auditable by default",
+        body: "Every request now carries its own history: who created it, who approved it, where it stopped. Enterprise staff moved from chasing signatures to reading statuses.",
       },
     ],
     proof: [
-      "Introduced auditable progress through each request lifecycle.",
-      "Helped enterprise teams move from legacy handling to digital tracking.",
+      "Every request lifecycle became traceable — creation to approval to result.",
+      "Watermarks made stale printed documents expose themselves.",
+      "Three modules share one grammar: learn one, operate all three.",
     ],
   },
   sonar: {
@@ -401,187 +499,97 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
   },
   "design-system": {
     summary:
-      "A reusable UI foundation for product teams repeatedly designing the same interface patterns.",
+      "The shared foundation under this site's product cases — built so component decisions happen once, not per screen.",
     focus: [
-      "Organized repeated components into documented tokens and patterns.",
-      "Reduced inconsistent button, input, modal, and table decisions.",
-      "Built a shared foundation used across multiple products.",
+      "My role: product designer on the team that built the system.",
+      "Turned repeated component decisions into documented tokens and patterns.",
+      "One foundation now underpins Mailtarget, SONAR, and Read/See surfaces.",
     ],
     sections: [
       {
         kicker: "00 — The Problem",
-        title: "The problem",
-        body: "Teams were rebuilding the same UI decisions repeatedly without shared documentation or component logic.",
+        title: "Solved problems, re-solved daily",
+        body: "Buttons, inputs, and modals existed in slightly different versions across products — none documented. Every new screen re-answered questions the team had already answered somewhere else.",
       },
       {
-        kicker: "01 — Overview",
-        title: "The system",
-        body: "The overview introduces the design system as a reusable source of truth for product teams.",
+        kicker: "01 — The System",
+        title: "One source of truth",
+        body: "Tokens, components, patterns, and governance rules make reuse the default. The question on every new screen changed from 'how should this look?' to 'which pattern is this?'",
       },
       {
         kicker: "02 — Foundation",
         title: "The tokens underneath",
-        body: "This section covers color, typography, spacing, radius, and reusable foundations that make components consistent.",
+        body: "8+ color palettes and 20+ type tokens sit under everything, with spacing and radius to match. Color and type stopped being per-screen choices — components inherit consistency instead of imitating it.",
       },
       {
         kicker: "03 — Component Library",
-        title: "Atoms to organisms",
-        body: "The component library section shows how buttons, inputs, modals, tables, and screen patterns are assembled.",
+        title: "Assembly, not invention",
+        body: "Buttons, inputs, modals, and tables compose into full screen patterns. Designing a new screen became assembling known parts — the creative effort moved to the problems that actually needed it.",
       },
       {
         kicker: "04 — Methodology",
         title: "Built on atomic design",
-        body: "The methodology explains how atoms, molecules, organisms, and templates keep the system scalable.",
+        body: "Atoms build molecules, molecules build organisms, organisms build templates. The payoff is maintenance: fix an atom once and every screen that uses it inherits the fix.",
       },
       {
-        kicker: "05 — Outcomes",
-        title: "Reusable product foundation",
-        body: "The result is a single source of truth used across product work and future interface decisions.",
+        kicker: "05 — Where It Paid Off",
+        title: "Measured in products, not components",
+        body: "This foundation carried real products: Read/See's 700+ screen CDP stayed consistent through it, Mailtarget App's three core flows share its components, and SONAR reused its language. A system is proven by the products it survives.",
       },
     ],
     proof: [
-      "Reduced repeated component work during new screen design.",
-      "Supported consistency across Mailtarget App and CMIS surfaces.",
+      "Read/See's 700+ screens and Mailtarget's core flows run on this foundation.",
+      "New screens assemble from patterns instead of re-inventing components.",
     ],
   },
   "mailtarget-app": {
     summary:
-      "A SaaS email marketing product redesign spanning campaigns, contacts, and automation.",
+      "An email platform that had drifted into three different products — I led the redesign's design side within the Mailtarget team.",
     focus: [
-      "Unified inconsistent product surfaces under one component language.",
-      "Improved campaign builder, contact management, and automation flows.",
-      "Turned a fragmented product into a calmer operating workspace.",
+      "My role: product designer on the Mailtarget team.",
+      "Unified campaign builder, contacts, and automation under one component language.",
+      "Designed the public marketing site as part two of the same story.",
     ],
     sections: [
       {
         kicker: "00 — The Problem",
-        title: "The problem",
-        body: "The app had grown without a cohesive system, so similar product areas behaved and looked inconsistent.",
+        title: "Three products wearing one logo",
+        body: "The app grew feature by feature without a system. Campaign builder, contacts, and automation each looked and behaved differently — users paid a relearning cost every time they switched.",
       },
       {
         kicker: "01 — Context",
         title: "What is Mailtarget?",
-        body: "The context section explains Mailtarget as a transactional email product serving developers and business users.",
+        body: "A transactional email product serving two very different users at once: developers wiring up an API, and business users running campaigns. Every design decision had to survive both.",
       },
       {
         kicker: "02 — UX Model",
         title: "Why Sandbox to Production?",
-        body: "This section explains the two-environment model that lets users test safely before production verification.",
+        body: "Sending real email by accident is unforgivable, so the platform splits into two environments: test safely in sandbox, then verify into production. The riskiest action got the most deliberate path.",
       },
       {
         kicker: "03 — Research",
         title: "What competitors got right and wrong",
-        body: "The research section compares common email-product patterns and identifies opportunities for clearer UX.",
+        body: "Before redesigning, I audited the common email-product patterns — the team kept what users already understood from competitors, and fixed the patterns competitors consistently got wrong.",
       },
       {
         kicker: "04 — Decisions",
         title: "Why each surface works the way it does",
-        body: "Decision sections cover activity logs, API configuration, dashboard behavior, and product status patterns.",
+        body: "Activity logs, API configuration, dashboard, and status patterns each follow one rule: the developer's mental model and the marketer's mental model must land on the same screen without conflict.",
       },
       {
-        kicker: "05 — Outcomes",
-        title: "Unified SaaS product system",
-        body: "The outcome connects the redesigned product surfaces into one consistent UI language.",
-      },
-    ],
-    proof: [
-      "Created consistent UI behavior across core platform areas.",
-      "Supported a broader product redesign during 2023-2024.",
-    ],
-  },
-  "readsee-website": {
-    summary:
-      "A marketing website explaining Read/See's Connect, Collect, and Activate product model.",
-    focus: [
-      "Turned a complex CDP model into a public-facing product story.",
-      "Designed responsive pages and custom illustrations.",
-      "Structured the site around enterprise buyer understanding.",
-    ],
-    sections: [
-      {
-        kicker: "00 — The Problem",
-        title: "The problem",
-        body: "Read/See needed a public website to explain a technical CDP product model to enterprise buyers.",
-      },
-      {
-        kicker: "01 — Overview",
-        title: "The product",
-        body: "The overview introduces the Connect, Collect, Activate model and the role of the marketing site.",
-      },
-      {
-        kicker: "02 — Design Process",
-        title: "Three phases to final",
-        body: "This section follows the website from low-fidelity structure through illustration, UI, and final design.",
-      },
-      {
-        kicker: "03 — The Three Pillars",
-        title: "Connect · Collect · Activate",
-        body: "The pillars section explains the product model and how the site communicates each phase.",
-      },
-      {
-        kicker: "04 — Use Cases & Responsive",
-        title: "Built for every customer, every device",
-        body: "Responsive and use-case sections show how the story adapts across customers and screen sizes.",
-      },
-      {
-        kicker: "05 — Full Scope",
-        title: "What was delivered",
-        body: "This section summarizes the screens, illustrations, responsive states, and design library delivered.",
+        kicker: "05 — The Public Story",
+        title: "Positioning the API in public",
+        body: "The redesigned platform needed marketing that matched, so I designed the website too — developer-first API messaging that stays readable for business buyers, with mobile simulations of the product journey.",
       },
       {
         kicker: "06 — Outcomes",
-        title: "Clear public product story",
-        body: "The outcome connects the responsive marketing site to a stronger inbound presence.",
+        title: "One platform again",
+        body: "One component language now runs all three core flows, shipped through 2023–2024. Learn the campaign builder and you already know contacts and automation.",
       },
     ],
     proof: [
-      "Moved from low-fidelity planning through high-fidelity delivery.",
-      "Created a clearer inbound presence for the product.",
-    ],
-  },
-  "mailtarget-web": {
-    summary:
-      "A marketing website positioning Mailtarget's email API for developer and business audiences.",
-    focus: [
-      "Balanced developer-first API messaging with accessible marketing copy.",
-      "Designed mobile simulations to explain the product journey.",
-      "Created a site structure for stakeholder sign-off.",
-    ],
-    sections: [
-      {
-        kicker: "00 — The Problem",
-        title: "The problem",
-        body: "Mailtarget needed to explain an email API clearly to developers while still being understandable for business readers.",
-      },
-      {
-        kicker: "01 — Overview",
-        title: "The product",
-        body: "The overview frames the site around email API positioning, feature pages, and buyer education.",
-      },
-      {
-        kicker: "02 — Scope of Work",
-        title: "What was designed",
-        body: "Scope covers landing pages, product pages, API messaging, mobile simulation, and supporting visual systems.",
-      },
-      {
-        kicker: "03 — Key Screens",
-        title: "Designing for every audience",
-        body: "Key screens show how the site addresses discovery, developers, marketers, and technical product evaluation.",
-      },
-      {
-        kicker: "04 — Process",
-        title: "From discovery to delivery",
-        body: "The process section connects research, architecture, hi-fi design, responsive work, and stakeholder sign-off.",
-      },
-      {
-        kicker: "05 — Outcomes",
-        title: "Developer-first marketing site",
-        body: "The outcome clarifies API integration value while keeping the site accessible for non-technical decision makers.",
-      },
-    ],
-    proof: [
-      "Clarified API integration value without losing non-technical readers.",
-      "Delivered responsive marketing screens for the email product.",
+      "Three fragmented core flows unified under one component language.",
+      "Product redesign and public marketing site shipped as one story.",
     ],
   },
 };
@@ -612,7 +620,7 @@ const PROCESS_STEPS = [
 const EXPERIENCE = [
   {
     period: "2024 — Now",
-    role: "Product Designer (UI/UX) & Vibe Coder",
+    role: "Product Designer (UI/UX) · AI-Assisted Development",
     company: "Cahaya Jakarta Group",
   },
   {
@@ -635,7 +643,7 @@ const EXPERIENCE = [
 const MARQUEE_ITEMS = [
   "Product Design",
   "✳",
-  "Vibe Code",
+  "AI-Assisted Development",
   "✳",
   "Design Systems",
   "✳",
@@ -2682,14 +2690,14 @@ function MobileCaseStudyArticle({
 
   return (
     <section
-      className="px-5 pb-16 pt-24 lg:hidden"
+      className="px-5 pb-16 pt-14 md:px-8 lg:hidden"
       style={{
         background: BG,
         borderBottom: "1px solid rgba(242,241,236,0.08)",
       }}
     >
       <motion.div
-        className="mx-auto flex max-w-[520px] flex-col gap-10"
+        className="mx-auto flex max-w-[520px] flex-col gap-10 md:max-w-[760px]"
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease }}
@@ -2709,14 +2717,14 @@ function MobileCaseStudyArticle({
           <h1
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: "clamp(42px, 13vw, 64px)",
+              fontSize: "clamp(34px, 10vw, 52px)",
               fontWeight: 500,
-              lineHeight: 0.94,
+              lineHeight: 1,
               color: FG,
               letterSpacing: 0,
             }}
           >
-            {work.title}
+            Case study walkthrough
           </h1>
           <p
             style={{
@@ -2761,8 +2769,9 @@ function MobileCaseStudyArticle({
               style={{
                 display: "block",
                 width: "100%",
-                aspectRatio: "4 / 3",
-                objectFit: "cover",
+                aspectRatio: "16 / 10",
+                objectFit: "contain",
+                background: "#070707",
               }}
             />
             <span
@@ -2840,7 +2849,8 @@ function MobileCaseStudyArticle({
                     style={{
                       width: "100%",
                       height: "100%",
-                      objectFit: "cover",
+                      objectFit: "contain",
+                      background: "#070707",
                       opacity: index === 0 ? 0.9 : 0.42,
                       filter: index === 0 ? "none" : "saturate(0.7)",
                     }}
@@ -3027,7 +3037,7 @@ function MobileCaseStudyArticle({
                       inset: 0,
                       width: "100%",
                       height: "100%",
-                      objectFit: "cover",
+                      objectFit: "contain",
                       opacity: 0.22,
                       filter: "saturate(0.75) contrast(1.05)",
                     }}
@@ -3136,23 +3146,27 @@ function ResponsiveCaseStudyFrame({
   children,
   onClick,
   frameRef,
+  reflow = false,
 }: {
   children: React.ReactNode;
   onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
   frameRef: React.RefObject<HTMLDivElement>;
+  reflow?: boolean;
 }) {
   const innerRef = useRef<HTMLDivElement>(null);
-  const [layout, setLayout] = useState({ scale: 1, height: 0 });
+  const [layout, setLayout] = useState({ scale: 1, height: 0, isReflow: false });
   const baseWidth = 1280;
 
   useEffect(() => {
     const updateLayout = () => {
       const viewportWidth = window.innerWidth;
-      const nextScale = Math.min(1, viewportWidth / baseWidth);
+      const shouldReflow = reflow && viewportWidth < 1024;
+      const nextScale = shouldReflow ? 1 : Math.min(1, viewportWidth / baseWidth);
       const contentHeight = innerRef.current?.scrollHeight ?? 0;
       setLayout({
         scale: nextScale,
-        height: contentHeight ? contentHeight * nextScale : 0,
+        height: shouldReflow ? 0 : contentHeight ? contentHeight * nextScale : 0,
+        isReflow: shouldReflow,
       });
     };
 
@@ -3166,30 +3180,30 @@ function ResponsiveCaseStudyFrame({
       observer.disconnect();
       window.removeEventListener("resize", updateLayout);
     };
-  }, []);
+  }, [reflow]);
 
   return (
     <div
       ref={frameRef}
-      className="overflow-hidden"
+      className={layout.isReflow ? "overflow-visible" : "overflow-hidden"}
       style={{ width: "100%" }}
     >
       <div
         style={{
           height: layout.height || undefined,
           minHeight: layout.height ? undefined : "100vh",
-          overflow: "hidden",
+          overflow: layout.isReflow ? "visible" : "hidden",
           width: "100%",
         }}
       >
         <div
           ref={innerRef}
           style={{
-            minWidth: baseWidth,
-            width: baseWidth,
-            margin: layout.scale === 1 ? "0 auto" : 0,
+            minWidth: layout.isReflow ? 0 : baseWidth,
+            width: layout.isReflow ? "100%" : baseWidth,
+            margin: layout.scale === 1 && !layout.isReflow ? "0 auto" : 0,
             transform:
-              layout.scale === 1 ? undefined : `scale(${layout.scale})`,
+              layout.scale === 1 || layout.isReflow ? undefined : `scale(${layout.scale})`,
             transformOrigin: "top left",
           }}
           onClick={onClick}
@@ -3198,6 +3212,257 @@ function ResponsiveCaseStudyFrame({
         </div>
       </div>
     </div>
+  );
+}
+
+function CaseStudyUnifiedHero({
+  work,
+  meta,
+  mobileDetail,
+}: {
+  work: WorkItem | null;
+  meta: { problem: string; outcome: string } | null;
+  mobileDetail: CaseMobileDetail | null;
+}) {
+  if (!work?.slug) return null;
+
+  const hero = CASE_HERO_DETAILS[work.slug];
+  const tags = hero?.tags ?? [work.category];
+  const stats =
+    hero?.stats ??
+    [
+      { value: work.year, label: "timeline" },
+      { value: "1", label: "case study" },
+      { value: "UI", label: "product design" },
+    ];
+
+  return (
+    <section
+      className="block"
+      style={{
+        background:
+          "radial-gradient(circle at 72% 28%, rgba(204,110,248,0.16), transparent 34%), #0a0a0a",
+        borderBottom: "1px solid rgba(255,255,255,0.08)",
+        padding: "clamp(88px, 11vw, 112px) clamp(20px, 4.5vw, 56px) clamp(64px, 9vw, 96px)",
+      }}
+    >
+      <div
+        className="mx-auto grid items-center gap-10 lg:gap-16"
+        style={{
+          maxWidth: 1280,
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 420px), 1fr))",
+        }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55 }}
+        >
+          <p
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 13,
+              letterSpacing: "0.24em",
+              textTransform: "uppercase",
+              color: PURPLE,
+              marginBottom: 32,
+            }}
+          >
+            {hero?.eyebrow ?? work.title}
+          </p>
+
+          <h1
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: "clamp(42px, 8vw, 92px)",
+              fontWeight: 500,
+              letterSpacing: 0,
+              lineHeight: 0.98,
+              color: FG,
+              maxWidth: 680,
+            }}
+          >
+            {hero?.headline ?? work.title}
+          </h1>
+
+          <p
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: 21,
+              lineHeight: 1.45,
+              color: MUTED,
+              maxWidth: 600,
+              marginTop: 26,
+            }}
+          >
+            {hero?.summary ?? mobileDetail?.summary ?? meta?.outcome ?? work.category}
+          </p>
+
+          <div className="mt-9 flex flex-wrap gap-3">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                style={{
+                  fontFamily: "'Space Mono', monospace",
+                  fontSize: 12,
+                  color: MUTED,
+                  background: "rgba(255,255,255,0.055)",
+                  border: "1px solid rgba(255,255,255,0.04)",
+                  borderRadius: 999,
+                  padding: "9px 16px",
+                }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.aside
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.08 }}
+          whileHover={{ y: -4 }}
+          style={{
+            border: "1px solid rgba(255,255,255,0.12)",
+            borderRadius: 16,
+            padding: 22,
+            background:
+              "linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018))",
+            boxShadow: "0 32px 90px rgba(0,0,0,0.34)",
+          }}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Layers size={18} color={PURPLE} strokeWidth={2.2} />
+              <span
+                style={{
+                  fontFamily: "'Space Mono', monospace",
+                  fontSize: 13,
+                  fontWeight: 700,
+                  color: FG,
+                  textTransform: "uppercase",
+                }}
+              >
+                {hero?.previewLabel ?? "Case overview"}
+              </span>
+            </div>
+            <span
+              style={{
+                fontFamily: "'Space Mono', monospace",
+                fontSize: 12,
+                color: DIM,
+              }}
+            >
+              {work.year}
+            </span>
+          </div>
+
+          <div
+            className="case-hero-preview-stage relative mt-6 overflow-hidden"
+            style={{
+              borderRadius: 10,
+              background:
+                "linear-gradient(145deg, rgba(18,20,22,0.96), rgba(9,9,9,0.96))",
+            }}
+          >
+            <div
+              className="case-hero-preview-media relative overflow-hidden"
+              style={{
+                aspectRatio: "16 / 9",
+              }}
+            >
+              <img
+                alt={`${work.title} preview`}
+                src={work.thumb}
+                className="h-full w-full"
+                style={{
+                  objectFit: "contain",
+                  background: "#070707",
+                  opacity: 0.9,
+                  filter: "saturate(0.86) contrast(1.04)",
+                }}
+              />
+              <div
+                className="case-hero-preview-scrim absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(10,10,10,0.08), rgba(10,10,10,0.82))",
+                }}
+              />
+            </div>
+            <div className="case-hero-preview-copy absolute bottom-7 left-7 right-7">
+              <p
+                className="case-hero-preview-title"
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: "clamp(22px, 4.2vw, 34px)",
+                  fontWeight: 700,
+                  color: FG,
+                  letterSpacing: 0,
+                  lineHeight: 1.05,
+                  maxWidth: 520,
+                }}
+              >
+                {hero?.previewCaption ?? work.title}
+              </p>
+              <p
+                className="case-hero-preview-category"
+                style={{
+                  fontFamily: "'Space Mono', monospace",
+                  fontSize: 12,
+                  color: PURPLE,
+                  letterSpacing: "0.16em",
+                  marginTop: 14,
+                  textTransform: "uppercase",
+                }}
+              >
+                {work.category}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
+            {stats.map((stat) => (
+              <div
+                key={`${stat.value}-${stat.label}`}
+                style={{
+                  background: "rgba(255,255,255,0.04)",
+                  borderRadius: 10,
+                  padding: "22px 18px 18px",
+                  minHeight: 92,
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontSize: 30,
+                    fontWeight: 700,
+                    color: PURPLE,
+                    letterSpacing: 0,
+                    lineHeight: 1,
+                  }}
+                >
+                  {stat.value}
+                </p>
+                <p
+                  style={{
+                    fontFamily: "'Space Mono', monospace",
+                    fontSize: 11,
+                    color: MUTED,
+                    letterSpacing: "0.08em",
+                    marginTop: 10,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </motion.aside>
+      </div>
+    </section>
   );
 }
 
@@ -3340,6 +3605,46 @@ function CaseStudyPage({
         [data-name="nRow"], [data-name="top"] { cursor: pointer; }
         [data-name="nRow"]:hover p, [data-name="top"]:hover p { color: #cc6ef8; }
         .case-study-preview-scope img { cursor: zoom-in; }
+        @media (max-width: 639px) {
+          .case-hero-preview-stage {
+            overflow: visible !important;
+          }
+
+          .case-hero-preview-media {
+            border-radius: 10px !important;
+            border: 1px solid rgba(242,241,236,0.08) !important;
+          }
+
+          .case-hero-preview-scrim {
+            background: linear-gradient(180deg, rgba(10,10,10,0), rgba(10,10,10,0.28)) !important;
+          }
+
+          .case-hero-preview-copy {
+            position: static !important;
+            padding: 16px 2px 0 !important;
+          }
+
+          .case-hero-preview-title {
+            font-size: 19px !important;
+            line-height: 1.18 !important;
+            max-width: 100% !important;
+          }
+
+          .case-hero-preview-category {
+            font-size: 10px !important;
+            letter-spacing: 0.08em !important;
+            line-height: 1.45 !important;
+            overflow-wrap: anywhere !important;
+            margin-top: 10px !important;
+          }
+        }
+        .case-study-preview-scope [data-name="hero"],
+        .case-study-preview-scope [data-name="Hero"],
+        .case-study-preview-scope [data-name="Hero_Section"],
+        .case-study-preview-scope [data-name="HeroSection"],
+        .case-study-preview-scope [data-name="design-system-hero"] {
+          display: none !important;
+        }
         /* Hide the static per-case-study copyright rows — the shared
            FooterSection below provides the real site footer. */
         [data-name="fw"],
@@ -3350,25 +3655,285 @@ function CaseStudyPage({
         [data-name="foot"],
         [data-name="foot-wrap"],
         [data-name="foot-wrap"] [data-name="footer"] { display: none; }
+        @media (max-width: 1023px) {
+          .case-study-imported-content {
+            width: 100% !important;
+          }
+
+          .case-study-imported-content > [data-name] {
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0 !important;
+            align-items: stretch !important;
+            overflow: visible !important;
+          }
+
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[1280px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[1152px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[812px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[760px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[720px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[680px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[640px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[620px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[600px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[564px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[520px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[480px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[420px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[390px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[380px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[368px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[360px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[320px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="w-[280px]"] {
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0 !important;
+          }
+
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="px-[64px]"] {
+            padding-left: clamp(18px, 5vw, 40px) !important;
+            padding-right: clamp(18px, 5vw, 40px) !important;
+          }
+
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="py-[100px]"] {
+            padding-top: clamp(56px, 10vw, 88px) !important;
+            padding-bottom: clamp(56px, 10vw, 88px) !important;
+          }
+
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="overflow-clip"] {
+            overflow: visible !important;
+          }
+
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="grid-cols-"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="grid-cols-["] {
+            grid-template-columns: 1fr !important;
+          }
+
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="flex"][class*="w-[1152px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="flex"][class*="w-[1280px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="flex"][class*="gap-[60px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="flex"][class*="gap-[64px]"] {
+            flex-direction: column !important;
+            align-items: stretch !important;
+          }
+
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="text-[82px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="text-[78px]"] {
+            font-size: clamp(46px, 13vw, 72px) !important;
+            line-height: 1 !important;
+            letter-spacing: 0 !important;
+          }
+
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="text-[56px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="text-[48px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="text-[46px]"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [class*="text-[40px]"] {
+            font-size: clamp(30px, 8vw, 44px) !important;
+            line-height: 1.08 !important;
+            letter-spacing: 0 !important;
+            white-space: normal !important;
+          }
+
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) p {
+            max-width: 100% !important;
+            white-space: normal !important;
+          }
+
+          .case-study-preview-scope [data-name="case-study-design-system"] {
+            width: 100% !important;
+            max-width: 100% !important;
+            align-items: stretch !important;
+            overflow: visible !important;
+          }
+
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: clamp(56px, 10vw, 88px) clamp(18px, 5vw, 40px) !important;
+            overflow: visible !important;
+            align-items: stretch !important;
+          }
+
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] > div,
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] aside,
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] p,
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] div {
+            max-width: 100% !important;
+          }
+
+          .case-study-preview-scope [data-name="case-study-design-system"] .uds-catalog-grid,
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name="design-system-hub"] > div:nth-of-type(2),
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name="design-system-patterns"] > .grid,
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name="design-system-adoption"] > div {
+            grid-template-columns: 1fr !important;
+          }
+
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name="design-system-hub"] > div:first-of-type,
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name="design-system-foundations"] > div:first-of-type,
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name="design-system-components"] > div:first-of-type,
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name="design-system-adoption"] > div {
+            align-items: flex-start !important;
+            flex-direction: column !important;
+            gap: 20px !important;
+          }
+
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] [class*="text-[48px]"] {
+            font-size: clamp(34px, 9vw, 46px) !important;
+            line-height: 1.08 !important;
+            letter-spacing: 0 !important;
+          }
+
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] [class*="text-[78px]"] {
+            font-size: clamp(46px, 13vw, 72px) !important;
+            line-height: 1 !important;
+            letter-spacing: 0 !important;
+          }
+
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] [class*="w-[1152px]"],
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] [class*="w-[760px]"],
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] [class*="w-[710px]"],
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] [class*="w-[680px]"],
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] [class*="w-[640px]"],
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] [class*="w-[620px]"],
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] [class*="w-[520px]"],
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] [class*="w-[420px]"],
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] [class*="w-[390px]"],
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] [class*="w-[380px]"],
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name^="design-system-"] [class*="w-[360px]"] {
+            width: 100% !important;
+          }
+
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name="design-system-adoption"] [class*="grid-cols-"] {
+            grid-template-columns: 1fr !important;
+          }
+
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name="design-system-adoption"] [class*="text-[48px]"],
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name="design-system-adoption"] [class*="text-[20px]"] {
+            white-space: normal !important;
+            overflow-wrap: anywhere !important;
+          }
+
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name="design-system-adoption"] [class*="min-h-[92px]"] {
+            align-items: flex-start !important;
+            flex-direction: column !important;
+            gap: 12px !important;
+            min-height: auto !important;
+            padding: 22px !important;
+          }
+
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name="design-system-adoption"] [class*="text-right"] {
+            text-align: left !important;
+          }
+
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name="design-system-adoption"] [class*="justify-between"] {
+            justify-content: flex-start !important;
+          }
+        }
+
+        @media (min-width: 640px) and (max-width: 1023px) {
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [data-name*="Row"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [data-name*="row"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [data-name*="Grid"],
+          .case-study-imported-content > [data-name]:not([data-name="case-study-design-system"]) [data-name*="grid"] {
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 18px !important;
+          }
+
+          .case-study-preview-scope [data-name="case-study-design-system"] .uds-catalog-grid,
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name="design-system-patterns"] > .grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          }
+
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name="design-system-hub"] > div:nth-of-type(2),
+          .case-study-preview-scope [data-name="case-study-design-system"] [data-name="design-system-adoption"] > div {
+            grid-template-columns: 1fr !important;
+          }
+        }
       `}</style>
-      <MobileCaseStudyArticle
+      <CaseStudyUnifiedHero
         work={currentWork}
         meta={currentMeta}
-        detail={currentMobileDetail}
-        onPreview={openPreview}
+        mobileDetail={currentMobileDetail}
       />
+      <div className="block lg:hidden">
+        <MobileCaseStudyArticle
+          work={currentWork}
+          meta={currentMeta}
+          detail={currentMobileDetail}
+          onPreview={openPreview}
+        />
+      </div>
       <div className="case-study-preview-scope hidden lg:block">
       <ResponsiveCaseStudyFrame
         frameRef={caseStudyParallaxRef}
         onClick={handleDelegatedClick}
+        reflow
       >
         {Component ? (
           <motion.div
+            className="case-study-imported-content"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
             <Component />
+            {MERGED_PUBLIC_STORY[slug] && (
+              <>
+                <section
+                  style={{
+                    background: BG,
+                    borderTop: "1px solid rgba(255,255,255,0.08)",
+                    padding: "clamp(64px, 9vw, 110px) clamp(20px, 4.5vw, 56px)",
+                  }}
+                >
+                  <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+                    <p
+                      style={{
+                        fontFamily: "'Space Mono', monospace",
+                        fontSize: 13,
+                        letterSpacing: "0.24em",
+                        textTransform: "uppercase",
+                        color: PURPLE,
+                        marginBottom: 24,
+                      }}
+                    >
+                      {MERGED_PUBLIC_STORY[slug].kicker}
+                    </p>
+                    <h2
+                      style={{
+                        fontFamily: "'Space Grotesk', sans-serif",
+                        fontSize: "clamp(34px, 5vw, 56px)",
+                                              fontWeight: 500,
+                        lineHeight: 1.05,
+                        color: FG,
+                        maxWidth: 720,
+                      }}
+                    >
+                      {MERGED_PUBLIC_STORY[slug].title}
+                    </h2>
+                    <p
+                      style={{
+                        fontFamily: "'Space Grotesk', sans-serif",
+                        fontSize: 19,
+                        lineHeight: 1.5,
+                        color: MUTED,
+                        maxWidth: 640,
+                        marginTop: 22,
+                      }}
+                    >
+                      {MERGED_PUBLIC_STORY[slug].blurb}
+                    </p>
+                  </div>
+                </section>
+                {(() => {
+                  const Merged = MERGED_PUBLIC_STORY[slug].component;
+                  return <Merged />;
+                })()}
+              </>
+            )}
           </motion.div>
         ) : (
           <div className="flex flex-col items-center justify-center min-h-screen gap-6 px-6">
@@ -3455,13 +4020,13 @@ export default function App() {
     };
   }, []);
 
-  const navigateTo = (slug: string) => {
+  const handleNavigate = (slug: string) => {
     setPage(slug);
     window.history.pushState(null, "", `#/work/${slug}`);
     window.scrollTo(0, 0);
   };
 
-  const goHome = () => {
+  const handleBack = () => {
     setPage("home");
     window.history.pushState(null, "", "#/");
     window.scrollTo(0, 0);
@@ -3478,7 +4043,7 @@ export default function App() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <PortfolioPage onNavigate={navigateTo} />
+            <PortfolioPage onNavigate={handleNavigate} />
           </motion.div>
         ) : (
           <motion.div
@@ -3490,8 +4055,8 @@ export default function App() {
           >
             <CaseStudyPage
               slug={page}
-              onBack={goHome}
-              onNavigate={navigateTo}
+              onBack={handleBack}
+              onNavigate={handleNavigate}
             />
           </motion.div>
         )}
