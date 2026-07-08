@@ -3556,6 +3556,20 @@ function CaseStudyPage({
     title: string;
   } | null>(null);
 
+  // Hide the floating "Back to work" pill while scrolling down so it never
+  // sits on top of headings/body copy; bring it back on any upward scroll.
+  const [backHidden, setBackHidden] = useState(false);
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setBackHidden(y > 120 && y > lastY);
+      lastY = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   // Next project in work-grid order (wraps around at the end)
   const workIndex = WORKS.findIndex((w) => w.slug === slug);
   const currentWork = workIndex >= 0 ? WORKS[workIndex] : null;
@@ -3641,10 +3655,15 @@ function CaseStudyPage({
           borderRadius: 20,
           padding: "8px 16px",
           cursor: "pointer",
+          pointerEvents: backHidden ? "none" : "auto",
         }}
         initial={{ opacity: 0, x: -16 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.4, delay: 0.15 }}
+        animate={
+          backHidden
+            ? { opacity: 0, y: -12, x: 0 }
+            : { opacity: 1, y: 0, x: 0 }
+        }
+        transition={{ duration: 0.25 }}
         whileHover={{
           scale: 1.04,
           borderColor: "rgba(204,110,248,0.4)",
