@@ -1442,36 +1442,26 @@ function ArchiveRow({ item, index, onNavigate }: { item: WorkItem; index: number
 
 // ── Process Section ───────────────────────────────────────────────────────────
 
-function ProcessCard({
+function ProcessRingCard({
   step,
-  index,
+  active,
 }: {
   step: (typeof PROCESS_STEPS)[0];
-  index: number;
+  active: boolean;
 }) {
-  const ref = useProcessParallax(index);
-  const [hovered, setHovered] = useState(false);
-
   return (
-    <motion.div
-      ref={ref}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="flex-1 min-w-[180px] flex flex-col gap-8 p-8 lg:p-10"
+    <div
+      className="flex h-full w-full flex-col gap-6 p-8"
       style={{
-        boxShadow: hovered
-          ? `inset 0 0 0 1px rgba(204,110,248,0.3)`
+        background: active ? "rgba(19,19,21,0.97)" : "rgba(13,13,14,0.94)",
+        boxShadow: active
+          ? "inset 0 0 0 1px rgba(204,110,248,0.35)"
           : "inset 0 0 0 1px rgba(255,255,255,0.08)",
-        transition: "box-shadow 0.3s",
+        opacity: active ? 1 : 0.4,
+        transition: "opacity 0.4s, box-shadow 0.4s",
       }}
     >
-      <span
-        style={{
-          fontFamily: "'Space Mono', monospace",
-          fontSize: 13,
-          color: PURPLE,
-        }}
-      >
+      <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, color: PURPLE }}>
         {step.num}
       </span>
       <div className="flex flex-col gap-4">
@@ -1496,13 +1486,73 @@ function ProcessCard({
           {step.body}
         </p>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
 function ProcessSection() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true });
+
+  // ── 360° interactive ring ──────────────────────────────────────────────────
+  // The four steps sit on a 3D carousel: drag to spin, snaps to the nearest
+  // step. The loop is the point — Deliver feeds the next Discover.
+  // 8 slots at 45° with each step placed twice: with only 4 slots at 90° the
+  // neighbouring cards sit exactly edge-on (invisible). Doubling the ring
+  // keeps the loop true AND shows angled neighbours for real depth.
+  const SLOTS = PROCESS_STEPS.length * 2;
+  const STEP = 360 / SLOTS;
+  const [angle, setAngle] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const drag = useRef<{ x: number; angle: number } | null>(null);
+  const [radius, setRadius] = useState(300);
+
+  useEffect(() => {
+    const measure = () => {
+      const w = window.innerWidth;
+      setRadius(Math.max(300, Math.min(430, w * 0.3)));
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  const frontSlot =
+    ((Math.round(-angle / STEP) % SLOTS) + SLOTS) % SLOTS;
+  const activeIndex = frontSlot % PROCESS_STEPS.length;
+  const snap = (a: number) => Math.round(a / STEP) * STEP;
+  // Jump to whichever copy of step i is closest to the current rotation.
+  const goTo = (i: number) =>
+    setAngle((a) => {
+      let best = a;
+      let bestDist = Infinity;
+      for (const slot of [i, i + PROCESS_STEPS.length]) {
+        for (let k = -1; k <= 1; k++) {
+          const cand = -slot * STEP + k * 360 + Math.round(a / 360) * 360;
+          if (Math.abs(cand - a) < bestDist) {
+            bestDist = Math.abs(cand - a);
+            best = cand;
+          }
+        }
+      }
+      return best;
+    });
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
+    drag.current = { x: e.clientX, angle };
+    setDragging(true);
+  };
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!drag.current) return;
+    setAngle(drag.current.angle + (e.clientX - drag.current.x) * 0.35);
+  };
+  const endDrag = () => {
+    if (!drag.current) return;
+    drag.current = null;
+    setDragging(false);
+    setAngle((a) => snap(a));
+  };
 
   return (
     <section
@@ -1511,6 +1561,7 @@ function ProcessSection() {
       style={{
         background: BG2,
         borderTop: "1px solid rgba(255,255,255,0.08)",
+        overflow: "hidden",
       }}
     >
       <div className="mx-auto max-w-[1280px]">
@@ -1568,15 +1619,131 @@ function ProcessSection() {
           </motion.h2>
         </motion.div>
 
-        <div className="flex flex-col sm:flex-row sm:flex-wrap">
-          {PROCESS_STEPS.map((step, i) => (
-            <ProcessCard
-              key={step.title}
-              step={step}
-              index={i}
-            />
-          ))}
+        {/* 3D stage */}
+        <div
+          className="relative mx-auto select-none"
+          style={{
+            perspective: 1400,
+            height: 400,
+            maxWidth: 960,
+            touchAction: "pan-y",
+            cursor: dragging ? "grabbing" : "grab",
+          }}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={endDrag}
+          onPointerCancel={endDrag}
+          onPointerLeave={endDrag}
+        >
+          <motion.div
+            className="absolute inset-0"
+            animate={{ rotateY: angle }}
+            transition={
+              dragging
+                ? { duration: 0 }
+                : { type: "spring", stiffness: 90, damping: 16 }
+            }
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            {Array.from({ length: SLOTS }).map((_, slot) => (
+              <div
+                key={slot}
+                className="absolute left-1/2 top-1/2"
+                style={{
+                  width: "min(320px, 80vw)",
+                  height: 330,
+                  transform: `translate(-50%, -50%) rotateY(${slot * STEP}deg) translateZ(${radius}px)`,
+                  backfaceVisibility: "hidden",
+                  WebkitBackfaceVisibility: "hidden",
+                }}
+              >
+                <ProcessRingCard
+                  step={PROCESS_STEPS[slot % PROCESS_STEPS.length]}
+                  active={slot === frontSlot}
+                />
+              </div>
+            ))}
+          </motion.div>
         </div>
+
+        {/* Controls */}
+        <div className="mt-10 flex items-center justify-center gap-8">
+          <button
+            aria-label="Previous step"
+            onClick={() => setAngle((a) => snap(a) + STEP)}
+            className="transition-colors duration-200"
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 16,
+              color: MUTED,
+              background: "transparent",
+              border: "1px solid rgba(255,255,255,0.12)",
+              borderRadius: 999,
+              width: 40,
+              height: 40,
+              cursor: "pointer",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = PURPLE)}
+            onMouseLeave={(e) => (e.currentTarget.style.color = MUTED)}
+          >
+            ←
+          </button>
+          <div className="flex gap-5">
+            {PROCESS_STEPS.map((step, i) => (
+              <button
+                key={step.num}
+                onClick={() => goTo(i)}
+                style={{
+                  fontFamily: "'Space Mono', monospace",
+                  fontSize: 12,
+                  color: i === activeIndex ? PURPLE : DIM,
+                  background: "transparent",
+                  border: "none",
+                  borderBottom:
+                    i === activeIndex
+                      ? `1px solid ${PURPLE}`
+                      : "1px solid transparent",
+                  paddingBottom: 4,
+                  cursor: "pointer",
+                  transition: "color 0.25s, border-color 0.25s",
+                }}
+              >
+                {step.num} {step.title}
+              </button>
+            ))}
+          </div>
+          <button
+            aria-label="Next step"
+            onClick={() => setAngle((a) => snap(a) - STEP)}
+            className="transition-colors duration-200"
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 16,
+              color: MUTED,
+              background: "transparent",
+              border: "1px solid rgba(255,255,255,0.12)",
+              borderRadius: 999,
+              width: 40,
+              height: 40,
+              cursor: "pointer",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = PURPLE)}
+            onMouseLeave={(e) => (e.currentTarget.style.color = MUTED)}
+          >
+            →
+          </button>
+        </div>
+        <p
+          className="mt-6 text-center"
+          style={{
+            fontFamily: "'Space Mono', monospace",
+            fontSize: 11,
+            color: DIM,
+            letterSpacing: "0.08em",
+          }}
+        >
+          drag to spin — the process loops: deliver feeds the next discover
+        </p>
       </div>
     </section>
   );
