@@ -1595,31 +1595,43 @@ function ProcessSection() {
         </motion.div>
 
         <div ref={trackRef}>
-          {/* Return arc: the explicit loop from Deliver back to Discover */}
-          <div className="relative hidden sm:block" style={{ height: 44 }}>
-            <svg
-              className="absolute inset-0 h-full w-full"
-              viewBox="0 0 1000 44"
-              preserveAspectRatio="none"
-              fill="none"
+          {/* Return path: the explicit loop from Deliver back to Discover.
+              Drawn as a CSS bracket anchored with the same calc() as the node
+              centers, so it stays aligned at any width (stretched SVG didn't). */}
+          <div className="relative hidden sm:block" style={{ height: 48 }}>
+            <div
+              className="absolute"
+              style={{
+                top: 14,
+                bottom: -6,
+                left: "calc(12.5% + 6px)",
+                right: "calc(12.5% + 6px)",
+                borderTop: `1px dashed ${wrap ? PURPLE : "rgba(255,255,255,0.18)"}`,
+                borderLeft: `1px dashed ${wrap ? PURPLE : "rgba(255,255,255,0.18)"}`,
+                borderRight: `1px dashed ${wrap ? PURPLE : "rgba(255,255,255,0.18)"}`,
+                borderBottom: "none",
+                borderRadius: "22px 22px 0 0",
+                transition: "border-color 0.5s",
+              }}
+            />
+            <span
+              className="absolute"
+              style={{
+                left: "calc(12.5% + 6px)",
+                bottom: -13,
+                transform: "translateX(-50%)",
+                fontSize: 9,
+                lineHeight: 1,
+                color: wrap ? PURPLE : "rgba(255,255,255,0.4)",
+                transition: "color 0.5s",
+              }}
             >
-              <path
-                d="M 875 40 C 875 6, 125 6, 125 40"
-                stroke={wrap ? PURPLE : "rgba(255,255,255,0.16)"}
-                strokeWidth="1"
-                strokeDasharray="4 6"
-                style={{ transition: "stroke 0.5s" }}
-              />
-              <path
-                d="M 125 40 l -4 -7 l 8 0 z"
-                fill={wrap ? PURPLE : "rgba(255,255,255,0.3)"}
-                style={{ transition: "fill 0.5s" }}
-              />
-            </svg>
+              ▼
+            </span>
             <span
               className="absolute left-1/2 -translate-x-1/2"
               style={{
-                top: 0,
+                top: 8,
                 fontFamily: "'Space Mono', monospace",
                 fontSize: 10,
                 letterSpacing: "0.12em",
