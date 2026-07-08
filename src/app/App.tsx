@@ -36,12 +36,8 @@ const WORKS: WorkItem[] = [
   { num: "04", title: "CMIS — Enterprise Suite",    category: "Enterprise · Document, Invoice & Purchase Flows",     year: "2024–2025", slug: "cmis-suite",       thumb: "/thumbnails/cmis-suite.png" },
   { num: "05", title: "Universal Design System",    category: "Design System · Component Library",                   year: "2023–2024", slug: "design-system",    thumb: "/thumbnails/design-system.png" },
   { num: "06", title: "Mailtarget App",             category: "SaaS · Email API",                                    year: "2023–2024", slug: "mailtarget-app",   thumb: "/thumbnails/mailtarget-app.png" },
+  { num: "07", title: "SONAR",                      category: "Chrome Extension · Deliberately Small Product",       year: "2024",      slug: "sonar",            thumb: "/thumbnails/sonar.png" },
 ];
-
-// SONAR hidden for now (2026-07): too thin to sit beside the product cases.
-// Its import, CASE_META / CASE_HERO_DETAILS / CASE_MOBILE_DETAILS entries are
-// kept below so it can be restored (re-add to WORKS + CASE_STUDIES) once the
-// story is reworked around deliberate scoping.
 
 // Marketing-site cases merged into their product siblings (2026-07 restructure):
 // readsee-website → readsee-dashboard, mailtarget-web → mailtarget-app.
@@ -54,9 +50,8 @@ const CASE_STUDIES: Record<string, React.ComponentType> = {
   "cmis-suite":        CaseStudyCmisSuiteImport,
   "mailtarget-app":    CaseStudyMailtargetApp,
   kitalabel:           CaseStudyKitalabel,
-  // sonar hidden — see note above WORKS. Restore: `sonar: CaseStudySonar,`
+  sonar:               CaseStudySonar,
 };
-void CaseStudySonar; // keep import alive while sonar is hidden
 
 // Desktop visuals of the merged marketing-site cases, appended to the
 // bottom of their product sibling's case page as "The public story".
@@ -107,8 +102,8 @@ const CASE_META: Record<string, { problem: string; outcome: string }> = {
     outcome: "Price calculator deployed as a web plugin in 2025. Removed manual spreadsheet quoting from the sales process and made pricing transparent during customer conversations.",
   },
   sonar: {
-    problem: "Email marketers had no visibility into whether their outreach emails were opened, forwarded, or ignored — tracking was buried inside full ESP platforms and unavailable as a lightweight browser tool.",
-    outcome: "Email tracking extension shipped as a Chrome plugin in 2024. Designed a lightweight web presence and extension UI for the solo-user outreach tracking use case.",
+    problem: "Solo outreach users had one question — did my email land? — but the only way to answer it was adopting a full ESP platform. The real design challenge wasn't adding capability; it was refusing it.",
+    outcome: "Shipped in 2024 as a Chrome extension plus a one-scroll landing page. Every feature request had to defend itself against the product's one job: fast visibility into opened, forwarded, or ignored. Small stayed small on purpose.",
   },
 };
 
@@ -181,16 +176,16 @@ const CASE_HERO_DETAILS: Record<string, CaseHeroDetail> = {
   },
   sonar: {
     eyebrow: "SONAR",
-    headline: "A lightweight signal layer for email outreach.",
+    headline: "Deliberately small.",
     summary:
-      "A Chrome extension and web experience that gives email marketers simple visibility into outreach activity.",
+      "One question — did my email land? — answered by a Chrome extension instead of a platform. The discipline of this project was everything it refused to become.",
     previewLabel: "Extension story",
     previewCaption: "Tracking signals made small enough for everyday outreach",
-    tags: ["Chrome extension", "Tracking", "Web"],
+    tags: ["Chrome extension", "Scoping", "Web"],
     stats: [
-      { value: "2024", label: "launch" },
+      { value: "1", label: "job: know if your email landed" },
       { value: "3", label: "pricing tiers" },
-      { value: "1", label: "extension" },
+      { value: "2024", label: "shipped" },
     ],
   },
   "design-system": {
@@ -459,52 +454,47 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
   },
   sonar: {
     summary:
-      "A lightweight email tracking extension and web presence for solo outreach workflows.",
+      "A deliberately small product: one job, one extension, one scroll of marketing — and the discipline to keep it that way.",
     focus: [
-      "Centered the product around opened, forwarded, and ignored email signals.",
-      "Designed a simple extension UI instead of a heavy email platform.",
-      "Created landing-page messaging for quick product understanding.",
+      "Scoped the product to one job: know if your email landed.",
+      "Chose an extension over a platform — and defended that choice.",
+      "Designed the web story to be understood in a single scroll.",
     ],
     sections: [
       {
         kicker: "00 — The Problem",
-        title: "The problem",
-        body: "Outreach users needed lightweight visibility into email behavior without adopting a full ESP platform.",
+        title: "One question, buried in platforms",
+        body: "Solo outreach users wanted to know one thing — opened, forwarded, or ignored? The existing answers were full ESP platforms: heavy, expensive, and built for teams running campaigns, not a person sending emails.",
       },
       {
-        kicker: "01 — Overview",
-        title: "The product",
-        body: "The overview positions SONAR as a small extension and landing page built around fast email tracking signals.",
+        kicker: "01 — The Scope Decision",
+        title: "The feature list is the design",
+        body: "The core decision wasn't what to build — it was what to refuse. No campaign builder, no contact database, no analytics suite. A Chrome extension that answers its one question fast beats a platform the solo user will never open.",
       },
       {
-        kicker: "02 — Pages Designed",
-        title: "Responsive web presence",
-        body: "This section covers the landing-page narrative, responsive mobile flow, trust cues, and product explanation.",
+        kicker: "02 — The Extension",
+        title: "Signals, not dashboards",
+        body: "The extension UI centers on the three signals that matter — opened, forwarded, ignored — surfaced where the user already works instead of in a separate tool they'd have to remember to check.",
       },
       {
-        kicker: "03 — Key Screens",
-        title: "Screens that tell the story",
-        body: "The screen walkthrough shows how the extension and web page communicate tracking, activity, and user value.",
+        kicker: "03 — The Web Story",
+        title: "Understood in one scroll",
+        body: "A product this small earns a marketing site this small: one responsive landing page where the hero places the extension inside a familiar inbox, so visitors get it before they finish scrolling.",
       },
       {
         kicker: "04 — Pricing Architecture",
-        title: "Three tiers, one clear path forward",
-        body: "Pricing is structured around free, pro, and advanced tiers so the product can scale from trial to power use.",
+        title: "Three tiers, one clear path",
+        body: "Free, pro, and advanced — a trial-to-power path that monetizes without bloating the product. The pricing page sells the one job harder, not more jobs.",
       },
       {
-        kicker: "05 — Hero Illustration",
-        title: "Anchoring the product in familiar territory",
-        body: "The hero places the extension inside a recognizable inbox context so users understand it quickly.",
-      },
-      {
-        kicker: "06 — Outcomes",
-        title: "Lightweight tracking story",
-        body: "The outcome ties together web messaging, extension UI, and the solo-user outreach use case.",
+        kicker: "05 — Outcomes",
+        title: "Small stayed small",
+        body: "Shipped in 2024: extension plus landing page. The result proves a scoping skill — knowing what a product is by being explicit about what it isn't.",
       },
     ],
     proof: [
-      "Kept the experience focused on fast outreach visibility.",
-      "Separated free, pro, and advanced tiers into a clearer purchase path.",
+      "One-job scope survived from concept to ship — no feature creep.",
+      "Extension UI + one-scroll landing page shipped as a complete product story.",
     ],
   },
   "design-system": {
