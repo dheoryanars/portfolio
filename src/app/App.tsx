@@ -119,7 +119,7 @@ type CaseHeroDetail = {
 
 const CASE_HERO_DETAILS: Record<string, CaseHeroDetail> = {
   "kitalabel-bos": {
-    eyebrow: "Kitalabel Business OS",
+    eyebrow: "KitaLabel Business OS",
     headline: "A single operating layer for custom label production.",
     summary:
       "A custom internal OS that brings orders, pricing, customers, and production visibility into one working surface.",
@@ -133,7 +133,7 @@ const CASE_HERO_DETAILS: Record<string, CaseHeroDetail> = {
     ],
   },
   kitalabel: {
-    eyebrow: "Kitalabel Price Calculator",
+    eyebrow: "KitaLabel Price Calculator",
     headline: "A self-serve pricing flow for custom label orders.",
     summary:
       "A customer-facing plugin that turns label quoting from spreadsheet handoff into guided configuration and checkout.",
@@ -241,38 +241,38 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
     sections: [
       {
         kicker: "00 — The Problem",
-        title: "The problem",
-        body: "The original workflow depended on scattered spreadsheets, chat, and manual context. The case starts by showing why a unified operational view was needed.",
+        title: "Every answer lived somewhere else",
+        body: "Orders sat in spreadsheets, pricing in another sheet, customers in chat history. Basic questions — what's in production, who hasn't reordered, what did we quote last time — meant reconstructing context by hand, every time.",
       },
       {
         kicker: "01 — Overview",
-        title: "System, screen by screen",
-        body: "The overview introduces the main operating surfaces: dashboard, internal calculator, order detail, customer list, pricing settings, and team members.",
+        title: "Six surfaces, one operating layer",
+        body: "Dashboard, internal calculator, order detail, customer list, pricing settings, team members — each surface exists because the old tools made that specific job slow. Nothing made it in just because dashboards usually have it.",
       },
       {
         kicker: "02 — Before this OS",
         title: "The team was flying blind",
-        body: "This section maps the old pain points around buyer conversion, reorder risk, production workload, and disconnected customer data.",
+        body: "Four blind spots drove the design: buyers who quote but never convert, customers overdue to reorder, production workload invisible until it jammed, and customer knowledge trapped in individual chat histories.",
       },
       {
         kicker: "03 — Key Screens",
         title: "From dashboard to team roles",
-        body: "The visual walkthrough explains the main screens and how each one supports daily operations across sales, finance, production, and admin work.",
+        body: "Each screen backs a daily routine: sales starts in the calculator, finance lives in order detail, production reads its workload off the dashboard, and admin controls pricing rules and team roles. The screens follow the jobs, not the org chart.",
       },
       {
         kicker: "04 — Key Design Decisions",
         title: "Why it works the way it does",
-        body: "Design decisions cover business pulse over raw data, sales insight inside the calculator, and segmentation as the default customer view.",
+        body: "Business pulse over raw data — the dashboard leads with what needs attention, not everything it knows. Sales insight lives inside the calculator, at the moment of quoting. And segmentation is the default customer view, because 'who should we call today?' is the real question.",
       },
       {
         kicker: "05 — Outcomes",
         title: "One source of truth",
-        body: "The outcome ties together the shipped OS, documentation pages, business rules, role structure, and the engineering-ready design spec.",
+        body: "Shipped with documentation pages, business rules, role structure, and an engineering-ready spec — and 6+ staff across sales, finance, production, and admin now run their day in it.",
       },
     ],
     proof: [
-      "Built around real staff workflows instead of isolated dashboard screens.",
-      "Reduced context switching between spreadsheets, chat, and ad-hoc tracking.",
+      "6+ staff run daily operations in it — sales, finance, production, admin.",
+      "Replaced 4 disconnected tools with one working surface.",
     ],
   },
   kitalabel: {
@@ -286,48 +286,48 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
     sections: [
       {
         kicker: "00 — The Problem",
-        title: "The problem",
-        body: "Custom label pricing was hard to explain and easy to misquote because every variable changed the final price.",
+        title: "Every variable changes the price",
+        body: "Material, shape, size, finishing, quantity, artwork — each one moves the final number. Quoting a custom label meant a spreadsheet, a salesperson, and a wait. Easy to misquote, impossible for the buyer to explore alone.",
       },
       {
         kicker: "01 — Context",
         title: "What is KitaLabel?",
-        body: "The case explains the product, the sales context, and why label buyers needed clearer self-serve pricing.",
+        body: "A custom label printing business where no two orders are identical. Buyers wanted the price before the conversation; sales wanted fewer 'just checking the price' chats. Both sides needed the same thing: self-serve pricing.",
       },
       {
         kicker: "02 — The Challenge",
-        title: "Pricing custom labels is uniquely complex",
-        body: "This section breaks down material, shape, size, finishing, quantity, and artwork variables that make the calculator difficult.",
+        title: "An exploding decision tree",
+        body: "Six variables multiply into thousands of valid combinations. The design job was making that combinatorial tree feel like a short, confident form — without hiding the choices that actually matter.",
       },
       {
         kicker: "03 — The Solution",
-        title: "A self-service pricing plugin",
-        body: "The solution turns the quote into a guided web flow built for WordPress and WooCommerce.",
+        title: "A guided flow, not a form dump",
+        body: "The plugin walks the buyer through configuration step by step, repricing live at every change — and it runs inside WordPress and WooCommerce, where the store already lived, instead of demanding a new platform.",
       },
       {
         kicker: "04 — Beyond Design",
         title: "Designed it. Built it.",
-        body: "This section covers the AI-assisted frontend engineering work and the first implementation pass.",
+        body: "I designed the flow, then built the frontend myself with AI-assisted development. One person owning both pixels and implementation kept every decision honest — nothing got designed that couldn't ship.",
       },
       {
         kicker: "05 — Key Design Decisions",
         title: "Why it works the way it does",
-        body: "The case explains the main decision points behind configuration, instant pricing, upload handling, and checkout behavior.",
+        body: "The price updates on every change instead of hiding behind a 'get quote' button — exploration is the point. Artwork upload, promo codes, and checkout each follow the same rule: keep the buyer moving, never make them ask permission.",
       },
       {
         kicker: "06 — The Complete Flow",
         title: "From configuration to checkout",
-        body: "The full flow follows the customer from product choices and design upload through promo code, quote, or checkout.",
+        body: "Configure the label, upload the design, apply a promo, then choose: save the quote or check out on the spot. The buyer controls the momentum — nothing forces a sales call.",
       },
       {
         kicker: "07 — Outcomes",
-        title: "Self-serve quoting",
-        body: "The result removed manual spreadsheet quoting from standard orders and made pricing visible 24/7.",
+        title: "Self-serve quoting, live",
+        body: "Live on kitalabel.com since 2025 — custom label pricing available 24/7, with no spreadsheet handoff between the customer and their price.",
       },
     ],
     proof: [
-      "Removed spreadsheet dependency from the pricing journey.",
-      "Gave customers a clearer path from configuration to checkout.",
+      "Live in production on kitalabel.com — pricing without the spreadsheet handoff.",
+      "Designed and built by one person, AI-assisted, from flow to frontend.",
     ],
   },
   "readsee-dashboard": {
