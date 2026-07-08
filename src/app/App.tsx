@@ -412,8 +412,8 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       },
       {
         kicker: "02 — Deep Dive · DMS",
-        title: "A document's life, made visible",
-        body: "The document module is the deepest: every file moves through draft, review, approval, revision, and controlled release. Each step leaves a trace, so 'where is it?' became a question the system answers, not a colleague.",
+        title: "Designed from the paper itself",
+        body: "Discovery started with photos of the actual paper forms staff passed around — the digital lifecycle (draft, review, approval, revision, controlled release) mirrors how that paper really moved. Every step leaves a trace, so 'where is it?' became a question the system answers, not a colleague.",
       },
       {
         kicker: "03 — The Watermark System",
@@ -421,9 +421,9 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
         body: "The status problem followed printed copies: an approved PDF looks identical to an obsolete one. So the status lives in the document — controlled, draft, obsolete, and uncontrolled each get a visible watermark. An outdated printout exposes itself.",
       },
       {
-        kicker: "04 — DMS Key Screens",
-        title: "Lists, approvals, permissions",
-        body: "Document lists show status at a glance; detail views carry the full history; approval screens force a decision; permission states control who can even see a controlled file. Visibility everywhere, edit rights almost nowhere.",
+        kicker: "04 — The Migration",
+        title: "Paper didn't get dumped in — it got migrated",
+        body: "Existing physical documents entered through a dedicated admin workflow, not a bulk import: set access rights, re-activate obsolete files, correct effective dates, and log every change. A document that lived on paper arrives with the same audit trail as one born digital.",
       },
       {
         kicker: "05 — Module 02 · Purchase Request",
@@ -438,7 +438,7 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       {
         kicker: "07 — The Iteration",
         title: "Versioned in the open",
-        body: "The redesign shipped through review cycles, not one big reveal — v1.1, then v1.1.2, with meeting notes captured beside the flows in the design file. Every improvement traces back to a discussion the team actually had.",
+        body: "Nothing shipped as one big reveal. Procurement went v1.1 then v1.1.2; DMS got a numbered Improvement Phase 2 plus a tooltip tour to onboard staff — and meeting notes live beside the flows in the design file. Every improvement traces back to a discussion the team actually had.",
       },
       {
         kicker: "08 — Module 03 · Invoice TTI",
