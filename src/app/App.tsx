@@ -596,22 +596,22 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
 
 const PROCESS_STEPS = [
   {
-    num: "01 Discover",
+    num: "01",
     title: "Discover",
     body: "Interviews, audits and data digging until the real problem surfaces — not the one in the brief.",
   },
   {
-    num: "02 Define",
+    num: "02",
     title: "Define",
     body: "Sharp problem statements, flows and success metrics. Align everyone before a pixel moves.",
   },
   {
-    num: "03 Design",
+    num: "03",
     title: "Design",
     body: "Systems first. Wireframes to polished UI, prototyped and pressure-tested with real users.",
   },
   {
-    num: "04 Deliver",
+    num: "04",
     title: "Deliver",
     body: "Tight handoff, documented components, and partnership with engineering through ship.",
   },
