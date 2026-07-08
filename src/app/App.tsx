@@ -35,7 +35,7 @@ const WORKS: WorkItem[] = [
   { num: "03", title: "Read/See",                   category: "SaaS · CDP Product Design",                          year: "2022–2023", slug: "readsee-dashboard", thumb: "/thumbnails/readsee-dashboard.png" },
   { num: "04", title: "CMIS — Enterprise Suite",    category: "Enterprise · Document, Invoice & Purchase Flows",     year: "2024–2025", slug: "cmis-suite",       thumb: "/thumbnails/cmis-suite.png" },
   { num: "05", title: "Universal Design System",    category: "Design System · Component Library",                   year: "2023–2024", slug: "design-system",    thumb: "/thumbnails/design-system.png" },
-  { num: "06", title: "Mailtarget App",             category: "SaaS · Email API",                                    year: "2023–2024", slug: "mailtarget-app",   thumb: "/thumbnails/mailtarget-app.png" },
+  { num: "06", title: "Mailtarget App",             category: "SaaS · Email API",                                    year: "2022–2023", slug: "mailtarget-app",   thumb: "/thumbnails/mailtarget-app.png" },
   { num: "07", title: "SONAR",                      category: "Chrome Extension · Deliberately Small Product",       year: "2024",      slug: "sonar",            thumb: "/thumbnails/sonar.png" },
 ];
 
@@ -79,7 +79,7 @@ const MERGED_PUBLIC_STORY: Record<
 const CASE_META: Record<string, { problem: string; outcome: string }> = {
   "kitalabel-bos": {
     problem: "KitaLabel's internal operations ran across disconnected tools — no unified view of orders, pricing, customers, or production status. Staff context-switched between spreadsheets, WhatsApp, and ad-hoc dashboards to do basic work.",
-    outcome: "Unified operations into a single B2B OS — replacing 4 disconnected tools. Delivered as an AI-assisted development project in 2026. Internal adoption ongoing.",
+    outcome: "Unified operations into a single B2B OS — replacing 4 disconnected tools. Delivered as an AI-assisted development project in 2026; 6+ staff across sales, finance, production, and admin now run their day in it.",
   },
   "design-system": {
     problem: "The product team was designing the same components repeatedly across products — buttons, inputs, modals — each slightly different, none documented. Every new screen re-answered questions the team had already answered.",
@@ -95,11 +95,11 @@ const CASE_META: Record<string, { problem: string; outcome: string }> = {
   },
   "mailtarget-app": {
     problem: "Mailtarget's platform had grown feature by feature without a system — campaign builder, contacts, and automation each looked and behaved like different products, and users paid the relearning cost on every switch.",
-    outcome: "One component language now runs all three core flows, shipped through 2023–2024. Learn the campaign builder and you already know contacts and automation. I owned the design within the Mailtarget team, and also designed the marketing site that positions the API publicly.",
+    outcome: "One component language now runs all three core flows, shipped through 2022–2023. Learn the campaign builder and you already know contacts and automation. I owned the design within the Mailtarget team, and also designed the marketing site that positions the API publicly.",
   },
   kitalabel: {
     problem: "Sales teams were manually calculating custom label pricing using spreadsheets shared over WhatsApp — error-prone, slow, and invisible to customers during the quoting process.",
-    outcome: "Price calculator deployed as a web plugin in 2025. Removed manual spreadsheet quoting from the sales process and made pricing transparent during customer conversations.",
+    outcome: "Live on kitalabel.com since 2025: custom label pricing is self-serve and available 24/7, with no spreadsheet handoff between the customer and their price.",
   },
   sonar: {
     problem: "Solo outreach users had one question — did my email land? — but the only way to answer it was adopting a full ESP platform. The real design challenge wasn't adding capability; it was refusing it.",
@@ -129,7 +129,7 @@ const CASE_HERO_DETAILS: Record<string, CaseHeroDetail> = {
     stats: [
       { value: "4", label: "tools replaced" },
       { value: "2026", label: "delivery" },
-      { value: "1", label: "source of truth" },
+      { value: "6+", label: "staff run their day in it" },
     ],
   },
   kitalabel: {
@@ -213,7 +213,7 @@ const CASE_HERO_DETAILS: Record<string, CaseHeroDetail> = {
     stats: [
       { value: "3", label: "core flows unified" },
       { value: "2", label: "environments (sandbox → production)" },
-      { value: "2023–24", label: "shipped through" },
+      { value: "2022–23", label: "shipped through" },
     ],
   },
 };
@@ -584,7 +584,7 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       {
         kicker: "06 — Outcomes",
         title: "One platform again",
-        body: "One component language now runs all three core flows, shipped through 2023–2024. Learn the campaign builder and you already know contacts and automation.",
+        body: "One component language now runs all three core flows, shipped through 2022–2023. Learn the campaign builder and you already know contacts and automation.",
       },
     ],
     proof: [
