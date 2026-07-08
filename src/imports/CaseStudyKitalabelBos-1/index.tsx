@@ -2026,6 +2026,109 @@ function Frame117() {
   );
 }
 
+// ── Pain-point mini diagrams (Section 02) ─────────────────────────────────────
+// Hand-built SVG illustrations in the site's visual language: Space Mono
+// labels, thin strokes, red for the pain signal. viewBox 484x96 = card width.
+
+const vizStroke = "rgba(242,241,236,0.28)";
+const vizText = "#9a9a93";
+const vizRed = "#e5484d";
+const vizFont = { fontFamily: "'Space Mono', monospace", fontSize: 9 } as const;
+
+function PainViz1() {
+  // Four disconnected tools, dashed lines that never reach a (missing) hub.
+  return (
+    <svg className="w-full h-auto shrink-0" viewBox="0 0 484 96" fill="none">
+      {[
+        { x: 8, y: 8, label: "Sheets" },
+        { x: 8, y: 62, label: "Ledger" },
+        { x: 384, y: 8, label: "WhatsApp" },
+        { x: 384, y: 62, label: "Woo Store" },
+      ].map((b) => (
+        <g key={b.label}>
+          <rect x={b.x} y={b.y} width="92" height="26" rx="3" stroke={vizStroke} />
+          <text x={b.x + 46} y={b.y + 17} textAnchor="middle" fill={vizText} style={vizFont}>{b.label}</text>
+        </g>
+      ))}
+      <line x1="104" y1="24" x2="200" y2="42" stroke={vizStroke} strokeDasharray="3 6" />
+      <line x1="104" y1="72" x2="200" y2="54" stroke={vizStroke} strokeDasharray="3 6" />
+      <line x1="380" y1="24" x2="284" y2="42" stroke={vizStroke} strokeDasharray="3 6" />
+      <line x1="380" y1="72" x2="284" y2="54" stroke={vizStroke} strokeDasharray="3 6" />
+      <circle cx="242" cy="48" r="21" stroke={vizRed} strokeDasharray="4 4" opacity="0.85" />
+      <text x="242" y="53" textAnchor="middle" fill={vizRed} style={{ ...vizFont, fontSize: 13 }}>?</text>
+    </svg>
+  );
+}
+
+function PainViz2() {
+  // 1,847 anonymous dots; a high-value buyer and a lapsed one render identically.
+  return (
+    <svg className="w-full h-auto shrink-0" viewBox="0 0 484 96" fill="none">
+      {Array.from({ length: 44 }).map((_, i) => (
+        <circle key={i} cx={20 + (i % 22) * 21} cy={i < 22 ? 10 : 22} r="2.2" fill={vizText} opacity="0.18" />
+      ))}
+      <g>
+        <circle cx="170" cy="52" r="11" stroke={vizText} />
+        <path d="M152 78 a18 14 0 0 1 36 0" stroke={vizText} />
+        <text x="170" y="92" textAnchor="middle" fill={vizText} style={vizFont}>high-value</text>
+      </g>
+      <text x="242" y="66" textAnchor="middle" fill={vizRed} style={{ ...vizFont, fontSize: 20 }}>=</text>
+      <g>
+        <circle cx="314" cy="52" r="11" stroke={vizText} />
+        <path d="M296 78 a18 14 0 0 1 36 0" stroke={vizText} />
+        <text x="314" y="92" textAnchor="middle" fill={vizText} style={vizFont}>lapsed</text>
+      </g>
+    </svg>
+  );
+}
+
+function PainViz3() {
+  // Two price tags for the same label order that disagree.
+  return (
+    <svg className="w-full h-auto shrink-0" viewBox="0 0 484 96" fill="none">
+      <g>
+        <rect x="52" y="20" width="156" height="56" rx="3" stroke={vizStroke} />
+        <text x="66" y="40" fill={vizText} style={vizFont}>Internal quote</text>
+        <rect x="66" y="52" width="64" height="7" rx="2" fill={vizText} opacity="0.55" />
+        <text x="138" y="60" fill={vizText} style={vizFont} opacity="0.7">Rp</text>
+      </g>
+      <text x="242" y="56" textAnchor="middle" fill={vizRed} style={{ ...vizFont, fontSize: 18 }}>≠</text>
+      <g>
+        <rect x="276" y="20" width="156" height="56" rx="3" stroke={vizStroke} />
+        <text x="290" y="40" fill={vizText} style={vizFont}>Storefront calc</text>
+        <rect x="290" y="52" width="104" height="7" rx="2" fill={vizText} opacity="0.55" />
+        <text x="402" y="60" fill={vizText} style={vizFont} opacity="0.7">Rp</text>
+      </g>
+    </svg>
+  );
+}
+
+function PainViz4() {
+  // Three roles, one identical unfiltered screen for everyone.
+  return (
+    <svg className="w-full h-auto shrink-0" viewBox="0 0 484 96" fill="none">
+      {[
+        { y: 20, label: "Manager" },
+        { y: 48, label: "Rep" },
+        { y: 76, label: "Finance" },
+      ].map((r) => (
+        <g key={r.label}>
+          <text x="24" y={r.y + 3} fill={vizText} style={vizFont}>{r.label}</text>
+          <line x1="92" y1={r.y} x2="236" y2="48" stroke={vizStroke} />
+        </g>
+      ))}
+      <path d="M236 48 l-7 -4 v8 z" fill={vizText} opacity="0.7" />
+      <rect x="248" y="16" width="184" height="64" rx="3" stroke={vizStroke} />
+      {[30, 42, 54].map((y) => (
+        <rect key={y} x="260" y={y} width="128" height="5" rx="2" fill={vizText} opacity="0.3" />
+      ))}
+      <circle cx="410" cy="32" r="7" stroke={vizRed} />
+      <circle cx="410" cy="32" r="2.4" fill={vizRed} />
+      <text x="260" y="72" fill={vizRed} style={{ ...vizFont, fontSize: 8 }}>one unfiltered view for everyone</text>
+    </svg>
+  );
+}
+
 function Frame121() {
   return (
     <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-name="Frame">
@@ -2041,6 +2144,7 @@ function Frame120() {
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[1px]" />
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[20px] items-start p-[40px] relative size-full">
         <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[14px] whitespace-nowrap">01</p>
+        <PainViz1 />
         <Frame121 />
       </div>
     </div>
@@ -2062,6 +2166,7 @@ function Frame122() {
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[1px]" />
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[20px] items-start p-[40px] relative size-full">
         <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[14px] whitespace-nowrap">02</p>
+        <PainViz2 />
         <Frame123 />
       </div>
     </div>
@@ -2070,7 +2175,7 @@ function Frame122() {
 
 function Frame119() {
   return (
-    <div className="content-stretch flex gap-[24px] h-[216px] items-start relative shrink-0 w-full" data-name="Frame">
+    <div className="content-stretch flex gap-[24px] items-stretch relative shrink-0 w-full" data-name="Frame">
       <Frame120 />
       <Frame122 />
     </div>
@@ -2092,6 +2197,7 @@ function Frame125() {
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[1px]" />
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[20px] items-start p-[40px] relative size-full">
         <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[14px] whitespace-nowrap">03</p>
+        <PainViz3 />
         <Frame126 />
       </div>
     </div>
@@ -2113,6 +2219,7 @@ function Frame127() {
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[1px]" />
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[20px] items-start p-[40px] relative size-full">
         <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[14px] whitespace-nowrap">04</p>
+        <PainViz4 />
         <Frame128 />
       </div>
     </div>
@@ -2121,7 +2228,7 @@ function Frame127() {
 
 function Frame124() {
   return (
-    <div className="content-stretch flex gap-[24px] h-[196px] items-start relative shrink-0 w-full" data-name="Frame">
+    <div className="content-stretch flex gap-[24px] items-stretch relative shrink-0 w-full" data-name="Frame">
       <Frame125 />
       <Frame127 />
     </div>
