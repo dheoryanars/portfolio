@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHeroParallax, useWorkCardParallax, useAboutParallax, useContactParallax, useProcessParallax, useCaseStudyParallax } from "./components/parallax";
 import VirtualPet from "./components/VirtualPet";
 import {
@@ -1442,26 +1442,38 @@ function ArchiveRow({ item, index, onNavigate }: { item: WorkItem; index: number
 
 // ── Process Section ───────────────────────────────────────────────────────────
 
-function ProcessRingCard({
+function ProcessStepCard({
   step,
   active,
+  done,
+  onClick,
 }: {
   step: (typeof PROCESS_STEPS)[0];
   active: boolean;
+  done: boolean;
+  onClick: () => void;
 }) {
   return (
     <div
-      className="flex h-full w-full flex-col gap-6 p-8"
+      onClick={onClick}
+      className="flex flex-1 cursor-pointer flex-col gap-6 p-7 lg:p-8"
       style={{
-        background: active ? "rgba(19,19,21,0.97)" : "rgba(13,13,14,0.94)",
+        background: active ? "rgba(19,19,21,0.97)" : "transparent",
         boxShadow: active
           ? "inset 0 0 0 1px rgba(204,110,248,0.35)"
           : "inset 0 0 0 1px rgba(255,255,255,0.08)",
-        opacity: active ? 1 : 0.4,
-        transition: "opacity 0.4s, box-shadow 0.4s",
+        opacity: active ? 1 : 0.72,
+        transition: "opacity 0.35s, box-shadow 0.35s, background 0.35s",
       }}
     >
-      <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, color: PURPLE }}>
+      <span
+        style={{
+          fontFamily: "'Space Mono', monospace",
+          fontSize: 13,
+          color: active || done ? PURPLE : DIM,
+          transition: "color 0.35s",
+        }}
+      >
         {step.num}
       </span>
       <div className="flex flex-col gap-4">
@@ -1494,65 +1506,29 @@ function ProcessSection() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true });
 
-  // ── 360° interactive ring ──────────────────────────────────────────────────
-  // The four steps sit on a 3D carousel: drag to spin, snaps to the nearest
-  // step. The loop is the point — Deliver feeds the next Discover.
-  // 8 slots at 45° with each step placed twice: with only 4 slots at 90° the
-  // neighbouring cards sit exactly edge-on (invisible). Doubling the ring
-  // keeps the loop true AND shows angled neighbours for real depth.
-  const SLOTS = PROCESS_STEPS.length * 2;
-  const STEP = 360 / SLOTS;
-  const [angle, setAngle] = useState(0);
-  const [dragging, setDragging] = useState(false);
-  const drag = useRef<{ x: number; angle: number } | null>(null);
-  const [radius, setRadius] = useState(300);
+  // ── Directed pipeline ───────────────────────────────────────────────────────
+  // A process needs sequence, direction, and overview: all four steps stay
+  // visible, the track fills forward as the active step advances, and an
+  // explicit return arc closes the loop (deliver feeds the next discover).
+  const [active, setActive] = useState(0);
+  const [userDrove, setUserDrove] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const trackInView = useInView(trackRef, { margin: "-15%" });
 
   useEffect(() => {
-    const measure = () => {
-      const w = window.innerWidth;
-      setRadius(Math.max(300, Math.min(430, w * 0.3)));
-    };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, []);
+    if (!trackInView || userDrove) return;
+    const id = setInterval(
+      () => setActive((a) => (a + 1) % PROCESS_STEPS.length),
+      3400,
+    );
+    return () => clearInterval(id);
+  }, [trackInView, userDrove]);
 
-  const frontSlot =
-    ((Math.round(-angle / STEP) % SLOTS) + SLOTS) % SLOTS;
-  const activeIndex = frontSlot % PROCESS_STEPS.length;
-  const snap = (a: number) => Math.round(a / STEP) * STEP;
-  // Jump to whichever copy of step i is closest to the current rotation.
-  const goTo = (i: number) =>
-    setAngle((a) => {
-      let best = a;
-      let bestDist = Infinity;
-      for (const slot of [i, i + PROCESS_STEPS.length]) {
-        for (let k = -1; k <= 1; k++) {
-          const cand = -slot * STEP + k * 360 + Math.round(a / 360) * 360;
-          if (Math.abs(cand - a) < bestDist) {
-            bestDist = Math.abs(cand - a);
-            best = cand;
-          }
-        }
-      }
-      return best;
-    });
-
-  const onPointerDown = (e: React.PointerEvent) => {
-    (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
-    drag.current = { x: e.clientX, angle };
-    setDragging(true);
+  const pick = (i: number) => {
+    setUserDrove(true);
+    setActive(i);
   };
-  const onPointerMove = (e: React.PointerEvent) => {
-    if (!drag.current) return;
-    setAngle(drag.current.angle + (e.clientX - drag.current.x) * 0.35);
-  };
-  const endDrag = () => {
-    if (!drag.current) return;
-    drag.current = null;
-    setDragging(false);
-    setAngle((a) => snap(a));
-  };
+  const wrap = active === 0;
 
   return (
     <section
@@ -1561,7 +1537,6 @@ function ProcessSection() {
       style={{
         background: BG2,
         borderTop: "1px solid rgba(255,255,255,0.08)",
-        overflow: "hidden",
       }}
     >
       <div className="mx-auto max-w-[1280px]">
@@ -1619,122 +1594,108 @@ function ProcessSection() {
           </motion.h2>
         </motion.div>
 
-        {/* 3D stage */}
-        <div
-          className="relative mx-auto select-none"
-          style={{
-            perspective: 1400,
-            height: 400,
-            maxWidth: 960,
-            touchAction: "pan-y",
-            cursor: dragging ? "grabbing" : "grab",
-          }}
-          onPointerDown={onPointerDown}
-          onPointerMove={onPointerMove}
-          onPointerUp={endDrag}
-          onPointerCancel={endDrag}
-          onPointerLeave={endDrag}
-        >
-          <motion.div
-            className="absolute inset-0"
-            animate={{ rotateY: angle }}
-            transition={
-              dragging
-                ? { duration: 0 }
-                : { type: "spring", stiffness: 90, damping: 16 }
-            }
-            style={{ transformStyle: "preserve-3d" }}
-          >
-            {Array.from({ length: SLOTS }).map((_, slot) => (
-              <div
-                key={slot}
-                className="absolute left-1/2 top-1/2"
-                style={{
-                  width: "min(320px, 80vw)",
-                  height: 330,
-                  transform: `translate(-50%, -50%) rotateY(${slot * STEP}deg) translateZ(${radius}px)`,
-                  backfaceVisibility: "hidden",
-                  WebkitBackfaceVisibility: "hidden",
-                }}
-              >
-                <ProcessRingCard
-                  step={PROCESS_STEPS[slot % PROCESS_STEPS.length]}
-                  active={slot === frontSlot}
-                />
-              </div>
-            ))}
-          </motion.div>
-        </div>
+        <div ref={trackRef}>
+          {/* Return arc: the explicit loop from Deliver back to Discover */}
+          <div className="relative hidden sm:block" style={{ height: 44 }}>
+            <svg
+              className="absolute inset-0 h-full w-full"
+              viewBox="0 0 1000 44"
+              preserveAspectRatio="none"
+              fill="none"
+            >
+              <path
+                d="M 875 40 C 875 6, 125 6, 125 40"
+                stroke={wrap ? PURPLE : "rgba(255,255,255,0.16)"}
+                strokeWidth="1"
+                strokeDasharray="4 6"
+                style={{ transition: "stroke 0.5s" }}
+              />
+              <path
+                d="M 125 40 l -4 -7 l 8 0 z"
+                fill={wrap ? PURPLE : "rgba(255,255,255,0.3)"}
+                style={{ transition: "fill 0.5s" }}
+              />
+            </svg>
+            <span
+              className="absolute left-1/2 -translate-x-1/2"
+              style={{
+                top: 0,
+                fontFamily: "'Space Mono', monospace",
+                fontSize: 10,
+                letterSpacing: "0.12em",
+                color: wrap ? PURPLE : DIM,
+                background: BG2,
+                padding: "0 12px",
+                transition: "color 0.5s",
+              }}
+            >
+              ↺ the loop — deliver feeds the next discover
+            </span>
+          </div>
 
-        {/* Controls */}
-        <div className="mt-10 flex items-center justify-center gap-8">
-          <button
-            aria-label="Previous step"
-            onClick={() => setAngle((a) => snap(a) + STEP)}
-            className="transition-colors duration-200"
-            style={{
-              fontFamily: "'Space Mono', monospace",
-              fontSize: 16,
-              color: MUTED,
-              background: "transparent",
-              border: "1px solid rgba(255,255,255,0.12)",
-              borderRadius: 999,
-              width: 40,
-              height: 40,
-              cursor: "pointer",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = PURPLE)}
-            onMouseLeave={(e) => (e.currentTarget.style.color = MUTED)}
-          >
-            ←
-          </button>
-          <div className="flex gap-5">
+          {/* Progress track: nodes + forward-filling segments */}
+          <div className="mb-10 hidden items-center sm:flex" style={{ padding: "0 12.5%" }}>
             {PROCESS_STEPS.map((step, i) => (
-              <button
-                key={step.num}
-                onClick={() => goTo(i)}
-                style={{
-                  fontFamily: "'Space Mono', monospace",
-                  fontSize: 12,
-                  color: i === activeIndex ? PURPLE : DIM,
-                  background: "transparent",
-                  border: "none",
-                  borderBottom:
-                    i === activeIndex
-                      ? `1px solid ${PURPLE}`
-                      : "1px solid transparent",
-                  paddingBottom: 4,
-                  cursor: "pointer",
-                  transition: "color 0.25s, border-color 0.25s",
-                }}
-              >
-                {step.num} {step.title}
-              </button>
+              <React.Fragment key={step.num}>
+                <button
+                  aria-label={`Step ${step.num}: ${step.title}`}
+                  onClick={() => pick(i)}
+                  className="relative shrink-0"
+                  style={{
+                    width: 12,
+                    height: 12,
+                    borderRadius: 999,
+                    border: `1px solid ${i <= active ? PURPLE : "rgba(255,255,255,0.25)"}`,
+                    background: i <= active ? PURPLE : "transparent",
+                    cursor: "pointer",
+                    transition: "background 0.35s, border-color 0.35s",
+                  }}
+                />
+                {i < PROCESS_STEPS.length - 1 && (
+                  <div
+                    className="relative h-px flex-1"
+                    style={{ background: "rgba(255,255,255,0.12)" }}
+                  >
+                    <motion.div
+                      className="absolute inset-y-0 left-0 w-full"
+                      style={{ background: PURPLE, transformOrigin: "left" }}
+                      animate={{ scaleX: i < active ? 1 : 0 }}
+                      transition={{ duration: 0.5, ease }}
+                    />
+                  </div>
+                )}
+              </React.Fragment>
             ))}
           </div>
-          <button
-            aria-label="Next step"
-            onClick={() => setAngle((a) => snap(a) - STEP)}
-            className="transition-colors duration-200"
-            style={{
-              fontFamily: "'Space Mono', monospace",
-              fontSize: 16,
-              color: MUTED,
-              background: "transparent",
-              border: "1px solid rgba(255,255,255,0.12)",
-              borderRadius: 999,
-              width: 40,
-              height: 40,
-              cursor: "pointer",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = PURPLE)}
-            onMouseLeave={(e) => (e.currentTarget.style.color = MUTED)}
-          >
-            →
-          </button>
+        </div>
+
+        {/* All four steps, always visible, in order */}
+        <div className="flex flex-col gap-4 sm:flex-row sm:gap-0">
+          {PROCESS_STEPS.map((step, i) => (
+            <React.Fragment key={step.title}>
+              <ProcessStepCard
+                step={step}
+                active={i === active}
+                done={i < active}
+                onClick={() => pick(i)}
+              />
+              {i < PROCESS_STEPS.length - 1 && (
+                <div
+                  className="flex items-center justify-center sm:hidden"
+                  style={{
+                    fontFamily: "'Space Mono', monospace",
+                    fontSize: 14,
+                    color: DIM,
+                  }}
+                >
+                  ↓
+                </div>
+              )}
+            </React.Fragment>
+          ))}
         </div>
         <p
-          className="mt-6 text-center"
+          className="mt-6 text-center sm:hidden"
           style={{
             fontFamily: "'Space Mono', monospace",
             fontSize: 11,
@@ -1742,7 +1703,7 @@ function ProcessSection() {
             letterSpacing: "0.08em",
           }}
         >
-          drag to spin — the process loops: deliver feeds the next discover
+          ↺ then back to discover
         </p>
       </div>
     </section>
