@@ -3460,7 +3460,7 @@ function CaseStudyUnifiedHero({
                 className="case-hero-preview-title"
                 style={{
                   fontFamily: "'Space Grotesk', sans-serif",
-                  fontSize: "clamp(22px, 4.2vw, 34px)",
+                  fontSize: "clamp(15px, 1.4vw, 20px)",
                   fontWeight: 700,
                   color: FG,
                   letterSpacing: 0,
@@ -3708,7 +3708,7 @@ function CaseStudyPage({
           }
 
           .case-hero-preview-title {
-            font-size: 19px !important;
+            font-size: 16px !important;
             line-height: 1.18 !important;
             max-width: 100% !important;
           }
