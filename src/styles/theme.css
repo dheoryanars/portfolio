@@ -131,6 +131,14 @@
     @apply bg-background text-foreground;
   }
 
+  /* The app paints its dark surfaces on inner divs; html/body default to the
+     (light) --background token. During route transitions and fast scrolling
+     the browser exposes that backdrop → white flash. Pin it to the site bg. */
+  html,
+  body {
+    background-color: #0a0a0a;
+  }
+
   /**
   * Default typography styles for HTML elements (h1-h4, p, label, button, input).
   * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.

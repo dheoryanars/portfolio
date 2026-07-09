@@ -1,5 +1,12 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-08 11:21 - [Codex] Push attempt failed
+
+**Done:** Read `AGENTS.md` and latest `WORKLOG.md` entry before acting. Did not rebase, amend, commit, or modify project files/history. Attempted to push final `main` to GitHub.
+
+**Found:** `git` is not available on PATH, and the default Git-for-Windows locations used by `push.bat` do not exist (`C:\Program Files\Git\cmd\git.exe`, `%LOCALAPPDATA%\Programs\Git\cmd\git.exe`). Sandbox WSL status check returned access denied. Escalated fallback command `wsl git -C "/mnt/d/Porto/Dheoryan ars" push origin main` timed out after about 124 seconds with no success output, likely waiting on WSL/network/auth.
+
+**Next:** Push still needs to be completed from an environment with working Git/GitHub auth, then Vercel should auto-deploy from `origin/main`.
 ## 2026-07-08 — [Claude] QA pass + both known bugs fixed (commit 897f1c4)
 
 **Done:**
@@ -20,6 +27,10 @@
 **Side projects (discussed, NOT implemented — user parked them):** Slypnir agency (co-founder) → experience line + contact routing when resumed; gated on whether current employer knows. Moots (moots.lovable.app, "Mutuals") → archive-row candidate: live tribe-based meetup social app with real users (tribes, ventures with slots + chat, Jakarta activity), AI-assisted build. Open facts needed: Slypnir years, Moots role/status sentence.
 
 **BOS "flying blind" section illustrated (commit 3494452):** Added PainViz1–4 inline SVG mini-diagrams to the 4 pain cards in `src/imports/CaseStudyKitalabelBos-1/index.tsx` (inserted before Frame121; wired after each card number; fixed row heights h-[216px]/h-[196px] → items-stretch). Diagrams: disconnected tools + missing hub "?", identical high-value/lapsed avatars with red "=", mismatched price tags "≠", three roles → one unfiltered screen with red eye. NOTE: Edit-tool tail-truncation also affects import files — this file was rebuilt from git HEAD + scripted re-apply; prefer scripted edits on 12k-line imports. Pattern is reusable for other cases' desktop sections if user wants more illustration passes.
+
+**Process section final (commit 1b9aedb):** User correctly critiqued the 3D ring — it didn't represent a process (no sequence/direction/overview). Replaced with directed pipeline: all 4 cards visible, progress track with nodes + forward-filling segments, auto-advance every 3.4s while in view (stops permanently once user clicks), dashed return arc labeled "the loop — deliver feeds the next discover" that turns purple on wrap. Mobile: stacked cards + ↓ separators + loop line. Ring code deleted (pattern noted for possible reuse on testimonials/Lab if ever needed).
+
+**Polish round (commits a184a7f → 799ba62):** hero preview caption shrunk sitewide (22-34px → 15-20px); process kickers de-duplicated ("01 Discover"→"01"); Process section rebuilt as 360° interactive 3D ring (drag/arrows/indicators, 8 slots at 45° with doubled steps so neighbours stay visible, spring snap, "deliver feeds the next discover" hint). ProcessCard + useProcessParallax usage removed. NEEDS: real-phone check of the ring (drag vs scroll behavior; touchAction pan-y is set). Deploy still BLOCKED: machine has no git (Codex confirmed) — user to install Git for Windows, then push.bat → Vercel auto-deploy → verify https://dheoryan.vercel.app/ (17+ commits pending).
 
 **Next:** final thumbnails/screenshots (user) → full visual pass → deploy to Vercel. Also consider: real mobile-device check of new copy lengths.
 
@@ -77,4 +88,41 @@ Entry format:
 **Addendum (same session):** User corrected facts — Read/See Dashboard and Mailtarget App were TEAM projects; user's role was design only. Copy updated to precise attribution: "My role: product designer on the X team", "I owned the design side within the team". Rule for all agents: "I" only for design work the user personally did; team framing for product/build claims. Do not solo-credit team projects. (File truncated a second time during these edits — repaired; do not mix bash writes and Edit-tool writes on App.tsx.)
 
 **Phase 2 (same session, all verified live):**
-- CMIS Suite: 16 mobile sections → 8. DMS + watermark system now the deep-dive; Purch
+- CMIS Suite: 16 mobile sections → 8. DMS + watermark system now the deep-dive; Purchase Request and Invoice TTI summarized to one section each. New hero: "Where is my document? Now the document answers." Stats now real: 3 modules / 4 procurement tracks / 4 watermark states.
+- Design System: payoff framing. New hero "Design it once, or redesign it forever." New section 05 "Where It Paid Off" ties it to Read/See's 700+ screens and Mailtarget's flows. CASE_META rewritten.
+- "Vibe Code/Vibe Coder" removed sitewide per user (positioning): EXPERIENCE role → "Product Designer (UI/UX) · AI-Assisted Development", MARQUEE item → "AI-Assisted Development". (VirtualPet's playful "vibe budget" line kept — pet personality, not positioning.)
+- SONAR hidden per user: removed from WORKS + CASE_STUDIES (grid shows 6 works now, renumbered). Its data blocks + import kept with restore instructions in comments near WORKS. Restore when story is reworked around deliberate scoping.
+- Edit-tool writes truncated the file tail TWICE more (and once appended 402 null bytes). Every repair verified with esbuild. Backup of last-good App.tsx at /tmp/App.tsx.claude-backup (sandbox). RULE: after ANY App.tsx edit, run esbuild syntax check before moving on; expect tail damage and repair from the App() return block.
+
+**Addendum 2:** CMIS is also a team project (user's role: design only). CASE_META outcome + focus bullet updated to "product designer on the CMIS project team". Team-project tally so far: Read/See Dashboard, Mailtarget App, CMIS. Solo (AI-assisted design+build): KitaLabel BOS, KitaLabel Calculator. UNCONFIRMED: Universal Design System ownership — ask user before implying solo credit. (Another tail truncation during these edits — repaired, esbuild-verified.)
+
+**Next:**
+- Task: work grid → featured + archive layout (featured: kitalabel-bos, kitalabel, readsee-dashboard, cmis-suite; archive: design-system, mailtarget-app). NOT started — needs WorkSection render changes.
+- Still open: back-pill overlap on mobile, white flash during fast scroll, KitaLabel vs Kitalabel casing, real numbers for stat blocks (user to supply), About stat "9+ projects shipped" review, Mailtarget dates (employment 2022–2023 vs case 2023–2024 — ask user).
+- URGENT: repo has large uncommitted changes; user has not committed despite two truncation incidents. Push for commit.
+- User wants teach-along mode: every change explained (what was wrong → what/why → how implemented).
+
+## 2026-07-07 — [Claude] Mobile audit + full case-study content critique (read-only, NO code changes)
+
+**Done:**
+- Verified dev server at http://127.0.0.1:5174 renders correctly; walked the `design-system` case study end-to-end at 390px mobile width. Mobile case-study layout (walkthrough / visual index / numbered sections) works well.
+- Read all case content in `src/app/App.tsx`: `WORKS`, `CASE_META`, `CASE_HERO_DETAILS`, `CASE_MOBILE_DETAILS`, `PROCESS_STEPS`, `EXPERIENCE`, hero copy.
+
+**Found (bugs):**
+1. Sticky "Back to work" pill overlaps headings/body text while scrolling on mobile — needs scrim or hide-on-scroll-down.
+2. Occasional full-white viewport flash during fast scroll on mobile (likely parallax transforms) — verify on real device.
+3. Copy inconsistency: "KitaLabel" vs "Kitalabel" (e.g. `CASE_HERO_DETAILS` eyebrows).
+
+**Found (content critique — discussed with user, decisions PENDING):**
+1. Stat blocks are mostly decorative ("1 source of truth", "100% responsive", "24/7") — replace with real before/after numbers or remove.
+2. Section body copy is meta-descriptive ("This section covers...") — should be rewritten first-person, active, specific.
+3. No role/team clarity in any case study ("Designed it. Built it." in kitalabel is the model to follow).
+4. Case strength ranking: STRONG kitalabel-bos (flagship), kitalabel, readsee-dashboard · MEDIUM cmis-suite (15 sections, too bloated — cut to ~7), design-system (generic, quantify reuse) · WEAK sonar, readsee-website, mailtarget-web (dilute; consider merging marketing sites into product siblings).
+5. 9 cases too many — proposal: 4 featured + archive grid.
+6. "Vibe Coder" / "Vibe Code" wording undercuts B2B positioning — prefer "AI-assisted development".
+7. Thumbnails excluded from critique — user hasn't placed final screenshots yet.
+
+**Next:**
+- BLOCKED on user: discussion in progress, do NOT implement critique items yet.
+- Bug fixes 1-2 (back-pill overlap, white flash) are safe to pick up anytime.
+- After discussion: likely first task = rewrite kitalabel-bos copy as voice template, then featured/archive grid restructure.
