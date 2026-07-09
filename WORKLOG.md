@@ -1,5 +1,13 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-09 11:15 - [Codex] Production push succeeded
+
+**Done:** Read `AGENTS.md` and `WORKLOG.md`, checked Git state, committed the tracked local deploy-relevant changes (`AGENTS.md`, `WORKLOG.md`, `src/styles/theme.css`) as `6707d10`, and pushed `main` to `origin`. GitHub accepted the push (`8e1bddb..6707d10 main -> main`), so Vercel should auto-deploy production from `origin/main`.
+
+**Found:** Git for Windows is installed at `C:\Program Files\Git\cmd\git.exe` but not on PATH. Untracked local server/log files remain excluded from the commit.
+
+**Next:** Verify the Vercel production deployment at `https://dheoryan.vercel.app/` after Vercel finishes building.
+
 ## 2026-07-08 11:21 - [Codex] Push attempt failed
 
 **Done:** Read `AGENTS.md` and latest `WORKLOG.md` entry before acting. Did not rebase, amend, commit, or modify project files/history. Attempted to push final `main` to GitHub.
