@@ -1,5 +1,13 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-13 08:45 - [Codex] Updated thumbnails deployed to production
+
+**Done:** Validated five replacement PNG thumbnails at a consistent `648x405` size, committed only `public/thumbnails/cmis-suite.png`, `kitalabel-bos.png`, `kitalabel.png`, `mailtarget-app.png`, and `sonar.png` as `8817161`, then pushed `main` to GitHub (`73c5a02..8817161`). Vercel production auto-deployment was triggered by the push.
+
+**Found:** The replacement images are substantially smaller than the previous files while preserving a consistent thumbnail aspect ratio. Local untracked development logs and `push.bat` were excluded.
+
+**Next:** Allow Vercel to finish building, then visually confirm the updated work-grid thumbnails at `https://dheoryan.vercel.app/`.
+
 ## 2026-07-09 11:15 - [Codex] Production push succeeded
 
 **Done:** Read `AGENTS.md` and `WORKLOG.md`, checked Git state, committed the tracked local deploy-relevant changes (`AGENTS.md`, `WORKLOG.md`, `src/styles/theme.css`) as `6707d10`, and pushed `main` to `origin`. GitHub accepted the push (`8e1bddb..6707d10 main -> main`), so Vercel should auto-deploy production from `origin/main`.
