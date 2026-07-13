@@ -1,5 +1,13 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-13 16:29 - [Codex] Deployed the KitaLabel Business OS product-system story
+
+**Done:** Committed the approved KitaLabel Business OS narrative as `38a7d15` (`Add KitaLabel Business OS product story`) and pushed `main` from `5debf49` to `38a7d15` on `origin`. The release adds the product-system story, operational workflow, missing-order recovery path, data-trust rules, permission model, Business OS scope explanation, 17-screen metric, and complete responsive rendering for desktop, tablet, and mobile. Vercel production auto-deployment was triggered by the GitHub push.
+
+**Found:** The production Vite build and responsive browser checks passed before the release. The existing large-chunk advisory remains expected for the current portfolio bundle. Local dev logs and helper files remain untracked and were deliberately excluded from the release.
+
+**Next:** Confirm the Vercel deployment finishes and smoke-test `https://dheoryan.vercel.app/#/work/kitalabel-bos` once the production build is live.
+
 ## 2026-07-13 16:20 - [Codex] Added the missing product-system story to KitaLabel Business OS
 
 **Done:** Added an interactive KitaLabel Business OS narrative before the 17-screen gallery: the WooCommerce-to-event-queue-to-CRM-to-action-surface lifecycle, a four-step missing-order recovery path, internal-test-data exclusion rules, role-aware interface permissions, and a concise explanation of why the product is a Business OS rather than only a CRM. Updated the gallery metric from 16 to 17 screens and renumbered the following case-study sections. Reused the same story in the tablet/mobile article path so no new content disappears below 1024px.
