@@ -1,5 +1,13 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-13 15:14 - [Codex] Deployed the complete July 13 case-study update to production
+
+**Done:** Ran the production Vite build successfully (`2020 modules transformed`), committed all intended source changes and case-study assets as `5c1c086` (`Improve case studies and add product screens`), and pushed `main` from `1cf7f2a` to `5c1c086` on `origin`. This push includes the Mailtarget UX model, KitaLabel pricing and complete-flow corrections, the full KitaLabel Business OS screen gallery, shared full-width thumbnails and preview behavior, readable case-study copy, CMIS layout and caption fixes, refreshed KitaLabel images, six named flow images, and 17 Business OS screenshots. Vercel production auto-deployment was triggered by the GitHub push.
+
+**Found:** The sandboxed build initially failed because esbuild could not spawn (`EPERM`); the approved production build outside the sandbox completed in 14.38 seconds. The bundle emitted the existing large-chunk advisory (`1,141.51 kB` main JS, `241.91 kB` gzip) but no build error. Local development logs and `push.bat` remain untracked and were deliberately excluded from the release.
+
+**Next:** Confirm the Vercel deployment finishes and smoke-test `https://dheoryan.vercel.app/`. The production source and assets are pushed; only local log/helper files remain untracked.
+
 ## 2026-07-13 15:05 - [Codex] Standardized caption-safe heights across all CMIS screen cards
 
 **Done:** Added CMIS-specific card-height rules in `src/app/App.tsx` after auditing every repeated screenshot-card family in `src/imports/CaseStudyCmisSuite/index.tsx`. All three-column `c3`, `c3b`, and `c3p` cards now render at 460px, while two-column `lc`, `dlc`, `c2`, `c2t`, `old`, and `new` cards render at 420px. These heights work with the existing 14px body-copy floor and natural paragraph height to retain clear space below every description.
