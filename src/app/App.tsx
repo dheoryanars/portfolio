@@ -98,8 +98,8 @@ const CASE_META: Record<string, { problem: string; outcome: string }> = {
     outcome: "One component language now runs all three core flows, shipped through 2022–2023. Learn the campaign builder and you already know contacts and automation. I owned the design within the Mailtarget team, and also designed the marketing site that positions the API publicly.",
   },
   kitalabel: {
-    problem: "Sales teams were manually calculating custom label pricing using spreadsheets shared over WhatsApp — error-prone, slow, and invisible to customers during the quoting process.",
-    outcome: "Live on kitalabel.com since 2025: custom label pricing is self-serve and available 24/7, with no spreadsheet handoff between the customer and their price.",
+    problem: "Sales collected each customer's label specifications, then handed the request to the Estimator PIC for pricing. Every quote entered that estimator's daily workload queue, so response time depended on how many estimates were already waiting.",
+    outcome: "Live on kitalabel.com since 2025: standard label pricing is self-serve and available 24/7, without waiting for a sales-to-estimator handoff.",
   },
   sonar: {
     problem: "Solo outreach users had one question — did my email land? — but the only way to answer it was adopting a full ESP platform. The real design challenge wasn't adding capability; it was refusing it.",
@@ -136,14 +136,14 @@ const CASE_HERO_DETAILS: Record<string, CaseHeroDetail> = {
     eyebrow: "KitaLabel Price Calculator",
     headline: "A self-serve pricing flow for custom label orders.",
     summary:
-      "A customer-facing plugin that turns label quoting from spreadsheet handoff into guided configuration and checkout.",
+      "A customer-facing plugin that turns the sales-to-estimator queue into guided configuration, immediate standard pricing, and checkout.",
     previewLabel: "Pricing flow",
     previewCaption: "From label specs to price visibility, upload, cart, and checkout",
     tags: ["Web plugin", "WooCommerce", "Pricing"],
     stats: [
       { value: "24/7", label: "pricing access" },
       { value: "5", label: "quote tiers" },
-      { value: "0", label: "spreadsheet handoff" },
+      { value: "0", label: "estimator handoff for standard jobs" },
     ],
   },
   "readsee-dashboard": {
@@ -280,14 +280,14 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       "A customer-facing web plugin that turns custom label quoting into a clearer guided flow.",
     focus: [
       "Translated complex pricing rules into step-by-step configuration.",
-      "Made quoting visible during sales conversations.",
+      "Removed the Estimator PIC queue from standard label quotes.",
       "Designed the flow for WordPress and WooCommerce usage.",
     ],
     sections: [
       {
         kicker: "00 — The Problem",
         title: "Every variable changes the price",
-        body: "Material, shape, size, finishing, quantity, artwork — each one moves the final number. Quoting a custom label meant a spreadsheet, a salesperson, and a wait. Easy to misquote, impossible for the buyer to explore alone.",
+        body: "Material, shape, size, finishing, quantity, and artwork all move the final number. Sales had to collect those specifications, hand them to the Estimator PIC, then wait behind that estimator's other requests. The buyer could not explore a price independently.",
       },
       {
         kicker: "01 — Context",
@@ -296,8 +296,8 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       },
       {
         kicker: "02 — The Challenge",
-        title: "An exploding decision tree",
-        body: "Six variables multiply into thousands of valid combinations. The design job was making that combinatorial tree feel like a short, confident form — without hiding the choices that actually matter.",
+        title: "Standard labels should not need a sales conversation",
+        body: "A normal order used to leave the website, move through WhatsApp, pass from sales to the Estimator PIC, wait in the day's estimate queue, then return to checkout. The plugin turns standard work into three self-service steps while special designs still receive expert review.",
       },
       {
         kicker: "03 — The Solution",
@@ -317,16 +317,16 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       {
         kicker: "06 — The Complete Flow",
         title: "From configuration to checkout",
-        body: "Configure the label, upload the design, apply a promo, then choose: save the quote or check out on the spot. The buyer controls the momentum — nothing forces a sales call.",
+        body: "Configure the label and check the real price first. Values above IDR 5,000,000 route to RFQ at the calculator; eligible orders continue through design upload, cart, promo, and payment without a sales call.",
       },
       {
         kicker: "07 — Outcomes",
         title: "Self-serve quoting, live",
-        body: "Live on kitalabel.com since 2025 — custom label pricing available 24/7, with no spreadsheet handoff between the customer and their price.",
+        body: "Live on kitalabel.com since 2025 — standard label pricing is available 24/7 without waiting for sales to request an estimate. Special designs can still be reviewed with a complete brief.",
       },
     ],
     proof: [
-      "Live in production on kitalabel.com — pricing without the spreadsheet handoff.",
+      "Live in production on kitalabel.com — standard pricing without the Estimator PIC queue.",
       "Designed and built by one person, AI-assisted, from flow to frontend.",
     ],
   },
@@ -563,8 +563,8 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       },
       {
         kicker: "02 — UX Model",
-        title: "Why Sandbox to Production?",
-        body: "Sending real email by accident is unforgivable, so the platform splits into two environments: test safely in sandbox, then verify into production. The riskiest action got the most deliberate path.",
+        title: "How does a test email become safe to send?",
+        body: "Start by sending only to your own team. Prove who owns the sending address, then unlock real customer delivery. The riskiest action becomes a clear, controlled graduation.",
       },
       {
         kicker: "03 — Research",
@@ -757,7 +757,7 @@ function Navbar({ onHome }: { onHome: () => void }) {
           className="flex items-center gap-2.5"
         >
           <motion.span
-            className="inline-block size-[9px] rounded-full"
+            className="inline-block size-[10px] rounded-full"
             style={{ background: PURPLE }}
             animate={{
               boxShadow: [
@@ -773,7 +773,7 @@ function Navbar({ onHome }: { onHome: () => void }) {
               style={{
                 fontFamily: "'Space Mono', monospace",
                 fontWeight: 700,
-                fontSize: 13,
+                fontSize: 15,
                 letterSpacing: "0.14em",
                 color: FG,
               }}
@@ -784,7 +784,7 @@ function Navbar({ onHome }: { onHome: () => void }) {
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
                 fontWeight: 400,
-                fontSize: 11,
+                fontSize: 12,
                 color: MUTED,
                 marginTop: 3,
               }}
@@ -1815,7 +1815,7 @@ function AboutSection() {
             initial={{ opacity: 0, scale: 0.97 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="flex-shrink-0 w-full lg:w-[440px] rounded overflow-hidden"
+            className="flex-shrink-0 w-full max-w-[440px] mx-auto lg:mx-0 lg:w-[440px] lg:max-w-none rounded overflow-hidden"
             style={{
               // Match the portrait's native 4:5 shape so mobile doesn't crop
               // to a landscape strip; maxHeight keeps tablets/desktop in check
@@ -2819,7 +2819,7 @@ function CaseImagePreview({
             role="dialog"
             aria-modal="true"
             aria-label={`${image.title} preview`}
-            className="relative flex max-h-[88vh] w-full max-w-[1100px] flex-col gap-3"
+            className="relative flex max-h-[92vh] w-[96vw] max-w-[1600px] flex-col gap-3"
             initial={{ opacity: 0, scale: 0.96, y: 18 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 12 }}
@@ -2843,7 +2843,7 @@ function CaseImagePreview({
               ×
             </button>
             <div
-              className="overflow-hidden rounded"
+              className="max-h-[82vh] overflow-x-hidden overflow-y-auto overscroll-contain rounded"
               style={{
                 border: "1px solid rgba(242,241,236,0.1)",
                 background: BG2,
@@ -2855,9 +2855,8 @@ function CaseImagePreview({
                 alt={image.title}
                 style={{
                   display: "block",
-                  maxHeight: "82vh",
                   width: "100%",
-                  objectFit: "contain",
+                  height: "auto",
                 }}
               />
             </div>
@@ -2974,7 +2973,8 @@ function MobileCaseStudyArticle({
                 display: "block",
                 width: "100%",
                 aspectRatio: "16 / 10",
-                objectFit: "contain",
+                objectFit: "cover",
+                objectPosition: "top center",
                 background: "#070707",
               }}
             />
@@ -3053,7 +3053,8 @@ function MobileCaseStudyArticle({
                     style={{
                       width: "100%",
                       height: "100%",
-                      objectFit: "contain",
+                      objectFit: "cover",
+                      objectPosition: "top center",
                       background: "#070707",
                       opacity: index === 0 ? 0.9 : 0.42,
                       filter: index === 0 ? "none" : "saturate(0.7)",
@@ -3581,8 +3582,8 @@ function CaseStudyUnifiedHero({
                 src={work.thumb}
                 className="h-full w-full"
                 style={{
-                  objectFit: "contain",
-                  background: "#070707",
+                  objectFit: "cover",
+                  objectPosition: "center",
                   opacity: 0.9,
                   filter: "saturate(0.86) contrast(1.04)",
                 }}
@@ -3719,6 +3720,16 @@ function CaseStudyPage({
     e: React.MouseEvent<HTMLDivElement>,
   ) => {
     const target = e.target as HTMLElement;
+
+    const previewCard = target.closest<HTMLElement>("[data-preview-src]");
+    if (previewCard?.dataset.previewSrc) {
+      openPreview(
+        previewCard.dataset.previewSrc,
+        previewCard.dataset.previewTitle || currentWork?.title || "Case preview",
+      );
+      return;
+    }
+
     const scopedImages = Array.from(
       e.currentTarget.querySelectorAll("img"),
     ) as HTMLImageElement[];
@@ -3828,6 +3839,41 @@ function CaseStudyPage({
         [data-name="nRow"], [data-name="top"] { cursor: pointer; }
         [data-name="nRow"]:hover p, [data-name="top"]:hover p { color: #cc6ef8; }
         .case-study-preview-scope img { cursor: zoom-in; }
+        .case-study-imported-content img.object-contain {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important;
+          object-position: top center !important;
+        }
+        .case-study-imported-content [data-name="logo"] img.object-contain {
+          object-fit: contain !important;
+          object-position: center !important;
+        }
+        .case-study-imported-content :is(p, span, div)[class*="Space_Grotesk:Regular"][class*="text-[10px]"],
+        .case-study-imported-content :is(p, span, div)[class*="Space_Grotesk:Regular"][class*="text-[11px]"],
+        .case-study-imported-content :is(p, span, div)[class*="Space_Grotesk:Regular"][class*="text-[12px]"],
+        .case-study-imported-content :is(p, span, div)[class*="Space_Grotesk:Regular"][class*="text-[13px]"] {
+          font-size: 14px !important;
+          line-height: 1.5 !important;
+          height: auto !important;
+        }
+        .case-study-imported-content [data-name="case-study-cmis-suite"] :is(
+          [data-name="c3"],
+          [data-name="c3b"],
+          [data-name="c3p"]
+        ) {
+          height: 460px !important;
+        }
+        .case-study-imported-content [data-name="case-study-cmis-suite"] :is(
+          [data-name="lc"],
+          [data-name="dlc"],
+          [data-name="c2"],
+          [data-name="c2t"],
+          [data-name="old"],
+          [data-name="new"]
+        ) {
+          height: 420px !important;
+        }
         @media (max-width: 639px) {
           .case-hero-preview-stage {
             overflow: visible !important;

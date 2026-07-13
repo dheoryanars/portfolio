@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ArrowRight, Calculator, Check, MessageCircle, ShoppingCart, Upload, UserRoundCheck } from "lucide-react";
 
 const imgIc = "/case-studies/kitalabel/image-01.png";
 const imgIc1 = "/case-studies/kitalabel/image-02.png";
@@ -127,7 +128,7 @@ function Ctx() {
     <div className="[word-break:break-word] bg-[#0a0a0a] content-stretch flex flex-col gap-[32px] items-start overflow-clip px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="ctx">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">00 — The Problem</p>
       <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#f2f1ec] text-[46px] tracking-[-0.92px] whitespace-nowrap">The problem</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[30px] relative shrink-0 text-[#9a9a93] text-[17px] w-[1152px]">Sales teams were manually calculating custom label pricing using spreadsheets shared over WhatsApp — error-prone, slow, and invisible to customers during the quoting process.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[30px] relative shrink-0 text-[#9a9a93] text-[17px] w-[1152px]">Sales collected the requested label specifications, handed them to the Estimator PIC, then waited for the quote to move through that estimator's daily queue. Customers had no immediate price visibility, and response time depended on the estimator's workload.</p>
     </div>
   );
 }
@@ -164,8 +165,8 @@ function It1() {
   return (
     <div className="bg-[#141414] relative rounded-[8px] shrink-0 w-[564px]" data-name="it">
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative rounded-[inherit] size-full">
-        <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Sales team bottleneck</p>
-        <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[22px] relative shrink-0 text-[#9a9a93] text-[14px] w-[524px]">The sales team spent hours per day doing pricing calculations that could be automated.</p>
+        <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Estimator queue bottleneck</p>
+        <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[22px] relative shrink-0 text-[#9a9a93] text-[14px] w-[524px]">Sales had to repackage every request for the Estimator PIC, and each quote waited behind the estimates already assigned that day.</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
@@ -188,7 +189,7 @@ function Pl() {
   return (
     <div className="content-stretch flex flex-col gap-[20px] items-start overflow-clip relative shrink-0 w-[564px]" data-name="pl">
       <div className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[0] relative shrink-0 text-[#9a9a93] text-[17px] w-[564px] whitespace-pre-wrap">
-        <p className="leading-[28px] mb-0">{`Before this feature, every customer who wanted a label quote had to contact KitaLabel's sales team by WhatsApp or phone. The team would manually calculate prices based on a complex matrix of specifications.`}</p>
+        <p className="leading-[28px] mb-0">{`Before this feature, every customer who wanted a label quote had to contact KitaLabel's sales team by WhatsApp or phone. Sales collected the specifications and requested the price from the Estimator PIC, where the job entered a daily queue based on the estimator's workload.`}</p>
         <p className="leading-[28px] mb-0">​</p>
         <p className="leading-[28px]">This created three critical problems:</p>
       </div>
@@ -541,7 +542,7 @@ function PricingComplexityMap() {
           <div className="bg-[#141414] min-h-[76px] relative rounded-[10px] shrink-0 w-[166px]">
             <div className="content-stretch flex flex-col gap-[7px] items-start overflow-clip p-[14px] relative rounded-[inherit]">
               <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#64c8ff] text-[10px] tracking-[0.8px] whitespace-nowrap">SALES DOES</p>
-              <p className="[word-break:break-word] font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[17px] relative shrink-0 text-[#f2f1ec] text-[13px] w-[136px]">Manual spreadsheet math</p>
+              <p className="[word-break:break-word] font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[17px] relative shrink-0 text-[#f2f1ec] text-[13px] w-[136px]">Request estimator pricing</p>
             </div>
           </div>
           <div className="bg-[#141414] min-h-[76px] relative rounded-[10px] shrink-0 w-[166px]">
@@ -563,11 +564,131 @@ function Pr() {
   );
 }
 
+const assistedQuoteSteps = [
+  "Send requirements on WhatsApp",
+  "Sales checks and formats the specifications",
+  "Sales sends the request to the Estimator PIC",
+  "Wait in the estimator's daily quote queue",
+  "Receive the price and return to order",
+];
+
+const standardPluginSteps = [
+  { icon: Calculator, title: "Choose label specifications", detail: "Shape, material, finish, size, and quantity" },
+  { icon: Check, title: "See the price immediately", detail: "Production rules calculate the standard job" },
+  { icon: ShoppingCart, title: "Upload and checkout", detail: "Continue without leaving the product page" },
+];
+
+const specialPluginSteps = [
+  { icon: Calculator, title: "Choose the known specifications", detail: "Capture the basics once in a structured form" },
+  { icon: Upload, title: "Upload the special design", detail: "Artwork and requirements stay attached to the request" },
+  { icon: UserRoundCheck, title: "Send a complete brief to sales", detail: "An expert reviews what cannot be priced automatically" },
+];
+
+function QuoteWorkflowComparison() {
+  const [mode, setMode] = useState<"standard" | "special">("standard");
+  const isStandard = mode === "standard";
+  const pluginSteps = isStandard ? standardPluginSteps : specialPluginSteps;
+
+  return (
+    <div className="bg-[#10100f] relative rounded-[16px] shrink-0 w-[1152px]" data-name="quoteWorkflowComparison">
+      <div className="content-stretch flex flex-col gap-[26px] items-start overflow-clip p-[28px] relative rounded-[inherit] size-full">
+        <div className="flex items-start justify-between gap-[32px] w-full">
+          <div className="flex flex-col gap-[7px] max-w-[580px]">
+            <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] text-[#f2f1ec] text-[20px]">What the custom plugin removes</p>
+            <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[21px] text-[#9a9a93] text-[13px]">
+              Standard label jobs use known production rules. They should not need a salesperson to translate specifications into a price.
+            </p>
+          </div>
+
+          <div className="bg-[#0a0a0a] flex gap-[4px] p-[4px] rounded-[10px]" aria-label="Label design type">
+            <button
+              aria-pressed={isStandard}
+              className="font-['Space_Mono:Regular',sans-serif] px-[14px] py-[9px] rounded-[7px] text-[10px] tracking-[0.5px] transition-colors"
+              onClick={() => setMode("standard")}
+              style={{ background: isStandard ? "#cc6ef8" : "transparent", color: isStandard ? "#0a0a0a" : "#8b8b84" }}
+              type="button"
+            >
+              STANDARD LABEL
+            </button>
+            <button
+              aria-pressed={!isStandard}
+              className="font-['Space_Mono:Regular',sans-serif] px-[14px] py-[9px] rounded-[7px] text-[10px] tracking-[0.5px] transition-colors"
+              onClick={() => setMode("special")}
+              style={{ background: !isStandard ? "#cc6ef8" : "transparent", color: !isStandard ? "#0a0a0a" : "#8b8b84" }}
+              type="button"
+            >
+              SPECIAL DESIGN
+            </button>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-[1fr_112px_1fr] gap-[12px] items-stretch w-full">
+          <div className="bg-[#0a0a0a] rounded-[14px] p-[22px] flex flex-col gap-[18px] border border-[rgba(242,241,236,0.09)]">
+            <div className="flex items-center justify-between gap-[12px]">
+              <div className="flex items-center gap-[10px] text-[#8b8b84]"><MessageCircle aria-hidden size={18} /><p className="font-['Space_Grotesk:Bold',sans-serif] font-bold text-[#f2f1ec] text-[15px]">Before: assisted quote</p></div>
+              <p className="font-['Space_Mono:Regular',sans-serif] text-[#6f6f68] text-[9px] tracking-[0.8px]">5 TOUCHPOINTS</p>
+            </div>
+            <div className="flex flex-col">
+              {assistedQuoteSteps.map((step, index) => (
+                <div className="flex gap-[12px] items-center py-[11px] border-t border-[rgba(242,241,236,0.07)] first:border-t-0" key={step}>
+                  <span className="font-['Space_Mono:Regular',sans-serif] text-[#5f5f59] text-[10px] w-[18px]">0{index + 1}</span>
+                  <p className="font-['Space_Grotesk:Regular',sans-serif] text-[#8f8f88] text-[13px] leading-[18px]">{step}</p>
+                </div>
+              ))}
+            </div>
+            <p className="font-['Space_Mono:Regular',sans-serif] text-[#f87171] text-[10px] leading-[16px] tracking-[0.4px]">The customer leaves the buying flow and waits.</p>
+          </div>
+
+          <div className="flex flex-col items-center justify-center gap-[14px] min-w-0">
+            <div className="h-px bg-[rgba(242,241,236,0.12)] w-full relative">
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-[40px] rounded-full bg-[#1a111f] text-[#cc6ef8] flex items-center justify-center"><ArrowRight aria-hidden size={18} /></div>
+            </div>
+            <p className="font-['Space_Mono:Regular',sans-serif] text-[#cc6ef8] text-[9px] text-center leading-[15px] tracking-[0.4px] whitespace-pre-line w-full">
+              {isStandard ? "NO SALES\nHANDOFF" : "LESS BACK\nAND FORTH"}
+            </p>
+          </div>
+
+          <div className="rounded-[14px] p-[22px] flex flex-col gap-[18px] border transition-colors duration-300" style={{ background: isStandard ? "rgba(204,110,248,0.08)" : "rgba(100,200,255,0.06)", borderColor: isStandard ? "rgba(204,110,248,0.42)" : "rgba(100,200,255,0.34)" }}>
+            <div className="flex items-center justify-between gap-[12px]">
+              <div className="flex items-center gap-[10px] text-[#cc6ef8]"><Calculator aria-hidden size={18} /><p className="font-['Space_Grotesk:Bold',sans-serif] font-bold text-[#f2f1ec] text-[15px]">With the custom plugin</p></div>
+              <p className="font-['Space_Mono:Regular',sans-serif] text-[#cc6ef8] text-[9px] tracking-[0.8px]">3 STEPS</p>
+            </div>
+            <div className="flex flex-col gap-[8px]">
+              {pluginSteps.map((step, index) => {
+                const StepIcon = step.icon;
+                return (
+                  <div className="bg-[rgba(10,10,10,0.72)] rounded-[10px] px-[14px] py-[13px] flex gap-[12px] items-start" key={step.title}>
+                    <div className="size-[30px] rounded-full bg-[rgba(204,110,248,0.14)] text-[#cc6ef8] flex items-center justify-center shrink-0"><StepIcon aria-hidden size={14} /></div>
+                    <div className="flex flex-col gap-[3px]">
+                      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold text-[#f2f1ec] text-[13px] leading-[17px]">{index + 1}. {step.title}</p>
+                      <p className="font-['Space_Grotesk:Regular',sans-serif] text-[#8f8f88] text-[11px] leading-[16px]">{step.detail}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <p className="font-['Space_Mono:Regular',sans-serif] text-[10px] leading-[16px] tracking-[0.4px]" style={{ color: isStandard ? "#7cf0a1" : "#64c8ff" }}>
+              {isStandard ? "Instant price for standard work. Checkout stays self-service." : "Expert review stays for work that genuinely needs it."}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between gap-[24px] pt-[2px] w-full">
+          <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium text-[#f2f1ec] text-[15px]">
+            {isStandard ? "The plugin automates the repeatable decision, not the craft." : "Special designs still reach a specialist—with a complete brief attached."}
+          </p>
+          <p className="font-['Space_Mono:Regular',sans-serif] text-[#6f6f68] text-[9px] tracking-[0.7px] whitespace-nowrap">WORDPRESS · CUSTOM JAVASCRIPT · WOOCOMMERCE</p>
+        </div>
+      </div>
+      <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[16px]" />
+    </div>
+  );
+}
+
 function ProbGrid() {
   return (
-    <div className="content-stretch flex gap-[24px] items-start overflow-clip relative shrink-0 w-[1152px]" data-name="probGrid">
-      <Pl />
-      <Pr />
+    <div className="content-stretch flex items-start overflow-clip relative shrink-0 w-[1152px]" data-name="probGrid">
+      <QuoteWorkflowComparison />
     </div>
   );
 }
@@ -576,7 +697,7 @@ function Prob() {
   return (
     <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[40px] items-start overflow-clip px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="prob">
       <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">02 — The Challenge</p>
-      <p className="[word-break:break-word] font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#f2f1ec] text-[46px] tracking-[-0.92px] whitespace-nowrap">Pricing custom labels is uniquely complex</p>
+      <p className="[word-break:break-word] font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#f2f1ec] text-[46px] tracking-[-0.92px] whitespace-nowrap">Standard labels should not need a sales conversation</p>
       <ProbGrid />
     </div>
   );
@@ -940,14 +1061,32 @@ function S5() {
 }
 
 function FlowStrip() {
+  const steps = [
+    "Configure Specs",
+    "Cek Harga",
+    "Upload File",
+    "Tambah ke Keranjang",
+    "Checkout",
+    "Bayar & Pesan",
+  ];
+
   return (
-    <div className="bg-[#141414] grid grid-cols-2 sm:grid-cols-3 lg:flex h-auto lg:h-[60px] items-start overflow-clip relative rounded-[8px] shrink-0 w-full max-w-[1152px]" data-name="flowStrip">
-      <S />
-      <S1 />
-      <S2 />
-      <S3 />
-      <S4 />
-      <S5 />
+    <div className="relative shrink-0 w-full max-w-[1152px] py-[10px]" data-name="flowStrip">
+      <div aria-hidden className="absolute bg-[rgba(242,241,236,0.12)] h-px left-[8.33%] right-[8.33%] top-[27px]" />
+      <ol aria-label="KitaLabel order flow" className="grid grid-cols-6 relative w-full">
+        {steps.map((step, index) => (
+          <li className="flex flex-col items-center gap-[10px] min-w-0 px-[8px] text-center" key={step}>
+            <span
+              className="bg-[#0c0c0b] border border-[rgba(204,110,248,0.5)] flex items-center justify-center rounded-full size-[34px] font-['Space_Mono:Regular',sans-serif] text-[#cc6ef8] text-[10px] relative z-[1]"
+            >
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[16px] text-[#f2f1ec] text-[12px] max-w-[150px]">
+              {step}
+            </span>
+          </li>
+        ))}
+      </ol>
     </div>
   );
 }
@@ -958,42 +1097,48 @@ const completeFlowSteps = [
     label: "Configure Specs",
     title: "Customer builds the label spec",
     body: "Shape, material, lamination, size, print direction, output type, design variants, and quantity are configured before any price appears.",
-    image: imgIc2,
+    image: "/case-studies/kitalabel/step-01.png",
+    fallbackImage: imgIc2,
   },
   {
     number: "02",
     label: "Cek Harga",
     title: "Customer requests the real price",
-    body: "The calculator waits for an explicit check-price action, then calculates all quantity tiers from the selected production variables.",
-    image: imgIc3,
+    body: "The calculator waits for an explicit check-price action, then calculates all quantity tiers. Values above IDR 5,000,000 branch into RFQ before cart and checkout.",
+    image: "/case-studies/kitalabel/step-02.png",
+    fallbackImage: imgIc3,
   },
   {
     number: "03",
     label: "Upload File",
     title: "Customer attaches design files",
     body: "The upload area keeps file requirements close to the action so customers understand bleed, cut line, CMYK, DPI, and font outline rules.",
-    image: imgIc4,
+    image: "/case-studies/kitalabel/step-03.png",
+    fallbackImage: imgIc4,
   },
   {
     number: "04",
     label: "Tambah ke Keranjang",
     title: "Priced specs become a cart item",
     body: "Once price and files are ready, the configured label order is added to cart with its selected specs, files, and calculated subtotal intact.",
-    image: imgIc5,
+    image: "/case-studies/kitalabel/step-04.png",
+    fallbackImage: imgIc5,
   },
   {
     number: "05",
     label: "Checkout",
     title: "Billing and courier details complete the order",
-    body: "The checkout step collects billing information, shows attached design files, and lets the customer select courier services with live prices.",
-    image: imgIc6,
+    body: "Checkout collects billing information, shows attached design files, applies the promo code, and lets the customer select courier services with live prices.",
+    image: "/case-studies/kitalabel/step-05.png",
+    fallbackImage: imgIc6,
   },
   {
     number: "06",
     label: "Bayar & Pesan",
-    title: "Customer pays or requests a quote",
-    body: "Promo code, payment summary, final order action, and quote request live in one place so the customer can finish without a sales conversation.",
-    image: imgIc7,
+    title: "Customer completes payment",
+    body: "The customer reviews the final payment summary, selects a payment method, and places the eligible self-service order. RFQ has already been handled by the calculator threshold.",
+    image: "/case-studies/kitalabel/step-06.png",
+    fallbackImage: imgIc7,
   },
 ];
 
@@ -1006,13 +1151,22 @@ function CompleteFlowCard({
     title: string;
     body: string;
     image: string;
+    fallbackImage: string;
   };
 }) {
   return (
     <div className="bg-[#141414] min-h-[372px] relative rounded-[8px] shrink-0 w-full" data-name="complete-flow-card">
       <div className="content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
         <div className="bg-[#f7f4ef] h-[184px] md:h-[204px] lg:h-[184px] relative shrink-0 w-full">
-          <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={step.image} />
+          <img
+            alt={`${step.title} screen`}
+            className="absolute inset-0 max-w-none object-contain pointer-events-none size-full"
+            src={step.image}
+            onError={(event) => {
+              event.currentTarget.onerror = null;
+              event.currentTarget.src = step.fallbackImage;
+            }}
+          />
         </div>
         <div className="[word-break:break-word] content-stretch flex flex-col gap-[7px] items-start overflow-clip p-[20px] relative shrink-0 w-full">
           <div className="content-stretch flex items-center justify-between gap-[16px] relative shrink-0 w-full">
@@ -1099,9 +1253,9 @@ function Ic7() {
 function Ifo2() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[4px] items-start overflow-clip p-[20px] relative shrink-0 w-[368px]" data-name="ifo">
-      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[11px] whitespace-nowrap">Step 5 — Pembayaran</p>
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[14px] whitespace-nowrap">Customer enters promo + pays</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[328px]">{`Design upload thumbnails shown. Promo Code KITALABEL2025 applied (discount line added). "Buat Pesanan" to place order or "Buat Penawaran" to request a quote instead.`}</p>
+      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[11px] whitespace-nowrap">Step 5 — Checkout</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[14px] whitespace-nowrap">Customer applies promo + reviews total</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[328px]">{`Design upload thumbnails are confirmed, Promo Code KITALABEL2025 is applied, and courier pricing updates the final total before payment.`}</p>
     </div>
   );
 }
@@ -1133,7 +1287,7 @@ function Flow() {
     <div className="bg-[#0a0a0a] content-stretch flex flex-col gap-[32px] items-start overflow-clip px-[22px] sm:px-[32px] lg:px-[64px] py-[72px] lg:py-[100px] relative shrink-0 w-full lg:w-[1280px]" data-name="flow">
       <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px]">06 — The Complete Flow</p>
       <p className="[word-break:break-word] font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[38px] md:leading-[normal] relative shrink-0 text-[#f2f1ec] text-[34px] md:text-[46px] tracking-[-0.68px] md:tracking-[-0.92px] w-full">From configuration to checkout</p>
-      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[26px] md:leading-[28px] relative shrink-0 text-[#9a9a93] text-[15px] md:text-[17px] w-full max-w-[860px]">The full flow starts before checkout: customers configure production specs, calculate a real price, upload print-ready files, add the order to cart, then complete payment or request a quote.</p>
+      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[26px] md:leading-[28px] relative shrink-0 text-[#9a9a93] text-[15px] md:text-[17px] w-full max-w-[860px]">The full flow starts before checkout: customers configure production specs and calculate a real price. Values above IDR 5,000,000 route to RFQ; eligible self-service orders continue through file upload, cart, and payment.</p>
       <FlowStrip />
       <FlowRow />
     </div>

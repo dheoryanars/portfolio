@@ -323,67 +323,67 @@ function Ov1() {
 
 function C() {
   return (
-    <div className="bg-[#141414] content-stretch flex flex-col gap-[14px] h-[280px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
+    <div className="bg-[#141414] content-stretch flex flex-col gap-[14px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">01</p>
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Create</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[151.167px]">Author creates a new document — selects Jenis Dokumen (SOP, IKA, CAR, NC), assigns department, generates Nomor Dokumen. Status: DRAFT.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">Author creates a new document — selects Jenis Dokumen (SOP, IKA, CAR, NC), assigns department, generates Nomor Dokumen. Status: DRAFT.</p>
     </div>
   );
 }
 
 function C1() {
   return (
-    <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[14px] h-[280px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
+    <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[14px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">02</p>
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Submit</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[151.167px]">Author submits for approval. Workflow routes to Section Head → QMS → Division Head → CEO. Each role sees the document with an IN APPROVAL watermark.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">Author submits for approval. Workflow routes to Section Head → QMS → Division Head → CEO. Each role sees the document with an IN APPROVAL watermark.</p>
     </div>
   );
 }
 
 function C2() {
   return (
-    <div className="bg-[#141414] content-stretch flex flex-col gap-[14px] h-[280px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
+    <div className="bg-[#141414] content-stretch flex flex-col gap-[14px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">03</p>
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Approve</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[151.167px]">Each approver reviews the SOP content and signs off with their Title Role. Once all signatures are complete, status moves to APPROVED → EFFECTIVE.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">Each approver reviews the SOP content and signs off with their Title Role. Once all signatures are complete, status moves to APPROVED → EFFECTIVE.</p>
     </div>
   );
 }
 
 function C3() {
   return (
-    <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[14px] h-[280px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
+    <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[14px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">04</p>
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Distribute</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[151.167px]">EFFECTIVE documents are available as Controlled Copy (with watermark and recipient tracking) or Uncontrolled Copy for general reference.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">EFFECTIVE documents are available as Controlled Copy (with watermark and recipient tracking) or Uncontrolled Copy for general reference.</p>
     </div>
   );
 }
 
 function C4() {
   return (
-    <div className="bg-[#141414] content-stretch flex flex-col gap-[14px] h-[280px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
+    <div className="bg-[#141414] content-stretch flex flex-col gap-[14px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">05</p>
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Train</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[151.167px]">Staff must complete Training Dokumen. Documents pending training show the BELUM TRAINING watermark. Completion tracked per user.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">Staff must complete Training Dokumen. Documents pending training show the BELUM TRAINING watermark. Completion tracked per user.</p>
     </div>
   );
 }
 
 function C5() {
   return (
-    <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[14px] h-[280px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
+    <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[14px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">06</p>
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Obsolete</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[151.167px]">Superseded documents move to OBSOLETE status. Expired documents surface in the Dokumen Kadaluarsa tab for review and archiving.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">Superseded documents move to OBSOLETE status. Expired documents surface in the Dokumen Kadaluarsa tab for review and archiving.</p>
     </div>
   );
 }
 
 function WfStrip() {
   return (
-    <div className="bg-[rgba(242,241,236,0.08)] content-stretch flex gap-px h-[280px] items-start overflow-clip relative rounded-[8px] shrink-0 w-[1152px]" data-name="wfStrip">
+    <div className="bg-[rgba(242,241,236,0.08)] grid grid-cols-3 gap-px overflow-hidden relative rounded-[8px] shrink-0 w-[1152px]" data-name="wfStrip">
       <C />
       <C1 />
       <C2 />
@@ -406,7 +406,7 @@ function Wf() {
 
 function Ic1() {
   return (
-    <div className="h-[240px] relative shrink-0 w-[1152px]" data-name="ic">
+    <div className="h-[240px] relative shrink-0 w-[564px]" data-name="ic">
       <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgIc1} />
     </div>
   );
@@ -416,14 +416,14 @@ function Ll() {
   return (
     <div className="content-stretch flex flex-col gap-[4px] items-start overflow-clip relative shrink-0" data-name="ll">
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Login — CMIS Entry</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[820px]">Factory machinery background. Username + Password form. IP address display (192.168.31.111). Company copyright footer.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[380px]">Factory machinery background. Username + Password form. IP address display (192.168.31.111). Company copyright footer.</p>
     </div>
   );
 }
 
 function Li() {
   return (
-    <div className="[word-break:break-word] content-stretch flex h-[120px] items-center justify-between overflow-clip px-[24px] py-[20px] relative shrink-0 w-[1152px]" data-name="li">
+    <div className="[word-break:break-word] content-stretch flex h-[140px] items-start justify-between overflow-clip px-[24px] py-[20px] relative shrink-0 w-[564px]" data-name="li">
       <Ll />
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#6f6f68] text-[12px] whitespace-nowrap">1440 × 960px</p>
     </div>
@@ -432,7 +432,7 @@ function Li() {
 
 function Lc() {
   return (
-    <div className="bg-[#141414] h-[360px] relative rounded-[8px] shrink-0 w-[1152px]" data-name="lc">
+    <div className="bg-[#141414] h-[380px] relative rounded-[8px] shrink-0 w-[564px]" data-name="lc">
       <div className="content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
         <Ic1 />
         <Li />
@@ -444,7 +444,7 @@ function Lc() {
 
 function Ic2() {
   return (
-    <div className="h-[240px] relative shrink-0 w-[1152px]" data-name="ic">
+    <div className="h-[240px] relative shrink-0 w-[564px]" data-name="ic">
       <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgIc} />
     </div>
   );
@@ -454,14 +454,14 @@ function Dll() {
   return (
     <div className="content-stretch flex flex-col gap-[4px] items-start overflow-clip relative shrink-0" data-name="dll">
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Document List — Main Dashboard</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[820px]">4 tabs: Dokumen · Approvals · Training Dokumen · Dokumen Kadaluarsa. Columns: Nama, Jenis Dokumen, Dibuat Oleh, Departemen, Nomor Dokumen, Status, Aksi.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[380px]">4 tabs: Dokumen · Approvals · Training Dokumen · Dokumen Kadaluarsa. Columns: Nama, Jenis Dokumen, Dibuat Oleh, Departemen, Nomor Dokumen, Status, Aksi.</p>
     </div>
   );
 }
 
 function Dli() {
   return (
-    <div className="[word-break:break-word] content-stretch flex h-[120px] items-center justify-between overflow-clip px-[24px] py-[20px] relative shrink-0 w-[1152px]" data-name="dli">
+    <div className="[word-break:break-word] content-stretch flex h-[140px] items-start justify-between overflow-clip px-[24px] py-[20px] relative shrink-0 w-[564px]" data-name="dli">
       <Dll />
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#6f6f68] text-[12px] whitespace-nowrap">355 screen variants</p>
     </div>
@@ -470,7 +470,7 @@ function Dli() {
 
 function Dlc() {
   return (
-    <div className="bg-[#141414] h-[360px] relative rounded-[8px] shrink-0 w-[1152px]" data-name="dlc">
+    <div className="bg-[#141414] h-[380px] relative rounded-[8px] shrink-0 w-[564px]" data-name="dlc">
       <div className="content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
         <Ic2 />
         <Dli />
@@ -679,8 +679,10 @@ function Screens() {
     <div className="bg-[#0a0a0a] content-stretch flex flex-col gap-[32px] items-start overflow-clip px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="screens">
       <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">03 — Key Screens</p>
       <p className="[word-break:break-word] font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#f2f1ec] text-[46px] tracking-[-0.92px] whitespace-nowrap">The DMS in detail</p>
-      <Lc />
-      <Dlc />
+      <div className="content-stretch flex gap-[24px] items-start relative shrink-0 w-[1152px]" data-name="main-screen-grid">
+        <Lc />
+        <Dlc />
+      </div>
       <Row />
       <Row1 />
     </div>
@@ -1015,67 +1017,67 @@ function Ov2() {
 
 function C9() {
   return (
-    <div className="bg-[#141414] content-stretch flex flex-col gap-[12px] h-[260px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
+    <div className="bg-[#141414] content-stretch flex flex-col gap-[12px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">01</p>
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[17px] whitespace-nowrap">Create PR</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[151.167px]">Requester creates a new Purchase Request (Buat Purchase) — selects items, fills Nama Barang, QTY, Stock, Due Date, Link Pembelian, Alasan Beli. Status: BELUM DI SUBMIT.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">Requester creates a new Purchase Request (Buat Purchase) — selects items, fills Nama Barang, QTY, Stock, Due Date, Link Pembelian, Alasan Beli. Status: BELUM DI SUBMIT.</p>
     </div>
   );
 }
 
 function C10() {
   return (
-    <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[12px] h-[260px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
+    <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[12px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">02</p>
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[17px] whitespace-nowrap">Submit</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[151.167px]">PR submitted by requester. Status changes to MENUNGGU REVIEW EXPERT. Documents can be attached via Lampiran.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">PR submitted by requester. Status changes to MENUNGGU REVIEW EXPERT. Documents can be attached via Lampiran.</p>
     </div>
   );
 }
 
 function C11() {
   return (
-    <div className="bg-[#141414] content-stretch flex flex-col gap-[12px] h-[260px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
+    <div className="bg-[#141414] content-stretch flex flex-col gap-[12px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">03</p>
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[17px] whitespace-nowrap">Expert Review</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[151.167px]">Expert reviewer evaluates each line item — reviews Jenis (Material/Non Inventory), stock levels, purchase link, and justification. Can Return or Approve.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">Expert reviewer evaluates each line item — reviews Jenis (Material/Non Inventory), stock levels, purchase link, and justification. Can Return or Approve.</p>
     </div>
   );
 }
 
 function C12() {
   return (
-    <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[12px] h-[260px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
+    <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[12px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">04</p>
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[17px] whitespace-nowrap">Approval Atasan</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[151.167px]">Approved PRs escalate to the manager (Atasan). Manager confirms with Konfirmasi Approval dropdown (Approve/Reject) and Catatan notes.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">Approved PRs escalate to the manager (Atasan). Manager confirms with Konfirmasi Approval dropdown (Approve/Reject) and Catatan notes.</p>
     </div>
   );
 }
 
 function C13() {
   return (
-    <div className="bg-[#141414] content-stretch flex flex-col gap-[12px] h-[260px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
+    <div className="bg-[#141414] content-stretch flex flex-col gap-[12px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">05</p>
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[17px] whitespace-nowrap">Procurement</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[151.167px]">Approved PRs land in the Procurement module. Procurement team tracks execution status: BARU → PROSES PRE-ORDER → MENUNGGU → PROSES PROCUREMENT.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">Approved PRs land in the Procurement module. Procurement team tracks execution status: BARU → PROSES PRE-ORDER → MENUNGGU → PROSES PROCUREMENT.</p>
     </div>
   );
 }
 
 function C14() {
   return (
-    <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[12px] h-[260px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
+    <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[12px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">06</p>
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[17px] whitespace-nowrap">Complete</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[151.167px]">{`Procurement marks PO number and Invoice. Final statuses: APPROVED (green) or REJECTED (red) per item. "Berhasil" confirmation modal shown.`}</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">{`Procurement marks PO number and Invoice. Final statuses: APPROVED (green) or REJECTED (red) per item. "Berhasil" confirmation modal shown.`}</p>
     </div>
   );
 }
 
 function WfRow() {
   return (
-    <div className="bg-[rgba(242,241,236,0.08)] content-stretch flex gap-px h-[260px] items-start overflow-clip relative rounded-[8px] shrink-0 w-[1152px]" data-name="wfRow">
+    <div className="bg-[rgba(242,241,236,0.08)] grid grid-cols-3 gap-px overflow-hidden relative rounded-[8px] shrink-0 w-[1152px]" data-name="wfRow">
       <C9 />
       <C10 />
       <C11 />
@@ -1392,14 +1394,14 @@ function I2T() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[564px]" data-name="i2t">
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">List Purchase Tool</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[524px]">{`3-tab header: List Purchase Tool · Expert Review · Approval Atasan. Extra columns vs Non Tool: Tanggal Disetujui, Disetujui Oleh, Procurement (BELUM badge), Invoice. Status/Dept filters + "Buat Purchase" CTA.`}</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[524px]">{`3-tab header: List Purchase Tool · Expert Review · Approval Atasan. Extra columns vs Non Tool: Tanggal Disetujui, Disetujui Oleh, Procurement (BELUM badge), Invoice. Status/Dept filters + "Buat Purchase" CTA.`}</p>
     </div>
   );
 }
 
 function C2T() {
   return (
-    <div className="bg-[#141414] h-[360px] relative rounded-[8px] shrink-0 w-[564px]" data-name="c2t">
+    <div className="bg-[#141414] h-[380px] relative rounded-[8px] shrink-0 w-[564px]" data-name="c2t">
       <div className="content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
         <Ic23 />
         <I2T />
@@ -1421,14 +1423,14 @@ function I2T1() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[564px]" data-name="i2t">
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">{`"Berhasil" — PR Created`}</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[524px]">{`Green checkmark. "Purchase Request Berhasil dibuat" — creation success confirmation. Slightly different copy from Non Tool, confirming the Tool PR has been submitted.`}</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[524px]">{`Green checkmark. "Purchase Request Berhasil dibuat" — creation success confirmation. Slightly different copy from Non Tool, confirming the Tool PR has been submitted.`}</p>
     </div>
   );
 }
 
 function C2T1() {
   return (
-    <div className="bg-[#141414] h-[360px] relative rounded-[8px] shrink-0 w-[564px]" data-name="c2t">
+    <div className="bg-[#141414] h-[380px] relative rounded-[8px] shrink-0 w-[564px]" data-name="c2t">
       <div className="content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
         <Ic24 />
         <I2T1 />
@@ -1576,7 +1578,7 @@ function Oi() {
 
 function Old() {
   return (
-    <div className="bg-[#141414] h-[380px] relative rounded-[8px] shrink-0 w-[564px]" data-name="old">
+    <div className="bg-[#141414] h-[420px] relative rounded-[8px] shrink-0 w-[564px]" data-name="old">
       <div className="content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
         <Ic25 />
         <Oi />
@@ -1614,7 +1616,7 @@ function Ni() {
 
 function New() {
   return (
-    <div className="bg-[#141414] h-[380px] relative rounded-[8px] shrink-0 w-[564px]" data-name="new">
+    <div className="bg-[#141414] h-[420px] relative rounded-[8px] shrink-0 w-[564px]" data-name="new">
       <div className="content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
         <Ic26 />
         <Ni />

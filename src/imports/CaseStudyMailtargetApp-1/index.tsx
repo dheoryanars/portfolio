@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Check, LockKeyhole, Mail, Send, ShieldCheck, UserCheck, Users } from "lucide-react";
 
 const imgHeroImg = "/case-studies/mailtarget-app/image-01.png";
 const imgRectangle = "/case-studies/mailtarget-app/image-02.png";
@@ -293,7 +294,7 @@ function SectionHeader2() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-name="section-header">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">02 — UX Model</p>
-      <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[1.1] min-w-full relative shrink-0 text-[#f2f1ec] text-[46px] w-[min-content]">Why Sandbox to Production?</p>
+      <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[1.1] min-w-full relative shrink-0 text-[#f2f1ec] text-[46px] w-[min-content]">How does a test email become safe to send?</p>
     </div>
   );
 }
@@ -400,7 +401,7 @@ function EnvironmentPanel({
   );
 }
 
-function SandboxProductionModel() {
+function LegacySandboxProductionModel() {
   const [activeIndex, setActiveIndex] = useState(1);
   const active = sandboxProductionSteps[activeIndex];
   const progress = `${(activeIndex / (sandboxProductionSteps.length - 1)) * 100}%`;
@@ -533,6 +534,151 @@ function SandboxProductionModel() {
             <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[18px]" />
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+const uxModelStages = [
+  {
+    number: "01",
+    title: "Practice safely",
+    environment: "Sandbox",
+    detail: "Connect the product and send test emails only to people you approve.",
+    technical: "300 emails/day · approved recipients only",
+    takeaway: "Learn with real emails, without reaching a real customer.",
+    tone: "#ff9f43",
+  },
+  {
+    number: "02",
+    title: "Prove ownership",
+    environment: "Trust check",
+    detail: "Confirm the business and show that the sending domain belongs to you.",
+    technical: "Business details · domain authentication",
+    takeaway: "Mailtarget checks the sender before opening access to customers.",
+    tone: "#cc6ef8",
+  },
+  {
+    number: "03",
+    title: "Send to customers",
+    environment: "Production",
+    detail: "Unlock real delivery only after the sender has earned the system's trust.",
+    technical: "Real recipients · reputation controls",
+    takeaway: "The same setup is now ready for live transactional email.",
+    tone: "#6aa8ff",
+  },
+];
+
+function SandboxProductionModel() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = uxModelStages[activeIndex];
+  const StageIcon = activeIndex === 0 ? Mail : activeIndex === 1 ? ShieldCheck : Send;
+
+  return (
+    <div className="content-stretch flex flex-col gap-[26px] items-start relative shrink-0 w-full" data-name="sandbox-production-model">
+      <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-[18px] w-full">
+        <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[30px] text-[#f2f1ec] text-[20px] max-w-[590px]">
+          Think of Sandbox as a private rehearsal. Test the whole email experience with your team before a single message can reach a customer.
+        </p>
+        <p className="font-['Space_Mono:Regular',sans-serif] leading-[18px] text-[#6f6f68] text-[10px] tracking-[1px] uppercase max-w-[260px] lg:text-right">
+          Select a stage to see who can receive the email
+        </p>
+      </div>
+
+      <div className="bg-[#10100f] overflow-hidden relative rounded-[18px] w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] min-h-[520px] relative">
+          <div className="flex flex-col border-b lg:border-b-0 lg:border-r border-[rgba(242,241,236,0.1)] p-[14px] gap-[8px]">
+            {uxModelStages.map((step, index) => {
+              const selected = activeIndex === index;
+              return (
+                <button
+                  aria-pressed={selected}
+                  className="flex lg:flex-1 items-center lg:items-start gap-[14px] p-[15px] lg:p-[18px] rounded-[12px] text-left transition-all duration-300 w-full"
+                  key={step.number}
+                  onClick={() => setActiveIndex(index)}
+                  style={{
+                    background: selected ? `${step.tone}12` : "transparent",
+                    border: `1px solid ${selected ? `${step.tone}66` : "transparent"}`,
+                  }}
+                  type="button"
+                >
+                  <span className="font-['Space_Mono:Bold',sans-serif] text-[11px] mt-[2px]" style={{ color: selected ? step.tone : "#6f6f68" }}>{step.number}</span>
+                  <span className="flex flex-col gap-[5px] min-w-0">
+                    <span className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[20px] text-[#f2f1ec] text-[15px]">{step.title}</span>
+                    <span className="hidden lg:block font-['Space_Grotesk:Regular',sans-serif] leading-[18px] text-[#777770] text-[12px]">{step.detail}</span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="flex flex-col p-[20px] sm:p-[28px] lg:p-[36px] gap-[28px] min-w-0">
+            <div className="flex items-start justify-between gap-[18px]">
+              <div className="flex flex-col gap-[6px]">
+                <p className="font-['Space_Mono:Regular',sans-serif] text-[10px] tracking-[1.2px] uppercase" style={{ color: active.tone }}>{active.environment}</p>
+                <h3 className="font-['Space_Grotesk:Bold',sans-serif] font-bold text-[#f2f1ec] text-[26px] sm:text-[32px] leading-[1.1]">{active.title}</h3>
+              </div>
+              <div className="flex items-center justify-center rounded-full size-[46px] shrink-0" style={{ background: `${active.tone}18`, color: active.tone }}>
+                <StageIcon aria-hidden size={21} strokeWidth={1.8} />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_74px_1fr] items-stretch gap-[12px] md:gap-[16px] flex-1">
+              <div className="bg-[#0a0a0a] rounded-[14px] p-[20px] sm:p-[24px] flex flex-col justify-between gap-[28px] border border-[rgba(242,241,236,0.09)]">
+                <div className="flex items-center gap-[12px]">
+                  <div className="size-[42px] rounded-full bg-[rgba(204,110,248,0.14)] text-[#cc6ef8] flex items-center justify-center"><Send aria-hidden size={18} /></div>
+                  <div>
+                    <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold text-[#f2f1ec] text-[15px]">Your product</p>
+                    <p className="font-['Space_Grotesk:Regular',sans-serif] text-[#777770] text-[12px] mt-[2px]">Order confirmation ready</p>
+                  </div>
+                </div>
+                <div className="rounded-[10px] bg-[#141414] px-[14px] py-[12px] flex items-center gap-[10px]">
+                  <Mail aria-hidden size={16} style={{ color: active.tone }} />
+                  <span className="font-['Space_Mono:Regular',sans-serif] text-[#a0a09a] text-[10px]">Your order is confirmed</span>
+                </div>
+              </div>
+
+              <div className="relative min-h-[64px] md:min-h-0 flex items-center justify-center overflow-hidden">
+                <div className="absolute h-full md:h-px w-px md:w-full bg-[rgba(242,241,236,0.12)]" />
+                <div className="relative size-[42px] rounded-full bg-[#181817] flex items-center justify-center transition-colors duration-300" style={{ color: active.tone, boxShadow: `0 0 24px ${active.tone}22` }}>
+                  {activeIndex === 1 ? <ShieldCheck aria-hidden size={18} /> : <Send aria-hidden className="rotate-90 md:rotate-0" size={17} />}
+                </div>
+              </div>
+
+              <div className="bg-[#0a0a0a] rounded-[14px] p-[20px] sm:p-[24px] flex flex-col gap-[18px] border border-[rgba(242,241,236,0.09)]">
+                <div className="flex items-center justify-between gap-[10px]">
+                  <p className="font-['Space_Mono:Regular',sans-serif] text-[#6f6f68] text-[10px] tracking-[1px] uppercase">Who receives it?</p>
+                  {activeIndex < 2 && <LockKeyhole aria-label="Customer delivery locked" size={15} className="text-[#6f6f68]" />}
+                </div>
+
+                {activeIndex === 0 && (
+                  <div className="flex flex-col gap-[14px]">
+                    <div className="flex items-center gap-[12px] text-[#ff9f43]"><UserCheck aria-hidden size={24} /><div><p className="font-['Space_Grotesk:Bold',sans-serif] font-bold text-[#f2f1ec] text-[15px]">You and your team</p><p className="text-[#777770] text-[12px] mt-[2px]">Approved test inboxes only</p></div></div>
+                    <div className="opacity-35 flex items-center gap-[12px]"><Users aria-hidden size={24} /><div><p className="font-['Space_Grotesk:Bold',sans-serif] font-bold text-[#a0a09a] text-[15px]">Customers</p><p className="text-[#777770] text-[12px] mt-[2px]">Protected from test messages</p></div></div>
+                  </div>
+                )}
+                {activeIndex === 1 && (
+                  <div className="flex flex-col items-start gap-[13px]">
+                    <div className="size-[44px] rounded-full bg-[rgba(204,110,248,0.14)] text-[#cc6ef8] flex items-center justify-center"><ShieldCheck aria-hidden size={22} /></div>
+                    <div><p className="font-['Space_Grotesk:Bold',sans-serif] font-bold text-[#f2f1ec] text-[15px]">Mailtarget checks the sender</p><p className="text-[#777770] text-[12px] leading-[18px] mt-[4px]">The business and its sending address must match before access opens.</p></div>
+                  </div>
+                )}
+                {activeIndex === 2 && (
+                  <div className="flex flex-col gap-[14px]">
+                    <div className="flex items-center gap-[12px] text-[#6aa8ff]"><Users aria-hidden size={24} /><div><p className="font-['Space_Grotesk:Bold',sans-serif] font-bold text-[#f2f1ec] text-[15px]">Real customers</p><p className="text-[#777770] text-[12px] mt-[2px]">Live transactional delivery</p></div></div>
+                    <div className="flex items-center gap-[8px] text-[#68d391] text-[12px]"><Check aria-hidden size={15} /><span>Sender verified and ready</span></div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-[10px] pt-[18px] border-t border-[rgba(242,241,236,0.09)]">
+              <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium text-[#f2f1ec] text-[14px] leading-[20px]">{active.takeaway}</p>
+              <p className="font-['Space_Mono:Regular',sans-serif] text-[#6f6f68] text-[9px] tracking-[0.6px] uppercase shrink-0">{active.technical}</p>
+            </div>
+          </div>
+        </div>
+        <div aria-hidden className="absolute border border-[rgba(242,241,236,0.12)] inset-0 pointer-events-none rounded-[18px]" />
       </div>
     </div>
   );

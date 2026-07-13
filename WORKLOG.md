@@ -1,5 +1,213 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-13 15:05 - [Codex] Standardized caption-safe heights across all CMIS screen cards
+
+**Done:** Added CMIS-specific card-height rules in `src/app/App.tsx` after auditing every repeated screenshot-card family in `src/imports/CaseStudyCmisSuite/index.tsx`. All three-column `c3`, `c3b`, and `c3p` cards now render at 460px, while two-column `lc`, `dlc`, `c2`, `c2t`, `old`, and `new` cards render at 420px. These heights work with the existing 14px body-copy floor and natural paragraph height to retain clear space below every description.
+
+**Found:** The clipped Procurement descriptions were one instance of a repeated generated-card constraint: CMIS contained 26 fixed-height image cards ranging from 360px to 420px. Enlarging body copy exposed the undersized caption areas across several modules. A root-scoped CMIS rule fixes the complete family without changing card dimensions in other case studies. The local Vite server compiled the update, `App.tsx` retains its complete default export, and `git diff --check` passes.
+
+**Next:** Review each CMIS screen-card section locally from DMS through Finance. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 14:59 - [Codex] Reflowed the CMIS purchase-request workflow into two rows
+
+**Done:** Changed the six-step `From request to order` workflow in `src/imports/CaseStudyCmisSuite/index.tsx` from one six-column flex strip to a three-column grid. Steps 01–03 now form the first row and 04–06 the second. Each description now uses its full grid-column width, the 10px fixed text-height constraints were removed, and the cards use the same balanced 240px height as the document-lifecycle grid.
+
+**Found:** This workflow repeated the same legacy narrow-column pattern as the document lifecycle. The remaining `wfRow` later in the file is a separate four-step finance workflow and was intentionally left unchanged. The local Vite server compiled the update, `App.tsx` retains its complete default export, and `git diff --check` passes.
+
+**Next:** Review the CMIS purchase-request grid locally. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 14:55 - [Codex] Reflowed the CMIS document lifecycle into two rows
+
+**Done:** Changed the six-step Document Lifecycle strip in `src/imports/CaseStudyCmisSuite/index.tsx` from one six-column flex row to a three-column grid. Steps 01–03 now form the first row and 04–06 form the second. Each card uses the full grid-column width for its description, the obsolete 10px text-height constraints were removed, and card height was set to 240px to retain balanced spacing with the shared 14px body-copy floor.
+
+**Found:** The previous 151px-wide copy columns made the workflow unnecessarily tall and difficult to scan even before responsive scaling. The 3-by-2 structure preserves sequence while making each explanation substantially easier to read. The local Vite server compiled the update, `App.tsx` retains its complete default export, and `git diff --check` passes.
+
+**Next:** Review the CMIS lifecycle grid locally. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 14:32 - [Codex] Established readable case-study body copy and safer card spacing
+
+**Done:** Added a shared body-copy floor in `src/app/App.tsx` for imported case studies: Space Grotesk explanatory text previously rendered at 10–13px now renders at 14px with 1.5 line height and natural height. The rule covers paragraphs, spans, and inherited text containers while leaving compact Space Mono metadata and UI labels at their intentional scale. Increased the CMIS legacy-versus-modern comparison cards from 380px to 420px so their descriptions retain clear bottom padding. Expanded compact KitaLabel Business OS gallery captions from 112px to 128px and the primary caption from 108px to 112px so the readability increase does not clip text.
+
+**Found:** Small generated copy was a portfolio-wide legacy-export issue rather than a single CMIS card problem: 137 imported Space Grotesk body-copy instances used 10–13px sizes. A shared scoped rule keeps the correction consistent across all use cases without enlarging metadata or text embedded inside screenshot assets. The local Vite server compiled all updates, `App.tsx` retains its complete default export, and `git diff --check` passes.
+
+**Next:** Review the CMIS comparison row and representative dense cards across the case studies locally. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 14:02 - [Codex] Fixed clipped CMIS captions and audited SONAR thumbnails
+
+**Done:** Fixed both Procurement Tool screen cards in `src/imports/CaseStudyCmisSuite/index.tsx`. Removed the accidental 10px fixed height from the List Purchase Tool and success-confirmation descriptions, and increased both cards from 360px to 380px so their complete captions fit beneath the full-width thumbnails.
+
+**Found:** The CMIS issue was caption clipping, not an image-width regression: both description paragraphs were constrained to a single 10px-high box. SONAR has one imported product image and it already uses full-frame `object-cover`; its shared case hero and mobile walkthrough also inherit the standardized full-width thumbnail treatment from `src/app/App.tsx`. No SONAR-specific change was required. The local Vite server compiled the CMIS update, `App.tsx` retains its complete default export, and `git diff --check` passes.
+
+**Next:** Review the CMIS Procurement Tool row locally. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 13:57 - [Codex] Standardized full-width thumbnails across every case study
+
+**Done:** Updated the shared case-study presentation rules in `src/app/App.tsx`. Legacy imported screenshots using `object-contain` now fill their thumbnail frames edge to edge with a top-centered crop across all desktop case-study pages. Product-logo containers are explicitly excluded and retain contained proportions. The mobile walkthrough hero and visual-index thumbnails now use the same full-frame behavior. Shared case-study heroes and the full-width, scrollable image-preview modal remain consistent with the rule.
+
+**Found:** The remaining visible gutters came from legacy Figma-exported `object-contain` image classes spread across CMIS, KitaLabel, Mailtarget, Read/See, and dashboard imports. A scoped shared rule fixes those screenshot thumbnails without mechanically rewriting every generated import or affecting images outside case-study pages. The modal continues to display the complete source image at full width, so thumbnail cropping does not hide detail during inspection. The local Vite server compiled the update, `App.tsx` retains its complete default export, and `git diff --check` passes.
+
+**Next:** Review representative landscape and portrait thumbnails across the case studies locally. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 13:52 - [Codex] Changed the CMIS DMS primary screens to a two-column layout
+
+**Done:** Updated the `The DMS in detail` section in `src/imports/CaseStudyCmisSuite/index.tsx`. The Login and Document List primary screen cards now sit side by side in two equal 564px columns with a 24px gap, while their captions and descriptions were resized to fit the new card width without clipping. The supporting three-column screen rows remain unchanged.
+
+**Found:** The existing CMIS section used two consecutive 1152px full-width cards, which made the primary screens visually oversized and lengthened the section. The new grid uses the same 1152px content boundary as the surrounding case-study layout. The local Vite server compiled the update, `App.tsx` retains its complete default export, and `git diff --check` passes.
+
+**Next:** Review the CMIS DMS primary-screen row locally at desktop and responsive sizes. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 13:42 - [Codex] Moved KitaLabel promo-code copy to Step 5
+
+**Done:** Updated the six-step complete-flow copy and the older supporting checkout artifact in `src/imports/CaseStudyKitalabel-1/index.tsx`. Step 5 now covers billing details, attached files, promo-code application, courier selection, and final-total review. Step 6 now covers only final payment summary, payment-method selection, and placing the order.
+
+**Found:** Promo application occurs during checkout in Step 5, before the payment action in Step 6. The older supporting card also mixed promo and payment, so it was renamed and corrected for consistency. The local Vite server compiled the update, `App.tsx` retains its complete default export, and `git diff --check` passes.
+
+**Next:** Review Steps 5 and 6 locally, then add the pending replacement images. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 13:36 - [Codex] Corrected KitaLabel Step 6 to payment-only and moved RFQ to the calculator
+
+**Done:** Updated Step 2 and Step 6 copy in `src/imports/CaseStudyKitalabel-1/index.tsx` plus the matching complete-flow summary in `src/app/App.tsx`. Step 2 now explains that calculated values above IDR 5,000,000 branch into RFQ before cart and checkout. Step 6 is now titled `Customer completes payment` and covers promo, payment method, summary, and final order action only.
+
+**Found:** RFQ was incorrectly presented as an option at checkout. In the real flow, the calculator handles that decision up front based on the IDR 5,000,000 threshold. Searches confirm the stale `pays or requests`, `Buat Penawaran`, and checkout-level quote language are absent. The local Vite server compiled both files, `App.tsx` retains its complete default export, and `git diff --check` passes.
+
+**Next:** Review Step 2 and Step 6 locally, then add the pending `step-01.png` through `step-06.png` assets. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 13:10 - [Codex] Prepared six named image slots for the KitaLabel complete flow
+
+**Done:** Updated the six cards in `completeFlowSteps` within `src/imports/CaseStudyKitalabel-1/index.tsx` to load `/case-studies/kitalabel/step-01.png` through `step-06.png`. Added a per-card fallback to the current `image-03.png` through `image-08.png` assets so the page remains intact until the replacement files are uploaded, and added descriptive image alt text.
+
+**Found:** No `step-01.png` to `step-06.png` files are present yet. Once they are placed in `public/case-studies/kitalabel`, the browser will use them automatically without another code change. The local Vite server compiled the update, `App.tsx` retains its complete default export, and `git diff --check` passes.
+
+**Next:** User will upload the six replacement PNG files to `public/case-studies/kitalabel`; then verify their crops and remove the fallback assets only if storage cleanup is desired. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 12:02 - [Codex] Corrected the KitaLabel pricing bottleneck to the Estimator PIC workflow
+
+**Done:** Rewrote the KitaLabel Price Calculator problem, outcome, hero summary/stat, mobile walkthrough, proof copy, desktop problem/context cards, and before-workflow steps across `src/app/App.tsx` and `src/imports/CaseStudyKitalabel-1/index.tsx`. The case now shows the real sequence: sales collects specifications, formats and forwards the request to the Estimator PIC, the quote waits in that estimator's daily workload queue, and pricing returns to the customer through sales.
+
+**Found:** The previous copy incorrectly credited sales with calculating prices in spreadsheets. The actual delay came from the sales-to-estimator handoff and queue depth. Standard self-service pricing is now framed as removing that handoff, while special designs retain expert review. Searches confirm the old manual-sales-calculation claims are absent. The local Vite server compiled both files, `App.tsx` retains its complete default export, and `git diff --check` passes.
+
+**Next:** Review the updated problem and before/after workflow locally. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 11:52 - [Codex] Made case-study hero thumbnails fill their preview frames
+
+**Done:** Changed the shared case-study hero image in `src/app/App.tsx` from `object-fit: contain` to centered `object-fit: cover`. Hero thumbnails now fill the full `16:9` preview frame edge-to-edge without black side gutters.
+
+**Found:** The source thumbnails use a slightly taller aspect ratio than the hero preview, so containment introduced visible pillarboxing. Covering the shared frame removes the gutters consistently across all use cases while retaining the existing scrim, copy overlay, and modal behavior. The local Vite server compiled the update, `App.tsx` retains its complete default export, and `git diff --check` passes.
+
+**Next:** Review hero-thumbnail crops across the case studies locally. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 11:46 - [Codex] Confirmed shared preview behavior across all case studies
+
+**Done:** Audited the preview flow in `src/app/App.tsx` and confirmed that every use-case page renders through the common `CaseStudyPage`, opens images through the shared `openPreview` state path, and uses the single `CaseImagePreview` component.
+
+**Found:** The width-first image rendering and internal vertical scrolling added to `CaseImagePreview` already apply globally; no case-specific modal implementation or override needs updating.
+
+**Next:** Review representative landscape and tall screenshots across the other case studies locally. No additional code change was required; existing changes remain uncommitted and undeployed.
+
+## 2026-07-13 11:42 - [Codex] Made case-study image previews full-width and internally scrollable
+
+**Done:** Updated `CaseImagePreview` in `src/app/App.tsx` to use up to `96vw`/`1600px` of horizontal space. Images now render at the full popup width with automatic height, while the image frame is capped at `82vh` and scrolls vertically inside the modal for tall product screenshots.
+
+**Found:** The previous `maxHeight: 82vh` plus `objectFit: contain` scaled tall screens down until their UI became unreadable. Width-first rendering preserves screen detail and moves overflow into an intentional internal scroll area. The close control remains outside the scrolling image frame. The local Vite server compiled the update, `App.tsx` retains its complete default export, and `git diff --check` passes.
+
+**Next:** Review a tall KitaLabel dashboard screenshot in the modal locally. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 11:36 - [Codex] Increased KitaLabel gallery caption readability
+
+**Done:** Increased compact screen-card titles from `12px` to `14px` and descriptions from `10px` to `12px` in `src/imports/CaseStudyKitalabelBos-1/index.tsx`. Expanded each compact caption area from `86px` to `112px` with slightly more padding and line spacing so the larger copy remains aligned and unclipped.
+
+**Found:** The previous `10px` description size was visually too quiet and difficult to read at normal desktop viewing distance. The local Vite server compiled the update, `App.tsx` retains its complete default export, and `git diff --check` passes.
+
+**Next:** Review the improved card copy locally. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 11:30 - [Codex] Promoted the KitaLabel dashboard as the primary screen
+
+**Done:** Updated `ProductScreenGallery` in `src/imports/CaseStudyKitalabelBos-1/index.tsx` so the Dashboard card spans all four gallery columns with a 420px-tall lead image, stronger purple border, larger title and description, and a `Primary screen` marker. It retains the same direct modal-preview interaction as every other screen.
+
+**Found:** Equal-sized cards flattened the hierarchy even though the dashboard is the clearest overview of the Business OS. Promoting it inside the grid makes it the entry point without restoring the removed selected-preview state. The local Vite server compiled the update, `App.tsx` retains its complete default export, and `git diff --check` passes.
+
+**Next:** Review the dashboard hierarchy locally. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 11:24 - [Codex] Simplified KitaLabel screen gallery to modal-only previews
+
+**Done:** Removed the selected-screen state and large main-preview panel from `ProductScreenGallery` in `src/imports/CaseStudyKitalabelBos-1/index.tsx`. Every screen card now carries its preview source/title and opens that image directly through the existing case-study modal handler in `src/app/App.tsx`; clicking the image, title, or description produces the same single action.
+
+**Found:** Maintaining both a gallery selection model and a modal preview model duplicated the same inspection task. The modal-only gallery is clearer, shorter, and keeps all 17 screens equally available. The local Vite server compiled both files, the obsolete `selectedIndex` and gallery-selector logic are absent, `App.tsx` retains its complete default export, and `git diff --check` passes.
+
+**Next:** Review the simplified gallery locally. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 11:18 - [Codex] Separated KitaLabel gallery selection from modal preview
+
+**Done:** Marked the KitaLabel Business OS thumbnail buttons with `data-gallery-selector` in `src/imports/CaseStudyKitalabelBos-1/index.tsx` and updated the delegated case-study image handler in `src/app/App.tsx` to ignore those selector clicks. Thumbnail images now use a pointer cursor, while the large selected image retains the zoom cursor and modal behavior.
+
+**Found:** Thumbnail clicks previously bubbled into the page-level handler that opens every case-study image in the lightbox, so one click both changed the gallery selection and opened the modal. The explicit selector boundary removes that double action. The local Vite server compiled both modified files, `App.tsx` still contains its complete default export, and `git diff --check` passes.
+
+**Next:** Confirm locally that thumbnail clicks only swap the main preview and clicking the large preview opens the modal. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 11:12 - [Codex] Added visible purposes to every KitaLabel BOS screen
+
+**Done:** Updated the real-screen gallery in `src/imports/CaseStudyKitalabelBos-1/index.tsx` so every thumbnail displays its screen name, index, and a concise purpose statement before selection. Kept the fuller description in the lead-image caption and constrained each thumbnail description to a stable three-line, fixed-height area so the four-column grid stays aligned.
+
+**Found:** Screen names alone made the gallery read like an asset index. Showing each purpose directly on the thumbnail lets visitors understand the operational scope without opening all 17 screens. The local Vite server accepted the update; browser re-verification was unavailable because the current browser policy blocked reopening the local URL.
+
+**Next:** Review the descriptions locally at `http://127.0.0.1:5174/#/work/kitalabel-bos`. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 11:04 - [Codex] Replaced KitaLabel BOS placeholder mockups with real product screens
+
+**Done:** Added an interactive product-screen gallery to `src/imports/CaseStudyKitalabelBos-1/index.tsx` and replaced the rendered Figma-generated dashboard/mini-mockup block in Section 03. The gallery uses `main-dashboard.png` as its default lead image and exposes all 17 uploaded KitaLabel Business OS screens as selectable thumbnails with screen-specific captions and accessible pressed states.
+
+**Found:** The previous section was still drawing reconstructed dashboard surfaces in code, including placeholder profile imagery, even though final product screenshots were now available. The local Vite server compiled the update, all 17 gallery controls rendered, selecting `Orders` updated the lead image and caption, and the browser console remained clean. `git diff --check` passes. A standalone production build could not be rerun because the sandbox blocked Vite/esbuild process spawning and the approval service could not review the elevated retry.
+
+**Next:** Review the real-screen gallery locally at `http://127.0.0.1:5174/#/work/kitalabel-bos`. Changes and the new image files remain uncommitted and undeployed.
+
+## 2026-07-13 09:57 - [Codex] Increased header brand lockup
+
+**Done:** Increased the homepage header's `DHEORY` wordmark from `13px` to `15px`, the supporting name from `11px` to `12px`, and the purple brand dot from `9px` to `10px` in `src/app/App.tsx`.
+
+**Found:** The previous lockup read too quietly beside the navigation. The modest size increase improves brand presence without changing header height or spacing. Production build passes.
+
+**Next:** Review locally at `http://127.0.0.1:5174/#/`. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 09:52 - [Codex] Fixed About portrait crop on iPad Mini
+
+**Done:** Updated the About portrait wrapper in `src/app/App.tsx` to stay fluid on phones but cap at `440px` wide and center on tablet layouts, while preserving the existing `440px` left-aligned desktop column.
+
+**Found:** At tablet width the wrapper previously expanded to roughly `688px` while `maxHeight: 550px` forced a shallow frame, defeating the 4:5 aspect ratio and making `object-cover` crop through the face. At the iPad Mini test viewport the fixed container measures approximately `427x534`, closely matching the portrait's native `392x502` ratio. Production build passes and browser console checks are clean.
+
+**Next:** Review locally at `http://127.0.0.1:5174/#/`. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 09:30 - [Codex] Removed false tab affordance from KitaLabel flow
+
+**Done:** Replaced the six static tab-like boxes in `FlowStrip` (`src/imports/CaseStudyKitalabel-1/index.tsx`) with a semantic ordered timeline using connected circular milestones and plain labels.
+
+**Found:** The old alternating rectangular surfaces visually promised click interaction even though none existed. The replacement has zero buttons, no selected state, and reads as a single six-step sequence. Production build passes and browser console checks are clean.
+
+**Next:** Review locally at `http://127.0.0.1:5174/#/work/kitalabel`. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 09:28 - [Codex] Fixed KitaLabel workflow connector overflow
+
+**Done:** Widened the comparison connector column in `src/imports/CaseStudyKitalabel-1/index.tsx`, centered its arrow, and replaced the overflowing annotations with stable two-line labels: `NO SALES / HANDOFF` and `LESS BACK / AND FORTH`.
+
+**Found:** The previous `92px` column could not contain `SALES HANDOFF REMOVED`, causing text clipping and collision with the right-anchored arrow. Both interaction modes now render correctly with no console errors; the production build passes.
+
+**Next:** Review locally at `http://127.0.0.1:5174/#/work/kitalabel`. Changes remain uncommitted and undeployed.
+
+## 2026-07-13 09:23 - [Codex] Reframed KitaLabel plugin as a workflow reduction
+
+**Done:** Replaced the AI-dashboard-like pricing complexity map in `src/imports/CaseStudyKitalabel-1/index.tsx` with an interactive before/after workflow. The section now compares five assisted quoting touchpoints against three plugin steps and lets visitors switch between `Standard label` and `Special design`. Standard work removes the sales handoff and stays in checkout; special work captures a structured brief before expert review. Updated the matching case-study headline and mobile walkthrough copy in `src/app/App.tsx`.
+
+**Found:** The strongest story is not the number of pricing variables; it is that repeatable label jobs no longer leave the buying flow. The special-design branch also prevents the portfolio from implying that automation replaces necessary print expertise. Production build passes, both interaction states render, no console errors were found, and the desktop page has no horizontal overflow.
+
+**Next:** Review locally at `http://127.0.0.1:5174/#/work/kitalabel`. Current Mailtarget and KitaLabel changes remain uncommitted and undeployed.
+
+## 2026-07-13 09:02 - [Codex] Simplified Mailtarget Sandbox-to-Production UX model
+
+**Done:** Rebuilt the interactive UX-model section in `src/imports/CaseStudyMailtargetApp-1/index.tsx` around a plain-language email journey: Practice safely, Prove ownership, and Send to customers. Added a recipient simulation that visibly changes from approved team inboxes to a trust checkpoint and then real customers, using the existing orange/purple/blue environment language and Lucide icons. Updated the matching desktop and mobile section title/copy in `src/app/App.tsx` to ask, "How does a test email become safe to send?"
+
+**Found:** The previous five-step implementation list required readers to understand API and DNS terminology before they could understand the safety model. The new version makes recipient access the primary visual signal and keeps technical constraints as secondary evidence. Production build passes; browser interaction checks pass with no console errors.
+
+**Next:** Review locally at `http://127.0.0.1:5174/#/work/mailtarget-app`. Changes are not committed or deployed yet.
+
 ## 2026-07-13 08:45 - [Codex] Updated thumbnails deployed to production
 
 **Done:** Validated five replacement PNG thumbnails at a consistent `648x405` size, committed only `public/thumbnails/cmis-suite.png`, `kitalabel-bos.png`, `kitalabel.png`, `mailtarget-app.png`, and `sonar.png` as `8817161`, then pushed `main` to GitHub (`73c5a02..8817161`). Vercel production auto-deployment was triggered by the push.

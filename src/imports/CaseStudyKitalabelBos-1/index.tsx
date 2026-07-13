@@ -3,6 +3,73 @@ const imgLogo = "/case-studies/kitalabel-bos/image-01.png";
 const imgRectangle = "/case-studies/kitalabel-bos/image-02.png";
 const imgRectangle1 = "/case-studies/kitalabel-bos/image-03.png";
 
+const productScreens = [
+  { src: "/case-studies/kitalabel-bos/main-dashboard.png", label: "Dashboard", caption: "Revenue, customer health, reorder risk, and operational alerts in one working view." },
+  { src: "/case-studies/kitalabel-bos/crm-orders.png", label: "Orders", caption: "A unified order queue for reviewing status, payment, customer, and production progress." },
+  { src: "/case-studies/kitalabel-bos/order-detail.png", label: "Order detail", caption: "The complete order context, customer history, pricing, and fulfilment information." },
+  { src: "/case-studies/kitalabel-bos/woo-customers.png", label: "Customers", caption: "Customer segments make repeat buyers, inactive accounts, and missing data visible." },
+  { src: "/case-studies/kitalabel-bos/customer-detail.png", label: "Customer detail", caption: "Order history, spend, and reorder-cycle signals collected around one customer." },
+  { src: "/case-studies/kitalabel-bos/reorder-cycle.png", label: "Reorder cycle", caption: "A focused view for identifying customers who are approaching or missing a repeat order." },
+  { src: "/case-studies/kitalabel-bos/internal-calculator.png", label: "Calculator", caption: "Internal pricing tools stay close to the operational workflow instead of a separate spreadsheet." },
+  { src: "/case-studies/kitalabel-bos/team-members.png", label: "Team members", caption: "People, roles, and account status managed from the same administrative surface." },
+  { src: "/case-studies/kitalabel-bos/team-roles.png", label: "Team roles", caption: "Reusable roles make access rules easier to understand and maintain." },
+  { src: "/case-studies/kitalabel-bos/team-role-edit.png", label: "Role permissions", caption: "Permission editing exposes exactly what each operational role can see and change." },
+  { src: "/case-studies/kitalabel-bos/crm-settings.png", label: "CRM settings", caption: "Business rules and CRM behaviour are configured without leaving the system." },
+  { src: "/case-studies/kitalabel-bos/external-mappings.png", label: "External mappings", caption: "External WooCommerce data is mapped into a stable internal operating model." },
+  { src: "/case-studies/kitalabel-bos/webhook-events.png", label: "Webhook events", caption: "Incoming commerce events are visible and traceable when integrations need attention." },
+  { src: "/case-studies/kitalabel-bos/sync-logs.png", label: "Sync logs", caption: "Sync history gives the team a readable record of successful and failed data movement." },
+  { src: "/case-studies/kitalabel-bos/production-behavior-specs.png", label: "Behaviour specs", caption: "Production behaviour is documented alongside the product surfaces it governs." },
+  { src: "/case-studies/kitalabel-bos/profile-page.png", label: "Profile", caption: "Personal account details and security controls use the same system language." },
+  { src: "/case-studies/kitalabel-bos/login-page.png", label: "Login", caption: "A restrained entry point establishes the Business OS identity before the work begins." },
+] as const;
+
+function ProductScreenGallery() {
+  return (
+    <div className="w-[1152px]">
+      <div className="grid grid-cols-4 gap-[12px]" aria-label="KitaLabel Business OS product screens">
+        {productScreens.map((screen, index) => {
+          const isPrimary = index === 0;
+          return (
+            <button
+              key={screen.src}
+              type="button"
+              data-preview-src={screen.src}
+              data-preview-title={`KitaLabel Business OS - ${screen.label}`}
+              aria-label={`Preview ${screen.label}`}
+              className={`group overflow-hidden rounded-[5px] border bg-[#111] text-left transition-colors hover:border-[#cc6ef8] ${isPrimary ? "col-span-4 border-[rgba(204,110,248,0.55)]" : "border-[rgba(242,241,236,0.12)]"}`}
+            >
+              <span className={`block overflow-hidden bg-[#09090b] ${isPrimary ? "h-[420px]" : "h-[124px]"}`}>
+                <img
+                  src={screen.src}
+                  alt={`${screen.label} screen from KitaLabel Business OS`}
+                  className="block h-full w-full object-cover object-top opacity-80 transition-opacity group-hover:opacity-100"
+                />
+              </span>
+              <span className={`block overflow-hidden border-t border-[rgba(242,241,236,0.08)] ${isPrimary ? "h-[112px] px-[20px] py-[16px]" : "h-[128px] px-[14px] py-[12px]"}`}>
+                <span className="flex items-center justify-between gap-[8px]">
+                  <span className="flex items-center gap-[12px]">
+                    <span className={`font-['Space_Grotesk:Medium',sans-serif] font-medium text-[#f2f1ec] ${isPrimary ? "text-[18px]" : "text-[14px]"}`}>{screen.label}</span>
+                    {isPrimary && (
+                      <span className="font-['Space_Mono:Regular',sans-serif] text-[9px] uppercase tracking-[0.12em] text-[#cc6ef8]">Primary screen</span>
+                    )}
+                  </span>
+                  <span className={`font-['Space_Mono:Regular',sans-serif] text-[#9a9a93] ${isPrimary ? "text-[11px]" : "text-[9px]"}`}>{String(index + 1).padStart(2, "0")}</span>
+                </span>
+                <span
+                  className={`block overflow-hidden font-['Space_Grotesk:Regular',sans-serif] leading-[1.45] text-[#9a9a93] ${isPrimary ? "mt-[10px] max-w-[760px] text-[13px]" : "mt-[9px] text-[12px]"}`}
+                  style={{ display: "-webkit-box", WebkitBoxOrient: "vertical", WebkitLineClamp: 3 }}
+                >
+                  {screen.caption}
+                </span>
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 function Frame() {
   return (
     <div className="content-stretch flex gap-[12px] items-center relative shrink-0" data-name="Frame">
@@ -11817,9 +11884,7 @@ function Section3() {
     <div className="relative shrink-0 w-full" data-name="Section 03">
       <div className="content-stretch flex flex-col gap-[80px] items-start px-[64px] py-[100px] relative size-full">
         <Frame129 />
-        <Frame130 />
-        <Frame223 />
-        <Frame468 />
+        <ProductScreenGallery />
       </div>
     </div>
   );
