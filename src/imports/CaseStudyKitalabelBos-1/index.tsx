@@ -1,4 +1,5 @@
 import svgPaths from "./svg-jhm7sf8zhm";
+import KitalabelBosStory from "../../app/components/KitalabelBosStory";
 const imgLogo = "/case-studies/kitalabel-bos/image-01.png";
 const imgRectangle = "/case-studies/kitalabel-bos/image-02.png";
 const imgRectangle1 = "/case-studies/kitalabel-bos/image-03.png";
@@ -2325,7 +2326,7 @@ function Section2() {
 function Frame129() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[24px] items-start relative shrink-0 w-full" data-name="Frame">
-      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">03 — Key Screens</p>
+      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">06 — Key Screens</p>
       <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-none min-w-full relative shrink-0 text-[#f2f1ec] text-[46px] w-[min-content]">The system, screen by screen</p>
     </div>
   );
@@ -11893,7 +11894,7 @@ function Section3() {
 function Frame660() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[24px] items-start relative shrink-0 w-full" data-name="Frame">
-      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">04 — Key Design Decisions</p>
+      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">07 — Key Design Decisions</p>
       <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-none min-w-full relative shrink-0 text-[#f2f1ec] text-[46px] w-[min-content]">Why it works the way it does</p>
     </div>
   );
@@ -12040,7 +12041,7 @@ function Section4() {
 function Frame673() {
   return (
     <div className="content-stretch flex flex-[1_0_0] flex-col gap-[12px] items-start min-w-px relative" data-name="Frame">
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px]">16</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px]">17</p>
       <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px] uppercase">Screens designed</p>
     </div>
   );
@@ -12097,7 +12098,7 @@ function Frame672() {
 function Frame671() {
   return (
     <div className="content-stretch flex flex-col gap-[40px] items-start leading-[normal] relative shrink-0 w-full whitespace-nowrap" data-name="Frame">
-      <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px]">05 — Outcomes</p>
+      <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px]">08 — Outcomes</p>
       <Frame672 />
     </div>
   );
@@ -12210,6 +12211,7 @@ export default function CaseStudyKitalabelBos() {
       <Section1 />
       <Section />
       <Section2 />
+      <KitalabelBosStory />
       <Section3 />
       <Section4 />
       <Section5 />

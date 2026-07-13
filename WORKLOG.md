@@ -1,5 +1,21 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-13 16:20 - [Codex] Added the missing product-system story to KitaLabel Business OS
+
+**Done:** Added an interactive KitaLabel Business OS narrative before the 17-screen gallery: the WooCommerce-to-event-queue-to-CRM-to-action-surface lifecycle, a four-step missing-order recovery path, internal-test-data exclusion rules, role-aware interface permissions, and a concise explanation of why the product is a Business OS rather than only a CRM. Updated the gallery metric from 16 to 17 screens and renumbered the following case-study sections. Reused the same story in the tablet/mobile article path so no new content disappears below 1024px.
+
+**Found:** The prior responsive architecture renders a separate mobile article and hides imported desktop case studies, so inserting the new story only in the imported file initially made it desktop-only. The shared conditional rendering now keeps the complete story available at 1440px, 768px, and 390px. Browser checks found no horizontal overflow, interactive flow and permission states work, and the new responsive body copy stays at 15px or larger. The production Vite build passes; the existing large main-chunk advisory remains (`1,168.83 kB`, `248.41 kB` gzip).
+
+**Next:** Review the new sections at `http://127.0.0.1:5175/#/work/kitalabel-bos`. The changes are complete locally but remain uncommitted and undeployed until the user requests the production push. Real operational outcome metrics were deliberately not invented and can be added later when verified data is available.
+
+## 2026-07-13 16:10 - [Codex] Audited the KitaLabel Business OS Figma documentation against the case study
+
+**Done:** Inspected the complete Figma file structure and the detailed Data Flow Map, Operational Workflows, Navigation Architecture, Entity Relationship Map, Metric Dictionary, Permission Model, State and Exception Catalog, Security guidance, and Business OS Scope Boundary. Compared those product-system artifacts with the current portfolio narrative and 17-screen gallery in `src/imports/CaseStudyKitalabelBos-1/index.tsx`. No source code or production UI was changed.
+
+**Found:** The case study demonstrates screen breadth but omits the strongest product-thinking evidence: the WooCommerce-to-CRM data lifecycle, internal-test-data exclusion, missing-order recovery, role-driven UI rendering, and the rationale for the Business OS scope. The current `16 Screens designed` metric is stale against the 17 unique screens now shown. Figma documentation also mixes version labels `1.1`, `1.8.4`, and `2.4.0`, so public-facing version claims should be normalized or omitted.
+
+**Next:** Add a concise interactive system-flow section, one representative operational workflow, a data-integrity decision, and a compact role-visibility explanation before the current screen gallery. Update the screen count to 17 and replace deliverable-only outcomes with verified operational impact once real measurements are available. These are recommendations only and remain unimplemented pending user direction.
+
 ## 2026-07-13 15:14 - [Codex] Deployed the complete July 13 case-study update to production
 
 **Done:** Ran the production Vite build successfully (`2020 modules transformed`), committed all intended source changes and case-study assets as `5c1c086` (`Improve case studies and add product screens`), and pushed `main` from `1cf7f2a` to `5c1c086` on `origin`. This push includes the Mailtarget UX model, KitaLabel pricing and complete-flow corrections, the full KitaLabel Business OS screen gallery, shared full-width thumbnails and preview behavior, readable case-study copy, CMIS layout and caption fixes, refreshed KitaLabel images, six named flow images, and 17 Business OS screenshots. Vercel production auto-deployment was triggered by the GitHub push.

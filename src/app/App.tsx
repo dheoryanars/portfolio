@@ -17,6 +17,7 @@ import CaseStudyCmisSuiteImport from "@/imports/CaseStudyCmisSuite/index";
 import CaseStudyMailtargetApp from "@/imports/CaseStudyMailtargetApp-1/index";
 import CaseStudyKitalabel from "@/imports/CaseStudyKitalabel-1/index";
 import CaseStudyKitalabelBos from "@/imports/CaseStudyKitalabelBos-1/index";
+import KitalabelBosStory from "./components/KitalabelBosStory";
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -4134,6 +4135,7 @@ function CaseStudyPage({
           detail={currentMobileDetail}
           onPreview={openPreview}
         />
+        {slug === "kitalabel-bos" && <KitalabelBosStory />}
       </div>
       <div className="case-study-preview-scope hidden lg:block">
       <ResponsiveCaseStudyFrame
