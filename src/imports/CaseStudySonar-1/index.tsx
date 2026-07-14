@@ -1,5 +1,8 @@
+import { Check, Maximize2 } from "lucide-react";
+import { useState } from "react";
 import svgPaths from "./svg-csb78eiqwr";
 const imgHeroMockup = "/case-studies/sonar/image-01.png";
+const imgHeroIllustration = "/case-studies/sonar/image-07.png";
 
 function Logo() {
   return (
@@ -654,7 +657,7 @@ function Frame35() {
   return (
     <div className="bg-[#111] h-[500px] relative rounded-[8px] shrink-0 w-full" data-name="Frame">
       <div className="content-stretch flex items-start overflow-clip relative rounded-[inherit] size-full">
-        <img alt="SONAR FAQ section — desktop" className="absolute inset-0 max-w-none object-cover object-top pointer-events-none size-full rounded-[8px]" src="/case-studies/sonar/image-04.png" />
+        <img alt="SONAR FAQ section — desktop" className="absolute inset-0 max-w-none object-cover object-top pointer-events-none size-full rounded-[8px] scale-[1.14] origin-top" src="/case-studies/sonar/image-04.png" />
       </div>
       <div aria-hidden className="absolute border border-[#1f1f1f] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
@@ -672,7 +675,7 @@ function FaqDesktop() {
 
 function Row1() {
   return (
-    <div className="content-stretch flex gap-[24px] items-start relative shrink-0 w-full" data-name="Row2">
+    <div className="content-stretch flex flex-col gap-[32px] items-stretch relative shrink-0 w-full" data-name="Row2">
       <PricingDesktop />
       <FaqDesktop />
     </div>
@@ -694,8 +697,20 @@ function Frame39() {
 function Frame38() {
   return (
     <div className="bg-[#111] h-[600px] relative rounded-[8px] shrink-0 w-full" data-name="Frame">
-      <div className="content-stretch flex items-start overflow-clip relative rounded-[inherit] size-full">
-        <img alt="SONAR homepage — mobile" className="absolute inset-0 max-w-none object-cover object-top pointer-events-none size-full rounded-[8px]" src="/case-studies/sonar/image-05.png" />
+      <div className="content-stretch flex items-start justify-center overflow-clip relative rounded-[inherit] size-full">
+        <img
+          alt="SONAR homepage — mobile"
+          className="absolute object-contain object-top pointer-events-none rounded-[8px]"
+          src="/case-studies/sonar/image-05.png"
+          style={{
+            height: "auto",
+            left: "50%",
+            maxWidth: "calc(100% - 48px)",
+            top: 0,
+            transform: "translateX(-50%)",
+            width: 320,
+          }}
+        />
       </div>
       <div aria-hidden className="absolute border border-[#1f1f1f] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
@@ -704,7 +719,7 @@ function Frame38() {
 
 function HomeMobile() {
   return (
-    <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-[564px]" data-name="HomeMobile">
+    <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-[360px]" data-name="HomeMobile">
       <Frame38 />
       <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#a1a1a0] text-[12px] whitespace-nowrap">Mobile Homepage</p>
     </div>
@@ -726,8 +741,20 @@ function Frame42() {
 function Frame41() {
   return (
     <div className="bg-[#111] h-[600px] relative rounded-[8px] shrink-0 w-full" data-name="Frame">
-      <div className="content-stretch flex items-start overflow-clip relative rounded-[inherit] size-full">
-        <img alt="SONAR pricing — mobile" className="absolute inset-0 max-w-none object-cover object-top pointer-events-none size-full rounded-[8px]" src="/case-studies/sonar/image-06.png" />
+      <div className="content-stretch flex items-start justify-center overflow-clip relative rounded-[inherit] size-full">
+        <img
+          alt="SONAR pricing — mobile"
+          className="absolute object-contain object-top pointer-events-none rounded-[8px]"
+          src="/case-studies/sonar/image-06.png"
+          style={{
+            height: "auto",
+            left: "50%",
+            maxWidth: "calc(100% - 48px)",
+            top: 0,
+            transform: "translateX(-50%)",
+            width: 320,
+          }}
+        />
       </div>
       <div aria-hidden className="absolute border border-[#1f1f1f] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
@@ -736,7 +763,7 @@ function Frame41() {
 
 function PricingMobile() {
   return (
-    <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-[564px]" data-name="PricingMobile">
+    <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-[360px]" data-name="PricingMobile">
       <Frame41 />
       <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#a1a1a0] text-[12px] whitespace-nowrap">Mobile Pricing</p>
     </div>
@@ -745,7 +772,7 @@ function PricingMobile() {
 
 function Row2() {
   return (
-    <div className="content-stretch flex gap-[24px] items-start relative shrink-0 w-full" data-name="Row3">
+    <div className="content-stretch flex flex-wrap gap-[24px] items-start justify-center relative shrink-0 w-full" data-name="Row3">
       <HomeMobile />
       <PricingMobile />
     </div>
@@ -1294,10 +1321,163 @@ function Frame48() {
 }
 
 function PricingCompEmbed() {
+  const [billingCycle, setBillingCycle] = useState<"monthly" | "quarterly" | "yearly">("yearly");
+  const [selectedPlan, setSelectedPlan] = useState<"free" | "pro" | "advance">("pro");
+
+  const billingOptions = [
+    { id: "monthly", label: "Monthly", hint: "Billed monthly" },
+    { id: "quarterly", label: "Quarterly", hint: "Billed every 3 months" },
+    { id: "yearly", label: "Yearly", hint: "Save 45% on yearly billing" },
+  ] as const;
+
+  const planPrices = {
+    monthly: { free: 0, pro: 5, advance: 12, suffix: "/month" },
+    quarterly: { free: 0, pro: 13, advance: 32, suffix: "/quarter" },
+    yearly: { free: 0, pro: 12, advance: 30, suffix: "/year" },
+  } as const;
+
+  const plans = [
+    {
+      id: "free",
+      name: "Free",
+      description: "Try core tracking without a commitment.",
+      features: ["Unlimited email tracking", "48-hour tracking", "Daily report"],
+      action: "Start free",
+      featured: false,
+    },
+    {
+      id: "pro",
+      name: "Pro",
+      description: "For personal workflows that need more follow-through.",
+      features: ["Hide SONAR signature", "Not-open reminders", "Dashboard activity"],
+      action: "Choose Pro",
+      featured: true,
+    },
+    {
+      id: "advance",
+      name: "Advance",
+      description: "For deeper tracking across teams and attachments.",
+      features: ["14-day tracking", "PDF and attachment tracking", "Group tracking"],
+      action: "Choose Advance",
+      featured: false,
+    },
+  ] as const;
+
+  const selected = plans.find((plan) => plan.id === selectedPlan) ?? plans[1];
+  const price = planPrices[billingCycle][selectedPlan];
+
   return (
     <div className="content-stretch flex flex-col gap-[16px] items-center relative shrink-0 w-full" data-name="PricingCompEmbed">
-      <Frame48 />
-      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#a1a1a0] text-[12px] whitespace-nowrap">Pricing architecture component with tier switching</p>
+      <div
+        className="relative w-full overflow-hidden rounded-[8px] border border-[#1f1f1f] bg-[#111] px-[48px] py-[40px]"
+        style={{ minHeight: 680 }}
+      >
+        <div className="flex items-start justify-between gap-6">
+          <div>
+            <p className="font-['Space_Mono:Regular',sans-serif] text-[11px] uppercase tracking-[0.12em] text-[#77d9ff]">Interactive pricing model</p>
+            <h3 className="mt-2 font-['Space_Grotesk:Medium',sans-serif] text-[28px] font-medium text-[#f2f1ec]">Choose a plan cadence, then a plan.</h3>
+          </div>
+          <button
+            type="button"
+            aria-label="Open the original SONAR pricing screen"
+            className="flex size-10 shrink-0 items-center justify-center rounded-full border border-[#2d475e] text-[#77d9ff] transition-colors hover:border-[#77d9ff] hover:bg-[#12202a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#77d9ff]"
+            data-preview-src="/case-studies/sonar/image-03.png"
+            data-preview-title="SONAR pricing screen"
+          >
+            <Maximize2 size={16} strokeWidth={1.8} />
+          </button>
+        </div>
+
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-2" role="group" aria-label="Billing cadence">
+          {billingOptions.map((option) => {
+            const active = billingCycle === option.id;
+            return (
+              <button
+                type="button"
+                key={option.id}
+                aria-pressed={active}
+                onClick={() => setBillingCycle(option.id)}
+                className="min-h-11 rounded-full px-5 font-['Space_Grotesk:Medium',sans-serif] text-[14px] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#52c7f7]"
+                style={{
+                  background: active ? "#2f9f62" : "transparent",
+                  border: `1px solid ${active ? "#2f9f62" : "#a9b9cc"}`,
+                  color: active ? "#ffffff" : "#cbd6e5",
+                  cursor: "pointer",
+                }}
+              >
+                {option.label}
+              </button>
+            );
+          })}
+          <span className="ml-2 font-['Space_Mono:Regular',sans-serif] text-[11px] text-[#82dca3]">
+            {billingOptions.find((option) => option.id === billingCycle)?.hint}
+          </span>
+        </div>
+
+        <div className="mt-8 grid grid-cols-3 gap-5">
+          {plans.map((plan) => {
+            const isSelected = selectedPlan === plan.id;
+            const planPrice = planPrices[billingCycle][plan.id];
+            return (
+              <button
+                type="button"
+                key={plan.id}
+                aria-pressed={isSelected}
+                onClick={() => setSelectedPlan(plan.id)}
+                className="relative flex min-h-[370px] flex-col rounded-[12px] border p-6 text-left transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#52c7f7]"
+                style={{
+                  background: plan.featured ? "linear-gradient(180deg, #237ab3 0%, #0bc1ac 58%, #ffffff 58%)" : "#ffffff",
+                  borderColor: isSelected ? "#52c7f7" : plan.featured ? "#36b8cc" : "#d8e0ec",
+                  boxShadow: isSelected ? "0 0 0 2px rgba(82,199,247,0.22), 0 14px 30px rgba(0,0,0,0.28)" : "0 10px 26px rgba(0,0,0,0.18)",
+                  color: "#1f2937",
+                  cursor: "pointer",
+                }}
+              >
+                {plan.featured && (
+                  <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded bg-[#ffc400] px-3 py-1 font-['Space_Mono:Regular',sans-serif] text-[10px] uppercase tracking-[0.08em] text-[#503700]">
+                    Most popular
+                  </span>
+                )}
+                <div className={plan.featured ? "pt-4 text-white" : "text-[#237ab3]"}>
+                  <p className="font-['Space_Grotesk:Medium',sans-serif] text-[24px] font-medium">{plan.name}</p>
+                  <p className="mt-1 min-h-10 font-['Space_Grotesk:Regular',sans-serif] text-[13px] leading-5 opacity-80">{plan.description}</p>
+                  <div className="mt-6 flex items-end gap-1">
+                    <span className="font-['Space_Grotesk:Medium',sans-serif] text-[18px]">$</span>
+                    <span className="font-['Space_Grotesk:Medium',sans-serif] text-[52px] leading-none">{planPrice}</span>
+                    <span className="mb-1 font-['Space_Grotesk:Regular',sans-serif] text-[13px]">{planPrices[billingCycle].suffix}</span>
+                  </div>
+                </div>
+                <div className="mt-7 flex flex-1 flex-col gap-3 border-t border-[#dfe6ed] pt-5">
+                  {plan.features.map((feature) => (
+                    <span key={feature} className="flex items-start gap-2 font-['Space_Grotesk:Regular',sans-serif] text-[14px] leading-5 text-[#5f6977]">
+                      <Check className="mt-0.5 shrink-0 text-[#2f9f62]" size={15} strokeWidth={2.4} />
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+                <span
+                  className="mt-6 flex min-h-11 items-center justify-center rounded-[4px] font-['Space_Grotesk:Medium',sans-serif] text-[14px]"
+                  style={{
+                    background: isSelected ? "#237ab3" : "#f5f8fb",
+                    border: `1px solid ${isSelected ? "#237ab3" : "#b7c6d9"}`,
+                    color: isSelected ? "#ffffff" : "#237ab3",
+                  }}
+                >
+                  {isSelected ? `${plan.name} selected` : plan.action}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="mt-7 flex items-center justify-between gap-5 border-t border-[#2b2b2b] pt-5">
+          <p className="font-['Space_Mono:Regular',sans-serif] text-[12px] text-[#cbd6e5]" aria-live="polite">
+            {selected.name} selected · ${price} {planPrices[billingCycle].suffix} · {billingOptions.find((option) => option.id === billingCycle)?.hint.toLowerCase()}
+          </p>
+          <span className="font-['Space_Mono:Regular',sans-serif] text-[11px] uppercase tracking-[0.1em] text-[#77d9ff]">Prototype state</span>
+        </div>
+      </div>
+      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#a1a1a0] text-[12px] whitespace-nowrap">Try a billing cadence and plan selection, or open the original pricing screen.</p>
     </div>
   );
 }
@@ -1336,9 +1516,21 @@ function Frame51() {
 
 function Frame50() {
   return (
-    <div className="bg-[#111] h-[360px] relative rounded-[8px] shrink-0 w-full" data-name="Frame">
+    <div
+      className="bg-[#111] h-[700px] relative rounded-[8px] shrink-0 w-full"
+      data-name="Frame"
+      data-preview-src={imgHeroIllustration}
+      data-preview-title="SONAR hero illustration"
+      role="button"
+      tabIndex={0}
+      style={{ cursor: "zoom-in" }}
+    >
       <div className="content-stretch flex items-start overflow-clip relative rounded-[inherit] size-full">
-        <Frame51 />
+        <img
+          alt="SONAR hero illustration"
+          className="absolute inset-0 max-w-none object-cover object-top pointer-events-none size-full rounded-[8px]"
+          src={imgHeroIllustration}
+        />
       </div>
       <div aria-hidden className="absolute border border-[#1f1f1f] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>

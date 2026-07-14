@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Check, LockKeyhole, Mail, Send, ShieldCheck, UserCheck, Users } from "lucide-react";
+import { ArrowRight, Check, LockKeyhole, Mail, Send, ShieldCheck, UserCheck, Users } from "lucide-react";
 
 const imgHeroImg = "/case-studies/mailtarget-app/image-01.png";
 const imgRectangle = "/case-studies/mailtarget-app/image-02.png";
@@ -45,7 +45,7 @@ function Frame1() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[24px] items-start relative shrink-0 w-full" data-name="Frame">
       <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-none min-w-full relative shrink-0 text-[#f2f1ec] text-[82px] w-[min-content]">Mailtarget App</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[normal] relative shrink-0 text-[#cc6ef8] text-[22px] w-[877px]">End-to-end email API service app</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[normal] relative shrink-0 text-[#cc6ef8] text-[22px] w-[877px]">A unified workspace for transactional email operations</p>
     </div>
   );
 }
@@ -90,7 +90,7 @@ function Frame7() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col gap-[4px] items-start leading-[normal] min-w-px relative whitespace-nowrap" data-name="Frame">
       <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#a0a09a] text-[12px] uppercase">Scope</p>
-      <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium relative shrink-0 text-[#f2f1ec] text-[16px]">End-to-End</p>
+      <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium relative shrink-0 text-[#f2f1ec] text-[16px]">Product + Marketing</p>
     </div>
   );
 }
@@ -126,7 +126,7 @@ function SectionHeader() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-name="section-header">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">00 — The Problem</p>
-      <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[1.1] min-w-full relative shrink-0 text-[#f2f1ec] text-[46px] w-[min-content]">The problem</p>
+      <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[1.1] min-w-full relative shrink-0 text-[#f2f1ec] text-[46px] w-[min-content]">One product, three conflicting patterns</p>
     </div>
   );
 }
@@ -135,7 +135,7 @@ function TagPill() {
   return (
     <div className="content-stretch flex items-start px-[12px] py-[6px] relative rounded-[100px] shrink-0" data-name="tag-pill">
       <div aria-hidden className="absolute border border-[#cc6ef8] border-solid inset-0 pointer-events-none rounded-[100px]" />
-      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] uppercase whitespace-nowrap">Transactional Email API</p>
+      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] uppercase whitespace-nowrap">Campaign builder</p>
     </div>
   );
 }
@@ -144,7 +144,7 @@ function TagPill1() {
   return (
     <div className="content-stretch flex items-start px-[12px] py-[6px] relative rounded-[100px] shrink-0" data-name="tag-pill">
       <div aria-hidden className="absolute border border-[#cc6ef8] border-solid inset-0 pointer-events-none rounded-[100px]" />
-      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] uppercase whitespace-nowrap">Developer + Admin Dual Audience</p>
+      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] uppercase whitespace-nowrap">Contacts</p>
     </div>
   );
 }
@@ -153,7 +153,7 @@ function TagPill2() {
   return (
     <div className="content-stretch flex items-start px-[12px] py-[6px] relative rounded-[100px] shrink-0" data-name="tag-pill">
       <div aria-hidden className="absolute border border-[#cc6ef8] border-solid inset-0 pointer-events-none rounded-[100px]" />
-      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] uppercase whitespace-nowrap">Sandbox and Production Model</p>
+      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] uppercase whitespace-nowrap">Automation</p>
     </div>
   );
 }
@@ -162,7 +162,7 @@ function TagPill3() {
   return (
     <div className="content-stretch flex items-start px-[12px] py-[6px] relative rounded-[100px] shrink-0" data-name="tag-pill">
       <div aria-hidden className="absolute border border-[#cc6ef8] border-solid inset-0 pointer-events-none rounded-[100px]" />
-      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] uppercase whitespace-nowrap">480+ Screens</p>
+      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] uppercase whitespace-nowrap">Developer + operations</p>
     </div>
   );
 }
@@ -171,7 +171,7 @@ function TagPill4() {
   return (
     <div className="content-stretch flex items-start px-[12px] py-[6px] relative rounded-[100px] shrink-0" data-name="tag-pill">
       <div aria-hidden className="absolute border border-[#cc6ef8] border-solid inset-0 pointer-events-none rounded-[100px]" />
-      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] uppercase whitespace-nowrap">Competitive Research</p>
+      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] uppercase whitespace-nowrap">Shared patterns</p>
     </div>
   );
 }
@@ -191,7 +191,7 @@ function Frame9() {
 function Frame8() {
   return (
     <div className="content-stretch flex flex-col gap-[32px] items-start relative shrink-0 w-full" data-name="Frame">
-      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[1.5] relative shrink-0 text-[#f2f1ec] text-[18px] w-full">Mailtarget is a transactional email API platform for developers and businesses in Indonesia — sending password resets, order confirmations, account notifications via API, SDK, or SMTP. The product serves two distinct users: the developer who integrates the API and needs clarity on endpoints, keys, and code samples; and the business owner who needs to track usage, manage billing, and add team members. Designing one product that serves both without alienating either was the central design challenge.</p>
+      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[1.5] relative shrink-0 text-[#f2f1ec] text-[18px] w-full">Mailtarget had grown flow by flow: campaign builder, contacts, and automation each carried their own interaction patterns. Switching between them meant relearning the product. My work was to give the application one shared language, so a familiar action, state, and navigation pattern stayed familiar wherever a team member worked.</p>
       <Frame9 />
     </div>
   );
@@ -202,7 +202,56 @@ function Component01Context() {
     <div className="content-stretch flex flex-col gap-[48px] items-start px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="01-context">
       <SectionHeader />
       <Frame8 />
+      <FragmentedToUnified />
     </div>
+  );
+}
+
+function FragmentedToUnified() {
+  const before = [
+    ["Campaign builder", "Different action hierarchy"],
+    ["Contacts", "Different statuses and table behavior"],
+    ["Automation", "Different navigation and patterns"],
+  ];
+  const after = [
+    "Shared navigation and page anatomy",
+    "Consistent actions, states, and feedback",
+    "One language for developers and operations teams",
+  ];
+
+  return (
+    <section className="grid grid-cols-[1fr_80px_1fr] items-stretch w-full" data-name="mailtarget-before-after">
+      <div className="bg-[#101010] border border-[rgba(255,255,255,0.1)] p-[32px] rounded-[12px]">
+        <p className="font-['Space_Mono:Regular',sans-serif] text-[#cc6ef8] text-[12px] tracking-[1.7px] uppercase">Before redesign</p>
+        <h3 className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[1.12] mt-[14px] text-[#f2f1ec] text-[28px]">Switch a task, relearn the product.</h3>
+        <div className="mt-[28px] space-y-[10px]">
+          {before.map(([title, detail]) => (
+            <div className="border border-[rgba(255,255,255,0.09)] flex items-center justify-between px-[16px] py-[14px]" key={title}>
+              <span className="font-['Space_Grotesk:Medium',sans-serif] text-[#f2f1ec] text-[15px]">{title}</span>
+              <span className="font-['Space_Mono:Regular',sans-serif] text-[#8d8d87] text-[10px]">{detail}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex items-center justify-center relative">
+        <div className="absolute bg-[#cc6ef8] h-px left-0 right-0 top-1/2" />
+        <span aria-label="From fragmented to unified" className="bg-[#0a0a0a] border border-[#cc6ef8] flex items-center justify-center relative rounded-full size-[42px] text-[#cc6ef8]">
+          <ArrowRight aria-hidden size={17} strokeWidth={1.8} />
+        </span>
+      </div>
+      <div className="bg-[rgba(204,110,248,0.07)] border border-[rgba(204,110,248,0.35)] p-[32px] rounded-[12px]">
+        <p className="font-['Space_Mono:Regular',sans-serif] text-[#cc6ef8] text-[12px] tracking-[1.7px] uppercase">After redesign</p>
+        <h3 className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[1.12] mt-[14px] text-[#f2f1ec] text-[28px]">One working language across the account.</h3>
+        <div className="mt-[28px] space-y-[10px]">
+          {after.map((detail, index) => (
+            <div className="border border-[rgba(204,110,248,0.35)] flex gap-[12px] items-center px-[16px] py-[14px]" key={detail}>
+              <span className="font-['Space_Mono:Regular',sans-serif] text-[#cc6ef8] text-[11px]">0{index + 1}</span>
+              <span className="font-['Space_Grotesk:Medium',sans-serif] text-[#f2f1ec] text-[15px]">{detail}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -210,7 +259,7 @@ function SectionHeader1() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-name="section-header">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">01 — Context</p>
-      <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[1.1] min-w-full relative shrink-0 text-[#f2f1ec] text-[46px] w-[min-content]">What is Mailtarget?</p>
+      <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[1.1] min-w-full relative shrink-0 text-[#f2f1ec] text-[46px] w-[min-content]">The people behind the same account</p>
     </div>
   );
 }
@@ -275,7 +324,7 @@ function Frame11() {
 function Frame10() {
   return (
     <div className="content-stretch flex flex-col gap-[32px] items-start relative shrink-0 w-full" data-name="Frame">
-      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[1.5] relative shrink-0 text-[#f2f1ec] text-[18px] w-full">Mailtarget is a transactional email API platform for developers and businesses in Indonesia — sending password resets, order confirmations, account notifications via API, SDK, or SMTP. The product serves two distinct users: the developer who integrates the API and needs clarity on endpoints, keys, and code samples; and the business owner who needs to track usage, manage billing, and add team members. Designing one product that serves both without alienating either was the central design challenge.</p>
+      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[1.5] relative shrink-0 text-[#f2f1ec] text-[18px] w-full">Mailtarget helps Indonesian businesses send password resets, order confirmations, and account notifications through an API, SDK, or SMTP. The developer needs keys, endpoints, and delivery evidence; the operations teammate needs usage, billing, and team control. The redesign had to make both jobs feel native to one product, without forcing either person through the other&apos;s workflow.</p>
       <Frame11 />
     </div>
   );
@@ -962,7 +1011,7 @@ function SectionHeader4() {
   return (
     <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-name="section-header">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">04 — Decisions</p>
-      <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[1.1] min-w-full relative shrink-0 text-[#f2f1ec] text-[46px] w-[min-content]">Why each surface works the way it does</p>
+      <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[1.1] min-w-full relative shrink-0 text-[#f2f1ec] text-[46px] w-[min-content]">Three moments the product had to get right</p>
     </div>
   );
 }
@@ -971,7 +1020,7 @@ function Frame30() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[24px] items-start relative shrink-0 w-full" data-name="Frame">
       <SectionHeader4 />
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[normal] relative shrink-0 text-[#a0a09a] text-[18px] w-full">Every screen answers a specific question a developer or admin would ask. Below is the problem each feature was designed to solve, the design decision taken, and the screen that delivers it.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[normal] relative shrink-0 text-[#a0a09a] text-[18px] w-full">Each surface resolves either a developer task or an operations control, using the same visual language. Below: the question, the decision, and the screen evidence.</p>
     </div>
   );
 }
@@ -1183,11 +1232,136 @@ function Component04Decisions() {
   return (
     <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[80px] items-start px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="04-decisions">
       <Frame30 />
-      <Frame31 />
-      <Frame35 />
-      <Frame40 />
-      <Frame47 />
+      <ProductStories />
+      <MoreProductSurfaces />
     </div>
+  );
+}
+
+const productStories = [
+  {
+    id: "safe-send",
+    number: "01",
+    label: "Start safely",
+    title: "Give developers a real first send without putting customers at risk.",
+    problem: "Asking for full verification before a team can test creates friction. Letting an unverified account email real recipients creates a trust risk.",
+    decision: "Sandbox ships with usable API credentials, copyable code samples, a 300-email daily limit, and authorized recipients only.",
+    payoff: "Teams can prove the integration works first, then graduate to Production when the sender is trusted.",
+    image: imgRectangle2,
+    alt: "Mailtarget Sandbox API configuration",
+  },
+  {
+    id: "trace-delivery",
+    number: "02",
+    label: "Trace delivery",
+    title: "Move from aggregate email metrics to a message someone can actually investigate.",
+    problem: "A delivery chart tells a team that something changed, but not what happened to a specific recipient or notification.",
+    decision: "Activity records the recipient, status, subject, sender, and time. Filters narrow the search and each row can lead to a detailed trace.",
+    payoff: "Support and developers can answer a delivery question without reconstructing an event from partial signals.",
+    image: imgRectangle1,
+    alt: "Mailtarget Activity log",
+  },
+  {
+    id: "run-account",
+    number: "03",
+    label: "Run the account",
+    title: "Let one account serve developers, support, and finance without losing control.",
+    problem: "A shared email platform needs more than API tools: teams must know who can access it, what they changed, and how usage is managed.",
+    decision: "Account settings combine team members, roles, invitation state, and a user-activity audit trail in one operational surface.",
+    payoff: "Daily account control stays legible for operations teams while developers keep moving through the integration work.",
+    image: imgRectangle6,
+    alt: "Mailtarget account settings and user activity",
+  },
+];
+
+function ProductStories() {
+  const [activeId, setActiveId] = useState(productStories[0].id);
+  const active = productStories.find((story) => story.id === activeId) ?? productStories[0];
+
+  return (
+    <section className="border border-[rgba(255,255,255,0.1)] rounded-[12px] w-full" data-name="mailtarget-product-stories">
+      <div className="border-b border-[rgba(255,255,255,0.1)] flex items-center justify-between px-[32px] py-[24px]">
+        <div>
+          <p className="font-['Space_Mono:Regular',sans-serif] text-[#cc6ef8] text-[12px] tracking-[1.7px] uppercase">Three product stories</p>
+          <p className="font-['Space_Grotesk:Regular',sans-serif] mt-[8px] text-[#a0a09a] text-[16px]">Choose a moment to inspect the reasoning and the screen that carries it.</p>
+        </div>
+        <span className="font-['Space_Mono:Regular',sans-serif] text-[#73736d] text-[11px]">{active.number} / 03</span>
+      </div>
+      <div className="flex gap-[32px] p-[32px]">
+        <div aria-label="Product stories" className="flex flex-col gap-[8px] shrink-0 w-[286px]" role="tablist">
+          {productStories.map((story) => {
+            const isActive = story.id === active.id;
+            return (
+              <button
+                aria-controls={`mailtarget-story-${story.id}`}
+                aria-selected={isActive}
+                className={`border cursor-pointer flex flex-col gap-[8px] items-start p-[18px] text-left transition-colors w-full ${isActive ? "bg-[rgba(204,110,248,0.1)] border-[#cc6ef8]" : "bg-transparent border-[rgba(255,255,255,0.1)] hover:border-[rgba(204,110,248,0.55)]"}`}
+                key={story.id}
+                onClick={() => setActiveId(story.id)}
+                role="tab"
+                type="button"
+              >
+                <span className="font-['Space_Mono:Regular',sans-serif] text-[#cc6ef8] text-[11px]">{story.number}</span>
+                <span className="font-['Space_Grotesk:Medium',sans-serif] text-[#f2f1ec] text-[17px]">{story.label}</span>
+              </button>
+            );
+          })}
+        </div>
+        <div className="min-w-0" id={`mailtarget-story-${active.id}`} role="tabpanel">
+          <p className="font-['Space_Mono:Regular',sans-serif] text-[#cc6ef8] text-[12px] tracking-[1.7px] uppercase">{active.label}</p>
+          <h3 className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[1.1] mt-[12px] text-[#f2f1ec] text-[32px]">{active.title}</h3>
+          <div className="grid grid-cols-2 gap-[16px] mt-[24px]">
+            <div className="border border-[rgba(255,255,255,0.1)] p-[18px]">
+              <p className="font-['Space_Mono:Regular',sans-serif] text-[#9a9a93] text-[11px] tracking-[1.4px] uppercase">The problem</p>
+              <p className="font-['Space_Grotesk:Regular',sans-serif] leading-[1.5] mt-[10px] text-[#f2f1ec] text-[15px]">{active.problem}</p>
+            </div>
+            <div className="border border-[rgba(204,110,248,0.34)] p-[18px]">
+              <p className="font-['Space_Mono:Regular',sans-serif] text-[#cc6ef8] text-[11px] tracking-[1.4px] uppercase">The design response</p>
+              <p className="font-['Space_Grotesk:Regular',sans-serif] leading-[1.5] mt-[10px] text-[#f2f1ec] text-[15px]">{active.decision}</p>
+            </div>
+          </div>
+          <div className="border-l-2 border-[#cc6ef8] mt-[18px] pl-[14px]">
+            <p className="font-['Space_Grotesk:Medium',sans-serif] leading-[1.45] text-[#d9d5dc] text-[16px]">{active.payoff}</p>
+          </div>
+          <div className="bg-[#f2f5f8] cursor-zoom-in h-[350px] mt-[24px] overflow-hidden rounded-[8px]" data-preview-src={active.image} data-preview-title={active.alt}>
+            <img alt={active.alt} className="block cursor-zoom-in h-full object-contain w-full" src={active.image} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MoreProductSurfaces() {
+  const surfaces = [
+    { image: imgRectangle3, title: "Sending domains", detail: "Status makes authentication legible." },
+    { image: imgRectangle4, title: "Webhooks", detail: "Events can be tested before they reach a team's endpoint." },
+    { image: imgRectangle5, title: "Billing", detail: "Usage and upcoming cost stay visible before a surprise bill." },
+  ];
+
+  return (
+    <section className="w-full" data-name="mailtarget-more-surfaces">
+      <div className="flex items-end justify-between mb-[24px]">
+        <div>
+          <p className="font-['Space_Mono:Regular',sans-serif] text-[#cc6ef8] text-[12px] tracking-[1.7px] uppercase">More product surfaces</p>
+          <h3 className="font-['Space_Grotesk:Medium',sans-serif] font-medium mt-[10px] text-[#f2f1ec] text-[28px]">Supporting controls, kept in context.</h3>
+        </div>
+        <p className="font-['Space_Mono:Regular',sans-serif] text-[#73736d] text-[11px]">Click a screen to inspect it</p>
+      </div>
+      <div className="grid grid-cols-3 gap-[20px]">
+        {surfaces.map((surface) => (
+          <div className="border border-[rgba(255,255,255,0.1)] overflow-hidden rounded-[8px]" key={surface.title}>
+            <div className="bg-[#f2f5f8] cursor-zoom-in h-[190px] overflow-hidden" data-preview-src={surface.image} data-preview-title={surface.title}>
+              <img alt={surface.title} className="block cursor-zoom-in h-full object-contain w-full" src={surface.image} />
+            </div>
+            <div className="p-[18px]">
+              <p className="font-['Space_Grotesk:Medium',sans-serif] text-[#f2f1ec] text-[17px]">{surface.title}</p>
+              <p className="font-['Space_Grotesk:Regular',sans-serif] leading-[1.45] mt-[7px] text-[#9a9a93] text-[14px]">{surface.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -1198,7 +1372,7 @@ function Frame52() {
       <div className="flex flex-col items-center size-full">
         <div className="[word-break:break-word] content-stretch flex flex-col items-center leading-[normal] p-[24px] relative size-full whitespace-nowrap">
           <p className="font-['Space_Mono:Bold',sans-serif] not-italic relative shrink-0 text-[#cc6ef8] text-[38px]">480+</p>
-          <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal relative shrink-0 text-[#a0a09a] text-[14px]">Hi-Fi screens</p>
+          <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal relative shrink-0 text-[#a0a09a] text-[14px]">screens in redesign scope</p>
         </div>
       </div>
     </div>
@@ -1212,7 +1386,7 @@ function Frame53() {
       <div className="flex flex-col items-center size-full">
         <div className="[word-break:break-word] content-stretch flex flex-col items-center leading-[normal] p-[24px] relative size-full whitespace-nowrap">
           <p className="font-['Space_Mono:Bold',sans-serif] not-italic relative shrink-0 text-[#cc6ef8] text-[38px]">3</p>
-          <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal relative shrink-0 text-[#a0a09a] text-[14px]">Core nav modules</p>
+          <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal relative shrink-0 text-[#a0a09a] text-[14px]">core flows aligned</p>
         </div>
       </div>
     </div>
@@ -1226,7 +1400,7 @@ function Frame54() {
       <div className="flex flex-col items-center size-full">
         <div className="[word-break:break-word] content-stretch flex flex-col items-center leading-[normal] p-[24px] relative size-full whitespace-nowrap">
           <p className="font-['Space_Mono:Bold',sans-serif] not-italic relative shrink-0 text-[#cc6ef8] text-[38px]">2</p>
-          <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal relative shrink-0 text-[#a0a09a] text-[14px]">Environments</p>
+          <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal relative shrink-0 text-[#a0a09a] text-[14px]">release environments</p>
         </div>
       </div>
     </div>
@@ -1239,22 +1413,8 @@ function Frame55() {
       <div aria-hidden className="absolute border border-[rgba(255,255,255,0.08)] border-solid inset-0 pointer-events-none rounded-[12px]" />
       <div className="flex flex-col items-center size-full">
         <div className="[word-break:break-word] content-stretch flex flex-col items-center leading-[normal] p-[24px] relative size-full whitespace-nowrap">
-          <p className="font-['Space_Mono:Bold',sans-serif] not-italic relative shrink-0 text-[#cc6ef8] text-[38px]">6</p>
-          <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal relative shrink-0 text-[#a0a09a] text-[14px]">Config areas</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function Frame56() {
-  return (
-    <div className="bg-[#0c0c0b] flex-[1_0_0] min-w-px relative rounded-[12px]" data-name="Frame">
-      <div aria-hidden className="absolute border border-[rgba(255,255,255,0.08)] border-solid inset-0 pointer-events-none rounded-[12px]" />
-      <div className="flex flex-col items-center size-full">
-        <div className="[word-break:break-word] content-stretch flex flex-col items-center leading-[normal] p-[24px] relative size-full whitespace-nowrap">
-          <p className="font-['Space_Mono:Bold',sans-serif] not-italic relative shrink-0 text-[#cc6ef8] text-[38px]">8+</p>
-          <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal relative shrink-0 text-[#a0a09a] text-[14px]">SDK languages</p>
+          <p className="font-['Space_Mono:Bold',sans-serif] not-italic relative shrink-0 text-[#cc6ef8] text-[38px]">18+</p>
+          <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal relative shrink-0 text-[#a0a09a] text-[14px]">public site pages designed</p>
         </div>
       </div>
     </div>
@@ -1268,7 +1428,6 @@ function Frame51() {
       <Frame53 />
       <Frame54 />
       <Frame55 />
-      <Frame56 />
     </div>
   );
 }
@@ -1276,7 +1435,7 @@ function Frame51() {
 function Frame57() {
   return (
     <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Frame">
-      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[1.5] relative shrink-0 text-[#f2f1ec] text-[28px] w-full">Mailtarget shipped as a complete transactional email platform. The Sandbox model solved the trust problem without sacrificing developer experience. Every feature decision answered the same question: does this give the developer what they need to move faster, while giving the business owner what they need to stay in control?</p>
+      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[1.5] relative shrink-0 text-[#f2f1ec] text-[28px] w-full">Internally, one component language aligned campaign builder, contacts, and automation. Externally, the marketing site translated the same product into plain choices: deliver email reliably, create relevant messages, and optimize sending. Developers could start safely in Sandbox; teams with bigger needs could talk to sales. One product story, from first evaluation to daily operations.</p>
     </div>
   );
 }
@@ -1284,7 +1443,7 @@ function Frame57() {
 function Component05Outcomes() {
   return (
     <div className="content-stretch flex flex-col gap-[64px] items-start px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="05-outcomes">
-      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">05 — Outcomes</p>
+      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">05 — One Product, Publicly Explained</p>
       <Frame51 />
       <Frame57 />
     </div>

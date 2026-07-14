@@ -1,5 +1,106 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-14 16:06 - [Codex] Replaced weak Mailtarget outcome metrics with defensible scope evidence
+
+**Done:** Audited the Mailtarget outcome row. Removed the unsupported `4 buyer contexts explained` card and replaced implementation-detail language with clear scope evidence: `480+ screens in redesign scope`, `3 core flows aligned`, `2 release environments`, and `18+ public site pages designed`. The page count is grounded in the documented homepage, 12 feature pages, and 5 solution pages.
+
+**Verified:** Production build passes (`2021 modules transformed`) and `git diff --check` passes. No commit or deployment was made.
+
+## 2026-07-14 15:28 - [Codex] Generalized compact mobile screen previews
+
+**Done:** Updated the shared `CaseImagePreview` flow in `src/app/App.tsx` so mobile evidence opens in the existing compact, vertically scrollable modal treatment from the SONAR case. Previews now identify a mobile capture through an explicit flag, a `mobile` title, or the actual loaded image dimensions (portrait captures up to 480px wide). This covers imported case screenshots whose alt text is blank or generic, including Mailtarget Web's `360x5617` mobile page.
+
+**Verified:** Production build passes (`2021 modules transformed`) and `git diff --check` passes. No commit or deployment was made.
+
+## 2026-07-14 15:20 - [Codex] Cleaned up the Mailtarget before/after panel borders
+
+**Done:** Replaced the single split outer frame with two independent rounded panels, one for the fragmented state and one for the unified state. The purple icon connector now sits in the gap between them, eliminating the awkward divider and mismatched border treatment.
+
+**Verified:** Desktop local review at `http://127.0.0.1:5174/#/work/mailtarget-app` confirms the two panels and connector read cleanly. No commit or deployment was made.
+
+## 2026-07-14 15:12 - [Codex] Replaced Mailtarget before/after text arrow with an icon
+
+**Done:** Replaced the `->` character in the Mailtarget App before/after connector with Lucide's `ArrowRight` icon. It retains the existing purple circular direction cue while reading as an intentional visual control rather than text.
+
+**Verified:** Source change is scoped to `src/imports/CaseStudyMailtargetApp-1/index.tsx`. No commit or deployment was made.
+
+## 2026-07-14 15:10 - [Codex] Completed the Mailtarget App case-study arc
+
+**Done:** Turned the Mailtarget App case from a dense screen inventory into a complete product narrative. Added an operational before/after that explains the fragmented Campaign Builder, Contacts, and Automation experience, then introduced a selectable three-story evidence module for safe first sends in Sandbox, message-level delivery tracing, and shared account control. The supporting screens are now a compact gallery rather than competing with the main explanation, and every newly surfaced Mailtarget screen opens the shared full-size preview modal.
+
+**Public story:** Clarified the merged Mailtarget Web chapter as the public proof of the same redesign, with explicit buyer-facing jobs: deliver email reliably, create relevant messages, and optimize sending. Updated the mobile case summary to carry the same three-moment story.
+
+**Verified:** Desktop local review at `http://127.0.0.1:5174/#/work/mailtarget-app` confirms the story tabs switch content and the Activity Log opens the preview dialog. Production build passes (`2021 modules transformed`) and `git diff --check` passes. No commit or deployment was made.
+
+**Next:** Review the final Mailtarget App case locally. Once approved alongside the existing pending asset changes, stage the intended files and push `main` to trigger Vercel.
+
+## 2026-07-14 15:22 - [Codex] Reframed the Mailtarget case study around one product story
+
+**Done:** Rewrote the Mailtarget App hero, problem, context, decisions introduction, outcome proof, shared portfolio hero copy, and mobile-case summaries. The narrative now distinguishes the fragmented campaign/contacts/automation experience from the transactional-email context, explicitly explains the developer and operations roles, and frames the marketing website as the public explanation of the same product rather than a disconnected add-on.
+
+**Evidence:** The final section now ties the existing evidence together: 480+ screens using shared patterns, three aligned core flows, a Sandbox-to-Production model, 15+ public-site pages, and four buyer contexts. The closing story uses the source site's plain-language product jobs: deliver reliably, create relevant messages, and optimize sending.
+
+**Verified:** Production build passes (`2021 modules transformed`). No commit or deployment was made.
+
+## 2026-07-14 15:05 - [Codex] Corrected Mailtarget App timeline and audited Mailtarget Web source design
+
+**Done:** Updated all visitor-facing Mailtarget App timeline references in `src/app/App.tsx` from `2022-2023` / `2022-23` to `2023-2024` / `2023-24`. This includes the Work list, hero stat, case outcome copy, and mobile-case outcome.
+
+**Found:** Reviewed Figma node `590:30128` in the Mailtarget Web file. The source site organizes the email API story around three plain-language jobs: deliver to the inbox (SMTP relay, testing, SDK/API), create relevant email (templates, A/B testing, design), and optimize sending (list management and monitoring). It also distinguishes self-serve evaluation (`Try our sandbox`) from sales-led evaluation (`Talk to sales`) and supports four audience contexts: developers, startups, e-commerce, and enterprise.
+
+**Recommended next:** Enhance the merged Mailtarget case study with a simple interactive product journey from Sandbox to first successful send, an audience-switcher that changes the proof and primary CTA for the four buyer types, and a compact before/after evidence section showing how the unified app language carries across campaign, contacts, and automation. Keep the existing page gallery, but recast it as supporting evidence rather than the main narrative. No broader Mailtarget layout changes were made in this pass.
+
+**Verified:** `git diff --check` passes.
+
+## 2026-07-14 14:38 - [Codex] Fixed SONAR Pro price visibility and mobile-capture preview scale
+
+**Done:** Fixed the featured SONAR Pro plan card in `src/imports/CaseStudySonar-1/index.tsx` by extending its turquoise pricing band through 58% of the card, keeping the plan price entirely visible before the white feature area begins. Updated the shared `CaseImagePreview` in `src/app/App.tsx` so previews whose titles identify them as mobile captures use a compact `min(92vw, 420px)` dialog and a maximum 360px image width. They retain internal vertical scrolling for long screens rather than being stretched to desktop width.
+
+**Verified:** In the local browser, the Pro annual price (`$12 /year`) is fully visible inside the colored band. Clicking SONAR Homepage Mobile opens a narrow, crisp 360px preview with internal vertical scroll; the close control works. Production build passes (`2021 modules transformed`) and `git diff --check` passes.
+
+**Next:** Review the corrected SONAR page locally at `http://127.0.0.1:5174/#/work/sonar`. No commit or deployment was made.
+
+## 2026-07-14 14:22 - [Codex] Repaired SONAR Key Screens after the pricing-prototype pass
+
+**Done:** Corrected the regression introduced in the previous SONAR pass. The Key Screens row that now stacks the Pricing and FAQ evidence uses `items-stretch`, so both cards inherit the full 1152px study width rather than collapsing into narrow slivers. The FAQ remains a full-width screen capture; the two mobile evidence captures remain compact side-by-side cards, with their 320px rendered image width retained to avoid upscaling the 360px sources.
+
+**Verified:** Local visual review at `http://127.0.0.1:5174/#/work/sonar` now shows the pricing desktop screen full width, the FAQ screen full width, and the two mobile captures centered without blur or collapsed media. Production build passes (`2021 modules transformed`); `git diff --check` passes.
+
+**Next:** User should review this repaired local SONAR layout. Do not deploy until the user approves the SONAR page and its untracked image assets for production.
+
+## 2026-07-14 14:08 - [Codex] Made the SONAR pricing study interactive and corrected screen evidence scale
+
+**Done:** Reworked the SONAR Pricing Architecture section in `src/imports/CaseStudySonar-1/index.tsx` into a functional pricing prototype. Visitors can switch Monthly, Quarterly, and Yearly billing, see tier prices and billing language update, and select Free, Pro, or Advance with a visible live selection state. The original pricing screenshot is now opened only from a dedicated zoom icon, keeping the prototype controls free to use. Changed the Key Screens layout so the FAQ card occupies the full content width, and reduced the mobile evidence cards from 564px to their 360px source-width context with 320px captures to prevent upscaling blur.
+
+**Verified:** Production build passes (`2021 modules transformed`). In the local browser, switching to Monthly updated the displayed plan prices, selecting Advance updated the selected-plan announcement to `Advance selected · $12 /month · billed monthly`, and the dedicated reference-preview control opened and closed the shared full-width modal. `git diff --check` passes.
+
+**Next:** Review locally at `http://127.0.0.1:5174/#/work/sonar`; after approval, stage the SONAR implementation plus its uploaded image assets and push to `main` for Vercel deployment.
+
+## 2026-07-14 13:36 - [Codex] Corrected SONAR hero illustration and preview targets
+
+**Done:** Fixed the actual SONAR issues the user pointed out in `src/imports/CaseStudySonar-1/index.tsx`: the "Hero Illustration" section now renders `/case-studies/sonar/image-07.png` instead of an empty placeholder frame, the pricing architecture block now has `data-preview-src="/case-studies/sonar/image-03.png"` so clicking it opens the shared preview modal, and the two mobile screen captures now use explicit inline `320px` sizing so they cannot stretch across the 564px card.
+
+**Found:** The previous pass only adjusted crop/sizing classes and missed the empty Hero Illustration placeholder entirely. `image-07.png` is present locally and untracked alongside the other new SONAR assets. The production build passes after rerunning outside the sandbox due the known Windows `esbuild spawn EPERM` issue.
+
+**Next:** User should hard-refresh `http://127.0.0.1:5174/#/work/sonar` and review the Hero Illustration, Pricing architecture click preview, and mobile screen-card sizing before the prod push.
+
+## 2026-07-14 13:26 - [Codex] Fixed SONAR screen-card image sizing
+
+**Done:** Updated `src/imports/CaseStudySonar-1/index.tsx` so the SONAR FAQ screen card crops its captured side gutter more tightly and the two mobile screen previews render as centered phone-width captures instead of being stretched across the full card. This keeps the desktop screen feeling full-width while preventing the 360px-wide mobile assets from looking blurry.
+
+**Found:** All six SONAR assets are now present locally. `image-05.png` and `image-06.png` are 360px-wide long mobile captures, so the previous 564px stretched rendering was the cause of the softness. The production build passes after rerunning outside the sandbox due the known Windows `esbuild spawn EPERM` issue; Chrome screenshot automation was also blocked by local launch permissions.
+
+**Next:** Review `http://127.0.0.1:5174/#/work/sonar` locally around the SONAR key screens, then push/deploy when the new SONAR assets and this sizing fix are approved.
+
+## 2026-07-14 13:09 - [Codex] Inspected Claude's SONAR handoff state
+
+**Done:** Checked the latest WORKLOG, git history, SONAR imports, and SONAR asset directory after the user noted Claude's last development was the SONAR use-case page. No source or asset changes were made.
+
+**Found:** Local `main` is one commit ahead of `origin/main` at `7bef90d` (`SONAR key screens: convert 5 placeholder boxes to standard image cards`). That commit updates `src/imports/CaseStudySonar-1/index.tsx` to use `/case-studies/sonar/image-02.png` through `image-06.png` for key screens. Those five PNGs exist locally but are still untracked. `public/case-studies/sonar/image-01.png` is deleted locally even though `CaseStudySonar-1/index.tsx` still references it as `imgHeroMockup`, so SONAR is not ready to push/deploy until the hero asset decision is resolved.
+
+**Next:** Either restore/replace `image-01.png` for the SONAR hero and stage `image-02.png` through `image-06.png`, or update the hero reference to a new intended asset. After that, run the build and deploy when the user approves.
+
+
 ## 2026-07-14 — [Claude] DEPLOYED: Read/See upgrade live on production
 
 **Done:** User ran push.bat — origin/main now at a36eda6 (7 commits: onboarding grid, single-SVG sitemap matched to user's original Figma architecture, Hi-Fi card beside Lo-Fi, sitemap in shared card style, top-corner rounding both imports, 10 case images flattened onto white). Vercel auto-deployed; smoke-tested https://dheoryan.vercel.app/#/work/readsee-dashboard — new build serving, hero + preview card render clean, no errors.

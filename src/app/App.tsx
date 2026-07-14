@@ -36,7 +36,7 @@ const WORKS: WorkItem[] = [
   { num: "03", title: "Read/See",                   category: "SaaS · CDP Product Design",                          year: "2022–2023", slug: "readsee-dashboard", thumb: "/thumbnails/readsee-dashboard.png" },
   { num: "04", title: "CMIS — Enterprise Suite",    category: "Enterprise · Document, Invoice & Purchase Flows",     year: "2024–2025", slug: "cmis-suite",       thumb: "/thumbnails/cmis-suite.png" },
   { num: "05", title: "Universal Design System",    category: "Design System · Component Library",                   year: "2023–2024", slug: "design-system",    thumb: "/thumbnails/design-system.png" },
-  { num: "06", title: "Mailtarget App",             category: "SaaS · Email API",                                    year: "2022–2023", slug: "mailtarget-app",   thumb: "/thumbnails/mailtarget-app.png" },
+  { num: "06", title: "Mailtarget App",             category: "SaaS · Email API",                                    year: "2023–2024", slug: "mailtarget-app",   thumb: "/thumbnails/mailtarget-app.png" },
   { num: "07", title: "SONAR",                      category: "Chrome Extension · Deliberately Small Product",       year: "2024",      slug: "sonar",            thumb: "/thumbnails/sonar.png" },
 ];
 
@@ -58,7 +58,7 @@ const CASE_STUDIES: Record<string, React.ComponentType> = {
 // bottom of their product sibling's case page as "The public story".
 const MERGED_PUBLIC_STORY: Record<
   string,
-  { component: React.ComponentType; kicker: string; title: string; blurb: string }
+  { component: React.ComponentType; kicker: string; title: string; blurb: string; proofs?: string[] }
 > = {
   "readsee-dashboard": {
     component: CaseStudyReadsee,
@@ -70,9 +70,14 @@ const MERGED_PUBLIC_STORY: Record<
   "mailtarget-app": {
     component: CaseStudyMailtargetWeb,
     kicker: "Part two — The public story",
-    title: "Positioning the API in public",
+    title: "The product, explained before sign-up.",
     blurb:
-      "The redesigned platform needed marketing that matched. I designed Mailtarget's site to speak to developers first without losing business readers — API messaging, feature pages, and mobile simulations of the product journey.",
+      "The redesigned platform needed marketing that matched. I designed Mailtarget's public site around the jobs buyers need to understand first, while giving developers and business teams distinct reasons to continue.",
+    proofs: [
+      "Deliver email reliably",
+      "Create relevant messages",
+      "Optimize sending",
+    ],
   },
 };
 
@@ -96,7 +101,7 @@ const CASE_META: Record<string, { problem: string; outcome: string }> = {
   },
   "mailtarget-app": {
     problem: "Mailtarget's platform had grown feature by feature without a system — campaign builder, contacts, and automation each looked and behaved like different products, and users paid the relearning cost on every switch.",
-    outcome: "One component language now runs all three core flows, shipped through 2022–2023. Learn the campaign builder and you already know contacts and automation. I owned the design within the Mailtarget team, and also designed the marketing site that positions the API publicly.",
+    outcome: "One component language now runs all three core flows, shipped through 2023–2024. Learn the campaign builder and you already know contacts and automation. I owned the design within the Mailtarget team, and also designed the marketing site that positions the API publicly.",
   },
   kitalabel: {
     problem: "Sales collected each customer's label specifications, then handed the request to the Estimator PIC for pricing. Every quote entered that estimator's daily workload queue, so response time depended on how many estimates were already waiting.",
@@ -207,14 +212,14 @@ const CASE_HERO_DETAILS: Record<string, CaseHeroDetail> = {
     eyebrow: "Mailtarget App",
     headline: "Three products' worth of UI, unified into one.",
     summary:
-      "Campaign builder, contacts, and automation had drifted apart. The redesign made them one platform — learn one flow, know them all. Plus the marketing site that sells it.",
+      "Campaign builder, contacts, and automation had drifted apart. I unified the application, then designed the public site that explains its value from first evaluation to daily operations.",
     previewLabel: "SaaS workspace",
-    previewCaption: "A unified product language for transactional email operations",
-    tags: ["SaaS", "Email API", "Design system", "Product + marketing"],
+    previewCaption: "Shared patterns for delivery, business controls, and daily account management",
+    tags: ["Product redesign", "Email API", "Design system", "Public website"],
     stats: [
       { value: "3", label: "core flows unified" },
       { value: "2", label: "environments (sandbox → production)" },
-      { value: "2022–23", label: "shipped through" },
+      { value: "2023–24", label: "shipped through" },
     ],
   },
 };
@@ -549,7 +554,7 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
     focus: [
       "My role: product designer on the Mailtarget team.",
       "Unified campaign builder, contacts, and automation under one component language.",
-      "Designed the public marketing site as part two of the same story.",
+      "Designed the public site as the next chapter: a clear product story for evaluation and purchase.",
     ],
     sections: [
       {
@@ -559,8 +564,8 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       },
       {
         kicker: "01 — Context",
-        title: "What is Mailtarget?",
-        body: "A transactional email product serving two very different users at once: developers wiring up an API, and business users running campaigns. Every design decision had to survive both.",
+        title: "The people behind the same account",
+        body: "Mailtarget lets Indonesian businesses send password resets, order confirmations, and account notifications through API, SDK, or SMTP. Developers need integration and delivery evidence; operations teams need usage, billing, and team control.",
       },
       {
         kicker: "02 — UX Model",
@@ -574,18 +579,18 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       },
       {
         kicker: "04 — Decisions",
-        title: "Why each surface works the way it does",
-        body: "Activity logs, API configuration, dashboard, and status patterns each follow one rule: the developer's mental model and the marketer's mental model must land on the same screen without conflict.",
+        title: "Three moments the product had to get right",
+        body: "Sandbox makes a first integration safe, activity records make a delivery issue traceable, and account controls let operations teams manage access and usage. Different jobs, one shared product language.",
       },
       {
         kicker: "05 — The Public Story",
-        title: "Positioning the API in public",
-        body: "The redesigned platform needed marketing that matched, so I designed the website too — developer-first API messaging that stays readable for business buyers, with mobile simulations of the product journey.",
+        title: "Positioning the product in public",
+        body: "The redesigned platform needed marketing that matched. I translated the product into three clear jobs — deliver email, create messages, and optimize sending — with an obvious next step for self-serve Sandbox users and sales-led teams.",
       },
       {
         kicker: "06 — Outcomes",
-        title: "One platform again",
-        body: "One component language now runs all three core flows, shipped through 2022–2023. Learn the campaign builder and you already know contacts and automation.",
+        title: "One product story, end to end",
+        body: "One component language now runs all three core flows, shipped through 2023–2024. The public site carries the same clarity into evaluation, so the product feels consistent before and after sign-up.",
       },
     ],
     proof: [
@@ -2783,9 +2788,13 @@ function CaseImagePreview({
   image,
   onClose,
 }: {
-  image: { src: string; title: string } | null;
+  image: { src: string; title: string; isMobile?: boolean } | null;
   onClose: () => void;
 }) {
+  const isMobileCapture = Boolean(
+    image && (image.isMobile || /\bmobile\b/i.test(image.title)),
+  );
+
   useEffect(() => {
     if (!image) return;
 
@@ -2820,12 +2829,16 @@ function CaseImagePreview({
             role="dialog"
             aria-modal="true"
             aria-label={`${image.title} preview`}
-            className="relative flex max-h-[92vh] w-[96vw] max-w-[1600px] flex-col gap-3"
+            className="relative flex max-h-[92vh] flex-col gap-3"
             initial={{ opacity: 0, scale: 0.96, y: 18 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 12 }}
             transition={{ duration: 0.28, ease }}
             onClick={(event) => event.stopPropagation()}
+            style={{
+              width: isMobileCapture ? "min(92vw, 420px)" : "96vw",
+              maxWidth: isMobileCapture ? 420 : 1600,
+            }}
           >
             <button
               type="button"
@@ -2856,8 +2869,9 @@ function CaseImagePreview({
                 alt={image.title}
                 style={{
                   display: "block",
-                  width: "100%",
+                  width: isMobileCapture ? "min(360px, 100%)" : "100%",
                   height: "auto",
+                  margin: "0 auto",
                 }}
               />
             </div>
@@ -3686,6 +3700,7 @@ function CaseStudyPage({
   const [previewImage, setPreviewImage] = useState<{
     src: string;
     title: string;
+    isMobile?: boolean;
   } | null>(null);
 
   // Hide the floating "Back to work" pill while scrolling down so it never
@@ -3711,8 +3726,8 @@ function CaseStudyPage({
     workIndex >= 0
       ? WORKS[(workIndex + 1) % WORKS.length]
       : null;
-  const openPreview = (src: string, title: string) => {
-    setPreviewImage({ src, title });
+  const openPreview = (src: string, title: string, isMobile = false) => {
+    setPreviewImage({ src, title, isMobile });
   };
 
   // The imported case study components are static — delegate clicks
@@ -3727,6 +3742,7 @@ function CaseStudyPage({
       openPreview(
         previewCard.dataset.previewSrc,
         previewCard.dataset.previewTitle || currentWork?.title || "Case preview",
+        previewCard.dataset.previewMobile === "true",
       );
       return;
     }
@@ -3747,9 +3763,12 @@ function CaseStudyPage({
       });
 
     if (image?.src) {
+      const isMobileCapture =
+        image.naturalWidth <= 480 && image.naturalHeight > image.naturalWidth;
       openPreview(
         image.src,
         image.alt || currentWork?.title || "Case preview",
+        isMobileCapture,
       );
       return;
     }
@@ -4197,6 +4216,28 @@ function CaseStudyPage({
                     >
                       {MERGED_PUBLIC_STORY[slug].blurb}
                     </p>
+                    {MERGED_PUBLIC_STORY[slug].proofs && (
+                      <ul
+                        style={{
+                          display: "flex",
+                          gap: 28,
+                          flexWrap: "wrap",
+                          listStyle: "none",
+                          padding: 0,
+                          margin: "28px 0 0",
+                          fontFamily: "'Space Mono', monospace",
+                          fontSize: 12,
+                          color: FG,
+                        }}
+                      >
+                        {MERGED_PUBLIC_STORY[slug].proofs.map((proof) => (
+                          <li key={proof} style={{ display: "flex", gap: 9, alignItems: "center" }}>
+                            <span style={{ color: PURPLE }}>+</span>
+                            {proof}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 </section>
                 {(() => {
