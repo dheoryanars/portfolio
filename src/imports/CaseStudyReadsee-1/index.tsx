@@ -379,8 +379,51 @@ function Lo() {
 
 function Ic2() {
   return (
-    <div className="h-[260px] relative shrink-0 w-[474px]" data-name="ic">
-      <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgIc2} />
+    <div className="h-[390px] relative shrink-0 w-[1152px]" data-name="site-map-section">
+      <svg className="absolute inset-0 size-full" viewBox="0 0 1152 390" fill="none" aria-hidden>
+        <path d="M194 188 H332 V86 H520" stroke="#36b729" strokeWidth="1.5" />
+        <path d="M332 188 V196 H520" stroke="#36b729" strokeWidth="1.5" />
+        <path d="M646 86 H820" stroke="#36b729" strokeWidth="1.5" />
+        <path d="M646 196 H820" stroke="#36b729" strokeWidth="1.5" />
+        <path d="M583 220 V296 H820" stroke="#36b729" strokeWidth="1.5" />
+        <path d="M918 86 H1002 V134" stroke="#36b729" strokeWidth="1.5" />
+        <path d="M918 196 H1002 V246" stroke="#36b729" strokeWidth="1.5" />
+        <path d="M918 296 H1002 V246" stroke="#36b729" strokeWidth="1.5" />
+        <circle cx="332" cy="86" r="3" fill="#36b729" />
+        <circle cx="332" cy="196" r="3" fill="#36b729" />
+        <circle cx="646" cy="86" r="3" fill="#36b729" />
+        <circle cx="646" cy="196" r="3" fill="#36b729" />
+        <circle cx="583" cy="296" r="3" fill="#36b729" />
+        <circle cx="1002" cy="134" r="3" fill="#36b729" />
+        <circle cx="1002" cy="246" r="3" fill="#36b729" />
+      </svg>
+      <div className="absolute bg-[#f2f1ec] h-[160px] left-[40px] rounded-[4px] top-[108px] w-[154px]" data-name="site-node">
+        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-1/2 text-[#151515] text-[12px] top-1/2 translate-x-[-50%] translate-y-[-50%] whitespace-nowrap">Home page</p>
+      </div>
+      <div className="absolute bg-[#f2f1ec] h-[60px] left-[520px] rounded-[4px] top-[56px] w-[126px]" data-name="site-node">
+        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-1/2 text-[#151515] text-[12px] top-1/2 translate-x-[-50%] translate-y-[-50%] whitespace-nowrap">Navigation bar</p>
+      </div>
+      <div className="absolute bg-[#f2f1ec] h-[60px] left-[520px] rounded-[4px] top-[166px] w-[126px]" data-name="site-node">
+        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-1/2 text-[#151515] text-[12px] top-1/2 translate-x-[-50%] translate-y-[-50%] whitespace-nowrap">Footer</p>
+      </div>
+      <div className="absolute bg-[#f2f1ec] h-[60px] left-[520px] rounded-[4px] top-[266px] w-[126px]" data-name="site-node">
+        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-1/2 text-[#151515] text-[12px] top-1/2 translate-x-[-50%] translate-y-[-50%] whitespace-nowrap">Terms & condition</p>
+      </div>
+      <div className="absolute bg-[#f2f1ec] h-[78px] left-[820px] rounded-[4px] top-[47px] w-[98px]" data-name="site-node">
+        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-[14px] leading-[14px] text-[#151515] text-[11px] top-[14px]">Features<br />Connect<br />Collect<br />Activate</p>
+      </div>
+      <div className="absolute bg-[#f2f1ec] h-[60px] left-[820px] rounded-[4px] top-[166px] w-[98px]" data-name="site-node">
+        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-1/2 text-[#151515] text-[12px] top-1/2 translate-x-[-50%] translate-y-[-50%] whitespace-nowrap">Use cases</p>
+      </div>
+      <div className="absolute bg-[#f2f1ec] h-[60px] left-[820px] rounded-[4px] top-[266px] w-[98px]" data-name="site-node">
+        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-1/2 text-[#151515] text-[12px] top-1/2 translate-x-[-50%] translate-y-[-50%] whitespace-nowrap">Pricing</p>
+      </div>
+      <div className="absolute bg-[#f2f1ec] h-[60px] left-[1002px] rounded-[4px] top-[104px] w-[110px]" data-name="site-node">
+        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-1/2 text-[#151515] text-[12px] top-1/2 translate-x-[-50%] translate-y-[-50%] whitespace-nowrap">Contact us</p>
+      </div>
+      <div className="absolute bg-[#f2f1ec] h-[60px] left-[1002px] rounded-[4px] top-[216px] w-[110px]" data-name="site-node">
+        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-1/2 text-[#151515] text-[12px] top-1/2 translate-x-[-50%] translate-y-[-50%] whitespace-nowrap">Sign up</p>
+      </div>
     </div>
   );
 }
@@ -422,6 +465,76 @@ function Proc() {
       <p className="[word-break:break-word] font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#f2f1ec] text-[46px] tracking-[-0.92px] whitespace-nowrap">Three phases to final</p>
       <PRow />
       <LoRow />
+      <style>{`
+        [data-name="proc"] [data-name="lo-row"] {
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
+          overflow: visible;
+        }
+
+        [data-name="proc"] [data-name="lo"] {
+          width: 564px;
+          height: 430px;
+        }
+
+        [data-name="proc"] [data-name="fl"] {
+          width: 1152px;
+          height: auto;
+          background: transparent;
+          border-radius: 0;
+        }
+
+        [data-name="proc"] [data-name="fl"] > div:first-child {
+          overflow: visible;
+          border-radius: 0;
+          gap: 24px;
+        }
+
+        [data-name="proc"] [data-name="fl"] > div[aria-hidden] {
+          display: none;
+        }
+
+        [data-name="proc"] [data-name="lo"] [data-name="ic"] {
+          width: 564px;
+          height: 300px;
+        }
+
+        [data-name="proc"] [data-name="site-map-section"] {
+          width: 1152px;
+          height: 390px;
+        }
+
+        [data-name="proc"] [data-name="li"],
+        [data-name="proc"] [data-name="fi"] {
+          width: 564px;
+          padding: 24px;
+          gap: 8px;
+          overflow: visible;
+        }
+
+        [data-name="proc"] [data-name="fi"] {
+          width: 1152px;
+          padding: 0;
+        }
+
+        [data-name="proc"] [data-name="li"] p:first-child,
+        [data-name="proc"] [data-name="fi"] p:first-child {
+          font-size: 18px;
+          line-height: 1.25;
+        }
+
+        [data-name="proc"] [data-name="li"] p:last-child,
+        [data-name="proc"] [data-name="fi"] p:last-child {
+          width: 500px;
+          font-size: 15px;
+          line-height: 24px;
+        }
+
+        [data-name="proc"] [data-name="fi"] p:last-child {
+          width: 760px;
+        }
+      `}</style>
     </div>
   );
 }

@@ -1,5 +1,37 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-14 09:50 - [Codex] Made the Read/See sitemap a full-width section
+
+**Done:** Refined `src/imports/CaseStudyReadsee-1/index.tsx` so the Read/See public-story sitemap is no longer presented as a card. The user-flow diagram now spans the full 1152px content width, uses a wider 390px canvas, removes the card background/border treatment, stacks below the Lo-Fi evidence, and has redrawn connector paths/nodes for Home, Navigation, Footer, Terms, Features, Use cases, Pricing, Contact, and Sign up.
+
+**Found:** The previous version still read like a screenshot card because the sitemap lived inside the same rounded `fl` card frame as the thumbnail layout. The production build passes (`2021 modules transformed`); the existing large JS chunk warning remains. Read/See image asset modifications already present in `public/case-studies/readsee-dashboard/` and `public/case-studies/readsee-website/` were left untouched as user asset changes.
+
+**Next:** Review `http://127.0.0.1:5174/#/work/readsee-dashboard` in the appended Read/See public-story “Design Process” area and confirm whether the full-width sitemap should be deployed with the pending image updates.
+
+## 2026-07-14 09:42 - [Codex] Turned the Read/See sitemap into a real section diagram
+
+**Done:** Updated `src/imports/CaseStudyReadsee-1/index.tsx` so the Read/See public-story process section now pairs the Lo-Fi wireframe card with a rendered sitemap diagram instead of using the sitemap as a static image thumbnail. The sitemap is built from live JSX/SVG nodes and green connector paths, and the two-card row is scoped to a balanced 2-column layout with wider cards, taller media areas, and more readable captions.
+
+**Found:** The Read/See marketing-site case is appended to the main Read/See product case via `MERGED_PUBLIC_STORY`, so this change appears under `/#/work/readsee-dashboard` in the “The public story” area. The production build passes (`2021 modules transformed`); the existing large JS chunk warning remains. Several Read/See image assets were already modified or newly added in `public/case-studies/readsee-dashboard/` and `public/case-studies/readsee-website/`; those were left untouched as user asset changes.
+
+**Next:** Review `http://127.0.0.1:5174/#/work/readsee-dashboard` around the appended Read/See public-story “Design Process” section, then decide whether to deploy together with the pending Read/See image updates.
+
+## 2026-07-14 09:27 - [Codex] Fixed the Read/See onboarding card layout
+
+**Done:** Updated the Read/See Dashboard onboarding section in `src/imports/CaseStudyReadseeDashboard-1/index.tsx` so the four “Getting users to first value” cards render as a 2-column grid. Added scoped section overrides for wider 564px cards, taller 460px card frames, 300px image areas, larger caption spacing, 18px card titles, and 14px/22px body copy so the descriptions are no longer clipped.
+
+**Found:** The previous generated layout used a four-column strip of 270px cards with 230px-wide, 11px descriptions, which caused the text to clip. The production build passes after the change (`2021 modules transformed`); the existing large JS chunk warning remains. Browser screenshot verification was limited because the Playwright browser binary is not installed in the repo and sandboxed Chrome launch is blocked, but the local Vite server remains available at `http://127.0.0.1:5174/`. Separate modified image assets under `public/case-studies/readsee-dashboard/` were already present and were left untouched.
+
+**Next:** Review `http://127.0.0.1:5174/#/work/readsee-dashboard` locally around “Getting users to first value”, then decide whether to commit/deploy this fix together with the pending Read/See image asset updates.
+
+## 2026-07-14 08:49 - [Codex] Started the local development server
+
+**Done:** Started the Vite development server for the portfolio on `http://127.0.0.1:5174/`.
+
+**Found:** Ports `5174` and `5175` were not listening at first. The sandboxed launch failed with the known Windows `esbuild` `spawn EPERM` issue, so the server was relaunched with elevated permissions and Vite reported ready in 2658ms. Local dev log files remain untracked.
+
+**Next:** Continue local review or development from `http://127.0.0.1:5174/`.
+
 ## 2026-07-13 16:29 - [Codex] Deployed the KitaLabel Business OS product-system story
 
 **Done:** Committed the approved KitaLabel Business OS narrative as `38a7d15` (`Add KitaLabel Business OS product story`) and pushed `main` from `5debf49` to `38a7d15` on `origin`. The release adds the product-system story, operational workflow, missing-order recovery path, data-trust rules, permission model, Business OS scope explanation, 17-screen metric, and complete responsive rendering for desktop, tablet, and mobile. Vercel production auto-deployment was triggered by the GitHub push.

@@ -576,7 +576,7 @@ function Screens() {
 
 function Ic7() {
   return (
-    <div className="h-[240px] relative shrink-0 w-[270px]" data-name="ic">
+    <div className="h-[300px] relative shrink-0 w-[564px]" data-name="ic">
       <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgIc6} />
     </div>
   );
@@ -584,7 +584,7 @@ function Ic7() {
 
 function I5() {
   return (
-    <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[270px]" data-name="i3">
+    <div className="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-start p-[24px] relative shrink-0 w-[564px]" data-name="i3">
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[14px] whitespace-nowrap">Sign Up</p>
       <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[18px] relative shrink-0 text-[#9a9a93] text-[11px] w-[230px]">{`Email + Google OAuth — "Create your Free Account". Clean, minimal auth with Terms link`}</p>
     </div>
@@ -605,7 +605,7 @@ function C5() {
 
 function Ic8() {
   return (
-    <div className="h-[240px] relative shrink-0 w-[270px]" data-name="ic">
+    <div className="h-[300px] relative shrink-0 w-[564px]" data-name="ic">
       <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgIc7} />
     </div>
   );
@@ -613,7 +613,7 @@ function Ic8() {
 
 function I6() {
   return (
-    <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[270px]" data-name="i3">
+    <div className="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-start p-[24px] relative shrink-0 w-[564px]" data-name="i3">
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[14px] whitespace-nowrap">Complete Profile</p>
       <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[18px] relative shrink-0 text-[#9a9a93] text-[11px] w-[230px]">Company profile form (Step 2/2) — Company Name, Website, Industry, Country, City, Address, Postal Code</p>
     </div>
@@ -634,7 +634,7 @@ function C6() {
 
 function Ic9() {
   return (
-    <div className="h-[240px] relative shrink-0 w-[270px]" data-name="ic">
+    <div className="h-[300px] relative shrink-0 w-[564px]" data-name="ic">
       <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgIc8} />
     </div>
   );
@@ -642,7 +642,7 @@ function Ic9() {
 
 function I7() {
   return (
-    <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[270px]" data-name="i3">
+    <div className="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-start p-[24px] relative shrink-0 w-[564px]" data-name="i3">
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[14px] whitespace-nowrap">Dashboard — First Login</p>
       <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[18px] relative shrink-0 text-[#9a9a93] text-[11px] w-[230px]">{`Welcome state: "Complete your profile" task card, Knowledge Base with video, rewards checklist (Complete Profile / Product Tour / All Tasks)`}</p>
     </div>
@@ -663,7 +663,7 @@ function C7() {
 
 function Ic10() {
   return (
-    <div className="h-[240px] relative shrink-0 w-[270px]" data-name="ic">
+    <div className="h-[300px] relative shrink-0 w-[564px]" data-name="ic">
       <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgIc9} />
     </div>
   );
@@ -671,7 +671,7 @@ function Ic10() {
 
 function I8() {
   return (
-    <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[270px]" data-name="i3">
+    <div className="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-start p-[24px] relative shrink-0 w-[564px]" data-name="i3">
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[14px] whitespace-nowrap">Connection Sources — Tour</p>
       <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[18px] relative shrink-0 text-[#9a9a93] text-[11px] w-[230px]">{`Product tour in progress: "Documentation" tooltip → "Destination" — step-by-step tooltip-guided feature introduction`}</p>
     </div>
@@ -708,6 +708,42 @@ function Onboard() {
       <p className="[word-break:break-word] font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#f2f1ec] text-[46px] tracking-[-0.92px] whitespace-nowrap">Getting users to first value</p>
       <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[28px] relative shrink-0 text-[#9a9a93] text-[17px] w-[1152px]">A guided onboarding flow taking new users from sign-up through company profile completion to their first connection — with tooltip-driven product tours on Sources and Destinations, a Knowledge Base panel, and a gamified reward system (Get an X Reward) to drive feature adoption.</p>
       <ObRow />
+      <style>{`
+        [data-name="onboard"] [data-name="obRow"] {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 24px;
+          overflow: visible;
+        }
+
+        [data-name="onboard"] [data-name="c3"] {
+          width: 564px;
+          height: 460px;
+        }
+
+        [data-name="onboard"] [data-name="ic"] {
+          width: 564px;
+          height: 300px;
+        }
+
+        [data-name="onboard"] [data-name="i3"] {
+          width: 564px;
+          padding: 24px;
+          gap: 8px;
+          overflow: visible;
+        }
+
+        [data-name="onboard"] [data-name="i3"] p:first-child {
+          font-size: 18px;
+          line-height: 1.25;
+        }
+
+        [data-name="onboard"] [data-name="i3"] p:last-child {
+          width: 500px;
+          font-size: 14px;
+          line-height: 22px;
+        }
+      `}</style>
     </div>
   );
 }
