@@ -1,5 +1,13 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-14 16:13 - [Codex] Deployed the approved portfolio updates to production
+
+**Done:** Committed and pushed the approved Mailtarget, Mailtarget Web, SONAR, Read/See, and shared image-preview updates to `origin/main`.
+
+**Deployment:** GitHub accepted commit `89131a9` (`Polish Mailtarget and SONAR case studies`), advancing `main` from `9c31084`. Vercel auto-deploy is triggered from this push.
+
+**Included:** Mailtarget story and outcome refinements, compact mobile-preview detection across use cases, refreshed Mailtarget and SONAR assets, the interactive SONAR pricing study, SONAR key-screen fixes, and the Read/See white-background image asset. Local logs and Playwright artifacts were intentionally excluded.
+
 ## 2026-07-14 16:06 - [Codex] Replaced weak Mailtarget outcome metrics with defensible scope evidence
 
 **Done:** Audited the Mailtarget outcome row. Removed the unsupported `4 buyer contexts explained` card and replaced implementation-detail language with clear scope evidence: `480+ screens in redesign scope`, `3 core flows aligned`, `2 release environments`, and `18+ public site pages designed`. The page count is grounded in the documented homepage, 12 feature pages, and 5 solution pages.
