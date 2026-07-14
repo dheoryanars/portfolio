@@ -1,5 +1,23 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-14 — [Claude] DEPLOYED: Read/See upgrade live on production
+
+**Done:** User ran push.bat — origin/main now at a36eda6 (7 commits: onboarding grid, single-SVG sitemap matched to user's original Figma architecture, Hi-Fi card beside Lo-Fi, sitemap in shared card style, top-corner rounding both imports, 10 case images flattened onto white). Vercel auto-deployed; smoke-tested https://dheoryan.vercel.app/#/work/readsee-dashboard — new build serving, hero + preview card render clean, no errors.
+
+**Found:** Root cause of the recurring "square corners" report was IN THE PNGs — transparent rounded/feathered corners baked in by the capture tool (top-left alpha=0). Flattened onto white via PIL; also fixed a truncated PNG (image-01). RULE: when a visual bug survives correct CSS fixes, inspect the asset's pixels.
+
+**Next:** User to eyeball prod at full desktop width + on phone. Remaining backlog: final thumbnails for other cases, bento featured grid (agreed, not started), scroll-scrub before/after for CMIS, colophon page, live-status badges, Slypnir/Moots placement (facts pending from user).
+
+## 2026-07-14 — [Claude] Reviewed + committed Codex's Read/See work; APPROVED for deploy
+
+**Done:** Visually reviewed both pending Codex changes at 127.0.0.1:5174/#/work/readsee-dashboard — onboarding 2-col grid (captions fully readable, nothing clipped) and full-width JSX/SVG sitemap (nodes/connectors aligned, brand-green, good caption). User's refreshed case images render well incl. new hero thumbnail. Committed everything as b5678cd.
+
+**Addendum (commit e3d3a5e):** Per user: rebuilt the sitemap as ONE SVG (nodes+connectors+arrowheads in shared coordinates — old version mixed absolute divs with a separate SVG, causing drift/floating dots) and added a "Hi-Fi Design" card (public/case-studies/readsee-website/image-01.png) beside the Lo-Fi card via new lo-pair row. Verified live. RULE for diagrams: never split nodes and connectors across coordinate systems.
+
+**Sitemap corrections (ce226e9, f10bfb8):** User provided the ORIGINAL Figma base diagram — previous implementations (Codex's and Claude's polish) had wrong architecture: missing Privacy policy, invented Contact us, wrong topology. Now faithful: Nav + Footer feed one shared vertical rail fanning to Products/Features (Connect·Collect·Activate), Use cases, Pricing, Privacy policy, Sign up; Terms hangs off Footer. Also wrapped in the shared evidence-card style (full-width, centered via viewBox offset, padded caption) so Design Process = 3 consistent cards. LESSON: case-study diagrams are factual claims — always verify against the user's source design, never draw "plausible" architecture.
+
+**Next:** PUSH 6eaab07 + 71a8f98 + ce226e9 + f10bfb8 to origin (Codex has working git+auth — it pushed 38a7d15 on 7/13). After Vercel deploys, smoke-test https://dheoryan.vercel.app/#/work/readsee-dashboard (sitemap + onboarding) and /#/work/kitalabel-bos (7/13 story, already live). Minor non-blocking: extra whitespace under sitemap caption.
+
 ## 2026-07-14 09:50 - [Codex] Made the Read/See sitemap a full-width section
 
 **Done:** Refined `src/imports/CaseStudyReadsee-1/index.tsx` so the Read/See public-story sitemap is no longer presented as a card. The user-flow diagram now spans the full 1152px content width, uses a wider 390px canvas, removes the card background/border treatment, stacks below the Lo-Fi evidence, and has redrawn connector paths/nodes for Home, Navigation, Footer, Terms, Features, Use cases, Pricing, Contact, and Sign up.
