@@ -709,6 +709,15 @@ function Onboard() {
       <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[28px] relative shrink-0 text-[#9a9a93] text-[17px] w-[1152px]">A guided onboarding flow taking new users from sign-up through company profile completion to their first connection — with tooltip-driven product tours on Sources and Destinations, a Knowledge Base panel, and a gamified reward system (Get an X Reward) to drive feature adoption.</p>
       <ObRow />
       <style>{`
+        /* Media images on 8px-radius cards: round their own top corners so
+           they can never draw square over the card rounding. */
+        [data-name="r1"] [data-name="ic"] img,
+        [data-name="c"] [data-name="ic"] img,
+        [data-name="c2"] [data-name="ic"] img,
+        [data-name="c3"] [data-name="ic"] img {
+          border-radius: 8px 8px 0 0;
+        }
+
         [data-name="onboard"] [data-name="obRow"] {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
