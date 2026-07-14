@@ -378,52 +378,66 @@ function Lo() {
 }
 
 function Ic2() {
+  // Single-SVG sitemap: nodes, labels, connectors, junctions and arrowheads
+  // share one coordinate system so nothing can drift out of alignment.
+  const node = { fill: "#f2f1ec", rx: 4 };
+  const line = { stroke: "#36b729", strokeWidth: 1.5, fill: "none" };
+  const label = {
+    fontFamily: "'Space Grotesk', sans-serif",
+    fontWeight: 500,
+    fontSize: 12,
+    fill: "#151515",
+  } as const;
   return (
     <div className="h-[390px] relative shrink-0 w-[1152px]" data-name="site-map-section">
-      <svg className="absolute inset-0 size-full" viewBox="0 0 1152 390" fill="none" aria-hidden>
-        <path d="M194 188 H332 V86 H520" stroke="#36b729" strokeWidth="1.5" />
-        <path d="M332 188 V196 H520" stroke="#36b729" strokeWidth="1.5" />
-        <path d="M646 86 H820" stroke="#36b729" strokeWidth="1.5" />
-        <path d="M646 196 H820" stroke="#36b729" strokeWidth="1.5" />
-        <path d="M583 220 V296 H820" stroke="#36b729" strokeWidth="1.5" />
-        <path d="M918 86 H1002 V134" stroke="#36b729" strokeWidth="1.5" />
-        <path d="M918 196 H1002 V246" stroke="#36b729" strokeWidth="1.5" />
-        <path d="M918 296 H1002 V246" stroke="#36b729" strokeWidth="1.5" />
-        <circle cx="332" cy="86" r="3" fill="#36b729" />
-        <circle cx="332" cy="196" r="3" fill="#36b729" />
-        <circle cx="646" cy="86" r="3" fill="#36b729" />
-        <circle cx="646" cy="196" r="3" fill="#36b729" />
-        <circle cx="583" cy="296" r="3" fill="#36b729" />
-        <circle cx="1002" cy="134" r="3" fill="#36b729" />
-        <circle cx="1002" cy="246" r="3" fill="#36b729" />
+      <svg className="absolute inset-0 size-full" viewBox="0 0 1152 390" fill="none">
+        {/* connectors */}
+        <path d="M200 195 H440" {...line} />
+        <path d="M320 195 V85 H440" {...line} />
+        <path d="M515 223 V277" {...line} />
+        <path d="M590 85 H740" {...line} />
+        <path d="M590 195 H740" {...line} />
+        <path d="M590 305 H740" {...line} />
+        <path d="M890 85 H940 V140 H1000" {...line} />
+        <path d="M890 195 H950 V250 H1000" {...line} />
+        <path d="M890 305 H950 V250" {...line} />
+        {/* junction dots — only where flows actually branch/merge */}
+        <circle cx="320" cy="195" r="3.5" fill="#36b729" />
+        <circle cx="950" cy="250" r="3.5" fill="#36b729" />
+        {/* arrowheads into each destination */}
+        <path d="M440 85 l-8 -4.5 v9 z" fill="#36b729" />
+        <path d="M440 195 l-8 -4.5 v9 z" fill="#36b729" />
+        <path d="M515 277 l-4.5 -8 h9 z" fill="#36b729" />
+        <path d="M740 85 l-8 -4.5 v9 z" fill="#36b729" />
+        <path d="M740 195 l-8 -4.5 v9 z" fill="#36b729" />
+        <path d="M740 305 l-8 -4.5 v9 z" fill="#36b729" />
+        <path d="M1000 140 l-8 -4.5 v9 z" fill="#36b729" />
+        <path d="M1000 250 l-8 -4.5 v9 z" fill="#36b729" />
+        {/* col 1 — entry */}
+        <rect x="40" y="130" width="160" height="130" {...node} />
+        <text x="120" y="199" textAnchor="middle" style={label}>Home page</text>
+        {/* col 2 — page furniture */}
+        <rect x="440" y="57" width="150" height="56" {...node} />
+        <text x="515" y="89" textAnchor="middle" style={label}>Navigation bar</text>
+        <rect x="440" y="167" width="150" height="56" {...node} />
+        <text x="515" y="199" textAnchor="middle" style={label}>Footer</text>
+        <rect x="440" y="277" width="150" height="56" {...node} />
+        <text x="515" y="309" textAnchor="middle" style={label}>{"Terms & condition"}</text>
+        {/* col 3 — content pages */}
+        <rect x="740" y="41" width="150" height="88" {...node} />
+        <text x="815" y="73" textAnchor="middle" style={label}>Features</text>
+        <text x="815" y="90" textAnchor="middle" style={{ ...label, fontSize: 10, fill: "#4a4a45" }}>Connect · Collect · Activate</text>
+        <text x="815" y="104" textAnchor="middle" style={{ ...label, fontSize: 10, fill: "#4a4a45" }}></text>
+        <rect x="740" y="167" width="150" height="56" {...node} />
+        <text x="815" y="199" textAnchor="middle" style={label}>Use cases</text>
+        <rect x="740" y="277" width="150" height="56" {...node} />
+        <text x="815" y="309" textAnchor="middle" style={label}>Pricing</text>
+        {/* col 4 — conversion */}
+        <rect x="1000" y="112" width="122" height="56" {...node} />
+        <text x="1061" y="144" textAnchor="middle" style={label}>Contact us</text>
+        <rect x="1000" y="222" width="122" height="56" {...node} />
+        <text x="1061" y="254" textAnchor="middle" style={label}>Sign up</text>
       </svg>
-      <div className="absolute bg-[#f2f1ec] h-[160px] left-[40px] rounded-[4px] top-[108px] w-[154px]" data-name="site-node">
-        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-1/2 text-[#151515] text-[12px] top-1/2 translate-x-[-50%] translate-y-[-50%] whitespace-nowrap">Home page</p>
-      </div>
-      <div className="absolute bg-[#f2f1ec] h-[60px] left-[520px] rounded-[4px] top-[56px] w-[126px]" data-name="site-node">
-        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-1/2 text-[#151515] text-[12px] top-1/2 translate-x-[-50%] translate-y-[-50%] whitespace-nowrap">Navigation bar</p>
-      </div>
-      <div className="absolute bg-[#f2f1ec] h-[60px] left-[520px] rounded-[4px] top-[166px] w-[126px]" data-name="site-node">
-        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-1/2 text-[#151515] text-[12px] top-1/2 translate-x-[-50%] translate-y-[-50%] whitespace-nowrap">Footer</p>
-      </div>
-      <div className="absolute bg-[#f2f1ec] h-[60px] left-[520px] rounded-[4px] top-[266px] w-[126px]" data-name="site-node">
-        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-1/2 text-[#151515] text-[12px] top-1/2 translate-x-[-50%] translate-y-[-50%] whitespace-nowrap">Terms & condition</p>
-      </div>
-      <div className="absolute bg-[#f2f1ec] h-[78px] left-[820px] rounded-[4px] top-[47px] w-[98px]" data-name="site-node">
-        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-[14px] leading-[14px] text-[#151515] text-[11px] top-[14px]">Features<br />Connect<br />Collect<br />Activate</p>
-      </div>
-      <div className="absolute bg-[#f2f1ec] h-[60px] left-[820px] rounded-[4px] top-[166px] w-[98px]" data-name="site-node">
-        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-1/2 text-[#151515] text-[12px] top-1/2 translate-x-[-50%] translate-y-[-50%] whitespace-nowrap">Use cases</p>
-      </div>
-      <div className="absolute bg-[#f2f1ec] h-[60px] left-[820px] rounded-[4px] top-[266px] w-[98px]" data-name="site-node">
-        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-1/2 text-[#151515] text-[12px] top-1/2 translate-x-[-50%] translate-y-[-50%] whitespace-nowrap">Pricing</p>
-      </div>
-      <div className="absolute bg-[#f2f1ec] h-[60px] left-[1002px] rounded-[4px] top-[104px] w-[110px]" data-name="site-node">
-        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-1/2 text-[#151515] text-[12px] top-1/2 translate-x-[-50%] translate-y-[-50%] whitespace-nowrap">Contact us</p>
-      </div>
-      <div className="absolute bg-[#f2f1ec] h-[60px] left-[1002px] rounded-[4px] top-[216px] w-[110px]" data-name="site-node">
-        <p className="absolute font-['Space_Grotesk:Medium',sans-serif] font-medium left-1/2 text-[#151515] text-[12px] top-1/2 translate-x-[-50%] translate-y-[-50%] whitespace-nowrap">Sign up</p>
-      </div>
     </div>
   );
 }
@@ -449,10 +463,42 @@ function Fl() {
   );
 }
 
+function IcHi() {
+  return (
+    <div className="h-[260px] relative shrink-0 w-[654.24px]" data-name="ic">
+      <img alt="Read/See homepage — final Hi-Fi design" className="absolute inset-0 max-w-none object-cover object-top pointer-events-none size-full" src="/case-studies/readsee-website/image-01.png" />
+    </div>
+  );
+}
+
+function HiCaption() {
+  return (
+    <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[654.24px]" data-name="li">
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[17px] whitespace-nowrap">Hi-Fi Design</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[614.24px]">The same homepage taken to final visual direction — green primary palette, white sections, and live product UI</p>
+    </div>
+  );
+}
+
+function Hi() {
+  return (
+    <div className="bg-[#141414] h-[380px] relative rounded-[8px] shrink-0 w-[654.24px]" data-name="lo">
+      <div className="content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
+        <IcHi />
+        <HiCaption />
+      </div>
+      <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[8px]" />
+    </div>
+  );
+}
+
 function LoRow() {
   return (
     <div className="content-stretch flex gap-[24px] items-start overflow-clip relative shrink-0 w-[1152px]" data-name="lo-row">
-      <Lo />
+      <div className="content-stretch flex gap-[24px] items-start relative shrink-0" data-name="lo-pair">
+        <Lo />
+        <Hi />
+      </div>
       <Fl />
     </div>
   );
@@ -471,6 +517,11 @@ function Proc() {
           flex-direction: column;
           gap: 40px;
           overflow: visible;
+        }
+
+        [data-name="proc"] [data-name="lo-pair"] {
+          display: flex;
+          gap: 24px;
         }
 
         [data-name="proc"] [data-name="lo"] {
