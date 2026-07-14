@@ -393,7 +393,7 @@ function Ic2() {
   const sub = { ...label, fontSize: 10, fill: "#4a4a45" } as const;
   return (
     <div className="h-[480px] relative shrink-0 w-[1152px]" data-name="site-map-section">
-      <svg className="absolute inset-0 size-full" viewBox="0 0 1152 480" fill="none">
+      <svg className="absolute inset-0 size-full" viewBox="-66 -10 1152 500" fill="none">
         {/* Home page -> Nav + Footer */}
         <path d="M200 240 H300" {...line} />
         <path d="M300 240 V110 H420" {...line} />
@@ -540,18 +540,12 @@ function Proc() {
         [data-name="proc"] [data-name="fl"] {
           width: 1152px;
           height: auto;
-          background: transparent;
-          border-radius: 0;
         }
 
         [data-name="proc"] [data-name="fl"] > div:first-child {
           overflow: visible;
           border-radius: 0;
           gap: 24px;
-        }
-
-        [data-name="proc"] [data-name="fl"] > div[aria-hidden] {
-          display: none;
         }
 
         [data-name="proc"] [data-name="lo"] [data-name="ic"] {
@@ -574,7 +568,7 @@ function Proc() {
 
         [data-name="proc"] [data-name="fi"] {
           width: 1152px;
-          padding: 0;
+          padding: 24px;
         }
 
         [data-name="proc"] [data-name="li"] p:first-child,
