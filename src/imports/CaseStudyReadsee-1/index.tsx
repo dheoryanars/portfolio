@@ -378,8 +378,10 @@ function Lo() {
 }
 
 function Ic2() {
-  // Single-SVG sitemap: nodes, labels, connectors, junctions and arrowheads
-  // share one coordinate system so nothing can drift out of alignment.
+  // Faithful to the original Figma sitemap: Home branches to Nav + Footer,
+  // both feed one vertical rail, and the rail fans out to the five pages
+  // (Products/Features, Use cases, Pricing, Privacy policy, Sign up).
+  // Terms & condition hangs off Footer. One SVG = one coordinate system.
   const node = { fill: "#f2f1ec", rx: 4 };
   const line = { stroke: "#36b729", strokeWidth: 1.5, fill: "none" };
   const label = {
@@ -388,55 +390,61 @@ function Ic2() {
     fontSize: 12,
     fill: "#151515",
   } as const;
+  const sub = { ...label, fontSize: 10, fill: "#4a4a45" } as const;
   return (
-    <div className="h-[390px] relative shrink-0 w-[1152px]" data-name="site-map-section">
-      <svg className="absolute inset-0 size-full" viewBox="0 0 1152 390" fill="none">
-        {/* connectors */}
-        <path d="M200 195 H440" {...line} />
-        <path d="M320 195 V85 H440" {...line} />
-        <path d="M515 223 V277" {...line} />
-        <path d="M590 85 H740" {...line} />
-        <path d="M590 195 H740" {...line} />
-        <path d="M590 305 H740" {...line} />
-        <path d="M890 85 H940 V140 H1000" {...line} />
-        <path d="M890 195 H950 V250 H1000" {...line} />
-        <path d="M890 305 H950 V250" {...line} />
-        {/* junction dots — only where flows actually branch/merge */}
-        <circle cx="320" cy="195" r="3.5" fill="#36b729" />
-        <circle cx="950" cy="250" r="3.5" fill="#36b729" />
-        {/* arrowheads into each destination */}
-        <path d="M440 85 l-8 -4.5 v9 z" fill="#36b729" />
-        <path d="M440 195 l-8 -4.5 v9 z" fill="#36b729" />
-        <path d="M515 277 l-4.5 -8 h9 z" fill="#36b729" />
-        <path d="M740 85 l-8 -4.5 v9 z" fill="#36b729" />
-        <path d="M740 195 l-8 -4.5 v9 z" fill="#36b729" />
-        <path d="M740 305 l-8 -4.5 v9 z" fill="#36b729" />
-        <path d="M1000 140 l-8 -4.5 v9 z" fill="#36b729" />
-        <path d="M1000 250 l-8 -4.5 v9 z" fill="#36b729" />
+    <div className="h-[480px] relative shrink-0 w-[1152px]" data-name="site-map-section">
+      <svg className="absolute inset-0 size-full" viewBox="0 0 1152 480" fill="none">
+        {/* Home page -> Nav + Footer */}
+        <path d="M200 240 H300" {...line} />
+        <path d="M300 240 V110 H420" {...line} />
+        <path d="M300 240 H420" {...line} />
+        <circle cx="300" cy="240" r="3.5" fill="#36b729" />
+        {/* Footer -> Terms & condition */}
+        <path d="M495 266 V344" {...line} />
+        {/* Nav + Footer -> the rail */}
+        <path d="M570 110 H700" {...line} />
+        <path d="M570 240 H700" {...line} />
+        {/* the rail */}
+        <path d="M700 70 V430" {...line} />
+        <circle cx="700" cy="110" r="3.5" fill="#36b729" />
+        <circle cx="700" cy="240" r="3.5" fill="#36b729" />
+        {/* rail -> pages */}
+        <path d="M700 70 H780" {...line} />
+        <path d="M700 160 H780" {...line} />
+        <path d="M700 250 H780" {...line} />
+        <path d="M700 340 H780" {...line} />
+        <path d="M700 430 H780" {...line} />
+        {/* arrowheads */}
+        <path d="M420 110 l-8 -4.5 v9 z" fill="#36b729" />
+        <path d="M420 240 l-8 -4.5 v9 z" fill="#36b729" />
+        <path d="M495 344 l-4.5 -8 h9 z" fill="#36b729" />
+        <path d="M780 70 l-8 -4.5 v9 z" fill="#36b729" />
+        <path d="M780 160 l-8 -4.5 v9 z" fill="#36b729" />
+        <path d="M780 250 l-8 -4.5 v9 z" fill="#36b729" />
+        <path d="M780 340 l-8 -4.5 v9 z" fill="#36b729" />
+        <path d="M780 430 l-8 -4.5 v9 z" fill="#36b729" />
         {/* col 1 — entry */}
-        <rect x="40" y="130" width="160" height="130" {...node} />
-        <text x="120" y="199" textAnchor="middle" style={label}>Home page</text>
+        <rect x="40" y="185" width="160" height="110" {...node} />
+        <text x="120" y="244" textAnchor="middle" style={label}>Home page</text>
         {/* col 2 — page furniture */}
-        <rect x="440" y="57" width="150" height="56" {...node} />
-        <text x="515" y="89" textAnchor="middle" style={label}>Navigation bar</text>
-        <rect x="440" y="167" width="150" height="56" {...node} />
-        <text x="515" y="199" textAnchor="middle" style={label}>Footer</text>
-        <rect x="440" y="277" width="150" height="56" {...node} />
-        <text x="515" y="309" textAnchor="middle" style={label}>{"Terms & condition"}</text>
-        {/* col 3 — content pages */}
-        <rect x="740" y="41" width="150" height="88" {...node} />
-        <text x="815" y="73" textAnchor="middle" style={label}>Features</text>
-        <text x="815" y="90" textAnchor="middle" style={{ ...label, fontSize: 10, fill: "#4a4a45" }}>Connect · Collect · Activate</text>
-        <text x="815" y="104" textAnchor="middle" style={{ ...label, fontSize: 10, fill: "#4a4a45" }}></text>
-        <rect x="740" y="167" width="150" height="56" {...node} />
-        <text x="815" y="199" textAnchor="middle" style={label}>Use cases</text>
-        <rect x="740" y="277" width="150" height="56" {...node} />
-        <text x="815" y="309" textAnchor="middle" style={label}>Pricing</text>
-        {/* col 4 — conversion */}
-        <rect x="1000" y="112" width="122" height="56" {...node} />
-        <text x="1061" y="144" textAnchor="middle" style={label}>Contact us</text>
-        <rect x="1000" y="222" width="122" height="56" {...node} />
-        <text x="1061" y="254" textAnchor="middle" style={label}>Sign up</text>
+        <rect x="420" y="84" width="150" height="52" {...node} />
+        <text x="495" y="114" textAnchor="middle" style={label}>Navigation bar</text>
+        <rect x="420" y="214" width="150" height="52" {...node} />
+        <text x="495" y="244" textAnchor="middle" style={label}>Footer</text>
+        <rect x="420" y="344" width="150" height="52" {...node} />
+        <text x="495" y="374" textAnchor="middle" style={label}>{"Terms & condition"}</text>
+        {/* col 3 — destination pages off the rail */}
+        <rect x="780" y="34" width="200" height="72" {...node} />
+        <text x="880" y="64" textAnchor="middle" style={label}>Products / Features</text>
+        <text x="880" y="82" textAnchor="middle" style={sub}>Connect · Collect · Activate</text>
+        <rect x="780" y="134" width="200" height="52" {...node} />
+        <text x="880" y="164" textAnchor="middle" style={label}>Use cases</text>
+        <rect x="780" y="224" width="200" height="52" {...node} />
+        <text x="880" y="254" textAnchor="middle" style={label}>Pricing</text>
+        <rect x="780" y="314" width="200" height="52" {...node} />
+        <text x="880" y="344" textAnchor="middle" style={label}>Privacy policy</text>
+        <rect x="780" y="404" width="200" height="52" {...node} />
+        <text x="880" y="434" textAnchor="middle" style={label}>Sign up</text>
       </svg>
     </div>
   );
@@ -446,7 +454,7 @@ function Fi() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[474px]" data-name="fi">
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[17px] whitespace-nowrap">User Flow Diagram</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[434px]">Site architecture: Homepage → Nav/Footer → Features (Connect, Collect, Activate) → Use Cases → Pricing → Sign Up</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[434px]">Site architecture: Homepage → Nav/Footer → one shared rail into Products/Features (Connect · Collect · Activate), Use cases, Pricing, Privacy policy, and Sign up — Terms & condition hangs off Footer</p>
     </div>
   );
 }
@@ -553,7 +561,7 @@ function Proc() {
 
         [data-name="proc"] [data-name="site-map-section"] {
           width: 1152px;
-          height: 390px;
+          height: 480px;
         }
 
         [data-name="proc"] [data-name="li"],
