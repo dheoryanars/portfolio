@@ -587,6 +587,15 @@ function Proc() {
         [data-name="proc"] [data-name="fi"] p:last-child {
           width: 760px;
         }
+
+        /* Media images sit on top of 8px-radius cards; clip their own top
+           corners so they can never draw square over the card rounding. */
+        [data-name="lo"] [data-name="ic"] img,
+        [data-name="c"] [data-name="ic"] img,
+        [data-name="fin"] [data-name="ic"] img,
+        [data-name="mob"] [data-name="ic"] img {
+          border-radius: 8px 8px 0 0;
+        }
       `}</style>
     </div>
   );
