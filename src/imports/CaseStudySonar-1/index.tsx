@@ -590,7 +590,7 @@ function Frame27() {
   return (
     <div className="bg-[#111] h-[600px] relative rounded-[8px] shrink-0 w-full" data-name="Frame">
       <div className="content-stretch flex items-start overflow-clip relative rounded-[inherit] size-full">
-        <Frame28 />
+        <img alt="SONAR landing page — desktop" className="absolute inset-0 max-w-none object-cover object-top pointer-events-none size-full rounded-[8px]" src="/case-studies/sonar/image-02.png" />
       </div>
       <div aria-hidden className="absolute border border-[#1f1f1f] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
@@ -622,7 +622,7 @@ function Frame32() {
   return (
     <div className="bg-[#111] h-[500px] relative rounded-[8px] shrink-0 w-full" data-name="Frame">
       <div className="content-stretch flex items-start overflow-clip relative rounded-[inherit] size-full">
-        <Frame33 />
+        <img alt="SONAR pricing section — desktop" className="absolute inset-0 max-w-none object-cover object-top pointer-events-none size-full rounded-[8px]" src="/case-studies/sonar/image-03.png" />
       </div>
       <div aria-hidden className="absolute border border-[#1f1f1f] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
@@ -654,7 +654,7 @@ function Frame35() {
   return (
     <div className="bg-[#111] h-[500px] relative rounded-[8px] shrink-0 w-full" data-name="Frame">
       <div className="content-stretch flex items-start overflow-clip relative rounded-[inherit] size-full">
-        <Frame36 />
+        <img alt="SONAR FAQ section — desktop" className="absolute inset-0 max-w-none object-cover object-top pointer-events-none size-full rounded-[8px]" src="/case-studies/sonar/image-04.png" />
       </div>
       <div aria-hidden className="absolute border border-[#1f1f1f] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
@@ -695,7 +695,7 @@ function Frame38() {
   return (
     <div className="bg-[#111] h-[600px] relative rounded-[8px] shrink-0 w-full" data-name="Frame">
       <div className="content-stretch flex items-start overflow-clip relative rounded-[inherit] size-full">
-        <Frame39 />
+        <img alt="SONAR homepage — mobile" className="absolute inset-0 max-w-none object-cover object-top pointer-events-none size-full rounded-[8px]" src="/case-studies/sonar/image-05.png" />
       </div>
       <div aria-hidden className="absolute border border-[#1f1f1f] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
@@ -727,7 +727,7 @@ function Frame41() {
   return (
     <div className="bg-[#111] h-[600px] relative rounded-[8px] shrink-0 w-full" data-name="Frame">
       <div className="content-stretch flex items-start overflow-clip relative rounded-[inherit] size-full">
-        <Frame42 />
+        <img alt="SONAR pricing — mobile" className="absolute inset-0 max-w-none object-cover object-top pointer-events-none size-full rounded-[8px]" src="/case-studies/sonar/image-06.png" />
       </div>
       <div aria-hidden className="absolute border border-[#1f1f1f] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
