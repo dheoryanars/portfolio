@@ -1,5 +1,23 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-15 — [Claude] Live BOS gallery replacement — CANCELLED by user; keep only the two done swaps
+
+**Decision:** User rolled back the plan to replace the remaining BOS gallery mockups with live screenshots. capture.bat + stale live-cap-*.png deleted. The gallery KEEPS its two live captures — adoption-log (a3838f2) and roles-log (ce3a8a2) — everything else stays as designed mockups. Do NOT resume live capture unless the user asks again. (Recon knowledge if ever needed: admin pages are /admin/crm-orders, crm-reorder-cycles, crm-woo-customers, internal-calculator, crm-external-mappings, crm-settings, crm-sync-logs, crm-webhook-events; orders/reorder/customers pages carry customer PII + Rp figures — heavy redaction mandatory.)
+
+**Shipped today:** BOS live evidence (adoption-log a3838f2, roles-log ce3a8a2), kitalabel.com liveUrl pill + process-claim softening (041c50b), CMIS review commit (46e47cb). Commits awaiting push.
+
+## 2026-07-15 — [Claude] BOS live-adoption evidence (a3838f2) + validation-gap plan
+
+**Done:** User supplied a live BOS Team Members capture (12 registered accounts; sales active within 7h). Redacted names/emails via pixelation (kept roles/status/timestamps + "12 results" footer), verified redaction visually, swapped it for the team-members MOCKUP in the 17-screen gallery (count unchanged) with caption "Not a mockup: the deployed product's own member log...". First piece of observable adoption evidence on the site.
+
+**Agreed validation-gap plan (user executing):** 1) mine existing evidence — CMIS MOM v1.1→v1.1.2 change example, Read/See prototype-review change; 2) collect — calculator order/quote counts from WooCommerce admin, estimator before/after quote time, 2 colleague quotes (CMIS stakeholder + BOS user); 3) habit — 20-min observed session with a BOS staff user, document 3 frictions, fix 1. Claude writes each into cases as evidence arrives. PENDING Claude: soften process-section claim "pressure-tested with real users" until cases back it; make kitalabel.com a clickable link in Calculator case. Audit note: image-01/image-02 in sonar are byte-identical (hero duplicated in Landing Page Desktop card) — ask user for distinct landing screenshot or confirm intentional.
+
+## 2026-07-15 — [Claude] Reviewed + committed Codex's 5 CMIS/mobile sessions (56ab6ad)
+
+**Done:** Verified in browser at 1920px: new honest hero ("Improving the workflows people already relied on"), Superior/Approval Review labels, TTI process map, no inflated claims. Review fixes applied before commit: section kickers renumbered (05 was missing, 15 duplicated), hero stat "4 watermark states" → "4 procurement tracks" (watermark chapter no longer renders; watermark survives as evidence caption in DMS — correct per Phase 2 scope), Equinox CMIS intro updated to new framing, 11 CMIS images flattened (transparent corners again). Tree clean.
+
+**Next:** push (user runs push.bat) → verify prod /#/work/cmis-suite. SONAR image slots (image-02..06) still awaiting user screenshots. NOTE for Codex: when adding/removing numbered sections, renumber the whole kicker sequence; when changing a case's framing, sweep hero stats + VirtualPet messages for stale claims.
+
 ## 2026-07-15 14:42 - [Codex] Corrected Purchase Request review language and strengthened the TTI story
 
 **Done:** Replaced the outdated Purchase Request labels `Approval Atasan` and `Approval Modal` with `Superior Review` and `Approval Review`. The case now describes approval as a dedicated review surface where the request, commercial context, decision, and notes remain visible instead of implying that the current workflow uses a modal. The Tool-module references were updated to use the same terminology.
@@ -557,35 +575,4 @@ Entry format:
 - SONAR hidden per user: removed from WORKS + CASE_STUDIES (grid shows 6 works now, renumbered). Its data blocks + import kept with restore instructions in comments near WORKS. Restore when story is reworked around deliberate scoping.
 - Edit-tool writes truncated the file tail TWICE more (and once appended 402 null bytes). Every repair verified with esbuild. Backup of last-good App.tsx at /tmp/App.tsx.claude-backup (sandbox). RULE: after ANY App.tsx edit, run esbuild syntax check before moving on; expect tail damage and repair from the App() return block.
 
-**Addendum 2:** CMIS is also a team project (user's role: design only). CASE_META outcome + focus bullet updated to "product designer on the CMIS project team". Team-project tally so far: Read/See Dashboard, Mailtarget App, CMIS. Solo (AI-assisted design+build): KitaLabel BOS, KitaLabel Calculator. UNCONFIRMED: Universal Design System ownership — ask user before implying solo credit. (Another tail truncation during these edits — repaired, esbuild-verified.)
-
-**Next:**
-- Task: work grid → featured + archive layout (featured: kitalabel-bos, kitalabel, readsee-dashboard, cmis-suite; archive: design-system, mailtarget-app). NOT started — needs WorkSection render changes.
-- Still open: back-pill overlap on mobile, white flash during fast scroll, KitaLabel vs Kitalabel casing, real numbers for stat blocks (user to supply), About stat "9+ projects shipped" review, Mailtarget dates (employment 2022–2023 vs case 2023–2024 — ask user).
-- URGENT: repo has large uncommitted changes; user has not committed despite two truncation incidents. Push for commit.
-- User wants teach-along mode: every change explained (what was wrong → what/why → how implemented).
-
-## 2026-07-07 — [Claude] Mobile audit + full case-study content critique (read-only, NO code changes)
-
-**Done:**
-- Verified dev server at http://127.0.0.1:5174 renders correctly; walked the `design-system` case study end-to-end at 390px mobile width. Mobile case-study layout (walkthrough / visual index / numbered sections) works well.
-- Read all case content in `src/app/App.tsx`: `WORKS`, `CASE_META`, `CASE_HERO_DETAILS`, `CASE_MOBILE_DETAILS`, `PROCESS_STEPS`, `EXPERIENCE`, hero copy.
-
-**Found (bugs):**
-1. Sticky "Back to work" pill overlaps headings/body text while scrolling on mobile — needs scrim or hide-on-scroll-down.
-2. Occasional full-white viewport flash during fast scroll on mobile (likely parallax transforms) — verify on real device.
-3. Copy inconsistency: "KitaLabel" vs "Kitalabel" (e.g. `CASE_HERO_DETAILS` eyebrows).
-
-**Found (content critique — discussed with user, decisions PENDING):**
-1. Stat blocks are mostly decorative ("1 source of truth", "100% responsive", "24/7") — replace with real before/after numbers or remove.
-2. Section body copy is meta-descriptive ("This section covers...") — should be rewritten first-person, active, specific.
-3. No role/team clarity in any case study ("Designed it. Built it." in kitalabel is the model to follow).
-4. Case strength ranking: STRONG kitalabel-bos (flagship), kitalabel, readsee-dashboard · MEDIUM cmis-suite (15 sections, too bloated — cut to ~7), design-system (generic, quantify reuse) · WEAK sonar, readsee-website, mailtarget-web (dilute; consider merging marketing sites into product siblings).
-5. 9 cases too many — proposal: 4 featured + archive grid.
-6. "Vibe Coder" / "Vibe Code" wording undercuts B2B positioning — prefer "AI-assisted development".
-7. Thumbnails excluded from critique — user hasn't placed final screenshots yet.
-
-**Next:**
-- BLOCKED on user: discussion in progress, do NOT implement critique items yet.
-- Bug fixes 1-2 (back-pill overlap, white flash) are safe to pick up anytime.
-- After discussion: likely first task = rewrite kitalabel-bos copy as voice template, then featured/archive grid restructure.
+**Addendum 2:** CMIS is also a team project (user's role: design only). CASE_META outcome + focus
