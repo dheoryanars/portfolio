@@ -1,5 +1,53 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-15 14:42 - [Codex] Corrected Purchase Request review language and strengthened the TTI story
+
+**Done:** Replaced the outdated Purchase Request labels `Approval Atasan` and `Approval Modal` with `Superior Review` and `Approval Review`. The case now describes approval as a dedicated review surface where the request, commercial context, decision, and notes remain visible instead of implying that the current workflow uses a modal. The Tool-module references were updated to use the same terminology.
+
+**TTI enhancement:** Audited the exact Figma TTI canvas at node `9136:6495`. Added a new process-mapping section that turns its discovery notes and legacy flow into a visitor-readable story: Finance selects CERM invoices, creates a customer TTI, assigns it to a courier trip through Surat Jalan, records the customer handover, then reconciles delivered and returned invoices. The section explicitly surfaces the three documented gaps: disconnected records, no shared delivery state, and an invisible return path.
+
+**Clarity:** Rewrote the four-step TTI workflow and key-screen captions around user purpose rather than table columns and button inventory. Removed the clipped `h-[10px]` description containers, increased caption text size, and added the invoice-handover screen to the responsive visual evidence. The mobile narrative now preserves both the discovery map and the final delivery model.
+
+**Verified:** Production build passes (`2021 modules transformed`), `git diff --check` passes with only existing line-ending warnings, and a local headless-browser render confirms the new process map and corrected review labels are present at `http://127.0.0.1:5174/#/work/cmis-suite`. No commit or deployment was made.
+
+## 2026-07-15 12:42 - [Codex] Aligned the DMS chapter to the exact Phase 2 canvas
+
+**Done:** Rebuilt the CMIS case study's DMS chapter around Figma node `10259:117202`, which is exclusively the `DMS Improvement Phase 2 - Upload & Approval Form Dokumen` work. Replaced the generic create/distribute/train/obsolete lifecycle with the verified operator flow: create a document-form request through upload or manual entry, save/update/delete a draft, configure approvers, submit into workflow, approve or reject at the assigned levels, then use history, recap/export, and effective-document migration. Purchase Request and Invoice Delivery remain separate CMIS chapters.
+
+**Evidence:** Reframed the desktop previews as Document-form Request Workspace, Effective-document Library, Approval Progress in the List, Decision History beside the File, and Review the Actual Document. Removed the unrelated standalone watermark chapter from the rendered case flow. Updated the responsive narrative and mobile visual-index artifacts to tell the same Phase 2 story.
+
+**Source:** Audited the exact Figma canvas at `https://www.figma.com/design/i4syXClCF1uumbUVAHGDGA/Cahaya-Management-Information-System?node-id=10259-117202`. Figma structured context and metadata timed out because the node is a 40,919 × 24,350 canvas, so the 4,096px canvas screenshot was used to verify its labeled flows and screen groups.
+
+**Verified:** Production build passes (`2021 modules transformed`), `git diff --check` passes, and local browser review confirms the corrected desktop workflow/evidence sections render without clipped copy. The 390px responsive case contains the updated DMS form, approver, review, and migration chapters. No commit or deployment was made.
+
+## 2026-07-15 10:50 - [Codex] Reframed the CMIS visual previews around DMS Phase 2
+
+**Done:** Corrected the desktop and mobile preview evidence for the CMIS case. Renamed `The DMS in detail` to `What changed in the DMS`, added explicit DMS Improvement Phase 2 context, and replaced field-inventory captions with explanations of the product decisions shown. The login is now labeled as existing-platform context, while the document workspace is positioned as the Phase 2 core surface. Updated supporting cards for approval history, revision identity, visible document validity, role-aware review, uncontrolled copies, and training status. Mobile visual-index assets now use the DMS workspace, approval detail, and controlled-document preview instead of mislabeling the login as Phase 2.
+
+**Clean-up:** Removed unsupported `355 screen variants` and `87 screen variants` labels. Reframed the TTI preview as an invoice-handover workspace with purpose-led copy.
+
+**Verified:** Production build passes (`2021 modules transformed`), `git diff --check` passes, and the revised DMS Phase 2 preview was reviewed at 1440px with no clipped captions. No commit or deployment was made.
+
+## 2026-07-15 10:22 - [Codex] Corrected the CMIS case to the actual improvement scope
+
+**Done:** Reframed the CMIS case from whole-suite ownership to three targeted workstreams inside an existing platform: DMS Improvement Phase 2, the Purchase Request revamp, and Invoice Delivery / TTI. Updated the portfolio card, shared hero, problem/outcome copy, mobile narrative, visual-index descriptions, imported desktop hero, overview, section labels, TTI comparison, and final outcomes. Removed inflated claims such as `500+ screens`, `three modules designed end-to-end`, and `workflows digitised`, replacing them with defensible scope evidence and the CMIS project-team role.
+
+**Source:** Reviewed the linked CMIS Figma node `10259:117201`. The canvas shows the three workflow areas inside one existing CMIS platform; structured context retrieval required a selected Figma layer, but the node screenshot was available and used to validate the overall project structure.
+
+**Verified:** Production build passes (`2021 modules transformed`) and `git diff --check` passes. Desktop at 1440px and mobile at 390px both show the corrected framing without clipping. No commit or deployment was made.
+
+## 2026-07-14 17:52 - [Codex] Replaced repeated mobile case thumbnails with real project evidence
+
+**Done:** Reworked the shared mobile case-study article in `src/app/App.tsx`. The visual index no longer repeats the generic homepage thumbnail three times. Each project now supplies three named product artifacts, used by the visual index and cycled through the mobile case-flow cards so the evidence matches the story. Selecting a card opens that exact screen in the shared preview modal.
+
+**Verified:** Read/See reviewed locally at 390px: its visual index now shows and labels Customer dashboard, Audience workspace, and Activation flow. Tapping Customer dashboard opens `Read/See · Customer dashboard` in the modal. All referenced artifact paths exist; production build passes (`2021 modules transformed`) and `git diff --check` passes. No commit or deployment was made.
+
+## 2026-07-14 17:21 - [Codex] Restored responsive thumbnails for every portfolio case
+
+**Done:** Fixed the responsive work-grid mismatch in `src/app/App.tsx`. Mobile and tablet previously showed visual cards only for the first four projects, while Universal Design System, Mailtarget App, and SONAR were reduced to text-only archive rows. Those three cases now use the same thumbnail cards below the featured work on screens below the desktop breakpoint; desktop retains the compact archive treatment.
+
+**Verified:** Local browser review at 390px shows the Universal Design System and Mailtarget App cards with their thumbnail assets, with SONAR next in the visual sequence. Production build passes (`2021 modules transformed`) and `git diff --check` passes. No commit or deployment was made.
+
 ## 2026-07-14 16:13 - [Codex] Deployed the approved portfolio updates to production
 
 **Done:** Committed and pushed the approved Mailtarget, Mailtarget Web, SONAR, Read/See, and shared image-preview updates to `origin/main`.

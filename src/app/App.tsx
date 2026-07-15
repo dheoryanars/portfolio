@@ -34,7 +34,7 @@ const WORKS: WorkItem[] = [
   { num: "01", title: "KitaLabel Business OS",      category: "B2B Admin Panel · AI-Assisted Development",           year: "2026",      slug: "kitalabel-bos",    thumb: "/thumbnails/kitalabel-bos.png" },
   { num: "02", title: "KitaLabel Price Calculator", category: "Web Plugin · AI-Assisted Development",                year: "2025",      slug: "kitalabel",        thumb: "/thumbnails/kitalabel.png" },
   { num: "03", title: "Read/See",                   category: "SaaS · CDP Product Design",                          year: "2022–2023", slug: "readsee-dashboard", thumb: "/thumbnails/readsee-dashboard.png" },
-  { num: "04", title: "CMIS — Enterprise Suite",    category: "Enterprise · Document, Invoice & Purchase Flows",     year: "2024–2025", slug: "cmis-suite",       thumb: "/thumbnails/cmis-suite.png" },
+  { num: "04", title: "CMIS — Workflow Improvements", category: "Enterprise · DMS Phase 2, PR Revamp & Invoice Delivery", year: "2024–2025", slug: "cmis-suite", thumb: "/thumbnails/cmis-suite.png" },
   { num: "05", title: "Universal Design System",    category: "Design System · Component Library",                   year: "2023–2024", slug: "design-system",    thumb: "/thumbnails/design-system.png" },
   { num: "06", title: "Mailtarget App",             category: "SaaS · Email API",                                    year: "2023–2024", slug: "mailtarget-app",   thumb: "/thumbnails/mailtarget-app.png" },
   { num: "07", title: "SONAR",                      category: "Chrome Extension · Deliberately Small Product",       year: "2024",      slug: "sonar",            thumb: "/thumbnails/sonar.png" },
@@ -96,8 +96,8 @@ const CASE_META: Record<string, { problem: string; outcome: string }> = {
     outcome: "The product shipped across 4 phases because the patterns did the heavy lifting — core surfaces designed once, reused across every module. I owned the design side within the Read/See team; stakeholders reviewed clickable prototypes, not static mockups. I also designed the public marketing site that tells the same story to buyers.",
   },
   "cmis-suite": {
-    problem: "Enterprise staff moved invoices, documents, and purchase requests through email chains and paper signatures. When something stalled, nobody could say where it was, who had it, or which version was real.",
-    outcome: "Three workflows — documents, purchase requests, invoice handover — became structured digital flows where every request shows its status and history. I owned the design within the project team; the watermark system makes a document's validity visible inside the document itself.",
+    problem: "Three live CMIS workflows still created operational friction: document control needed a stronger Phase 2 lifecycle, Purchase Request needed a clearer working surface, and invoice delivery needed traceable handover from finance to courier and customer.",
+    outcome: "I improved those three existing workflows as part of the CMIS project team: DMS Improvement Phase 2, the Purchase Request revamp, and Invoice Delivery / TTI. The result made document validity, request status, and invoice handover easier to see and act on.",
   },
   "mailtarget-app": {
     problem: "Mailtarget's platform had grown feature by feature without a system — campaign builder, contacts, and automation each looked and behaved like different products, and users paid the relearning cost on every switch.",
@@ -167,17 +167,17 @@ const CASE_HERO_DETAILS: Record<string, CaseHeroDetail> = {
     ],
   },
   "cmis-suite": {
-    eyebrow: "CMIS Enterprise Suite",
-    headline: "Where is my document? Now the document answers.",
+    eyebrow: "CMIS Workflow Improvements",
+    headline: "Improving the workflows people already relied on.",
     summary:
-      "Paper-and-email approvals became structured workflows — and a watermark system that makes each document's status visible inside the document itself.",
-    previewLabel: "Workflow suite",
-    previewCaption: "Structured request handling for enterprise document operations",
-    tags: ["Enterprise", "Workflow", "DMS", "Audit trail"],
+      "A focused improvement project across DMS Phase 2, the Purchase Request revamp, and Invoice Delivery tracking inside the existing CMIS platform.",
+    previewLabel: "Improvement scope",
+    previewCaption: "DMS Phase 2, Purchase Request, and Invoice Delivery within CMIS",
+    tags: ["DMS Phase 2", "PR revamp", "Invoice delivery", "Enterprise"],
     stats: [
-      { value: "3", label: "modules shipped" },
+      { value: "3", label: "workflow improvements" },
+      { value: "1", label: "existing platform" },
       { value: "4", label: "procurement tracks" },
-      { value: "4", label: "watermark states" },
     ],
   },
   sonar: {
@@ -394,68 +394,78 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
   },
   "cmis-suite": {
     summary:
-      "Enterprise approvals pulled out of email chains and paper signatures into three auditable digital workflows.",
+      "Three targeted improvements inside CMIS: DMS Improvement Phase 2, a Purchase Request revamp, and traceable Invoice Delivery.",
     focus: [
       "My role: product designer on the CMIS project team.",
-      "Redesigned the live Procurement Menu v1 across all four tracks.",
-      "Made document validity visible inside the document itself (watermarks).",
+      "Improved the existing DMS lifecycle through its numbered Phase 2 scope.",
+      "Revamped Purchase Request and designed the Invoice Delivery / TTI workflow.",
     ],
     sections: [
       {
         kicker: "00 — The Problem",
-        title: "Nobody knew where anything was",
-        body: "Documents, invoices, and purchase requests moved through email chains and physical signatures. When something stalled, staff couldn't say where it was, who was holding it, or which version was the real one.",
+        title: "Existing workflows had visible gaps",
+        body: "CMIS was already in use, but document lifecycle control, purchase requests, and invoice delivery still created ambiguity around status, ownership, and the next action. This was improvement work on a live platform, not a greenfield suite design.",
       },
       {
-        kicker: "01 — The Suite",
-        title: "Three modules, one workflow grammar",
-        body: "DMS, Purchase Request, and Invoice TTI cover very different work — but I designed them on one shared grammar: request → review → approval → tracked result. Staff who learn one module can operate all three.",
+        kicker: "01 — The Scope",
+        title: "Three improvement streams",
+        body: "My project scope covered DMS Improvement Phase 2, the Purchase Request revamp, and Invoice Delivery / TTI. Each stream addressed a different operational gap within the existing CMIS platform.",
       },
       {
         kicker: "02 — Deep Dive · DMS",
-        title: "Designed from the paper itself",
-        body: "Discovery started with photos of the actual paper forms staff passed around — the digital lifecycle (draft, review, approval, revision, controlled release) mirrors how that paper really moved. Every step leaves a trace, so 'where is it?' became a question the system answers, not a colleague.",
+        title: "A dedicated workflow for document forms",
+        body: "DMS Improvement Phase 2 focused on Upload & Approval Form Dokumen. Staff can create a request by uploading a file or filling it manually, save and revise the draft, then submit it into a visible approval process.",
       },
       {
-        kicker: "03 — The Watermark System",
-        title: "The document polices itself",
-        body: "The status problem followed printed copies: an approved PDF looks identical to an obsolete one. So the status lives in the document — controlled, draft, obsolete, and uncontrolled each get a visible watermark. An outdated printout exposes itself.",
+        kicker: "03 — Approver Configuration",
+        title: "The route is configured before review begins",
+        body: "QMS administrators can set, update, or remove approvers for each form. That turns an informal handoff into an explicit sequence and makes it clear who receives the request next.",
       },
       {
-        kicker: "04 — The Migration",
-        title: "Paper didn't get dumped in — it got migrated",
-        body: "Existing physical documents entered through a dedicated admin workflow, not a bulk import: set access rights, re-activate obsolete files, correct effective dates, and log every change. A document that lived on paper arrives with the same audit trail as one born digital.",
+        kicker: "04 — Submission & Review",
+        title: "Every decision leaves a visible state",
+        body: "Requesters can see Draft, In Approval, Approved, or Rejected directly in the list. Reviewers inspect the document and prior decisions before approving or rejecting, while the expanded row shows where the request is waiting.",
       },
       {
-        kicker: "05 — Module 02 · Purchase Request",
+        kicker: "05 — History, Recap & Migration",
+        title: "The workflow stays useful after approval",
+        body: "Document history preserves the decision trail, recap and export support operational reporting, and a dedicated migration flow brings existing effective documents into the same controlled library.",
+      },
+      {
+        kicker: "06 — Purchase Request Revamp",
         title: "Redesigning a system already in use",
         body: "Procurement wasn't born digital — a Procurement Menu v1 was live and straining. One dense table carried every action, destructive red buttons stacked on every row, status hid in colored text, and seeing a request's detail meant leaving the list. Redesigning a system people already depend on is a different job from designing a new one.",
       },
       {
-        kicker: "06 — The Redesign",
+        kicker: "07 — The Redesign",
         title: "Four tracks, one calmer grammar",
         body: "I redesigned all four tracks — materials, tools, equipment, and non-tool — on one interaction model: tabbed views with search and filters, rows that expand to show a request's full detail in place, batch selection, and one primary action per screen. Status became visible chips instead of buried text.",
       },
       {
-        kicker: "07 — The Iteration",
+        kicker: "08 — The Iteration",
         title: "Versioned in the open",
         body: "Nothing shipped as one big reveal. Procurement went v1.1 then v1.1.2; DMS got a numbered Improvement Phase 2 plus a tooltip tour to onboard staff — and meeting notes live beside the flows in the design file. Every improvement traces back to a discussion the team actually had.",
       },
       {
-        kicker: "08 — Module 03 · Invoice TTI",
-        title: "Proof of handover, not hope of handover",
-        body: "Invoice delivery used to end at 'the courier took it.' TTI tracks invoice selection, courier sheet generation, delivery status, and confirmed handover — and the printed courier sheet keeps the physical step inside the digital trail.",
+        kicker: "09 — Invoice Delivery · TTI",
+        title: "Map the handover before redesigning it",
+        body: "The discovery flow followed an invoice from CERM search to a printed TTI, a courier Surat Jalan, customer handover, and the courier's return. It exposed three gaps: disconnected records, no shared delivery state, and no visible route for returned invoices.",
       },
       {
-        kicker: "09 — Outcomes",
-        title: "Auditable by default",
-        body: "Every request now carries its own history: who created it, who approved it, where it stopped. Enterprise staff moved from chasing signatures to reading statuses.",
+        kicker: "10 — The Delivery Model",
+        title: "Proof of handover, not hope of handover",
+        body: "Finance selects invoices, groups them into a customer TTI, assigns that TTI to a courier trip, then reconciles what was received or returned. The printed sheet supports the physical handoff while CMIS keeps ownership and status visible end to end.",
+      },
+      {
+        kicker: "11 — Outcomes",
+        title: "Clearer status across three workflows",
+        body: "The improvements made document validity, purchase-request progress, and invoice handover easier to inspect without reconstructing the process from separate conversations or paper records.",
       },
     ],
     proof: [
-      "Every request lifecycle became traceable — creation to approval to result.",
-      "Watermarks made stale printed documents expose themselves.",
-      "Three modules share one grammar: learn one, operate all three.",
+      "DMS Improvement Phase 2 strengthened document lifecycle control.",
+      "Purchase Request was revamped around an existing live workflow.",
+      "Invoice Delivery / TTI made courier handover traceable.",
     ],
   },
   sonar: {
@@ -598,6 +608,51 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       "Product redesign and public marketing site shipped as one story.",
     ],
   },
+};
+
+type MobileCaseArtifact = {
+  src: string;
+  title: string;
+  detail: string;
+};
+
+const CASE_MOBILE_ARTIFACTS: Record<string, MobileCaseArtifact[]> = {
+  "kitalabel-bos": [
+    { src: "/case-studies/kitalabel-bos/main-dashboard.png", title: "Business dashboard", detail: "Revenue, customer health, and operational alerts in one view." },
+    { src: "/case-studies/kitalabel-bos/crm-orders.png", title: "Order queue", detail: "Orders, payment, and production status stay connected." },
+    { src: "/case-studies/kitalabel-bos/internal-calculator.png", title: "Internal calculator", detail: "Pricing work stays inside the operating workflow." },
+  ],
+  kitalabel: [
+    { src: "/case-studies/kitalabel/image-01.png", title: "Configure specs", detail: "Customers build a label specification before pricing." },
+    { src: "/case-studies/kitalabel/image-02.png", title: "Check price", detail: "A deliberate action returns a production-aware price." },
+    { src: "/case-studies/kitalabel/image-03.png", title: "Upload files", detail: "Design requirements stay next to the order action." },
+  ],
+  "readsee-dashboard": [
+    { src: "/case-studies/readsee-dashboard/image-01.png", title: "Customer dashboard", detail: "The product starts with a readable customer-data overview." },
+    { src: "/case-studies/readsee-dashboard/image-02.png", title: "Audience workspace", detail: "Customer groups and their signals can be inspected in context." },
+    { src: "/case-studies/readsee-dashboard/image-03.png", title: "Activation flow", detail: "Data moves from insight into an actionable customer workflow." },
+  ],
+  "cmis-suite": [
+    { src: "/case-studies/cmis-suite/image-01.png", title: "Document-form workspace", detail: "Upload, approval, and recap views keep each request and its current state easy to find." },
+    { src: "/case-studies/cmis-suite/image-03.png", title: "Approval progress", detail: "The expanded row shows completed decisions and the remaining reviewer in context." },
+    { src: "/case-studies/cmis-suite/image-02.png", title: "Effective-document library", detail: "Approved and migrated records resolve into the controlled DMS library." },
+    { src: "/case-studies/cmis-suite/image-26.png", title: "Invoice handover workspace", detail: "TTI links selected invoices, courier departure, customer receipt, and returned documents in one visible flow." },
+  ],
+  "design-system": [
+    { src: "/case-studies/design-system/image-01.png", title: "System overview", detail: "A shared foundation turns one-off interface decisions into reusable rules." },
+    { src: "/case-studies/design-system/image-02.png", title: "Foundations", detail: "Tokens and visual primitives create a stable starting point." },
+    { src: "/case-studies/design-system/image-03.png", title: "Components", detail: "Reusable patterns make product work faster and more consistent." },
+  ],
+  "mailtarget-app": [
+    { src: "/case-studies/mailtarget-app/image-01.png", title: "Delivery analytics", detail: "Email activity is made visible before a team has to debug blind." },
+    { src: "/case-studies/mailtarget-app/image-03.png", title: "Activity log", detail: "A specific message can be traced from the event record." },
+    { src: "/case-studies/mailtarget-app/image-04.png", title: "Sandbox configuration", detail: "Developers can test an integration safely before Production." },
+  ],
+  sonar: [
+    { src: "/case-studies/sonar/image-02.png", title: "SONAR landing page", detail: "The product value is explained in one clear entry point." },
+    { src: "/case-studies/sonar/image-03.png", title: "Pricing architecture", detail: "Plan choice is communicated as a compact decision model." },
+    { src: "/case-studies/sonar/image-04.png", title: "FAQ section", detail: "Questions are handled where a visitor needs reassurance." },
+  ],
 };
 
 const PROCESS_STEPS = [
@@ -1383,9 +1438,24 @@ function WorkSection({ onNavigate }: { onNavigate: (slug: string) => void }) {
           ))}
         </div>
 
-        {/* Archive: supporting work, compact rows */}
+        {/* Keep all project thumbnails visible on mobile and tablet. */}
         {WORKS.length > 4 && (
-          <div className="mt-16">
+          <div className="mt-12 lg:hidden">
+            <div className="flex gap-3 items-start mb-6">
+              <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, color: PURPLE }}>+</span>
+              <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, color: MUTED, textTransform: "uppercase" }}>More work</span>
+            </div>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              {WORKS.slice(4).map((item, i) => (
+                <WorkCard key={item.num} item={item} index={i + 4} onNavigate={onNavigate} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Archive: supporting work stays compact on wide desktop layouts. */}
+        {WORKS.length > 4 && (
+          <div className="mt-16 hidden lg:block">
             <div className="flex gap-3 items-start mb-6">
               <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, color: PURPLE }}>+</span>
               <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, color: MUTED, textTransform: "uppercase" }}>More work</span>
@@ -2906,6 +2976,20 @@ function MobileCaseStudyArticle({
 }) {
   if (!work || !meta || !detail) return null;
 
+  const artifacts = CASE_MOBILE_ARTIFACTS[work.slug] ?? [
+    {
+      src: work.thumb,
+      title: work.title,
+      detail: "Project overview and product atmosphere.",
+    },
+  ];
+  const firstArtifact = artifacts[0];
+  const visualIndex = [
+    { label: "Product overview", artifact: firstArtifact },
+    { label: "Key screens", artifact: artifacts[1] ?? firstArtifact },
+    { label: "Design evidence", artifact: artifacts[2] ?? firstArtifact },
+  ];
+
   return (
     <section
       className="px-5 pb-16 pt-14 md:px-8 lg:hidden"
@@ -3025,30 +3109,14 @@ function MobileCaseStudyArticle({
             Visual index
           </h2>
           <div className="grid gap-3">
-            {[
-              {
-                label: "Hero preview",
-                title: work.title,
-                body: "Main project thumbnail and product atmosphere.",
-              },
-              {
-                label: "Key sections",
-                title: `${detail.sections.length} case sections`,
-                body: "Problem, context, process, screens, decisions, and outcomes are preserved below.",
-              },
-              {
-                label: "Design artifacts",
-                title: "Cards and evidence",
-                body: "Each mobile section now includes a compact artifact card so the story keeps its visual rhythm.",
-              },
-            ].map((card, index) => (
+            {visualIndex.map(({ label, artifact }, index) => (
               <button
                 type="button"
                 onClick={() =>
-                  onPreview(work.thumb, `${work.title} · ${card.label}`)
+                  onPreview(artifact.src, `${work.title} · ${artifact.title}`)
                 }
-                aria-label={`Preview ${card.label}`}
-                key={card.label}
+                aria-label={`Preview ${artifact.title}`}
+                key={label}
                 className="grid grid-cols-[92px_1fr] gap-4 overflow-hidden rounded text-left"
                 style={{
                   border: "1px solid rgba(242,241,236,0.08)",
@@ -3062,17 +3130,14 @@ function MobileCaseStudyArticle({
                   style={{ background: BG2 }}
                 >
                   <img
-                    src={work.thumb}
-                    alt=""
-                    aria-hidden
+                    src={artifact.src}
+                    alt={artifact.title}
                     style={{
                       width: "100%",
                       height: "100%",
                       objectFit: "cover",
                       objectPosition: "top center",
                       background: "#070707",
-                      opacity: index === 0 ? 0.9 : 0.42,
-                      filter: index === 0 ? "none" : "saturate(0.7)",
                     }}
                   />
                   <span
@@ -3096,7 +3161,7 @@ function MobileCaseStudyArticle({
                       textTransform: "uppercase",
                     }}
                   >
-                    {card.label}
+                    {label}
                   </span>
                   <h3
                     style={{
@@ -3107,7 +3172,7 @@ function MobileCaseStudyArticle({
                       color: FG,
                     }}
                   >
-                    {card.title}
+                    {artifact.title}
                   </h3>
                   <p
                     style={{
@@ -3117,7 +3182,7 @@ function MobileCaseStudyArticle({
                       color: MUTED,
                     }}
                   >
-                    {card.body}
+                    {artifact.detail}
                   </p>
                 </div>
               </button>
@@ -3225,11 +3290,14 @@ function MobileCaseStudyArticle({
             Full case flow
           </h2>
           <div className="grid gap-6">
-            {detail.sections.map((section, index) => (
-              <button
+            {detail.sections.map((section, index) => {
+              const artifact = artifacts[index % artifacts.length];
+
+              return (
+                <button
                 type="button"
                 onClick={() =>
-                  onPreview(work.thumb, `${work.title} · ${section.title}`)
+                  onPreview(artifact.src, `${work.title} · ${artifact.title}`)
                 }
                 aria-label={`Preview ${section.title}`}
                 key={`${section.kicker}-${section.title}`}
@@ -3249,7 +3317,7 @@ function MobileCaseStudyArticle({
                   }}
                 >
                   <img
-                    src={work.thumb}
+                    src={artifact.src}
                     alt=""
                     aria-hidden
                     style={{
@@ -3257,9 +3325,10 @@ function MobileCaseStudyArticle({
                       inset: 0,
                       width: "100%",
                       height: "100%",
-                      objectFit: "contain",
-                      opacity: 0.22,
-                      filter: "saturate(0.75) contrast(1.05)",
+                      objectFit: "cover",
+                      objectPosition: "top center",
+                      opacity: 0.5,
+                      filter: "saturate(0.8) contrast(1.05)",
                     }}
                   />
                   <div
@@ -3320,8 +3389,9 @@ function MobileCaseStudyArticle({
                     {section.body}
                   </p>
                 </div>
-              </button>
-            ))}
+                </button>
+              );
+            })}
           </div>
         </section>
 

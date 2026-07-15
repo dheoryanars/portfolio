@@ -103,8 +103,8 @@ function Mc3() {
 function Mc4() {
   return (
     <div className="content-stretch flex flex-col gap-[4px] items-start overflow-clip relative shrink-0" data-name="mc">
-      <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#6f6f68] text-[11px] tracking-[1.1px]">MODULE</p>
-      <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium relative shrink-0 text-[#f2f1ec] text-[13px]">DMS within CMIS</p>
+      <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#6f6f68] text-[11px] tracking-[1.1px]">SCOPE</p>
+      <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium relative shrink-0 text-[#f2f1ec] text-[13px]">3 workflow improvements</p>
     </div>
   );
 }
@@ -137,9 +137,9 @@ function Hero() {
     <div className="bg-[#0a0a0a] content-stretch flex flex-col gap-[28px] items-start overflow-clip pb-[80px] pt-[120px] px-[64px] relative shrink-0 w-[1280px]" data-name="hero">
       <div className="[word-break:break-word] font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[0] relative shrink-0 text-[#f2f1ec] text-[82px] tracking-[-2.46px] w-[1152px]">
         <p className="leading-[72px] mb-0">CMIS</p>
-        <p className="leading-[72px]">Enterprise Suite</p>
+        <p className="leading-[72px]">Workflow Improvements</p>
       </div>
-      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[normal] relative shrink-0 text-[#cc6ef8] text-[20px] whitespace-nowrap">Three-module enterprise system for PT. Cahaya Jakarta — Document Management, Purchase Request, and Invoice Delivery</p>
+      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[normal] relative shrink-0 text-[#cc6ef8] text-[20px] whitespace-nowrap">DMS Improvement Phase 2 · Purchase Request Revamp · Invoice Delivery</p>
       <Meta />
       <Ic />
     </div>
@@ -150,7 +150,7 @@ function OvG() {
   return (
     <div className="[word-break:break-word] content-stretch flex gap-[60px] items-start overflow-clip relative shrink-0 w-[1152px]" data-name="ovG">
       <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[46px] relative shrink-0 text-[#f2f1ec] text-[40px] tracking-[-0.8px] w-[280px]">The problem</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[28px] relative shrink-0 text-[#9a9a93] text-[17px] w-[812px]">Enterprise staff were processing invoices, documents, and purchase requests through email chains and paper approvals — no audit trail, no status visibility, no structured workflow.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[28px] relative shrink-0 text-[#9a9a93] text-[17px] w-[812px]">Three existing CMIS workflows still created friction around status, ownership, and handover: document control, purchase requests, and invoice delivery.</p>
     </div>
   );
 }
@@ -159,7 +159,7 @@ function P() {
   return (
     <div className="bg-[#141414] relative rounded-[40px] shrink-0" data-name="p">
       <div className="content-stretch flex items-center overflow-clip px-[14px] py-[7px] relative rounded-[inherit] size-full">
-        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">ISO/QMS Documentation</p>
+        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">DMS Phase 2</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[40px]" />
     </div>
@@ -170,7 +170,7 @@ function P1() {
   return (
     <div className="bg-[#141414] relative rounded-[40px] shrink-0" data-name="p">
       <div className="content-stretch flex items-center overflow-clip px-[14px] py-[7px] relative rounded-[inherit] size-full">
-        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">Multi-tier Approval</p>
+        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">Purchase Request Revamp</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[40px]" />
     </div>
@@ -181,7 +181,7 @@ function P2() {
   return (
     <div className="bg-[#141414] relative rounded-[40px] shrink-0" data-name="p">
       <div className="content-stretch flex items-center overflow-clip px-[14px] py-[7px] relative rounded-[inherit] size-full">
-        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">Version Control</p>
+        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">Invoice Delivery / TTI</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[40px]" />
     </div>
@@ -192,7 +192,7 @@ function P3() {
   return (
     <div className="bg-[#141414] relative rounded-[40px] shrink-0" data-name="p">
       <div className="content-stretch flex items-center overflow-clip px-[14px] py-[7px] relative rounded-[inherit] size-full">
-        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">Watermark System</p>
+        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">Existing CMIS Platform</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[40px]" />
     </div>
@@ -203,7 +203,7 @@ function P4() {
   return (
     <div className="bg-[#141414] relative rounded-[40px] shrink-0" data-name="p">
       <div className="content-stretch flex items-center overflow-clip px-[14px] py-[7px] relative rounded-[inherit] size-full">
-        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">Training Compliance</p>
+        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">Product Design Role</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[40px]" />
     </div>
@@ -236,10 +236,10 @@ function OvG1() {
   return (
     <div className="[word-break:break-word] content-stretch flex gap-[60px] items-start overflow-clip relative shrink-0 w-[1152px]" data-name="ovG">
       <div className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[0] relative shrink-0 text-[#f2f1ec] text-[40px] tracking-[-0.8px] w-[280px]">
-        <p className="leading-[46px] mb-0">Three modules,</p>
-        <p className="leading-[46px]">one system</p>
+        <p className="leading-[46px] mb-0">Three improvements,</p>
+        <p className="leading-[46px]">one live platform</p>
       </div>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[28px] relative shrink-0 text-[#9a9a93] text-[17px] w-[812px]">CMIS (Cahaya Management Information System) is an enterprise suite built for PT. Cahaya Jakarta covering three workflows: Document Management System (DMS) for ISO/QMS document lifecycle control, Purchase Request (PR) for three-track procurement, and Tanda Terima Invoice (TTI) for courier-to-customer invoice handover. Each module was designed as a standalone product and integrated under one platform.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[28px] relative shrink-0 text-[#9a9a93] text-[17px] w-[812px]">This case covers my improvement work inside the existing CMIS platform: DMS Improvement Phase 2 for ISO/QMS document control, a revamp of the live Purchase Request workflow, and Invoice Delivery / TTI for courier-to-customer handover.</p>
     </div>
   );
 }
@@ -248,7 +248,7 @@ function P5() {
   return (
     <div className="bg-[#141414] relative rounded-[40px] shrink-0" data-name="p">
       <div className="content-stretch flex items-center overflow-clip px-[14px] py-[7px] relative rounded-[inherit] size-full">
-        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">ISO/QMS Documentation</p>
+        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">Document Form Requests</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[40px]" />
     </div>
@@ -259,7 +259,7 @@ function P6() {
   return (
     <div className="bg-[#141414] relative rounded-[40px] shrink-0" data-name="p">
       <div className="content-stretch flex items-center overflow-clip px-[14px] py-[7px] relative rounded-[inherit] size-full">
-        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">Multi-tier Approval</p>
+        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">Approver Configuration</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[40px]" />
     </div>
@@ -270,7 +270,7 @@ function P7() {
   return (
     <div className="bg-[#141414] relative rounded-[40px] shrink-0" data-name="p">
       <div className="content-stretch flex items-center overflow-clip px-[14px] py-[7px] relative rounded-[inherit] size-full">
-        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">Version Control</p>
+        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">Multi-level Review</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[40px]" />
     </div>
@@ -281,7 +281,7 @@ function P8() {
   return (
     <div className="bg-[#141414] relative rounded-[40px] shrink-0" data-name="p">
       <div className="content-stretch flex items-center overflow-clip px-[14px] py-[7px] relative rounded-[inherit] size-full">
-        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">Watermark System</p>
+        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">History & Recap</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[40px]" />
     </div>
@@ -292,7 +292,7 @@ function P9() {
   return (
     <div className="bg-[#141414] relative rounded-[40px] shrink-0" data-name="p">
       <div className="content-stretch flex items-center overflow-clip px-[14px] py-[7px] relative rounded-[inherit] size-full">
-        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">Training Compliance</p>
+        <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#9a9a93] text-[12px] whitespace-nowrap">Effective-document Migration</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[40px]" />
     </div>
@@ -325,8 +325,8 @@ function C() {
   return (
     <div className="bg-[#141414] content-stretch flex flex-col gap-[14px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">01</p>
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Create</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">Author creates a new document — selects Jenis Dokumen (SOP, IKA, CAR, NC), assigns department, generates Nomor Dokumen. Status: DRAFT.</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Start a form request</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[22px] relative shrink-0 text-[#9a9a93] text-[14px] w-full">A requester creates a document-form submission, then chooses whether to upload an existing file or fill the required fields manually in CMIS.</p>
     </div>
   );
 }
@@ -335,8 +335,8 @@ function C1() {
   return (
     <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[14px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">02</p>
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Submit</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">Author submits for approval. Workflow routes to Section Head → QMS → Division Head → CEO. Each role sees the document with an IN APPROVAL watermark.</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Build and update the draft</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[22px] relative shrink-0 text-[#9a9a93] text-[14px] w-full">Drafts can be saved, reopened, corrected, or deleted before submission. Document identity and supporting files remain together while the request is editable.</p>
     </div>
   );
 }
@@ -345,8 +345,8 @@ function C2() {
   return (
     <div className="bg-[#141414] content-stretch flex flex-col gap-[14px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">03</p>
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Approve</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">Each approver reviews the SOP content and signs off with their Title Role. Once all signatures are complete, status moves to APPROVED → EFFECTIVE.</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Configure the approval chain</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[22px] relative shrink-0 text-[#9a9a93] text-[14px] w-full">QMS administrators set, update, or remove approvers for each document form so the request reaches the correct people in the correct order.</p>
     </div>
   );
 }
@@ -355,8 +355,8 @@ function C3() {
   return (
     <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[14px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">04</p>
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Distribute</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">EFFECTIVE documents are available as Controlled Copy (with watermark and recipient tracking) or Uncontrolled Copy for general reference.</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Submit into workflow</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[22px] relative shrink-0 text-[#9a9a93] text-[14px] w-full">Submitting locks the draft into a visible review process. The list shows Draft, In Approval, Approved, or Rejected without opening the request.</p>
     </div>
   );
 }
@@ -365,8 +365,8 @@ function C4() {
   return (
     <div className="bg-[#141414] content-stretch flex flex-col gap-[14px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">05</p>
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Train</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">Staff must complete Training Dokumen. Documents pending training show the BELUM TRAINING watermark. Completion tracked per user.</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Review, approve, or reject</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[22px] relative shrink-0 text-[#9a9a93] text-[14px] w-full">Each approver sees the document, prior decisions, and their available action. Approval advances the request; rejection records a clear decision state.</p>
     </div>
   );
 }
@@ -375,8 +375,8 @@ function C5() {
   return (
     <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[14px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">06</p>
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Obsolete</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">Superseded documents move to OBSOLETE status. Expired documents surface in the Dokumen Kadaluarsa tab for review and archiving.</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Trace, recap, and migrate</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[22px] relative shrink-0 text-[#9a9a93] text-[14px] w-full">History and recap preserve the decision trail, while a dedicated migration flow brings existing effective documents into the same controlled record.</p>
     </div>
   );
 }
@@ -397,8 +397,8 @@ function WfStrip() {
 function Wf() {
   return (
     <div className="[word-break:break-word] bg-[#0c0c0b] content-stretch flex flex-col gap-[40px] items-start overflow-clip px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="wf">
-      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">02 — Document Lifecycle</p>
-      <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#f2f1ec] text-[46px] tracking-[-0.92px] whitespace-nowrap">From creation to controlled distribution</p>
+      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">02 — DMS Phase 2 Workflow</p>
+      <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#f2f1ec] text-[46px] tracking-[-0.92px] whitespace-nowrap">From editable draft to auditable record</p>
       <WfStrip />
     </div>
   );
@@ -407,7 +407,7 @@ function Wf() {
 function Ic1() {
   return (
     <div className="h-[240px] relative shrink-0 w-[564px]" data-name="ic">
-      <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgIc1} />
+      <img alt="Document-form request workspace" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgIc} />
     </div>
   );
 }
@@ -415,8 +415,8 @@ function Ic1() {
 function Ll() {
   return (
     <div className="content-stretch flex flex-col gap-[4px] items-start overflow-clip relative shrink-0" data-name="ll">
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Login — CMIS Entry</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[380px]">Factory machinery background. Username + Password form. IP address display (192.168.31.111). Company copyright footer.</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Document-form Request Workspace</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[380px]">Upload, Approval, and Recap are separated into clear views. Status chips make every request state visible from the list.</p>
     </div>
   );
 }
@@ -425,7 +425,7 @@ function Li() {
   return (
     <div className="[word-break:break-word] content-stretch flex h-[140px] items-start justify-between overflow-clip px-[24px] py-[20px] relative shrink-0 w-[564px]" data-name="li">
       <Ll />
-      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#6f6f68] text-[12px] whitespace-nowrap">1440 × 960px</p>
+      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#6f6f68] text-[12px] whitespace-nowrap">PHASE 2 CORE</p>
     </div>
   );
 }
@@ -445,7 +445,7 @@ function Lc() {
 function Ic2() {
   return (
     <div className="h-[240px] relative shrink-0 w-[564px]" data-name="ic">
-      <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgIc} />
+      <img alt="Effective document library" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgIc1} />
     </div>
   );
 }
@@ -453,8 +453,8 @@ function Ic2() {
 function Dll() {
   return (
     <div className="content-stretch flex flex-col gap-[4px] items-start overflow-clip relative shrink-0" data-name="dll">
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Document List — Main Dashboard</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[380px]">4 tabs: Dokumen · Approvals · Training Dokumen · Dokumen Kadaluarsa. Columns: Nama, Jenis Dokumen, Dibuat Oleh, Departemen, Nomor Dokumen, Status, Aksi.</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Effective-document Library</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[380px]">Approved and migrated documents resolve into the controlled DMS library, where staff can find the current effective record.</p>
     </div>
   );
 }
@@ -463,7 +463,7 @@ function Dli() {
   return (
     <div className="[word-break:break-word] content-stretch flex h-[140px] items-start justify-between overflow-clip px-[24px] py-[20px] relative shrink-0 w-[564px]" data-name="dli">
       <Dll />
-      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#6f6f68] text-[12px] whitespace-nowrap">355 screen variants</p>
+      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#6f6f68] text-[12px] whitespace-nowrap">MIGRATION DESTINATION</p>
     </div>
   );
 }
@@ -483,7 +483,7 @@ function Dlc() {
 function Ic3() {
   return (
     <div className="h-[280px] relative shrink-0 w-[368px]" data-name="ic">
-      <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgIc2} />
+      <img alt="Approval progress expanded inside the request list" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgIc2} />
     </div>
   );
 }
@@ -491,8 +491,8 @@ function Ic3() {
 function I1() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[368px]" data-name="i3">
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Document Detail Modal</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[328px]">{`"Detail" overlay — Nama Dokumen: SISTEM OPERATIONAL KERJA. Approval table: Author → Section Head → QMS → Division Head. "Lihat Dokumen" CTA.`}</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Approval Progress in the List</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[21px] relative shrink-0 text-[#9a9a93] text-[14px] w-[328px]">Expanding a request reveals completed decisions and the remaining reviewer without sending the user to another page.</p>
     </div>
   );
 }
@@ -512,7 +512,7 @@ function C6() {
 function Ic4() {
   return (
     <div className="h-[280px] relative shrink-0 w-[368px]" data-name="ic">
-      <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgIc3} />
+      <img alt="Document detail with approval signatures" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgIc3} />
     </div>
   );
 }
@@ -520,8 +520,8 @@ function Ic4() {
 function I2() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[368px]" data-name="i3">
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Document Metadata Preview</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[328px]">{`Title, Author (KHOIRUL SYARIFUDIN), Type (STANDART OPERATIONAL KERJA), Nomor Dokumen, Revisi Ke (03), Sign-by table with timestamps. "Download Dokumen" button.`}</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Decision History beside the File</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[21px] relative shrink-0 text-[#9a9a93] text-[14px] w-[328px]">The quick view keeps document identity, revision, approvers, and timestamps together before anyone downloads the file.</p>
     </div>
   );
 }
@@ -541,7 +541,7 @@ function C7() {
 function Ic5() {
   return (
     <div className="h-[280px] relative shrink-0 w-[368px]" data-name="ic">
-      <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgIc4} />
+      <img alt="Approved document preview" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgIc4} />
     </div>
   );
 }
@@ -549,8 +549,8 @@ function Ic5() {
 function I3() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[368px]" data-name="i3">
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">View Document — SOP Content</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[328px]">{`Full SOP preview: STANDAR OPERASIONAL PROSEDUR — EVENT MANAGEMENT. Cahaya Jakarta letterhead, DIVISI/DEPARTEMEN, sections: TUJUAN, RUANG LINGKUP, PERAN & TANGGUNG JAWAB.`}</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Review the Actual Document</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[21px] relative shrink-0 text-[#9a9a93] text-[14px] w-[328px]">Approvers inspect the document content and its approval evidence in the same flow, keeping the decision anchored to the file being reviewed.</p>
     </div>
   );
 }
@@ -588,8 +588,8 @@ function Ic6() {
 function I3B() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[368px]" data-name="i3b">
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Approve Document</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[328px]">{`Document viewer in approval state — "APPROVED" blue watermark overlay. Full SOP content visible for reviewer decision. Role-based action available.`}</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Role-aware Review State</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[328px]">Reviewers see the document, its current status, and the action permitted for their role in one decision surface.</p>
     </div>
   );
 }
@@ -617,8 +617,8 @@ function Ic7() {
 function I3B1() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[368px]" data-name="i3b">
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Uncontrolled Copy</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[328px]">{`Document with "UNCONTROLLED" red diagonal watermark — for non-controlled distribution. Footer: "UNCONTROLLED COPY — KHOIRUL SYARIFUDIN — 29 JUN 2023 14:30:06".`}</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Uncontrolled Copy Warning</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[328px]">Exported copies carry a prominent uncontrolled watermark plus recipient and timestamp context, reducing the risk of obsolete use.</p>
     </div>
   );
 }
@@ -646,8 +646,8 @@ function Ic8() {
 function I3B2() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[368px]" data-name="i3b">
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Belum Training State</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[328px]">{`Document with "BELUM TRAINING" watermark — signals that the assigned staff member has not yet completed the required training for this document.`}</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Training Status on the Document</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[328px]">The pending-training state remains visible on the document, connecting compliance status to the material staff are expected to use.</p>
     </div>
   );
 }
@@ -677,14 +677,14 @@ function Row1() {
 function Screens() {
   return (
     <div className="bg-[#0a0a0a] content-stretch flex flex-col gap-[32px] items-start overflow-clip px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="screens">
-      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">03 — Key Screens</p>
-      <p className="[word-break:break-word] font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#f2f1ec] text-[46px] tracking-[-0.92px] whitespace-nowrap">The DMS in detail</p>
+      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">03 — DMS Improvement Phase 2</p>
+      <p className="[word-break:break-word] font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#f2f1ec] text-[46px] tracking-[-0.92px] whitespace-nowrap">The screens that carry the workflow</p>
+      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[26px] relative shrink-0 text-[#9a9a93] text-[16px] w-[900px]">Phase 2 adds a dedicated request workspace and connects each request to its configured approval chain, decision history, document preview, recap, and final effective record.</p>
       <div className="content-stretch flex gap-[24px] items-start relative shrink-0 w-[1152px]" data-name="main-screen-grid">
         <Lc />
         <Dlc />
       </div>
       <Row />
-      <Row1 />
     </div>
   );
 }
@@ -1008,7 +1008,7 @@ function Pills2() {
 function Ov2() {
   return (
     <div className="bg-[#0a0a0a] content-stretch flex flex-col gap-[36px] items-start overflow-clip px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="ov">
-      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">05 — Module 02 · Purchase Request</p>
+      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">04 — Purchase Request Revamp</p>
       <OvG2 />
       <Pills2 />
     </div>
@@ -1049,8 +1049,8 @@ function C12() {
   return (
     <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[12px] h-[240px] items-start overflow-clip px-[20px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">04</p>
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[17px] whitespace-nowrap">Approval Atasan</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-full">Approved PRs escalate to the manager (Atasan). Manager confirms with Konfirmasi Approval dropdown (Approve/Reject) and Catatan notes.</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[17px] whitespace-nowrap">Superior Review</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-full">The superior reviews approved line items, checks their commercial context, then records a final approve or reject decision with supporting notes.</p>
     </div>
   );
 }
@@ -1091,7 +1091,7 @@ function WfRow() {
 function Wf1() {
   return (
     <div className="[word-break:break-word] bg-[#0c0c0b] content-stretch flex flex-col gap-[40px] items-start overflow-clip px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="wf">
-      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">06 — Approval Workflow</p>
+      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">05 — Approval Workflow</p>
       <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#f2f1ec] text-[46px] tracking-[-0.92px] whitespace-nowrap">From request to order</p>
       <WfRow />
     </div>
@@ -1167,8 +1167,8 @@ function Ic17() {
 function I6() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[368px]" data-name="i3">
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Approval Atasan Tab</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[18px] relative shrink-0 text-[#9a9a93] text-[11px] w-[328px]">Manager approval view with Harga Satuan, Total Harga, Currency columns added. Bulk select checkboxes. Approve action for selected items.</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Superior Review</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[328px]">A dedicated review workspace keeps unit price, total value, and currency beside each item so the superior can evaluate and approve selected requests in context.</p>
     </div>
   );
 }
@@ -1206,8 +1206,8 @@ function Ic18() {
 function I() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[564px]" data-name="i2">
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Approval Modal</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[524px]">No Purchase Request (PR000234), Nama Barang (Set Komputer), Konfirmasi Approval dropdown (Approve / Reject), Catatan free-text. Batal / Simpan buttons.</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Approval Review</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[21px] relative shrink-0 text-[#9a9a93] text-[13px] w-[524px]">The request and selected item remain visible while the reviewer records an approve or reject decision and supporting notes directly in the review surface.</p>
     </div>
   );
 }
@@ -1265,7 +1265,7 @@ function Ntr1() {
 function Nt1() {
   return (
     <div className="bg-[#0a0a0a] content-stretch flex flex-col gap-[32px] items-start overflow-clip px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="nt">
-      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">07 — Non Tool Module</p>
+      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">06 — Non Tool Module</p>
       <p className="[word-break:break-word] font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#f2f1ec] text-[46px] tracking-[-0.92px] whitespace-nowrap">{`Purchase Request for materials & supplies`}</p>
       <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[24px] relative shrink-0 text-[#9a9a93] text-[15px] w-[1152px]">The Non Tool module handles PRs for non-capital items — raw materials, office supplies, and non-inventory goods. Three tabs track the request through each approval stage.</p>
       <Ntr />
@@ -1374,7 +1374,7 @@ function ProcRow() {
 function Proc() {
   return (
     <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[32px] items-start overflow-clip px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="proc">
-      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">08 — Procurement Module</p>
+      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">07 — Procurement Module</p>
       <p className="[word-break:break-word] font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#f2f1ec] text-[46px] tracking-[-0.92px] whitespace-nowrap">Cross-category procurement tracking</p>
       <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[24px] relative shrink-0 text-[#9a9a93] text-[15px] w-[1152px]">The Procurement module consolidates all approved PRs — from both Non Tool and Tool categories — into a single interface for the Procurement team. It tracks execution status from PO generation through to invoice completion.</p>
       <ProcRow />
@@ -1394,7 +1394,7 @@ function I2T() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[564px]" data-name="i2t">
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">List Purchase Tool</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[19px] relative shrink-0 text-[#9a9a93] text-[12px] w-[524px]">{`3-tab header: List Purchase Tool · Expert Review · Approval Atasan. Extra columns vs Non Tool: Tanggal Disetujui, Disetujui Oleh, Procurement (BELUM badge), Invoice. Status/Dept filters + "Buat Purchase" CTA.`}</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[524px]">{`Three workspaces keep the Tool request moving: List Purchase Tool, Expert Review, and Superior Review. Approval, procurement, and invoice states stay visible from the list.`}</p>
     </div>
   );
 }
@@ -1452,9 +1452,9 @@ function ToolRow() {
 function Tool() {
   return (
     <div className="bg-[#0a0a0a] content-stretch flex flex-col gap-[32px] items-start overflow-clip px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="tool">
-      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">09 — Tool Module</p>
+      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">08 — Tool Module</p>
       <p className="[word-break:break-word] font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#f2f1ec] text-[46px] tracking-[-0.92px] whitespace-nowrap">{`Purchase Request for tools & equipment`}</p>
-      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[24px] relative shrink-0 text-[#9a9a93] text-[15px] w-[1152px]">The Tool module follows the same 3-tab structure as Non Tool (List Purchase Tool · Expert Review · Approval Atasan), but is designed for capital expenditure requests — tools, equipment, and assets. Additional columns include Tanggal Disetujui, Disetujui Oleh, Procurement, and Invoice status.</p>
+      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[24px] relative shrink-0 text-[#9a9a93] text-[15px] w-[1152px]">The Tool module follows the same three-stage structure as Non Tool: List Purchase Tool, Expert Review, and Superior Review. It is tailored to capital expenditure requests, with approval, procurement, and invoice status carried through the workflow.</p>
       <ToolRow />
     </div>
   );
@@ -1543,7 +1543,7 @@ function Pills3() {
 function Ctx() {
   return (
     <div className="bg-[#0a0a0a] content-stretch flex flex-col gap-[36px] items-start overflow-clip px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="ctx">
-      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">10 — Module 03 · Invoice TTI</p>
+      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">09 — Invoice Delivery · TTI</p>
       <CtxG />
       <Pills3 />
     </div>
@@ -1609,7 +1609,7 @@ function Ni() {
     <div className="content-stretch flex flex-col gap-[8px] items-start overflow-clip p-[20px] relative shrink-0 w-[564px]" data-name="ni">
       <Nb />
       <p className="[word-break:break-word] font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[16px] whitespace-nowrap">After: Redesigned TTI Module</p>
-      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[524px]">Full CMIS redesign — 4-tab workflow, status tracking (SIAP → DIKIRIM → TERIMA), courier management, Surat Jalan generation, printable TTI document.</p>
+      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[524px]">Invoice Delivery improvement — 4-tab workflow, status tracking (SIAP → DIKIRIM → TERIMA), courier management, Surat Jalan generation, and a printable TTI document.</p>
     </div>
   );
 }
@@ -1638,9 +1638,62 @@ function BaRow() {
 function Ba() {
   return (
     <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[40px] items-start overflow-clip px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="ba">
-      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">{`11 — Before & After`}</p>
+      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">{`10 — Before & After`}</p>
       <p className="[word-break:break-word] font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[#f2f1ec] text-[46px] tracking-[-0.92px] whitespace-nowrap">From legacy to modern</p>
       <BaRow />
+    </div>
+  );
+}
+
+const ttiDiscoveryFindings = [
+  {
+    label: "Disconnected records",
+    body: "Invoice data, the printed handover document, and the courier trip lived in separate places, so Finance had to reconstruct the delivery story manually.",
+  },
+  {
+    label: "No shared delivery state",
+    body: "The old table could not show whether an invoice was waiting, with a courier, received by the customer, or already back with Finance.",
+  },
+  {
+    label: "Returns disappeared from view",
+    body: "An invoice that came back undelivered re-entered the paper process without a visible exception state or a reliable audit trail.",
+  },
+];
+
+const ttiMappedFlow = [
+  { step: "01", title: "Select invoices", detail: "Finance starts from CERM billing records." },
+  { step: "02", title: "Create TTI", detail: "Invoices are grouped into one customer handover record." },
+  { step: "03", title: "Assign courier", detail: "A Surat Jalan turns selected TTIs into a delivery trip." },
+  { step: "04", title: "Record handover", detail: "The customer receives the invoices or returns them with a reason." },
+  { step: "05", title: "Reconcile status", detail: "Finance closes the loop as delivered or returned in CMIS." },
+];
+
+function TtiDiscovery() {
+  return (
+    <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[40px] items-start overflow-clip px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="tti-discovery">
+      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">11 — Process Mapping</p>
+      <div className="content-stretch flex items-end justify-between w-[1152px]">
+        <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[54px] relative shrink-0 text-[#f2f1ec] text-[46px] w-[640px]">The paper trail had three blind spots</p>
+        <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[24px] relative shrink-0 text-[#9a9a93] text-[15px] w-[390px]">Discovery mapped the real handoff from invoice search to courier return. That made the missing ownership, status, and exception paths visible before screens were redesigned.</p>
+      </div>
+      <div className="content-stretch flex gap-[24px] items-start w-[1152px]">
+        {ttiDiscoveryFindings.map((finding, index) => (
+          <div className="border-[rgba(242,241,236,0.14)] border-solid border-t content-stretch flex flex-1 flex-col gap-[10px] items-start pt-[20px]" key={finding.label}>
+            <p className="font-['Space_Mono:Regular',sans-serif] text-[#cc6ef8] text-[12px]">0{index + 1} · FINDING</p>
+            <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[24px] text-[#f2f1ec] text-[18px]">{finding.label}</p>
+            <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[22px] text-[#9a9a93] text-[14px]">{finding.body}</p>
+          </div>
+        ))}
+      </div>
+      <div className="bg-[#10100f] border border-[rgba(242,241,236,0.1)] border-solid content-stretch flex items-stretch overflow-clip rounded-[8px] w-[1152px]">
+        {ttiMappedFlow.map((item, index) => (
+          <div className={`content-stretch flex flex-1 flex-col gap-[9px] min-w-0 px-[20px] py-[24px] ${index < ttiMappedFlow.length - 1 ? "border-[rgba(242,241,236,0.1)] border-r border-solid" : ""}`} key={item.step}>
+            <p className="font-['Space_Mono:Regular',sans-serif] text-[#cc6ef8] text-[12px]">{item.step}</p>
+            <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[22px] text-[#f2f1ec] text-[16px]">{item.title}</p>
+            <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] text-[#9a9a93] text-[13px]">{item.detail}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -1656,10 +1709,10 @@ function Tr() {
 
 function C20() {
   return (
-    <div className="bg-[#141414] content-stretch flex flex-col gap-[10px] h-[260px] items-start overflow-clip px-[24px] py-[28px] relative shrink-0" data-name="c">
+    <div className="bg-[#141414] content-stretch flex flex-col gap-[10px] h-[290px] items-start overflow-clip px-[24px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">01</p>
       <Tr />
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[239.25px]">Finance selects invoices from CERM data (filtered by Customer/Invoice No/date). Multi-select supported. Each invoice contains customer, address, total value, No. Invoice.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[22px] relative shrink-0 text-[#9a9a93] text-[14px] w-[239.25px]">Finance begins with existing CERM billing records and selects the invoices that should travel together for one customer.</p>
     </div>
   );
 }
@@ -1675,10 +1728,10 @@ function Tr1() {
 
 function C21() {
   return (
-    <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[10px] h-[260px] items-start overflow-clip px-[24px] py-[28px] relative shrink-0" data-name="c">
+    <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[10px] h-[290px] items-start overflow-clip px-[24px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">02</p>
       <Tr1 />
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[239.25px]">Selected invoices are grouped into a Tanda Terima (TTI) document per customer. Each TTI gets a unique No. Tanda Terima. Printable. Actions: Bulk Print, Print, Pilih Tanda Terima.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[22px] relative shrink-0 text-[#9a9a93] text-[14px] w-[239.25px]">The system groups those invoices into a numbered TTI, creating one customer-facing handover record that Finance can print and trace.</p>
     </div>
   );
 }
@@ -1694,10 +1747,10 @@ function Tr2() {
 
 function C22() {
   return (
-    <div className="bg-[#141414] content-stretch flex flex-col gap-[10px] h-[260px] items-start overflow-clip px-[24px] py-[28px] relative shrink-0" data-name="c">
+    <div className="bg-[#141414] content-stretch flex flex-col gap-[10px] h-[290px] items-start overflow-clip px-[24px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">03</p>
       <Tr2 />
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[239.25px]">{`TTIs are assigned to a courier's delivery trip (Surat Jalan). Status: SIAP UNTUK DIKIRIM → SEDANG DIKIRIM. Submit Pengiriman confirms courier departure.`}</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[22px] relative shrink-0 text-[#9a9a93] text-[14px] w-[239.25px]">{`Selected TTIs become a courier trip. The Surat Jalan identifies who carries them and moves the work from Ready to In Delivery.`}</p>
     </div>
   );
 }
@@ -1713,17 +1766,17 @@ function Tr3() {
 
 function C23() {
   return (
-    <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[10px] h-[260px] items-start overflow-clip px-[24px] py-[28px] relative shrink-0" data-name="c">
+    <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[10px] h-[290px] items-start overflow-clip px-[24px] py-[28px] relative shrink-0" data-name="c">
       <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[13px] whitespace-nowrap">04</p>
       <Tr3 />
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal h-[10px] leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[239.25px]">Finance marks TTI as BERHASIL DIKIRIM after customer receives invoices — or records return. Closes the delivery loop with full audit trail.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[22px] relative shrink-0 text-[#9a9a93] text-[14px] w-[239.25px]">When the courier returns, Finance confirms what the customer received and what came back, closing each invoice with a visible result.</p>
     </div>
   );
 }
 
 function WfRow1() {
   return (
-    <div className="bg-[rgba(242,241,236,0.08)] content-stretch flex gap-px h-[260px] items-start overflow-clip relative rounded-[8px] shrink-0 w-[1152px]" data-name="wfRow">
+    <div className="bg-[rgba(242,241,236,0.08)] content-stretch flex gap-px h-[290px] items-start overflow-clip relative rounded-[8px] shrink-0 w-[1152px]" data-name="wfRow">
       <C20 />
       <C21 />
       <C22 />
@@ -1753,8 +1806,8 @@ function Ic27() {
 function L() {
   return (
     <div className="content-stretch flex flex-col gap-[4px] items-start overflow-clip relative shrink-0" data-name="l">
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Daftar Tanda Terima — TTI List</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[820px]">3 tabs visible: Daftar Invoice · Daftar Tanda Terima (active) · Surat Jalan Invoice. Columns: No.Tanda Terima, Date, Customer Name, Address, Invoice, No.Invoice, SJ, Total, User, Action.</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[18px] whitespace-nowrap">Invoice Handover Workspace</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[820px]">Finance can move from selected invoices to a customer handover record and courier sheet while keeping delivery status visible in one flow.</p>
     </div>
   );
 }
@@ -1763,7 +1816,7 @@ function R1I() {
   return (
     <div className="[word-break:break-word] content-stretch flex items-center justify-between overflow-clip px-[24px] py-[20px] relative shrink-0 w-[1152px]" data-name="r1i">
       <L />
-      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#6f6f68] text-[12px] whitespace-nowrap">87 screen variants</p>
+      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#6f6f68] text-[12px] whitespace-nowrap">TTI DELIVERY WORKSPACE</p>
     </div>
   );
 }
@@ -1791,8 +1844,8 @@ function Ic28() {
 function I8() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[368px]" data-name="i3">
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Surat Jalan Invoice Tab</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[18px] relative shrink-0 text-[#9a9a93] text-[11px] w-[328px]">Surat Jalan list with Status (SIAP UNTUK DIKIRIM — green). Columns: No.Surat Jalan, No.Tanda Terima, Tanggal SJ, Customer, Address, Invoice, SJ. Actions: Set Status, Print, Submit Pengiriman.</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Courier Trip Workspace</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[328px]">Finance can see every prepared trip, its courier sheet, customer destination, and current state before releasing invoices for delivery.</p>
     </div>
   );
 }
@@ -1820,8 +1873,8 @@ function Ic29() {
 function I9() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[368px]" data-name="i3">
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">SEDANG DIKIRIM + Confirm Modal</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[18px] relative shrink-0 text-[#9a9a93] text-[11px] w-[328px]">{`"Perhatian" modal — "Apakah anda yakin untuk mengkonfirmasi perubahan status pengiriman tanda terima ini ke BERHASIL DIKIRIM?" Konfirmasi / Batalkan. Status updated to SEDANG DIKIRIM (orange).`}</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Delivery Result Confirmation</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[328px]">A deliberate confirmation prevents an invoice from being marked delivered by accident and makes the successful handover explicit.</p>
     </div>
   );
 }
@@ -1849,8 +1902,8 @@ function Ic30() {
 function I10() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[368px]" data-name="i3">
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Submit Pengiriman Confirmation</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[18px] relative shrink-0 text-[#9a9a93] text-[11px] w-[328px]">{`"Submit Pengiriman?" modal — "Apakah anda yakin untuk memilih tanda terima ini untuk dikirim?" Ya / Batalkan. Confirms courier departure and triggers status change.`}</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Courier Departure Confirmation</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[328px]">Submitting the trip records the moment responsibility moves from Finance to the courier and changes every included TTI to In Delivery.</p>
     </div>
   );
 }
@@ -1889,7 +1942,7 @@ function I3B3() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[368px]" data-name="i3b">
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Daftar Kurir (Courier Registry)</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[18px] relative shrink-0 text-[#9a9a93] text-[11px] w-[328px]">{`Internal courier list: ID (KR0001), Nama, Site (00 - Cahaya Jakarta). "Tambah Kurir" CTA. Edit action per row. Sub-nav: Tanda Terima Invoice · Konfirmasi Invoice · Daftar Kurir.`}</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[328px]">A shared courier registry gives each trip a named owner instead of relying on a handwritten name that cannot be searched or reused.</p>
     </div>
   );
 }
@@ -1918,7 +1971,7 @@ function I3B4() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[368px]" data-name="i3b">
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Add / Edit Kurir Modal</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[18px] relative shrink-0 text-[#9a9a93] text-[11px] w-[328px]">Form overlay: KR ID (auto-generated), Masukkan nama kurir (SUTARINO), Pilih site dropdown (00 - Cahaya Jakarta). Confirm / Batalkan buttons.</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[328px]">A lightweight form creates or updates the courier identity and site used across future delivery records.</p>
     </div>
   );
 }
@@ -1947,7 +2000,7 @@ function I3B5() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start overflow-clip p-[20px] relative shrink-0 w-[368px]" data-name="i3b">
       <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[#f2f1ec] text-[15px] whitespace-nowrap">Printed TTI Document</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[18px] relative shrink-0 text-[#9a9a93] text-[11px] w-[328px]">Paper TTI template: TANDA TERIMA INVOICE — TGL INV, NO. INV, CUSTOMER, NILAI, HASIL, KETERANGAN. Signature blocks: DISERAHKAN / DITERIMA / DIKEMBALIKAN / DITERIMA (PIC + Courier names).</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[328px]">The printed TTI travels with the courier so invoice details, delivery results, return notes, and signatures can reconnect to the digital record.</p>
     </div>
   );
 }
@@ -2251,7 +2304,7 @@ function S() {
     <div className="bg-[#141414] h-[130px] relative rounded-[8px] shrink-0 w-[214.4px]" data-name="s">
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-center justify-center leading-[normal] overflow-clip px-[20px] py-[24px] relative rounded-[inherit] size-full whitespace-nowrap">
         <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px] tracking-[-1.14px]">3</p>
-        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">Enterprise modules</p>
+        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">Improvement streams</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
@@ -2262,8 +2315,8 @@ function S1() {
   return (
     <div className="bg-[#141414] h-[130px] relative rounded-[8px] shrink-0 w-[214.4px]" data-name="s">
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-center justify-center leading-[normal] overflow-clip px-[20px] py-[24px] relative rounded-[inherit] size-full whitespace-nowrap">
-        <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px] tracking-[-1.14px]">500+</p>
-        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">Screens designed</p>
+        <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px] tracking-[-1.14px]">PHASE 2</p>
+        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">DMS improvement</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
@@ -2274,8 +2327,8 @@ function S2() {
   return (
     <div className="bg-[#141414] h-[130px] relative rounded-[8px] shrink-0 w-[214.4px]" data-name="s">
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-center justify-center leading-[normal] overflow-clip px-[20px] py-[24px] relative rounded-[inherit] size-full whitespace-nowrap">
-        <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px] tracking-[-1.14px]">3</p>
-        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">Workflows digitised</p>
+        <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px] tracking-[-1.14px]">PR</p>
+        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">Existing flow revamped</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
@@ -2286,8 +2339,8 @@ function S3() {
   return (
     <div className="bg-[#141414] h-[130px] relative rounded-[8px] shrink-0 w-[214.4px]" data-name="s">
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-center justify-center leading-[normal] overflow-clip px-[20px] py-[24px] relative rounded-[inherit] size-full whitespace-nowrap">
-        <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px] tracking-[-1.14px]">12</p>
-        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">Approval stages</p>
+        <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px] tracking-[-1.14px]">TTI</p>
+        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">Delivery flow designed</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
@@ -2298,8 +2351,8 @@ function S4() {
   return (
     <div className="bg-[#141414] h-[130px] relative rounded-[8px] shrink-0 w-[214.4px]" data-name="s">
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-center justify-center leading-[normal] overflow-clip px-[20px] py-[24px] relative rounded-[inherit] size-full whitespace-nowrap">
-        <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px] tracking-[-1.14px]">2</p>
-        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">Years of delivery</p>
+        <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px] tracking-[-1.14px]">TEAM</p>
+        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">CMIS project role</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
@@ -2323,7 +2376,7 @@ function Out() {
     <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[40px] items-start overflow-clip px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="out">
       <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">15 — Outcomes</p>
       <SRow />
-      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[28px] relative shrink-0 text-[#9a9a93] text-[17px] w-[1152px]">{`CMIS replaced PT. Cahaya Jakarta's paper-based and email-driven enterprise operations with three fully digitised workflows — ISO/QMS document lifecycle control, multi-track procurement approval, and courier invoice handover. Each module was designed end-to-end and integrated under one platform, giving the team full visibility, auditability, and control across their core business processes.`}</p>
+      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[28px] relative shrink-0 text-[#9a9a93] text-[17px] w-[1152px]">{`The project improved three workflows already living inside CMIS: DMS Phase 2 strengthened document lifecycle control, the Purchase Request revamp clarified review and approval work, and Invoice Delivery / TTI made courier handover traceable. My role was product designer within the CMIS project team.`}</p>
     </div>
   );
 }
@@ -2415,7 +2468,6 @@ export default function CaseStudyCmisSuite() {
       <Ov1 />
       <Wf />
       <Screens />
-      <Wmarks />
       <Ov2 />
       <Wf1 />
       <Nt1 />
@@ -2423,6 +2475,7 @@ export default function CaseStudyCmisSuite() {
       <Tool />
       <Ctx />
       <Ba />
+      <TtiDiscovery />
       <Wf2 />
       <Screens1 />
       <Sjk />

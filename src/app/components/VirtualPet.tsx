@@ -117,7 +117,7 @@ const CASE_STUDY_MESSAGES: Record<
   },
   "cmis-suite": {
     intro:
-      "Now viewing CMIS Enterprise Suite. Dheoryan shaped invoice, document, and purchase workflows for enterprise teams.",
+      "Now viewing CMIS Workflow Improvements. Dheoryan improved the DMS, purchase request, and invoice delivery workflows inside an existing platform.",
     note:
       "Reading note: the case moves approval work from email chains into structured digital flows.",
   },
