@@ -116,6 +116,7 @@ const CASE_META: Record<string, { problem: string; outcome: string }> = {
 type CaseHeroDetail = {
   eyebrow: string;
   headline: string;
+  liveUrl?: string;
   summary: string;
   previewLabel: string;
   previewCaption: string;
@@ -140,6 +141,7 @@ const CASE_HERO_DETAILS: Record<string, CaseHeroDetail> = {
   },
   kitalabel: {
     eyebrow: "KitaLabel Price Calculator",
+    liveUrl: "https://www.kitalabel.com/",
     headline: "A self-serve pricing flow for custom label orders.",
     summary:
       "A customer-facing plugin that turns the sales-to-estimator queue into guided configuration, immediate standard pricing, and checkout.",
@@ -669,7 +671,7 @@ const PROCESS_STEPS = [
   {
     num: "03",
     title: "Design",
-    body: "Systems first. Wireframes to polished UI, prototyped and pressure-tested with real users.",
+    body: "Systems first. Wireframes to polished UI, prototyped and refined through versioned review cycles.",
   },
   {
     num: "04",
@@ -3588,7 +3590,7 @@ function CaseStudyUnifiedHero({
             {hero?.summary ?? mobileDetail?.summary ?? meta?.outcome ?? work.category}
           </p>
 
-          <div className="mt-9 flex flex-wrap gap-3">
+          <div className="mt-9 flex flex-wrap items-center gap-3">
             {tags.map((tag) => (
               <span
                 key={tag}
@@ -3605,6 +3607,26 @@ function CaseStudyUnifiedHero({
                 {tag}
               </span>
             ))}
+            {hero?.liveUrl && (
+              <a
+                href={hero.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors duration-200"
+                style={{
+                  fontFamily: "'Space Mono', monospace",
+                  fontSize: 12,
+                  color: PURPLE,
+                  border: "1px solid rgba(204,110,248,0.45)",
+                  borderRadius: 999,
+                  padding: "9px 16px",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(204,110,248,0.1)")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+              >
+                Visit live product ↗
+              </a>
+            )}
           </div>
         </motion.div>
 
