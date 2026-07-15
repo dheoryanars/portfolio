@@ -12,7 +12,7 @@ const productScreens = [
   { src: "/case-studies/kitalabel-bos/customer-detail.png", label: "Customer detail", caption: "Order history, spend, and reorder-cycle signals collected around one customer." },
   { src: "/case-studies/kitalabel-bos/reorder-cycle.png", label: "Reorder cycle", caption: "A focused view for identifying customers who are approaching or missing a repeat order." },
   { src: "/case-studies/kitalabel-bos/internal-calculator.png", label: "Calculator", caption: "Internal pricing tools stay close to the operational workflow instead of a separate spreadsheet." },
-  { src: "/case-studies/kitalabel-bos/team-members.png", label: "Team members", caption: "People, roles, and account status managed from the same administrative surface." },
+  { src: "/case-studies/kitalabel-bos/adoption-log.png", label: "Team members — live", caption: "Not a mockup: the deployed product\u2019s own member log on an ordinary day. 12 registered accounts across sales, admin, manager, and marketing — the sales team active within the last 7 hours. Names redacted." },
   { src: "/case-studies/kitalabel-bos/team-roles.png", label: "Team roles", caption: "Reusable roles make access rules easier to understand and maintain." },
   { src: "/case-studies/kitalabel-bos/team-role-edit.png", label: "Role permissions", caption: "Permission editing exposes exactly what each operational role can see and change." },
   { src: "/case-studies/kitalabel-bos/crm-settings.png", label: "CRM settings", caption: "Business rules and CRM behaviour are configured without leaving the system." },
