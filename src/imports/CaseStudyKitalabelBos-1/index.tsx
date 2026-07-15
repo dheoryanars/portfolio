@@ -13,7 +13,7 @@ const productScreens = [
   { src: "/case-studies/kitalabel-bos/reorder-cycle.png", label: "Reorder cycle", caption: "A focused view for identifying customers who are approaching or missing a repeat order." },
   { src: "/case-studies/kitalabel-bos/internal-calculator.png", label: "Calculator", caption: "Internal pricing tools stay close to the operational workflow instead of a separate spreadsheet." },
   { src: "/case-studies/kitalabel-bos/adoption-log.png", label: "Team members — live", caption: "Not a mockup: the deployed product\u2019s own member log on an ordinary day. 12 registered accounts across sales, admin, manager, and marketing — the sales team active within the last 7 hours. Names redacted." },
-  { src: "/case-studies/kitalabel-bos/team-roles.png", label: "Team roles", caption: "Reusable roles make access rules easier to understand and maintain." },
+  { src: "/case-studies/kitalabel-bos/roles-log.png", label: "Team roles — live", caption: "Production access control: 6 reusable roles govern the 12 accounts — Sales (7), Admin (3), Manager, Marketing — each mapped to explicit dashboard permissions." },
   { src: "/case-studies/kitalabel-bos/team-role-edit.png", label: "Role permissions", caption: "Permission editing exposes exactly what each operational role can see and change." },
   { src: "/case-studies/kitalabel-bos/crm-settings.png", label: "CRM settings", caption: "Business rules and CRM behaviour are configured without leaving the system." },
   { src: "/case-studies/kitalabel-bos/external-mappings.png", label: "External mappings", caption: "External WooCommerce data is mapped into a stable internal operating model." },
