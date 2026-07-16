@@ -575,4 +575,35 @@ Entry format:
 - SONAR hidden per user: removed from WORKS + CASE_STUDIES (grid shows 6 works now, renumbered). Its data blocks + import kept with restore instructions in comments near WORKS. Restore when story is reworked around deliberate scoping.
 - Edit-tool writes truncated the file tail TWICE more (and once appended 402 null bytes). Every repair verified with esbuild. Backup of last-good App.tsx at /tmp/App.tsx.claude-backup (sandbox). RULE: after ANY App.tsx edit, run esbuild syntax check before moving on; expect tail damage and repair from the App() return block.
 
-**Addendum 2:** CMIS is also a team project (user's role: design only). CASE_META outcome + focus
+**Addendum 2:** CMIS is also a team project (user's role: design only). CASE_META outcome + focus bullet updated to "product designer on the CMIS project team". Team-project tally so far: Read/See Dashboard, Mailtarget App, CMIS. Solo (AI-assisted design+build): KitaLabel BOS, KitaLabel Calculator. UNCONFIRMED: Universal Design System ownership — ask user before implying solo credit. (Another tail truncation during these edits — repaired, esbuild-verified.)
+
+**Next:**
+- Task: work grid → featured + archive layout (featured: kitalabel-bos, kitalabel, readsee-dashboard, cmis-suite; archive: design-system, mailtarget-app). NOT started — needs WorkSection render changes.
+- Still open: back-pill overlap on mobile, white flash during fast scroll, KitaLabel vs Kitalabel casing, real numbers for stat blocks (user to supply), About stat "9+ projects shipped" review, Mailtarget dates (employment 2022–2023 vs case 2023–2024 — ask user).
+- URGENT: repo has large uncommitted changes; user has not committed despite two truncation incidents. Push for commit.
+- User wants teach-along mode: every change explained (what was wrong → what/why → how implemented).
+
+## 2026-07-07 — [Claude] Mobile audit + full case-study content critique (read-only, NO code changes)
+
+**Done:**
+- Verified dev server at http://127.0.0.1:5174 renders correctly; walked the `design-system` case study end-to-end at 390px mobile width. Mobile case-study layout (walkthrough / visual index / numbered sections) works well.
+- Read all case content in `src/app/App.tsx`: `WORKS`, `CASE_META`, `CASE_HERO_DETAILS`, `CASE_MOBILE_DETAILS`, `PROCESS_STEPS`, `EXPERIENCE`, hero copy.
+
+**Found (bugs):**
+1. Sticky "Back to work" pill overlaps headings/body text while scrolling on mobile — needs scrim or hide-on-scroll-down.
+2. Occasional full-white viewport flash during fast scroll on mobile (likely parallax transforms) — verify on real device.
+3. Copy inconsistency: "KitaLabel" vs "Kitalabel" (e.g. `CASE_HERO_DETAILS` eyebrows).
+
+**Found (content critique — discussed with user, decisions PENDING):**
+1. Stat blocks are mostly decorative ("1 source of truth", "100% responsive", "24/7") — replace with real before/after numbers or remove.
+2. Section body copy is meta-descriptive ("This section covers...") — should be rewritten first-person, active, specific.
+3. No role/team clarity in any case study ("Designed it. Built it." in kitalabel is the model to follow).
+4. Case strength ranking: STRONG kitalabel-bos (flagship), kitalabel, readsee-dashboard · MEDIUM cmis-suite (15 sections, too bloated — cut to ~7), design-system (generic, quantify reuse) · WEAK sonar, readsee-website, mailtarget-web (dilute; consider merging marketing sites into product siblings).
+5. 9 cases too many — proposal: 4 featured + archive grid.
+6. "Vibe Coder" / "Vibe Code" wording undercuts B2B positioning — prefer "AI-assisted development".
+7. Thumbnails excluded from critique — user hasn't placed final screenshots yet.
+
+**Next:**
+- BLOCKED on user: discussion in progress, do NOT implement critique items yet.
+- Bug fixes 1-2 (back-pill overlap, white flash) are safe to pick up anytime.
+- After discussion: likely first task = rewrite kitalabel-bos copy as voice template, then featured/archive grid restructure.
