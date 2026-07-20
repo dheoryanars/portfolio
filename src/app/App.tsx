@@ -689,7 +689,7 @@ const EXPERIENCE = [
   {
     period: "2022 — 2024",
     role: "Product Designer (UI/UX)",
-    company: "Mailtarget.co",
+    company: "mailtarget.co",
   },
   {
     period: "2022 (9 Month)",
