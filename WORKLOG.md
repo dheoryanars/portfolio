@@ -1,5 +1,55 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-20 17:24 — [Codex] Connected the supplied Cloudflare Web Analytics token
+
+**Done:** Embedded Cloudflare's official Web Analytics beacon in `index.html` with site token `2ec8375a6da84140aad0f156ac86fe06`. Removed the temporary environment-variable loader from `src/main.tsx` and deleted `.env.example`, so the tracker now works without a Vercel environment variable. Kept `spa: false` because this portfolio uses hash routes and Cloudflare does not support automatic hash-route page views; initial visits remain tracked correctly.
+
+**Verified:** Production build passes (`2021 modules transformed`), `git diff --check` reports only repository-wide line-ending warnings, and the token appears exactly once in both source `index.html` and built `dist/index.html`. No deployment was made.
+
+**Next:** Commit and push these changes to `main` when the user is ready; Vercel will auto-deploy and Cloudflare will begin receiving production visits.
+
+## 2026-07-20 17:17 — [Codex] Replaced paid Vercel Analytics with free Cloudflare Web Analytics
+
+**Done:** Removed `@vercel/analytics` and its React component. Added a dependency-free Cloudflare Web Analytics beacon loader in `src/main.tsx`, configured through `VITE_CLOUDFLARE_ANALYTICS_TOKEN`, plus `.env.example` documenting the setting. The beacon uses `spa: false` because Cloudflare does not support hash-based routers; it will accurately count initial visits but will not treat `/#/...` case-study transitions as separate pages.
+
+**Why:** Cloudflare Web Analytics is free and privacy-first, works on a Vercel-hosted site without DNS or hosting changes, and does not use visitors' personal data. The integration remains inactive until a Cloudflare Web Analytics site token is added to the Vercel environment.
+
+**Verified:** Production build passes (`2021 modules transformed`), `git diff --check` passes with only existing line-ending warnings, and `npm audit --omit=dev` reports zero vulnerabilities. No deployment was made.
+
+**Next:** In Cloudflare Web Analytics, add `dheoryan.vercel.app`, copy the site token, and set it in Vercel as `VITE_CLOUDFLARE_ANALYTICS_TOKEN` for Production before deploying.
+
+## 2026-07-20 17:09 — [Codex] Installed Vercel Web Analytics
+
+**Done:** Installed `@vercel/analytics@2.0.1` and mounted its React `<Analytics />` component once in `src/main.tsx`, beside the root portfolio application. Updated `package.json` and `package-lock.json` through npm.
+
+**Verified:** Production build passes (`2022 modules transformed`), the package resolves from the project dependency tree, and `git diff --check` passes with only the repository's existing line-ending warnings.
+
+**Next:** Enable Web Analytics from the Vercel project dashboard, then deploy these changes. Data collection begins after the enabled integration reaches production. npm also reports two high-severity advisories elsewhere in the dependency tree; no forced audit fix was applied because it may introduce breaking upgrades.
+
+## 2026-07-20 17:05 — [Codex] Recommended a visitor-analytics approach
+
+**Recommendation:** Use Vercel Web Analytics first because the portfolio is already deployed on Vercel. It covers visitor and page-view totals, referrers, countries, devices, and browsers without requiring a separate analytics server. The current Hobby allowance is suitable for a portfolio, while GA4 is only worth adding if deeper event funnels and long-term behavioral analysis become necessary.
+
+**Caveat:** The portfolio uses hash-based `/#/...` case-study routes. Total visitor tracking is straightforward, but accurate per-case reporting may require explicit case-view tracking or a future move to path-based routing.
+
+**Next:** No analytics package or dashboard setting has been changed yet. The recommended implementation is enabling Web Analytics in Vercel and adding `@vercel/analytics` to the React root.
+
+## 2026-07-20 16:11 — [Codex] Warmed the Mandiri Utama Finance application letter
+
+**Done:** Rewrote the application letter in a warmer, more conversational Indonesian voice while preserving the verified experience and professional positioning.
+
+**Found:** The shorter, personal opening and simpler closing fit a JobStreet application better than a highly ceremonial business-letter style.
+
+**Next:** No project changes are needed; the letter is ready to paste into the application document.
+
+## 2026-07-20 16:10 — [Codex] Drafted application letter for Mandiri Utama Finance
+
+**Done:** Prepared a tailored Indonesian application letter for the Digital Product Design Staff position at PT Mandiri Utama Finance. The draft uses verified portfolio context: 4+ years in product design, SaaS and enterprise workflow experience, design-system work, and current AI-assisted development exposure. No portfolio code or content was changed.
+
+**Found:** The job-description details and recruiter name were not provided, so the letter avoids unsupported role-specific requirements and uses a general HR addressee.
+
+**Next:** User can replace the date and personal contact placeholders if the application form requires a conventional letterhead.
+
 ## 2026-07-15 — [Claude] Live BOS gallery replacement — CANCELLED by user; keep only the two done swaps
 
 **Decision:** User rolled back the plan to replace the remaining BOS gallery mockups with live screenshots. capture.bat + stale live-cap-*.png deleted. The gallery KEEPS its two live captures — adoption-log (a3838f2) and roles-log (ce3a8a2) — everything else stays as designed mockups. Do NOT resume live capture unless the user asks again. (Recon knowledge if ever needed: admin pages are /admin/crm-orders, crm-reorder-cycles, crm-woo-customers, internal-calculator, crm-external-mappings, crm-settings, crm-sync-logs, crm-webhook-events; orders/reorder/customers pages carry customer PII + Rp figures — heavy redaction mandatory.)
