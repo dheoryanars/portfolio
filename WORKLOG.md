@@ -1,5 +1,13 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-20 17:27 — [Codex] Deployed Cloudflare Web Analytics to production
+
+**Done:** Committed the Cloudflare Web Analytics integration as `a0faf60` (`Add Cloudflare web analytics`) and pushed `main` to GitHub. The push advanced `origin/main` from `cdbdfeb` to `a0faf60`, triggering the linked Vercel production deployment.
+
+**Verified:** GitHub `origin/main` resolved to full commit `a0faf6003d985760e35ca6f5a34d73fbb1bde075`, matching the local deployment commit. Unrelated local logs and helper artifacts were left untracked.
+
+**Next:** Allow Vercel a short time to finish deployment, then confirm visitor activity in the Cloudflare Web Analytics dashboard after opening the production portfolio.
+
 ## 2026-07-20 17:24 — [Codex] Connected the supplied Cloudflare Web Analytics token
 
 **Done:** Embedded Cloudflare's official Web Analytics beacon in `index.html` with site token `2ec8375a6da84140aad0f156ac86fe06`. Removed the temporary environment-variable loader from `src/main.tsx` and deleted `.env.example`, so the tracker now works without a Vercel environment variable. Kept `spa: false` because this portfolio uses hash routes and Cloudflare does not support automatic hash-route page views; initial visits remain tracked correctly.
