@@ -687,7 +687,7 @@ const EXPERIENCE = [
     company: "Cahaya Jakarta Group",
   },
   {
-    period: "2022 — 2023",
+    period: "2022 — 2024",
     role: "Product Designer (UI/UX)",
     company: "Mailtarget.co",
   },
