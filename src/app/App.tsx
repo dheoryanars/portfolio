@@ -698,7 +698,7 @@ const EXPERIENCE = [
   },
   {
     period: "2021 — 2022",
-    role: "Email Marketing Specialist",
+    role: "Customer Experience",
     company: "MTARGET.CO",
   },
 ];
