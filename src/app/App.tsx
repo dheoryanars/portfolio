@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useHeroParallax, useWorkCardParallax, useAboutParallax, useContactParallax, useProcessParallax, useCaseStudyParallax } from "./components/parallax";
+import { useHeroParallax, useAboutParallax, useContactParallax, useProcessParallax, useCaseStudyParallax } from "./components/parallax";
 import VirtualPet from "./components/VirtualPet";
 import HeroSystemField from "./components/HeroSystemField";
 import {
@@ -1231,7 +1231,7 @@ function MarqueeSection() {
           from { transform: translateX(0); }
           to   { transform: translateX(-50%); }
         }
-        .dpa-track { animation: dpa-marquee 32s linear infinite; }
+        .dpa-track { animation: dpa-marquee 44s linear infinite; }
         .dpa-track:hover { animation-play-state: paused; }
       `}</style>
       <div
@@ -1269,12 +1269,10 @@ function MarqueeSection() {
 // ── Work Row ──────────────────────────────────────────────────────────────────
 
 function WorkCard({ item, index, onNavigate }: { item: WorkItem; index: number; onNavigate: (slug: string) => void }) {
-  const parallaxRef = useWorkCardParallax(index);
   const [hovered, setHovered] = useState(false);
 
   return (
     <motion.div
-      ref={parallaxRef}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}

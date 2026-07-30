@@ -183,7 +183,10 @@ export default function HeroSystemField() {
     const host = hostRef.current;
     if (!canvas || !host) return;
 
-    const context = canvas.getContext("2d", { alpha: false });
+    const context = canvas.getContext("2d", {
+      alpha: true,
+      desynchronized: true,
+    });
     if (!context) return;
 
     let width = 1;
@@ -192,6 +195,9 @@ export default function HeroSystemField() {
     let animationFrame = 0;
     let visible = true;
     let previousTimestamp = 0;
+    let previousRenderTimestamp = 0;
+    const frameInterval =
+      1000 / (window.matchMedia("(pointer: coarse)").matches ? 24 : 30);
     const pointer = {
       x: 0.5,
       y: 0.46,
@@ -205,7 +211,7 @@ export default function HeroSystemField() {
       const bounds = host.getBoundingClientRect();
       width = Math.max(1, bounds.width);
       height = Math.max(1, bounds.height);
-      pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+      pixelRatio = Math.min(window.devicePixelRatio || 1, 1.25);
       canvas.width = Math.round(width * pixelRatio);
       canvas.height = Math.round(height * pixelRatio);
       canvas.style.width = `${width}px`;
@@ -238,11 +244,21 @@ export default function HeroSystemField() {
     };
 
     const draw = (timestamp: number) => {
+      if (
+        !reduceMotion &&
+        previousRenderTimestamp > 0 &&
+        timestamp - previousRenderTimestamp < frameInterval
+      ) {
+        animationFrame = window.requestAnimationFrame(draw);
+        return;
+      }
+
       const time = timestamp / 1000;
       const delta = previousTimestamp
         ? Math.min(0.05, (timestamp - previousTimestamp) / 1000)
         : 1 / 60;
       previousTimestamp = timestamp;
+      previousRenderTimestamp = timestamp;
       const positionEase = 1 - Math.exp(-delta * 5.5);
       const influenceEase = 1 - Math.exp(-delta * 4);
       pointer.x += (pointer.targetX - pointer.x) * positionEase;
@@ -251,15 +267,7 @@ export default function HeroSystemField() {
         (pointer.targetInfluence - pointer.influence) * influenceEase;
 
       context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-      context.fillStyle = "#070609";
-      context.fillRect(0, 0, width, height);
-
-      const background = context.createLinearGradient(0, 0, width, height);
-      background.addColorStop(0, "#0b0710");
-      background.addColorStop(0.52, "#08070b");
-      background.addColorStop(1, "#100a15");
-      context.fillStyle = background;
-      context.fillRect(0, 0, width, height);
+      context.clearRect(0, 0, width, height);
 
       context.lineWidth = 1;
       FIELD.lines.forEach((line) => {
@@ -424,7 +432,10 @@ export default function HeroSystemField() {
 
         context.beginPath();
         context.shadowColor = node.color;
-        context.shadowBlur = node.glow + proximity * 22;
+        context.shadowBlur =
+          node.glow > 15 || proximity > 0.35
+            ? Math.min(18, node.glow * 0.65 + proximity * 10)
+            : 0;
         context.fillStyle = node.color;
         context.globalAlpha = 0.42 + pulse * 0.34 + proximity * 0.22;
         context.arc(nodeX, nodeY, radius, 0, Math.PI * 2);
@@ -478,15 +489,17 @@ export default function HeroSystemField() {
     });
     const intersectionObserver = new IntersectionObserver(
       ([entry]) => {
-        visible = entry.isIntersecting;
+        visible = entry.isIntersecting && entry.intersectionRatio >= 0.28;
         if (visible && !reduceMotion) {
           window.cancelAnimationFrame(animationFrame);
+          previousTimestamp = 0;
+          previousRenderTimestamp = 0;
           animationFrame = window.requestAnimationFrame(draw);
         } else {
           window.cancelAnimationFrame(animationFrame);
         }
       },
-      { threshold: 0.02 },
+      { threshold: [0, 0.28] },
     );
 
     resize();
@@ -514,7 +527,10 @@ export default function HeroSystemField() {
       ref={hostRef}
       aria-hidden="true"
       className="pointer-events-auto absolute inset-0 z-0 overflow-hidden"
-      style={{ background: "#070609" }}
+      style={{
+        background:
+          "linear-gradient(135deg, #0b0710 0%, #08070b 52%, #100a15 100%)",
+      }}
     >
       <canvas
         ref={canvasRef}

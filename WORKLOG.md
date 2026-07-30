@@ -1,5 +1,29 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-30 11:22 — [Codex] Deployed the scroll-performance and marquee patch
+
+**Done:** Committed and pushed the approved hero-to-work performance fix and slower capability marquee to `main`, triggering the linked Vercel production deployment. The release removes competing card transforms, reduces and pauses the hero canvas workload during the transition, and changes the marquee loop from 32 seconds to 44 seconds. Local QA logs and helper artifacts were excluded.
+
+**Verified:** The final production build passes (`2022 modules transformed`), `git diff --check` reports no whitespace errors, and GitHub accepted the updated `main` branch for Vercel auto-deployment.
+
+**Next:** Smoke-test the hero-to-work scroll transition and marquee pacing at `https://dheoryan.vercel.app/` after Vercel finishes building.
+
+## 2026-07-30 11:21 — [Codex] Slowed the capability marquee
+
+**Done:** Reduced the marquee pace beneath the hero by extending its linear loop from 32 seconds to 44 seconds. The content, spacing, hover-to-pause behavior, and visual hierarchy remain unchanged.
+
+**Verified:** The live local track reports a `44s` animation duration and retains its continuous loop. Production build passes (`2022 modules transformed`), and `git diff --check` reports no whitespace errors.
+
+**Next:** Review the calmer marquee together with the pending hero-to-work performance patch at `http://127.0.0.1:5174/`, then deploy both after approval.
+
+## 2026-07-30 11:19 — [Codex] Removed the hero-to-work scroll bottleneck
+
+**Done:** Fixed the production lag reported while scrolling from the hero into “Things I’ve shipped.” The featured cards no longer let GSAP and Motion compete over the same transform; they now use one lightweight Motion entrance. Reduced the hero canvas from 60 FPS to 30 FPS on pointer devices and 24 FPS on coarse-pointer devices, capped render density at 1.25 DPR, moved the static gradient out of the frame loop, limited expensive node glow rendering, and pause the canvas once less than 28% of the hero remains visible.
+
+**Verified:** Production profiling showed the previous transition kept the canvas active at 8% hero visibility while the first cards carried GSAP `matrix3d` transforms. Local verification at the same scroll position now shows the canvas below its pause threshold and both visible cards settled at `transform: none` with a single animation owner. The transition renders cleanly with no browser console errors. Production build passes (`2022 modules transformed`), and `git diff --check` reports no whitespace errors.
+
+**Next:** Review the optimized local transition at `http://127.0.0.1:5174/`. Commit and deploy the performance patch after Dheoryan approves the feel.
+
 ## 2026-07-30 11:11 — [Codex] Deployed the animated hero and Equinox refinements
 
 **Done:** Committed and pushed the approved hero and Equinox update to `main`, triggering the linked Vercel production deployment. The release includes the centered hero context rail, independently animated Equinox System canvas, smoother local cursor response, readable Equinox glass surfaces, and circular cursor-petting reactions. Local QA logs, screenshots, generated output, and helper scripts were intentionally excluded from the commit.
