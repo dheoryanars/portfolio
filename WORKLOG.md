@@ -1,5 +1,13 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-30 10:14 — [Codex] Deployed the Equinox portfolio guide upgrade
+
+**Done:** Committed the approved Equinox guide upgrade and simplified floating visual as `174599d` (`Upgrade Equinox portfolio guide`) and pushed `main` to GitHub. The push triggered the linked Vercel production deployment.
+
+**Verified:** The final production build passed (`2021 modules transformed`) before deployment, and GitHub accepted `main` from `9b93afb` through `174599d`. Unrelated local QA, server-log, and utility artifacts remained untracked.
+
+**Next:** Smoke-test Equinox on `https://dheoryan.vercel.app/` after Vercel finishes building. Replace the existing placeholder WhatsApp route when the real number is confirmed.
+
 ## 2026-07-30 10:07 — [Codex] Simplified Equinox's floating visual
 
 **Done:** Removed the visible glass click-target box and rotating square orbit from Equinox. The companion now renders as one mouthless face with a restrained glow, status light, and energy line while preserving the original large pointer/touch target and adding a visible keyboard focus outline.
