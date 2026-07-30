@@ -1,5 +1,13 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-30 12:07 — [Codex] Released the cockpit contact experience to production
+
+**Done:** Committed and pushed the approved cockpit-style Let's Talk section, reusable hyperspace field, and system-grid footer to `main`, triggering the linked Vercel production deployment. The release includes the background swap, responsive communication deck, desktop HUD instruments, mobile control stack, cursor-steered hyperspace view, reduced-motion behavior, and offscreen canvas pausing. Local logs, screenshots, and helper artifacts were excluded.
+
+**Verified:** The production Vite build passes (`2023 modules transformed`) with only the existing bundle-size advisory. `git diff --check` reports no whitespace errors beyond existing line-ending notices, and GitHub accepted commit `87d6c65` on `main` for Vercel auto-deployment.
+
+**Next:** Smoke-test the cockpit CTA, contact links, and grid footer at `https://dheoryan.vercel.app/` after Vercel finishes building.
+
 ## 2026-07-30 12:02 — [Codex] Swapped the footer and contact worlds into a cockpit CTA
 
 **Done:** Moved the lightweight hyperspace canvas from the DHEORY footer into the Let's Talk section and renamed it to the reusable `HyperspaceField`. Rebuilt the contact composition as a first-person communications deck: a three-part status rail, animated forward viewport, targeting rings and crosshairs, desktop project/signal instruments, a centered transmission CTA, and a lower cockpit console containing the primary email channel plus LinkedIn, WhatsApp, and Instagram controls. The footer now uses the former contact section's restrained system grid and cursor illumination behind the interactive DHEORY word. Mobile removes the side instrumentation, preserves the forward-view composition, stacks the console controls, and uses a fitted single-line email address.
