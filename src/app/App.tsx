@@ -2,12 +2,21 @@ import React, { useState, useEffect, useRef } from "react";
 import { useHeroParallax, useAboutParallax, useContactParallax, useProcessParallax, useCaseStudyParallax } from "./components/parallax";
 import VirtualPet from "./components/VirtualPet";
 import HeroSystemField from "./components/HeroSystemField";
+import HyperspaceField from "./components/HyperspaceField";
 import {
   motion,
   useInView,
   AnimatePresence,
+  useReducedMotion,
 } from "motion/react";
-import { Layers } from "lucide-react";
+import {
+  ArrowUpRight,
+  Instagram,
+  Layers,
+  Linkedin,
+  Mail,
+  MessageCircle,
+} from "lucide-react";
 import svgPaths from "@/imports/PortfolioDheoryan-1/svg-t4dtk4ouv6";
 import CaseStudySonar from "@/imports/CaseStudySonar-1/index";
 import CaseStudyDesignSystem from "@/imports/CaseStudyDesignSystem-1/index";
@@ -2000,126 +2009,426 @@ function AboutSection() {
 // ── Contact ───────────────────────────────────────────────────────────────────
 
 function ContactSection() {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
-  const { headlineRef: contactHeadlineRef, glowRef, buttonsRef } = useContactParallax();
+  const reduceMotion = useReducedMotion();
+  const { headlineRef: contactHeadlineRef, buttonsRef } =
+    useContactParallax();
+
+  const channels = [
+    {
+      label: "LinkedIn",
+      detail: "Experience and professional context",
+      href: "https://www.linkedin.com/in/dheoryanars/",
+      icon: Linkedin,
+    },
+    {
+      label: "WhatsApp",
+      detail: "A quick, direct conversation",
+      href: "https://wa.me/6281234567890",
+      icon: MessageCircle,
+    },
+    {
+      label: "Instagram",
+      detail: "Process, experiments, and work in progress",
+      href: "https://www.instagram.com/dheeory/",
+      icon: Instagram,
+    },
+  ];
 
   return (
     <section
       id="contact"
       ref={ref}
-      className="relative flex flex-col items-center gap-12 py-36 lg:py-48 px-6 overflow-hidden"
+      className="relative isolate min-h-[900px] overflow-hidden px-4 py-20 md:px-8 md:py-24 lg:min-h-[980px] lg:px-12"
       style={{
         background: BG,
         borderTop: "1px solid rgba(255,255,255,0.08)",
       }}
     >
-      <motion.div
-        ref={glowRef}
-        className="absolute inset-0 pointer-events-none"
-        animate={{
-          background: [
-            "radial-gradient(ellipse 900px 420px at 50% 72%, rgba(200,255,77,0.045) 0%, transparent 70%)",
-            "radial-gradient(ellipse 900px 420px at 50% 72%, rgba(200,255,77,0.095) 0%, transparent 70%)",
-            "radial-gradient(ellipse 900px 420px at 50% 72%, rgba(200,255,77,0.045) 0%, transparent 70%)",
-          ],
-        }}
-        transition={{
-          duration: 4.5,
-          repeat: Infinity,
-          ease: "easeInOut",
+      <HyperspaceField />
+      <div
+        className="pointer-events-none absolute inset-0 z-[1]"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 44%, rgba(8,8,12,0.08) 0%, rgba(8,8,12,0.28) 42%, rgba(8,8,10,0.78) 83%, rgba(8,8,10,0.96) 100%), linear-gradient(180deg, rgba(8,8,10,0.66) 0%, transparent 24%, transparent 58%, rgba(8,8,10,0.84) 100%)",
         }}
       />
 
-      <motion.p
-        initial={{ opacity: 0, y: 14 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6 }}
-        className="relative z-10"
-        style={{
-          fontFamily: "'Space Mono', monospace",
-          fontSize: 12,
-          textTransform: "uppercase",
-          letterSpacing: "0.12em",
-          color: PURPLE,
-        }}
-      >
-        {"04 — Let's build something"}
-      </motion.p>
-
-      <motion.h2
-        ref={contactHeadlineRef}
-        initial={{ opacity: 0, y: 32 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.7, delay: 0.1 }}
-        className="relative z-10 text-center"
-        style={{
-          fontFamily: "'Space Grotesk', sans-serif",
-          fontWeight: 500,
-          fontSize: "clamp(52px,9vw,120px)",
-          lineHeight: 1,
-          color: FG,
-        }}
-      >
-        {"Let's "}
-        <em
+      <div className="pointer-events-none absolute inset-x-0 top-[43%] z-[2] h-px bg-white/[0.07]">
+        <motion.div
+          className="absolute -top-[3px] h-[7px] w-16"
           style={{
-            fontFamily: "'Instrument Serif', serif",
-            fontStyle: "italic",
-            color: PURPLE,
+            left: "8%",
+            background:
+              "linear-gradient(90deg, transparent, rgba(204,110,248,0.9), transparent)",
+            filter: "drop-shadow(0 0 10px rgba(204,110,248,0.65))",
           }}
-        >
-          talk
-        </em>
-        {" →"}
-      </motion.h2>
+          animate={
+            reduceMotion
+              ? undefined
+              : { left: ["5%", "91%", "5%"], opacity: [0.25, 0.9, 0.25] }
+          }
+          transition={{
+            duration: 8.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
 
-      <motion.div
-        ref={buttonsRef}
-        initial={{ opacity: 0, y: 18 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, delay: 0.22 }}
-        className="flex flex-wrap gap-4 justify-center relative z-10"
-      >
-        {[
-          { label: "LinkedIn",  href: "https://www.linkedin.com/in/dheoryanars/",   filled: true  },
-          { label: "Email",     href: "mailto:dheoryanputra@gmail.com",              filled: false },
-          { label: "WhatsApp",  href: "https://wa.me/6281234567890",                 filled: false },
-          { label: "Instagram", href: "https://www.instagram.com/dheeory/",         filled: false },
-        ].map((btn) => (
-          <motion.a
-            key={btn.label}
-            href={btn.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.96 }}
+      <div className="relative z-10 mx-auto max-w-[1480px]">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-16 left-0 hidden w-20 border-r border-white/[0.09] bg-black/20 lg:block"
+          style={{
+            clipPath: "polygon(0 0, 100% 8%, 100% 92%, 0 100%)",
+          }}
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-16 right-0 hidden w-20 border-l border-white/[0.09] bg-black/20 lg:block"
+          style={{
+            clipPath: "polygon(0 8%, 100% 0, 100% 100%, 0 92%)",
+          }}
+        />
+
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="relative flex flex-col gap-5 border-y border-white/[0.1] bg-black/20 px-5 py-4 backdrop-blur-[5px] md:grid md:grid-cols-3 md:items-center md:px-8"
+        >
+          <p
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontWeight: 500,
-              fontSize: 14,
-              borderRadius: 32,
-              padding: "12px 24px",
-              textDecoration: "none",
-              display: "inline-block",
-              cursor: "pointer",
-              ...(btn.filled
-                ? {
-                    background: PURPLE,
-                    color: BG,
-                    border: "none",
-                  }
-                : {
-                    background: "transparent",
-                    color: PURPLE,
-                    border: `1px solid ${PURPLE}`,
-                  }),
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 12,
+              textTransform: "uppercase",
+              letterSpacing: "0.12em",
+              color: PURPLE,
             }}
           >
-            {btn.label}
+            {"04 / Communication deck"}
+          </p>
+          <span
+            className="hidden text-center md:block"
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 10,
+              color: DIM,
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+            }}
+          >
+            Forward channel / Bekasi
+          </span>
+          <div
+            className="flex items-center gap-3 md:justify-self-end"
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 11,
+              color: MUTED,
+            }}
+          >
+            <span
+              className="h-2 w-2 rounded-full"
+              style={{
+                background: "#2fbf71",
+                boxShadow: "0 0 14px rgba(47,191,113,0.6)",
+              }}
+            />
+            Available for selected 2026 projects
+          </div>
+        </motion.div>
+
+        <div className="relative min-h-[500px] overflow-hidden border-x border-white/[0.08] md:min-h-[560px] lg:mx-20">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-[46%] h-[540px] w-[540px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-300/[0.12]"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-[46%] h-[330px] w-[330px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-300/[0.16]"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-[46%] h-px w-[min(840px,86%)] -translate-x-1/2 bg-purple-300/[0.14]"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-[46%] h-[min(440px,76%)] w-px -translate-x-1/2 -translate-y-1/2 bg-purple-300/[0.1]"
+          />
+
+          <motion.div
+            initial={{ opacity: 0, x: -18 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.16 }}
+            className="absolute left-6 top-12 hidden w-44 border-l border-purple-300/30 pl-4 lg:block"
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 10,
+              lineHeight: 1.8,
+              color: DIM,
+            }}
+          >
+            <span className="block text-purple-300">PROJECT MODE</span>
+            <span className="mt-3 block text-white/75">PRODUCT DESIGN</span>
+            <span className="block">DESIGN SYSTEMS</span>
+            <span className="block">PROTOTYPING</span>
+            <span className="mt-3 block text-purple-300/70">VECTOR 03 / 03</span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 18 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.16 }}
+            className="absolute right-6 top-12 hidden w-44 border-r border-purple-300/30 pr-4 text-right lg:block"
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 10,
+              lineHeight: 1.8,
+              color: DIM,
+            }}
+          >
+            <span className="block text-purple-300">SIGNAL STATUS</span>
+            <span className="mt-3 block text-white/75">CHANNEL OPEN</span>
+            <span className="block">LOCAL / GMT+7</span>
+            <span className="block">RESPONSE READY</span>
+            <span className="mt-3 block text-[#2fbf71]">LINK STABLE / 100%</span>
+          </motion.div>
+
+          <div className="relative flex min-h-[500px] flex-col items-center justify-center px-5 pb-20 pt-16 text-center md:min-h-[560px] md:px-16">
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.14 }}
+              className="mb-7"
+              style={{
+                fontFamily: "'Space Mono', monospace",
+                fontSize: 10,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: PURPLE,
+              }}
+            >
+              Transmission ready
+            </motion.span>
+
+            <motion.h2
+              ref={contactHeadlineRef}
+              initial={{ opacity: 0, y: 32 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="relative"
+            >
+              <motion.a
+                href="mailto:dheoryanputra@gmail.com"
+                className="group inline-flex items-center justify-center gap-[0.13em]"
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontWeight: 500,
+                  fontSize: "clamp(62px, 9vw, 142px)",
+                  lineHeight: 0.9,
+                  color: FG,
+                  textDecoration: "none",
+                  letterSpacing: 0,
+                }}
+                whileHover={reduceMotion ? undefined : "hover"}
+              >
+                <span>{"Let's "}</span>
+                <em
+                  style={{
+                    fontFamily: "'Instrument Serif', serif",
+                    fontStyle: "italic",
+                    color: PURPLE,
+                  }}
+                >
+                  talk
+                </em>
+                <motion.span
+                  className="flex h-[0.58em] w-[0.58em] shrink-0 items-center justify-center rounded-full border border-white/25 bg-black/20 backdrop-blur-sm"
+                  variants={{
+                    hover: {
+                      x: 10,
+                      rotate: 45,
+                      borderColor: "rgba(204,110,248,0.82)",
+                      backgroundColor: "rgba(204,110,248,0.16)",
+                    },
+                  }}
+                  transition={{ duration: 0.24, ease: "easeOut" }}
+                >
+                  <ArrowUpRight
+                    aria-hidden="true"
+                    size="0.34em"
+                    strokeWidth={1.45}
+                  />
+                </motion.span>
+              </motion.a>
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.22 }}
+              className="mt-9 max-w-[660px]"
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: "clamp(17px, 1.4vw, 22px)",
+                lineHeight: 1.55,
+                color: "#b3b3ad",
+              }}
+            >
+              Bring the messy workflow, the growing design system, or the
+              product idea that needs shape. I help turn complexity into
+              something clear, usable, and ready to ship.
+            </motion.p>
+          </div>
+        </div>
+
+        <motion.div
+          ref={buttonsRef}
+          initial={{ opacity: 0, y: 18 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="relative border border-white/[0.12] bg-[rgba(7,7,10,0.78)] shadow-[0_-24px_80px_rgba(0,0,0,0.32)] backdrop-blur-xl lg:mx-20"
+          style={{
+            clipPath:
+              "polygon(0 14px, 26px 14px, 38px 0, calc(100% - 38px) 0, calc(100% - 26px) 14px, 100% 14px, 100% 100%, 0 100%)",
+          }}
+        >
+          <motion.a
+            href="mailto:dheoryanputra@gmail.com"
+            className="group flex min-w-0 items-center justify-between gap-3 border-b border-white/[0.1] px-5 py-6 md:gap-5 md:px-8"
+            style={{ color: FG, textDecoration: "none" }}
+            whileHover={
+              reduceMotion
+                ? undefined
+                : { backgroundColor: "rgba(204,110,248,0.07)" }
+            }
+          >
+            <span className="flex min-w-0 items-center gap-3 md:gap-4">
+              <span
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full"
+                style={{
+                  color: PURPLE,
+                  background: "rgba(204,110,248,0.12)",
+                  boxShadow: "0 0 24px rgba(204,110,248,0.12)",
+                }}
+              >
+                <Mail aria-hidden="true" size={19} strokeWidth={1.7} />
+              </span>
+              <span className="min-w-0">
+                <span
+                  className="block"
+                  style={{
+                    fontFamily: "'Space Mono', monospace",
+                    fontSize: 10,
+                    color: PURPLE,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
+                  }}
+                >
+                  Primary transmission
+                </span>
+                <span
+                  className="mt-1 block whitespace-nowrap"
+                  style={{
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontSize: "clamp(13px, 3.7vw, 21px)",
+                    fontWeight: 500,
+                  }}
+                >
+                  dheoryanputra@gmail.com
+                </span>
+              </span>
+            </span>
+            <span className="flex shrink-0 items-center gap-3">
+              <span
+                className="hidden md:block"
+                style={{
+                  fontFamily: "'Space Mono', monospace",
+                  fontSize: 9,
+                  color: "#2fbf71",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Channel ready
+              </span>
+              <ArrowUpRight
+                aria-hidden="true"
+                className="transition-transform duration-200 group-hover:-translate-y-1 group-hover:translate-x-1"
+                size={21}
+                strokeWidth={1.5}
+              />
+            </span>
           </motion.a>
-        ))}
-      </motion.div>
+
+          <div className="grid md:grid-cols-3">
+            {channels.map((channel, index) => {
+              const Icon = channel.icon;
+              return (
+                <motion.a
+                  key={channel.label}
+                  href={channel.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`group flex items-center justify-between gap-5 border-b border-white/[0.08] px-5 py-5 md:border-b-0 md:px-7 ${
+                    index < channels.length - 1 ? "md:border-r" : ""
+                  }`}
+                  style={{ color: FG, textDecoration: "none" }}
+                  whileHover={
+                    reduceMotion
+                      ? undefined
+                      : {
+                          backgroundColor: "rgba(204,110,248,0.055)",
+                        }
+                  }
+                >
+                  <span className="flex min-w-0 items-center gap-4">
+                    <Icon
+                      aria-hidden="true"
+                      className="shrink-0"
+                      size={18}
+                      strokeWidth={1.6}
+                      color={PURPLE}
+                    />
+                    <span className="min-w-0">
+                      <span
+                        className="block"
+                        style={{
+                          fontFamily: "'Space Grotesk', sans-serif",
+                          fontWeight: 500,
+                          fontSize: 16,
+                        }}
+                      >
+                        {channel.label}
+                      </span>
+                      <span
+                        className="mt-1 block"
+                        style={{
+                          fontFamily: "'Space Mono', monospace",
+                          fontSize: 9,
+                          lineHeight: 1.5,
+                          color: DIM,
+                        }}
+                      >
+                        {channel.detail}
+                      </span>
+                    </span>
+                  </span>
+                  <ArrowUpRight
+                    aria-hidden="true"
+                    className="shrink-0 opacity-45 transition-all duration-200 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:opacity-100"
+                    size={18}
+                    strokeWidth={1.5}
+                  />
+                </motion.a>
+              );
+            })}
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }
@@ -2540,16 +2849,19 @@ function FooterSection() {
         }
       >
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 z-[1]"
           style={{
-            background:
-              "radial-gradient(circle at var(--mx) var(--my), rgba(204,110,248,0.10) 0%, rgba(204,110,248,0.04) 13%, transparent 27%), linear-gradient(135deg, rgba(255,255,255,0.03), transparent 34%)",
-            mixBlendMode: "soft-light",
+            background: [
+              "radial-gradient(circle 320px at var(--mx) var(--my), rgba(204,110,248,0.11) 0%, rgba(204,110,248,0.035) 38%, transparent 72%)",
+              "linear-gradient(rgba(204,110,248,0.035) 1px, transparent 1px)",
+              "linear-gradient(90deg, rgba(204,110,248,0.035) 1px, transparent 1px)",
+            ].join(","),
+            backgroundSize: "auto, 76px 76px, 76px 76px",
             transition: "opacity 0.2s",
           }}
         />
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 z-[2]"
           style={{
             background:
               "radial-gradient(circle at var(--mx) var(--my), rgba(204,110,248,0.16) 0 52px, rgba(204,110,248,0.06) 54px, transparent 72px)",
@@ -2576,7 +2888,7 @@ function FooterSection() {
           }}
         />
         <div
-          className="absolute inset-x-0 top-0 h-px"
+          className="absolute inset-x-0 top-0 z-[3] h-px"
           style={{ background: "rgba(255,255,255,0.08)" }}
         />
         <div

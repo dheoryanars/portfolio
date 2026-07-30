@@ -1,5 +1,29 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-30 12:02 — [Codex] Swapped the footer and contact worlds into a cockpit CTA
+
+**Done:** Moved the lightweight hyperspace canvas from the DHEORY footer into the Let's Talk section and renamed it to the reusable `HyperspaceField`. Rebuilt the contact composition as a first-person communications deck: a three-part status rail, animated forward viewport, targeting rings and crosshairs, desktop project/signal instruments, a centered transmission CTA, and a lower cockpit console containing the primary email channel plus LinkedIn, WhatsApp, and Instagram controls. The footer now uses the former contact section's restrained system grid and cursor illumination behind the interactive DHEORY word. Mobile removes the side instrumentation, preserves the forward-view composition, stacks the console controls, and uses a fitted single-line email address.
+
+**Verified:** A clean local browser session reports no console errors. Desktop checks confirmed the hyperspace field reads as the cockpit exterior view, the HUD and console stay legible, and the grid footer provides a calmer landing. A 390x844 check confirmed the complete CTA and controls remain readable with no horizontal overflow; the contact section contains the only hyperspace canvas and the footer contains none. `git diff --check` passes with only existing line-ending warnings.
+
+**Next:** Review the cockpit pacing, terminology, and density locally at `http://127.0.0.1:5174/`. Commit and deploy the cockpit, background swap, and pending footer work after approval.
+
+## 2026-07-30 11:53 — [Codex] Reframed Let's Talk as an interactive contact beacon
+
+**Done:** Rebuilt the homepage contact section around one clear conversion path. The giant “Let's talk” headline is now the primary email action with a responsive arrow treatment, followed by short project-fit copy and a prominent direct-email row. Replaced the generic channel pills with purposeful LinkedIn, WhatsApp, and Instagram rows using Lucide icons, concise context labels, and restrained directional hover feedback. Added a centered availability signal, a faint system grid, a slow traveling pulse, and a requestAnimationFrame-throttled cursor glow that connects the section visually to the hyperspace footer without obscuring text. Reduced-motion visitors receive the complete layout without looping or hover movement.
+
+**Verified:** The local Vite app renders the redesign without browser console errors. Desktop checks confirmed the new content hierarchy, readable email CTA, channel-row alignment, and a clean transition into the animated footer. A 390x844 check confirmed the headline, supporting copy, email address, and all three channel rows stack without clipping or horizontal overflow. `git diff --check` passes with only existing line-ending warnings.
+
+**Next:** Review the local contact experience at `http://127.0.0.1:5174/`, especially the copy tone and cursor response. Commit and deploy it together with the pending hyperspace footer after approval.
+
+## 2026-07-30 11:48 — [Codex] Added a responsive hyperspace footer
+
+**Done:** Added a lightweight canvas hyperspace field behind the interactive DHEORY footer word. The field accelerates briefly when the footer enters view, settles into a slower forward drift, and lets desktop cursor movement gently steer its damped vanishing point without replacing the existing letter-depth interaction. Violet streaks, restrained warm signals, a dark contrast veil, and capped opacity preserve the footer copy and brand readability. Coarse-pointer devices render fewer stars, offscreen animation pauses through IntersectionObserver, render density is capped at 1.25 DPR, and reduced-motion visitors receive a static field.
+
+**Verified:** Local Vite runtime checks found the footer canvas at the correct responsive dimensions with no console errors. Two captured desktop frames differed, confirming live motion; desktop and 390x844 visual checks confirmed readable footer content, visible hyperspace motion, and no new horizontal overflow. `git diff --check` passes with only the existing line-ending warning. The standalone production build could not be rerun because the managed sandbox denied Vite's esbuild child process, while the already-running local Vite compiler accepted and rendered the update.
+
+**Next:** Review the footer acceleration and settled drift locally at `http://127.0.0.1:5174/`. Commit and deploy after Dheoryan approves the feel.
+
 ## 2026-07-30 11:22 — [Codex] Deployed the scroll-performance and marquee patch
 
 **Done:** Committed and pushed the approved hero-to-work performance fix and slower capability marquee to `main`, triggering the linked Vercel production deployment. The release removes competing card transforms, reduces and pauses the hero canvas workload during the transition, and changes the marquee loop from 32 seconds to 44 seconds. Local QA logs and helper artifacts were excluded.
