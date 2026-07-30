@@ -1,5 +1,67 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-30 11:11 — [Codex] Deployed the animated hero and Equinox refinements
+
+**Done:** Committed and pushed the approved hero and Equinox update to `main`, triggering the linked Vercel production deployment. The release includes the centered hero context rail, independently animated Equinox System canvas, smoother local cursor response, readable Equinox glass surfaces, and circular cursor-petting reactions. Local QA logs, screenshots, generated output, and helper scripts were intentionally excluded from the commit.
+
+**Verified:** The final production build passes (`2022 modules transformed`), `git diff --check` reports no whitespace errors, and GitHub accepted the updated `main` branch for Vercel auto-deployment.
+
+**Next:** Smoke-test the deployed hero and Equinox interactions at `https://dheoryan.vercel.app/` after Vercel finishes building.
+
+## 2026-07-30 11:06 — [Codex] Smoothed the hero's circular cursor response
+
+**Done:** Removed the broad cursor translation that dragged complete canvas layers and made circular movement feel clunky. The structural rails now remain anchored while a local magnetic-lens response gently displaces only nearby boxes, nodes, matrices, orbits, and connections. Replaced frame-dependent pointer interpolation with time-based damping, added eased influence on pointer enter/leave, tightened the interaction radius, and reduced node repulsion.
+
+**Verified:** Production build passes (`2022 modules transformed`). Live desktop testing covered an eight-point circular cursor path across the hero; the headline and structural grid remained fixed while nearby geometry responded without visible snapping. The clean preview reported no browser console errors, and `git diff --check` passes with only existing line-ending warnings.
+
+**Next:** Review the smoother hover locally at `http://127.0.0.1:5174/`. Commit and deploy it with the pending Equinox and hero updates only after Dheoryan approves the feel.
+
+## 2026-07-30 10:54 — [Codex] Rebuilt the hero artwork as a fully animated system field
+
+**Done:** Replaced the flattened hero bitmap treatment with a deterministic canvas scene built from the reference artwork's visual language. Boxes now drift at separate depths, horizontal and vertical rails travel independently, orbit arcs rotate with moving satellites, signal nodes pulse, dot matrices shimmer, and curved connections continuously redraw. Cursor proximity adds restrained local parallax without moving the hero copy. Added a capped device-pixel ratio, off-screen animation pausing, touch-pointer exclusion, and a reduced-motion static frame. Removed the obsolete 228 KB hero bitmap because the new field is generated directly in the browser.
+
+**Verified:** Production build passes (`2022 modules transformed`). Desktop and 390x844 checks confirmed the full field remains readable behind the hero, individual animation frames differ over time, and the mobile composition retains the complete artwork without horizontal overflow. No new runtime errors appeared after the final reload; older console entries were from the replaced hot-reload implementation. `git diff --check` passes with only existing line-ending warnings.
+
+**Next:** Review the independently animated hero locally at `http://127.0.0.1:5174/`. Commit and deploy it together with the approved local Equinox and hero-context updates only after Dheoryan approves the behavior.
+
+## 2026-07-30 10:46 — [Codex] Replaced the hero background with the animated Equinox System field
+
+**Done:** Replaced the procedural gradient/grid hero texture with the approved Equinox System artwork as a full-bleed image-led background. Added spring-smoothed cursor parallax, a cursor-following violet illumination field, a slow depth-breathing scale, and a restrained signal sweep. Added center and edge contrast overlays to protect the headline, metadata, body copy, and actions. Touch movement is ignored to avoid mobile scroll jitter, and reduced-motion visitors receive a static composition without the sweep or cursor response. Optimized the supplied 2.44 MB PNG into a visually equivalent 228 KB JPEG and removed the duplicate source asset.
+
+**Verified:** Production build passes (`2021 modules transformed`). Browser checks confirmed clean desktop and 390x844 crops, stable full-viewport coverage, readable hero copy, and a measurable cursor-linked transform change. A clean-tab console check reported no errors. `git diff --check` passes with only existing line-ending warnings.
+
+**Next:** Review the combined local hero and Equinox updates at `http://127.0.0.1:5174/`. Commit and deploy only after Dheoryan approves the new background behavior.
+
+## 2026-07-30 10:38 — [Codex] Visualized the Equinox System identity pattern
+
+**Done:** Created a preview-only visual exploration of the proposed “Equinox System” pattern: an asymmetric deep-plum/black field of fine grids, offset modular geometry, orbital paths, luminous violet markers, and rare amber signals. The concept expresses structured systems thinking with restrained human warmth. No portfolio files or production assets were changed.
+
+**Next:** If Dheoryan approves the direction, turn the exploration into a repeatable portfolio surface or a set of controlled implementation-ready variants.
+
+## 2026-07-30 10:36 — [Codex] Rebalanced the hero context metadata
+
+**Done:** Replaced the hero's disconnected left/right metadata with one centered context rail. Availability, role, specialty, and Bekasi location now read as a single hierarchy, separated by restrained purple ticks and faint balancing lines on desktop. Mobile gives availability its own row and wraps the remaining context beneath it with slightly stronger contrast.
+
+**Verified:** Production build passes (`2021 modules transformed`). Browser checks confirmed the rail stays centered and single-line at desktop width, forms a clean three-line stack at 390x844, leaves the headline dominant, and introduces no overlap or clipping. No browser console errors were observed, and `git diff --check` passes with only existing line-ending warnings.
+
+**Next:** Review the full local update at `http://127.0.0.1:5174/`. Commit and deploy the hero rail together with the approved Equinox glass and petting updates.
+
+## 2026-07-30 10:30 — [Codex] Added cursor-petting reactions to Equinox
+
+**Done:** Added an intentional cursor-petting gesture to Equinox. Circular rubs or repeated short strokes across the face now create a shy leaning animation, brighter responsive glow, happy sparkles, a small energy reward, and one of six cute speech-bubble responses. A movement threshold, slow-gesture tolerance, and five-second cooldown prevent normal pointer passes from causing chatter. Touch pointers are excluded, and reduced-motion visitors still receive the response without the added motion.
+
+**Verified:** Production build passes (`2021 modules transformed`). Browser cursor-path testing confirmed a single pass does not trigger a response while a deliberate circle does; the tested response rendered clearly in the existing glass bubble. No browser console errors were observed, and `git diff --check` passes with only the existing line-ending warnings.
+
+**Next:** Review the petting interaction locally at `http://127.0.0.1:5174/`. Commit and deploy the combined Equinox glass and petting updates only after Dheoryan approves them.
+
+## 2026-07-30 10:23 — [Codex] Added readable glassmorphism to Equinox
+
+**Done:** Restyled the expanded Equinox guide and its speech bubble with a restrained purple-black glass material: layered translucent gradients, stronger backdrop blur and saturation, inner edge highlights, softer glow, and glass control surfaces. Added a darker reading surface behind long responses and raised secondary-text contrast so page imagery cannot compete with the copy.
+
+**Verified:** Production build passes (`2021 modules transformed`). Browser checks at 390x844 and desktop confirmed the settled panel remains readable over both portrait and text-heavy backgrounds, fits the mobile viewport without internal overflow, and retains its full interaction layout. No browser console errors were observed, and `git diff --check` passes with only the existing line-ending warning.
+
+**Next:** Review the glass treatment locally at `http://127.0.0.1:5174/`. Commit and deploy only after Dheoryan approves it.
+
 ## 2026-07-30 10:14 — [Codex] Deployed the Equinox portfolio guide upgrade
 
 **Done:** Committed the approved Equinox guide upgrade and simplified floating visual as `174599d` (`Upgrade Equinox portfolio guide`) and pushed `main` to GitHub. The push triggered the linked Vercel production deployment.

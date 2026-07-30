@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHeroParallax, useWorkCardParallax, useAboutParallax, useContactParallax, useProcessParallax, useCaseStudyParallax } from "./components/parallax";
 import VirtualPet from "./components/VirtualPet";
+import HeroSystemField from "./components/HeroSystemField";
 import {
   motion,
   useInView,
@@ -968,117 +969,7 @@ function Navbar({ onHome }: { onHome: () => void }) {
 // ── Hero ──────────────────────────────────────────────────────────────────────
 
 function HeroDigitalTexture() {
-  return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
-    >
-      <style>{`
-        @keyframes dpa-hero-beams {
-          0%, 100% { transform: translate3d(-1.5%, 1%, 0) scale(1); opacity: 0.78; }
-          50% { transform: translate3d(1.5%, -1%, 0) scale(1.04); opacity: 0.96; }
-        }
-        @keyframes dpa-hero-grid {
-          from { transform: translate3d(0, 0, 0) rotateX(62deg); }
-          to { transform: translate3d(-64px, 48px, 0) rotateX(62deg); }
-        }
-        @keyframes dpa-hero-speckles {
-          0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.34; }
-          50% { transform: translate3d(22px, -16px, 0); opacity: 0.52; }
-        }
-        @keyframes dpa-hero-scan {
-          0% { transform: translate3d(-12%, -80%, 0) rotate(10deg); opacity: 0; }
-          18% { opacity: 0.32; }
-          70% { opacity: 0.12; }
-          100% { transform: translate3d(12%, 120%, 0) rotate(10deg); opacity: 0; }
-        }
-        .dpa-hero-composite {
-          transform: translateZ(0);
-          will-change: transform, opacity;
-        }
-      `}</style>
-
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 54% 18%, rgba(204,110,248,0.16) 0%, transparent 36%), radial-gradient(ellipse at 76% 48%, rgba(98,76,255,0.12) 0%, transparent 34%), linear-gradient(180deg, #070707 0%, #0a0a0a 62%, #050505 100%)",
-        }}
-      />
-
-      <div
-        className="absolute inset-[-22%] dpa-hero-composite"
-        style={{
-          background:
-            "linear-gradient(106deg, transparent 12%, rgba(204,110,248,0.03) 26%, rgba(204,110,248,0.19) 42%, rgba(162,123,255,0.12) 52%, transparent 68%), linear-gradient(72deg, transparent 22%, rgba(200,255,77,0.05) 39%, rgba(204,110,248,0.13) 50%, transparent 66%), radial-gradient(ellipse at 66% 42%, rgba(204,110,248,0.24) 0%, rgba(204,110,248,0.05) 24%, transparent 52%)",
-          filter: "blur(22px)",
-          mixBlendMode: "screen",
-          animation: "dpa-hero-beams 13s ease-in-out infinite",
-        }}
-      />
-
-      <div
-        className="absolute inset-x-[-10%] bottom-[-28%] h-[62%] dpa-hero-composite"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 50%, rgba(204,110,248,0.2) 0%, rgba(90,78,255,0.09) 28%, transparent 68%)",
-          filter: "blur(34px)",
-          opacity: 0.8,
-          animation: "dpa-hero-beams 16s ease-in-out infinite reverse",
-        }}
-      />
-
-      <div
-        className="absolute inset-x-[-18%] bottom-[-34%] h-[78%] dpa-hero-composite"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(204,110,248,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(204,110,248,0.06) 1px, transparent 1px)",
-          backgroundSize: "76px 76px",
-          maskImage:
-            "radial-gradient(ellipse at 50% 34%, black 0%, rgba(0,0,0,0.68) 36%, transparent 72%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse at 50% 34%, black 0%, rgba(0,0,0,0.68) 36%, transparent 72%)",
-          opacity: 0.22,
-          transformOrigin: "50% 70%",
-          animation: "dpa-hero-grid 22s linear infinite",
-        }}
-      />
-
-      <div
-        className="absolute inset-[-8%] dpa-hero-composite"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, rgba(204,110,248,0.34) 0 1px, transparent 1.7px), radial-gradient(circle, rgba(242,241,236,0.18) 0 1px, transparent 1.6px), radial-gradient(circle, rgba(200,255,77,0.16) 0 1px, transparent 1.7px)",
-          backgroundPosition: "0 0, 42px 58px, 88px 20px",
-          backgroundSize: "142px 142px, 214px 214px, 260px 260px",
-          maskImage:
-            "linear-gradient(90deg, transparent 0%, black 14%, black 86%, transparent 100%)",
-          WebkitMaskImage:
-            "linear-gradient(90deg, transparent 0%, black 14%, black 86%, transparent 100%)",
-          mixBlendMode: "screen",
-          animation: "dpa-hero-speckles 15s ease-in-out infinite",
-        }}
-      />
-
-      <div
-        className="absolute inset-x-[-10%] top-0 h-2/3 dpa-hero-composite"
-        style={{
-          background:
-            "linear-gradient(180deg, transparent 0%, rgba(204,110,248,0.08) 50%, transparent 100%)",
-          mixBlendMode: "screen",
-          animation: "dpa-hero-scan 9s ease-in-out infinite",
-        }}
-      />
-
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(10,10,10,0.08) 0%, rgba(10,10,10,0.22) 48%, rgba(10,10,10,0.86) 100%)",
-        }}
-      />
-    </div>
-  );
+  return <HeroSystemField />;
 }
 
 function HeroSection() {
@@ -1094,43 +985,83 @@ function HeroSection() {
 
       <motion.div
         ref={metaRef}
-        className="relative z-10 grid w-full gap-3 justify-items-center text-center sm:justify-items-stretch sm:text-left sm:grid-cols-[auto_minmax(280px,560px)] sm:items-start sm:justify-between"
+        className="relative z-10 flex w-full items-center justify-center gap-4 sm:gap-5"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.6 }}
       >
-        <div className="flex items-center gap-2 justify-center sm:justify-start">
-          <motion.span
-            className="inline-block size-2 rounded-full"
-            style={{ background: "#22C55E" }}
-            animate={{ opacity: [1, 0.25, 1] }}
-            transition={{
-              duration: 1.6,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <span
-            style={{
-              fontFamily: "'Space Mono', monospace",
-              fontSize: 12,
-              color: DIM,
-            }}
-          >
-            Available for work — 2026
-          </span>
-        </div>
         <span
-          className="max-w-[560px] sm:justify-self-end sm:text-right"
+          aria-hidden
+          className="hidden h-px flex-1 sm:block"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent, rgba(204,110,248,0.2))",
+          }}
+        />
+
+        <div
+          className="flex max-w-[920px] flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center"
           style={{
             fontFamily: "'Space Mono', monospace",
-            fontSize: 12,
-            color: DIM,
-            lineHeight: 1.6,
+            fontSize: 11,
+            color: "rgba(242,241,236,0.56)",
+            lineHeight: 1.5,
           }}
         >
-          Product Designer · Web Apps &amp; Design Systems · Based in Bekasi, Indonesia
-        </span>
+          <span className="flex basis-full items-center justify-center gap-2 sm:basis-auto">
+            <motion.span
+              className="inline-block size-2 rounded-full"
+              style={{
+                background: "#22C55E",
+                boxShadow: "0 0 10px rgba(34,197,94,0.42)",
+              }}
+              animate={{ opacity: [1, 0.35, 1] }}
+              transition={{
+                duration: 1.6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+            Available for work — 2026
+          </span>
+
+          <span
+            aria-hidden
+            className="hidden h-3 w-px sm:block"
+            style={{
+              background: "rgba(204,110,248,0.42)",
+            }}
+          />
+
+          <span style={{ color: "rgba(242,241,236,0.78)" }}>
+            Product Designer
+          </span>
+
+          <span
+            aria-hidden
+            className="hidden h-3 w-px sm:block"
+            style={{ background: "rgba(204,110,248,0.42)" }}
+          />
+
+          <span>Web Apps &amp; Design Systems</span>
+
+          <span
+            aria-hidden
+            className="hidden h-3 w-px sm:block"
+            style={{ background: "rgba(204,110,248,0.42)" }}
+          />
+
+          <span>Bekasi, Indonesia</span>
+        </div>
+
+        <span
+          aria-hidden
+          className="hidden h-px flex-1 sm:block"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(204,110,248,0.2), transparent)",
+          }}
+        />
       </motion.div>
 
       <motion.div

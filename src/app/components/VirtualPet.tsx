@@ -60,8 +60,10 @@ type Question = {
 
 const PURPLE = "#cc6ef8";
 const FG = "#f2f1ec";
-const PANEL_BG = "rgba(10,10,10,0.96)";
-const MUTED = "rgba(242,241,236,0.58)";
+const PANEL_BG =
+  "linear-gradient(145deg, rgba(31,22,37,0.94) 0%, rgba(7,7,10,0.95) 46%, rgba(14,9,18,0.94) 100%)";
+const READING_SURFACE = "rgba(4,4,7,0.54)";
+const MUTED = "rgba(242,241,236,0.72)";
 
 const CONTACT_LINKS: ContactLink[] = [
   {
@@ -108,6 +110,15 @@ const SLEEPY_MESSAGES = [
   "Quiet shift. Tap me when you need a guide.",
   "Low activity, high style.",
   "I am dreaming in purple pixels.",
+];
+
+const PETTING_MESSAGES = [
+  "Oh. Premium cursor scratches.",
+  "Tiny head pats detected. I approve.",
+  "Okay, okay. My pixels are blushing.",
+  "You found the premium petting zone.",
+  "Prrr... that is probably just my cooling fan.",
+  "That was a very good digital head pat.",
 ];
 
 const CASE_STUDY_MESSAGES: Record<string, { intro: string; note: string }> = {
@@ -275,9 +286,13 @@ function IconButton({
       onClick={onClick}
       className="flex size-10 items-center justify-center"
       style={{
-        border: "1px solid rgba(242,241,236,0.1)",
+        border: "1px solid rgba(242,241,236,0.14)",
         borderRadius: 8,
-        background: "rgba(242,241,236,0.035)",
+        background:
+          "linear-gradient(145deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025))",
+        boxShadow: "0 8px 20px rgba(0,0,0,0.16), inset 0 1px rgba(255,255,255,0.055)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
         color: FG,
         cursor: "pointer",
       }}
@@ -369,6 +384,7 @@ export default function VirtualPet({
   const reduceMotion = useReducedMotion();
   const [mood, setMood] = useState<Mood>("idle");
   const [blink, setBlink] = useState(false);
+  const [isPetting, setIsPetting] = useState(false);
   const [energy, setEnergy] = useState(72);
   const [reactionKey, setReactionKey] = useState(0);
   const [message, setMessage] = useState<string | null>(null);
@@ -399,6 +415,16 @@ export default function VirtualPet({
   const readCaseRef = useRef<Set<string>>(new Set());
   const messageTimerRef = useRef<number | null>(null);
   const moodTimerRef = useRef<number | null>(null);
+  const pettingTimerRef = useRef<number | null>(null);
+  const pettingPathRef = useRef({
+    lastX: 0,
+    lastY: 0,
+    lastAngle: null as number | null,
+    lastAt: 0,
+    angleTravel: 0,
+    distance: 0,
+    cooldownUntil: 0,
+  });
   const panelOpenRef = useRef(panelOpen);
   const mutedRef = useRef(muted);
   const x = useMotionValue(0);
@@ -644,6 +670,9 @@ export default function VirtualPet({
       if (moodTimerRef.current !== null) {
         window.clearTimeout(moodTimerRef.current);
       }
+      if (pettingTimerRef.current !== null) {
+        window.clearTimeout(pettingTimerRef.current);
+      }
     };
   }, []);
 
@@ -851,6 +880,97 @@ export default function VirtualPet({
   const petSize = minimized ? 46 : mobileViewport ? 64 : 74;
   const faceSize = minimized ? 31 : mobileViewport ? 42 : 48;
 
+  const resetPettingPath = () => {
+    const path = pettingPathRef.current;
+    path.lastX = 0;
+    path.lastY = 0;
+    path.lastAngle = null;
+    path.lastAt = 0;
+    path.angleTravel = 0;
+    path.distance = 0;
+  };
+
+  const handlePetPointerMove = (
+    event: React.PointerEvent<HTMLButtonElement>,
+  ) => {
+    if (minimized || event.pointerType === "touch") return;
+
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const pointerX = event.clientX - (bounds.left + bounds.width / 2);
+    const pointerY = event.clientY - (bounds.top + bounds.height / 2);
+    const radius = Math.hypot(pointerX, pointerY);
+    const now = Date.now();
+    const path = pettingPathRef.current;
+
+    if (radius < faceSize * 0.16 || radius > petSize * 0.52) {
+      resetPettingPath();
+      return;
+    }
+
+    if (now - path.lastAt > 1800) {
+      resetPettingPath();
+    }
+
+    const angle = Math.atan2(pointerY, pointerX);
+    if (path.lastAt > 0) {
+      path.distance += Math.hypot(
+        pointerX - path.lastX,
+        pointerY - path.lastY,
+      );
+      if (path.lastAngle !== null) {
+        let angleDelta = angle - path.lastAngle;
+        while (angleDelta > Math.PI) angleDelta -= Math.PI * 2;
+        while (angleDelta < -Math.PI) angleDelta += Math.PI * 2;
+        if (Math.abs(angleDelta) < 1.25) {
+          path.angleTravel += Math.abs(angleDelta);
+        }
+      }
+    }
+
+    path.lastX = pointerX;
+    path.lastY = pointerY;
+    path.lastAngle = angle;
+    path.lastAt = now;
+
+    setIsPetting(true);
+    setMood((current) =>
+      ["idle", "curious", "sleepy"].includes(current) ? "shy" : current,
+    );
+    if (pettingTimerRef.current !== null) {
+      window.clearTimeout(pettingTimerRef.current);
+    }
+    pettingTimerRef.current = window.setTimeout(
+      () => setIsPetting(false),
+      340,
+    );
+
+    const completedCircle =
+      path.angleTravel > Math.PI * 1.1 && path.distance > 52;
+    const completedStrokes = path.distance > 118;
+    if (
+      (completedCircle || completedStrokes) &&
+      now >= path.cooldownUntil
+    ) {
+      path.cooldownUntil = now + 5200;
+      path.angleTravel = 0;
+      path.distance = 0;
+      setEnergy((current) => clamp(current + 6, 4, 100));
+      speak(
+        pickMessage(PETTING_MESSAGES, Math.floor(now / 1200)),
+        "happy",
+        3600,
+        true,
+      );
+      settleMood(2500);
+    }
+  };
+
+  const handlePetPointerLeave = () => {
+    resetPettingPath();
+    setIsPetting(false);
+    settleMood(700);
+  };
+
   return (
     <>
       <AnimatePresence>
@@ -867,15 +987,16 @@ export default function VirtualPet({
               maxHeight: mobileViewport
                 ? "calc(100svh - 112px)"
                 : "min(650px, calc(100vh - 132px))",
-              border: "1px solid rgba(242,241,236,0.12)",
+              border: "1px solid rgba(242,241,236,0.16)",
               borderRadius: 10,
               background: PANEL_BG,
               boxShadow:
-                "0 24px 70px rgba(0,0,0,0.54), 0 0 48px rgba(204,110,248,0.1)",
-              backdropFilter: "blur(18px)",
-              WebkitBackdropFilter: "blur(18px)",
+                "0 30px 80px rgba(0,0,0,0.58), 0 0 54px rgba(204,110,248,0.12), inset 0 1px rgba(255,255,255,0.075), inset 1px 0 rgba(255,255,255,0.025)",
+              backdropFilter: "blur(28px) saturate(135%)",
+              WebkitBackdropFilter: "blur(28px) saturate(135%)",
               padding: mobileViewport ? 14 : 16,
               color: FG,
+              isolation: "isolate",
             }}
             initial={{ opacity: 0, y: 14, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -981,7 +1102,10 @@ export default function VirtualPet({
                       aria-live="polite"
                       style={{
                         borderLeft: `2px solid ${petTone}`,
-                        padding: "2px 0 2px 12px",
+                        borderRadius: "0 8px 8px 0",
+                        background: READING_SURFACE,
+                        boxShadow: "inset 0 1px rgba(255,255,255,0.025)",
+                        padding: "10px 12px",
                       }}
                     >
                       <p
@@ -997,7 +1121,7 @@ export default function VirtualPet({
                       <p
                         className="mt-1.5"
                         style={{
-                          color: "rgba(242,241,236,0.74)",
+                          color: "rgba(242,241,236,0.8)",
                           fontFamily: "'Space Mono', monospace",
                           fontSize: 10.5,
                           lineHeight: 1.55,
@@ -1015,9 +1139,11 @@ export default function VirtualPet({
                         onClick={() => navigateToCase(recommendedCase)}
                         className="mt-3 flex min-h-11 w-full items-center justify-between gap-3 text-left"
                         style={{
-                          border: `1px solid ${PURPLE}66`,
+                          border: `1px solid ${PURPLE}78`,
                           borderRadius: 8,
-                          background: "rgba(204,110,248,0.08)",
+                          background:
+                            "linear-gradient(135deg, rgba(204,110,248,0.14), rgba(204,110,248,0.055))",
+                          boxShadow: "inset 0 1px rgba(255,255,255,0.04)",
                           color: FG,
                           cursor: "pointer",
                           padding: "9px 11px",
@@ -1091,9 +1217,10 @@ export default function VirtualPet({
                         }}
                         className="mt-3 flex min-h-11 w-full items-center justify-center gap-2"
                         style={{
-                          border: "1px solid rgba(242,241,236,0.1)",
+                          border: "1px solid rgba(242,241,236,0.13)",
                           borderRadius: 8,
-                          background: "rgba(242,241,236,0.03)",
+                          background:
+                            "linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.018))",
                           color: FG,
                           cursor: "pointer",
                           fontFamily: "'Space Grotesk', sans-serif",
@@ -1116,9 +1243,10 @@ export default function VirtualPet({
                             onClick={() => scrollHomeSection(id)}
                             className="min-h-11"
                             style={{
-                              border: "1px solid rgba(242,241,236,0.1)",
+                              border: "1px solid rgba(242,241,236,0.13)",
                               borderRadius: 8,
-                              background: "rgba(242,241,236,0.03)",
+                              background:
+                                "linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.018))",
                               color: FG,
                               cursor: "pointer",
                               fontFamily: "'Space Mono', monospace",
@@ -1172,10 +1300,10 @@ export default function VirtualPet({
                           minWidth: 0,
                           minHeight: 42,
                           flex: 1,
-                          border: "1px solid rgba(242,241,236,0.12)",
+                          border: "1px solid rgba(242,241,236,0.16)",
                           borderRadius: 8,
                           outline: "none",
-                          background: "rgba(242,241,236,0.04)",
+                          background: READING_SURFACE,
                           color: FG,
                           fontFamily: "'Space Mono', monospace",
                           fontSize: 10,
@@ -1204,11 +1332,13 @@ export default function VirtualPet({
                       className="my-4"
                       style={{
                         borderLeft: `2px solid ${petTone}`,
-                        color: "rgba(242,241,236,0.82)",
+                        borderRadius: "0 8px 8px 0",
+                        background: READING_SURFACE,
+                        color: "rgba(242,241,236,0.86)",
                         fontFamily: "'Space Mono', monospace",
                         fontSize: 10.5,
                         lineHeight: 1.55,
-                        paddingLeft: 12,
+                        padding: "10px 12px",
                         overflowWrap: "anywhere",
                       }}
                     >
@@ -1346,10 +1476,13 @@ export default function VirtualPet({
                 : 300,
               maxHeight: mobileViewport ? "min(30vh, 220px)" : 300,
               overflowY: "auto",
-              border: "1px solid rgba(242,241,236,0.1)",
+              border: "1px solid rgba(242,241,236,0.15)",
               borderRadius: 9,
               background: PANEL_BG,
-              boxShadow: "0 16px 44px rgba(0,0,0,0.4)",
+              boxShadow:
+                "0 18px 52px rgba(0,0,0,0.48), 0 0 30px rgba(204,110,248,0.08), inset 0 1px rgba(255,255,255,0.065)",
+              backdropFilter: "blur(24px) saturate(130%)",
+              WebkitBackdropFilter: "blur(24px) saturate(130%)",
               color: FG,
               fontFamily: "'Space Mono', monospace",
               fontSize: mobileViewport ? 10 : 10.5,
@@ -1413,6 +1546,8 @@ export default function VirtualPet({
               speak("Oh hi. I can help with this page.", "shy", 2600);
             }
           }}
+          onPointerMove={handlePetPointerMove}
+          onPointerLeave={handlePetPointerLeave}
           className="relative flex items-center justify-center overflow-visible focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#cc6ef8]"
           style={{
             width: petSize,
@@ -1439,9 +1574,16 @@ export default function VirtualPet({
               reduceMotion
                 ? { opacity: 0.5 }
                 : {
-                    opacity: mood === "sleepy" ? 0.28 : [0.42, 0.7, 0.42],
+                    opacity:
+                      mood === "sleepy"
+                        ? 0.28
+                        : isPetting
+                          ? [0.55, 0.82, 0.55]
+                          : [0.42, 0.7, 0.42],
                     scale:
-                      mood === "excited" || mood === "surprised"
+                      isPetting
+                        ? [1, 1.16, 1]
+                        : mood === "excited" || mood === "surprised"
                         ? [1, 1.2, 1]
                         : [1, 1.06, 1],
                   }
@@ -1456,7 +1598,13 @@ export default function VirtualPet({
             animate={
               reduceMotion
                 ? undefined
-                : {
+                : isPetting
+                  ? {
+                      y: [0, -3, 0],
+                      rotate: [-5, 6, -3, 4, 0],
+                      scale: [1, 1.07, 1.02],
+                    }
+                  : {
                     y: mood === "sleepy" ? [2, 4, 2] : [0, -2, 0],
                     rotate:
                       mood === "excited"
@@ -1466,7 +1614,11 @@ export default function VirtualPet({
                           : 0,
                   }
             }
-            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+            transition={{
+              duration: isPetting ? 0.62 : 2.4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
           >
             <span
               className="absolute inset-0"
