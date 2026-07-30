@@ -1,5 +1,37 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-30 13:41 — [Codex] Refined the cockpit design diagrams
+
+**Done:** Rebuilt the left design-flow graphic with a clean orthogonal connector, three precise junction nodes, and aligned cursor, workflow, and interface stages. Expanded the right hierarchy from generic stacked boxes into three recognizable levels: token primitives, a component with state and status, and a composed product screen with navigation, content modules, and a small chart. Straight vertical connectors now join each level without the stray diagonal line.
+
+**Verified:** The production Vite build passes (`2023 modules transformed`) with only the existing bundle-size advisory. Desktop browser review confirmed both diagrams render at the intended scale, their connectors terminate cleanly, the added internal detail remains subordinate to the CTA, horizontal overflow remains zero, and no console warnings or errors were introduced. `git diff --check` reports no whitespace errors beyond existing line-ending notices.
+
+**Next:** Review the refined diagrams locally at `http://127.0.0.1:5174/`. Commit and deploy them with the pending Let's Talk performance and simplification updates after approval.
+
+## 2026-07-30 13:36 — [Codex] Simplified the contact cockpit into design graphics
+
+**Done:** Reduced the spaceship dashboard's textual HUD to three useful signals: `04 / Contact`, a visual route marker, and `Open / 2026`. Replaced the left project-mode list with a cursor-to-flow-to-interface diagram and replaced the right signal-status list with a compact token/component/screen hierarchy graphic. Removed the decorative “Transmission ready” label and condensed the supporting copy to one direct sentence: “Complex product problem? Let’s make it clear, usable, and ready to ship.”
+
+**Verified:** The production Vite build passes (`2023 modules transformed`) with only the existing bundle-size advisory. Desktop and 390x844 browser checks confirmed the graphics frame the CTA without competing with it, the shorter copy remains readable, the desktop-only diagrams disappear cleanly on mobile, horizontal overflow remains zero, and no console warnings or errors were introduced. `git diff --check` reports no whitespace errors beyond existing line-ending notices.
+
+**Next:** Review the simplified contact cockpit locally at `http://127.0.0.1:5174/`. Commit and deploy it together with the pending Let's Talk performance patch after approval.
+
+## 2026-07-30 13:27 — [Codex] Smoothed hyperspace cursor steering
+
+**Done:** Removed the remaining cursor-movement bottleneck from the Let's Talk hyperspace field. Pointer events now use cached section bounds instead of forcing `getBoundingClientRect()` on every mouse update, stop doing work while the section is offscreen, and only refresh geometry once per animation frame during scrolling. Added a short 36 FPS interaction window and faster time-based vanishing-point damping while the visitor is actively steering; the field returns to its lower-cost 24 FPS idle cadence immediately afterward.
+
+**Verified:** The production Vite build passes (`2023 modules transformed`) with only the existing bundle-size advisory. A live desktop test moved the cursor through a 21-point circular steering path across the cockpit; the star field followed cleanly, retained the intended depth response, and produced no console warnings or errors. `git diff --check` reports no whitespace errors beyond existing line-ending notices.
+
+**Next:** Review the optimized cursor response locally at `http://127.0.0.1:5174/`. Commit and deploy the complete Let's Talk performance patch after approval.
+
+## 2026-07-30 13:19 — [Codex] Removed the Let's Talk animation bottleneck
+
+**Done:** Preserved the cockpit composition and cursor-steered hyperspace behavior while removing the expensive full-width backdrop filters that forced the browser to re-blur the moving canvas on every frame. Removed the separate GSAP contact parallax transform so Motion is now the section's only content animation owner. Reduced the hyperspace field to 68 desktop / 38 coarse-pointer stars, capped its internal render scale below CSS resolution, and limited rendering to 24 FPS on desktop and 20 FPS on coarse-pointer devices.
+
+**Verified:** The production Vite build passes (`2023 modules transformed`) with only the existing bundle-size advisory. Local desktop and 390x844 browser checks confirmed the cockpit canvas remains active, the CTA and communication controls stay crisp, responsive canvas sizing remains correct, and no console errors or horizontal clipping were introduced. `git diff --check` reports no whitespace errors beyond existing line-ending notices.
+
+**Next:** Review the lighter Let's Talk animation locally at `http://127.0.0.1:5174/`. Commit and deploy the performance patch after approval.
+
 ## 2026-07-30 12:07 — [Codex] Released the cockpit contact experience to production
 
 **Done:** Committed and pushed the approved cockpit-style Let's Talk section, reusable hyperspace field, and system-grid footer to `main`, triggering the linked Vercel production deployment. The release includes the background swap, responsive communication deck, desktop HUD instruments, mobile control stack, cursor-steered hyperspace view, reduced-motion behavior, and offscreen canvas pausing. Local logs, screenshots, and helper artifacts were excluded.

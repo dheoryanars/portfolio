@@ -50,7 +50,7 @@ export default function HyperspaceField() {
 
     const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
     const random = createRandom(73019);
-    const starCount = coarsePointer ? 54 : 92;
+    const starCount = coarsePointer ? 38 : 68;
     const stars: HyperspaceStar[] = Array.from(
       { length: starCount },
       (_, index) => {
@@ -81,7 +81,12 @@ export default function HyperspaceField() {
     let previousTimestamp = 0;
     let previousRenderTimestamp = 0;
     let burst = 0;
-    const frameInterval = 1000 / (coarsePointer ? 24 : 30);
+    let cursorActiveUntil = 0;
+    let pointerInside = false;
+    let boundsAnimationFrame = 0;
+    let hostBounds = host.getBoundingClientRect();
+    const idleFrameInterval = 1000 / (coarsePointer ? 20 : 24);
+    const activeFrameInterval = 1000 / 36;
     const vanishingPoint = {
       x: 0.5,
       y: 0.48,
@@ -90,10 +95,12 @@ export default function HyperspaceField() {
     };
 
     const resize = () => {
-      const bounds = host.getBoundingClientRect();
-      width = Math.max(1, bounds.width);
-      height = Math.max(1, bounds.height);
-      pixelRatio = Math.min(window.devicePixelRatio || 1, 1.25);
+      hostBounds = host.getBoundingClientRect();
+      width = Math.max(1, hostBounds.width);
+      height = Math.max(1, hostBounds.height);
+      const resolutionScale = coarsePointer ? 0.82 : 0.92;
+      pixelRatio =
+        Math.min(window.devicePixelRatio || 1, 1) * resolutionScale;
       canvas.width = Math.round(width * pixelRatio);
       canvas.height = Math.round(height * pixelRatio);
       canvas.style.width = `${width}px`;
@@ -102,6 +109,10 @@ export default function HyperspaceField() {
     };
 
     const draw = (timestamp: number) => {
+      const cursorActive = !coarsePointer && timestamp < cursorActiveUntil;
+      const frameInterval = cursorActive
+        ? activeFrameInterval
+        : idleFrameInterval;
       if (
         !reduceMotion &&
         previousRenderTimestamp > 0 &&
@@ -117,7 +128,7 @@ export default function HyperspaceField() {
       previousTimestamp = timestamp;
       previousRenderTimestamp = timestamp;
 
-      const pointEase = 1 - Math.exp(-delta * 3.2);
+      const pointEase = 1 - Math.exp(-delta * (cursorActive ? 8.5 : 4.2));
       vanishingPoint.x +=
         (vanishingPoint.targetX - vanishingPoint.x) * pointEase;
       vanishingPoint.y +=
@@ -196,29 +207,53 @@ export default function HyperspaceField() {
     };
 
     const handlePointerMove = (event: PointerEvent) => {
-      if (coarsePointer || event.pointerType === "touch") return;
-      const bounds = host.getBoundingClientRect();
-      const inside =
-        event.clientX >= bounds.left &&
-        event.clientX <= bounds.right &&
-        event.clientY >= bounds.top &&
-        event.clientY <= bounds.bottom;
-
-      if (!inside) {
-        vanishingPoint.targetX = 0.5;
-        vanishingPoint.targetY = 0.48;
+      if (
+        !visible ||
+        coarsePointer ||
+        event.pointerType === "touch" ||
+        hostBounds.width <= 0 ||
+        hostBounds.height <= 0
+      ) {
         return;
       }
 
-      const localX = (event.clientX - bounds.left) / bounds.width;
-      const localY = (event.clientY - bounds.top) / bounds.height;
+      const inside =
+        event.clientX >= hostBounds.left &&
+        event.clientX <= hostBounds.right &&
+        event.clientY >= hostBounds.top &&
+        event.clientY <= hostBounds.bottom;
+
+      if (!inside) {
+        if (pointerInside) {
+          pointerInside = false;
+          cursorActiveUntil = window.performance.now() + 240;
+          vanishingPoint.targetX = 0.5;
+          vanishingPoint.targetY = 0.48;
+        }
+        return;
+      }
+
+      pointerInside = true;
+      cursorActiveUntil = window.performance.now() + 180;
+      const localX = (event.clientX - hostBounds.left) / hostBounds.width;
+      const localY = (event.clientY - hostBounds.top) / hostBounds.height;
       vanishingPoint.targetX = 0.5 + (localX - 0.5) * 0.24;
       vanishingPoint.targetY = 0.48 + (localY - 0.5) * 0.18;
     };
 
     const handlePointerLeave = () => {
+      pointerInside = false;
+      cursorActiveUntil = window.performance.now() + 240;
       vanishingPoint.targetX = 0.5;
       vanishingPoint.targetY = 0.48;
+    };
+
+    const handleViewportChange = () => {
+      if (!visible || boundsAnimationFrame) return;
+      boundsAnimationFrame = window.requestAnimationFrame(() => {
+        boundsAnimationFrame = 0;
+        hostBounds = host.getBoundingClientRect();
+      });
     };
 
     const resizeObserver = new ResizeObserver(() => {
@@ -240,6 +275,9 @@ export default function HyperspaceField() {
           animationFrame = window.requestAnimationFrame(draw);
         } else {
           window.cancelAnimationFrame(animationFrame);
+          pointerInside = false;
+          vanishingPoint.targetX = 0.5;
+          vanishingPoint.targetY = 0.48;
         }
       },
       { threshold: [0, 0.12] },
@@ -252,6 +290,9 @@ export default function HyperspaceField() {
       passive: true,
     });
     window.addEventListener("pointerleave", handlePointerLeave);
+    window.addEventListener("scroll", handleViewportChange, {
+      passive: true,
+    });
 
     if (reduceMotion) {
       draw(0);
@@ -259,10 +300,12 @@ export default function HyperspaceField() {
 
     return () => {
       window.cancelAnimationFrame(animationFrame);
+      window.cancelAnimationFrame(boundsAnimationFrame);
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
       window.removeEventListener("pointermove", handlePointerMove);
       window.removeEventListener("pointerleave", handlePointerLeave);
+      window.removeEventListener("scroll", handleViewportChange);
     };
   }, [reduceMotion]);
 

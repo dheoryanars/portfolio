@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useHeroParallax, useAboutParallax, useContactParallax, useProcessParallax, useCaseStudyParallax } from "./components/parallax";
+import { useHeroParallax, useAboutParallax, useProcessParallax, useCaseStudyParallax } from "./components/parallax";
 import VirtualPet from "./components/VirtualPet";
 import HeroSystemField from "./components/HeroSystemField";
 import HyperspaceField from "./components/HyperspaceField";
@@ -16,6 +16,9 @@ import {
   Linkedin,
   Mail,
   MessageCircle,
+  MousePointer2,
+  PanelsTopLeft,
+  Workflow,
 } from "lucide-react";
 import svgPaths from "@/imports/PortfolioDheoryan-1/svg-t4dtk4ouv6";
 import CaseStudySonar from "@/imports/CaseStudySonar-1/index";
@@ -2012,8 +2015,6 @@ function ContactSection() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const reduceMotion = useReducedMotion();
-  const { headlineRef: contactHeadlineRef, buttonsRef } =
-    useContactParallax();
 
   const channels = [
     {
@@ -2097,7 +2098,7 @@ function ContactSection() {
           initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="relative flex flex-col gap-5 border-y border-white/[0.1] bg-black/20 px-5 py-4 backdrop-blur-[5px] md:grid md:grid-cols-3 md:items-center md:px-8"
+          className="relative flex flex-col gap-5 border-y border-white/[0.1] bg-[rgba(7,7,10,0.88)] px-5 py-4 md:grid md:grid-cols-3 md:items-center md:px-8"
         >
           <p
             style={{
@@ -2108,20 +2109,18 @@ function ContactSection() {
               color: PURPLE,
             }}
           >
-            {"04 / Communication deck"}
+            {"04 / Contact"}
           </p>
-          <span
-            className="hidden text-center md:block"
-            style={{
-              fontFamily: "'Space Mono', monospace",
-              fontSize: 10,
-              color: DIM,
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-            }}
+          <div
+            aria-hidden="true"
+            className="hidden items-center justify-center md:flex"
           >
-            Forward channel / Bekasi
-          </span>
+            <span className="h-px w-12 bg-white/[0.12]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-purple-300/55" />
+            <span className="mx-1 h-2.5 w-2.5 rotate-45 border border-purple-300/55" />
+            <span className="h-1.5 w-1.5 rounded-full bg-purple-300/55" />
+            <span className="h-px w-12 bg-white/[0.12]" />
+          </div>
           <div
             className="flex items-center gap-3 md:justify-self-end"
             style={{
@@ -2137,7 +2136,7 @@ function ContactSection() {
                 boxShadow: "0 0 14px rgba(47,191,113,0.6)",
               }}
             />
-            Available for selected 2026 projects
+            Open / 2026
           </div>
         </motion.div>
 
@@ -2160,62 +2159,77 @@ function ContactSection() {
           />
 
           <motion.div
+            aria-hidden="true"
             initial={{ opacity: 0, x: -18 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.16 }}
-            className="absolute left-6 top-12 hidden w-44 border-l border-purple-300/30 pl-4 lg:block"
-            style={{
-              fontFamily: "'Space Mono', monospace",
-              fontSize: 10,
-              lineHeight: 1.8,
-              color: DIM,
-            }}
+            className="absolute left-8 top-12 hidden h-44 w-40 lg:block"
           >
-            <span className="block text-purple-300">PROJECT MODE</span>
-            <span className="mt-3 block text-white/75">PRODUCT DESIGN</span>
-            <span className="block">DESIGN SYSTEMS</span>
-            <span className="block">PROTOTYPING</span>
-            <span className="mt-3 block text-purple-300/70">VECTOR 03 / 03</span>
+            <div className="absolute bottom-11 left-[21px] top-11 w-px bg-purple-300/35" />
+            <div className="absolute left-[21px] top-[87px] h-px w-[37px] bg-purple-300/35" />
+            <span className="absolute left-0 top-0 flex h-11 w-11 items-center justify-center border border-purple-300/35 bg-black/35 text-purple-200">
+              <MousePointer2 size={16} strokeWidth={1.45} />
+            </span>
+            <span className="absolute left-[58px] top-[65px] flex h-11 w-11 items-center justify-center border border-purple-300/45 bg-purple-400/[0.07] text-purple-200">
+              <Workflow size={17} strokeWidth={1.45} />
+            </span>
+            <span className="absolute bottom-0 left-0 flex h-11 w-11 items-center justify-center border border-purple-300/35 bg-black/35 text-purple-200">
+              <PanelsTopLeft size={17} strokeWidth={1.45} />
+            </span>
+            <span className="absolute left-[17px] top-[83px] h-[9px] w-[9px] rounded-full border border-purple-200/65 bg-[#0a0a0a]" />
+            <span className="absolute bottom-[39px] left-[18px] h-[7px] w-[7px] rounded-full border border-purple-200/55 bg-[#0a0a0a]" />
+            <span className="absolute left-[54px] top-[83px] h-[9px] w-[9px] rounded-full border border-purple-200/65 bg-[#0a0a0a]" />
           </motion.div>
 
           <motion.div
+            aria-hidden="true"
             initial={{ opacity: 0, x: 18 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.16 }}
-            className="absolute right-6 top-12 hidden w-44 border-r border-purple-300/30 pr-4 text-right lg:block"
-            style={{
-              fontFamily: "'Space Mono', monospace",
-              fontSize: 10,
-              lineHeight: 1.8,
-              color: DIM,
-            }}
+            className="absolute right-8 top-12 hidden h-44 w-40 lg:block"
           >
-            <span className="block text-purple-300">SIGNAL STATUS</span>
-            <span className="mt-3 block text-white/75">CHANNEL OPEN</span>
-            <span className="block">LOCAL / GMT+7</span>
-            <span className="block">RESPONSE READY</span>
-            <span className="mt-3 block text-[#2fbf71]">LINK STABLE / 100%</span>
+            <span className="absolute right-2 top-0 h-8 w-8 border border-purple-300/45 bg-black/35">
+              <span className="absolute left-[6px] top-[6px] h-1.5 w-1.5 bg-purple-300/45" />
+              <span className="absolute right-[6px] top-[6px] h-1.5 w-1.5 border border-purple-200/55" />
+              <span className="absolute bottom-[6px] left-[6px] h-1.5 w-1.5 border border-purple-200/55" />
+              <span className="absolute bottom-[6px] right-[6px] h-1.5 w-1.5 bg-purple-300/70" />
+            </span>
+            <span className="absolute right-[23px] top-8 h-4 w-px bg-purple-300/35" />
+            <span className="absolute right-5 top-12 h-14 w-24 border border-purple-300/40 bg-black/35">
+              <span className="absolute inset-x-0 top-0 flex h-4 items-center border-b border-white/10 px-2">
+                <span className="h-1 w-1 rounded-full bg-purple-300/50" />
+                <span className="ml-1 h-1 w-1 rounded-full bg-white/15" />
+              </span>
+              <span className="absolute bottom-2 left-2 top-6 w-5 border border-purple-300/25 bg-purple-300/[0.07]" />
+              <span className="absolute left-9 top-7 h-1.5 w-7 bg-purple-300/45" />
+              <span className="absolute left-9 top-11 h-1.5 w-10 bg-white/10" />
+              <span className="absolute bottom-2 right-2 h-2 w-2 rounded-full bg-[#2fbf71] shadow-[0_0_10px_rgba(47,191,113,0.5)]" />
+            </span>
+            <span className="absolute right-[67px] top-[104px] h-3 w-px bg-purple-300/35" />
+            <span className="absolute bottom-0 right-0 h-[60px] w-32 border border-purple-300/40 bg-purple-400/[0.05]">
+              <span className="absolute inset-x-0 top-0 flex h-4 items-center border-b border-white/10 px-2">
+                <span className="h-1 w-1 rounded-full bg-purple-300/50" />
+                <span className="ml-auto h-1 w-5 bg-white/10" />
+              </span>
+              <span className="absolute bottom-0 left-0 top-4 w-5 border-r border-white/10">
+                <span className="absolute left-1.5 top-2 h-1 w-2 bg-purple-300/45" />
+                <span className="absolute left-1.5 top-5 h-1 w-3 bg-white/10" />
+                <span className="absolute left-1.5 top-8 h-1 w-2 bg-white/10" />
+              </span>
+              <span className="absolute left-7 top-6 h-4 w-8 border border-purple-300/20 bg-purple-300/[0.06]" />
+              <span className="absolute right-2 top-6 h-4 w-12 border border-purple-300/20 bg-purple-300/[0.06]" />
+              <span className="absolute bottom-2 left-7 flex h-3 items-end gap-1">
+                <span className="h-1.5 w-1.5 bg-purple-300/25" />
+                <span className="h-2.5 w-1.5 bg-purple-300/40" />
+                <span className="h-2 w-1.5 bg-purple-300/30" />
+                <span className="h-3 w-1.5 bg-purple-300/60" />
+              </span>
+              <span className="absolute bottom-2 right-2 h-1 w-8 bg-white/10" />
+            </span>
           </motion.div>
 
           <div className="relative flex min-h-[500px] flex-col items-center justify-center px-5 pb-20 pt-16 text-center md:min-h-[560px] md:px-16">
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.14 }}
-              className="mb-7"
-              style={{
-                fontFamily: "'Space Mono', monospace",
-                fontSize: 10,
-                letterSpacing: "0.14em",
-                textTransform: "uppercase",
-                color: PURPLE,
-              }}
-            >
-              Transmission ready
-            </motion.span>
-
             <motion.h2
-              ref={contactHeadlineRef}
               initial={{ opacity: 0, y: 32 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.1 }}
@@ -2246,7 +2260,7 @@ function ContactSection() {
                   talk
                 </em>
                 <motion.span
-                  className="flex h-[0.58em] w-[0.58em] shrink-0 items-center justify-center rounded-full border border-white/25 bg-black/20 backdrop-blur-sm"
+                  className="flex h-[0.58em] w-[0.58em] shrink-0 items-center justify-center rounded-full border border-white/25 bg-black/45"
                   variants={{
                     hover: {
                       x: 10,
@@ -2270,7 +2284,7 @@ function ContactSection() {
               initial={{ opacity: 0, y: 14 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.22 }}
-              className="mt-9 max-w-[660px]"
+              className="mt-9 max-w-[720px]"
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
                 fontSize: "clamp(17px, 1.4vw, 22px)",
@@ -2278,19 +2292,17 @@ function ContactSection() {
                 color: "#b3b3ad",
               }}
             >
-              Bring the messy workflow, the growing design system, or the
-              product idea that needs shape. I help turn complexity into
-              something clear, usable, and ready to ship.
+              Complex product problem? Let&apos;s make it clear, usable, and
+              ready to ship.
             </motion.p>
           </div>
         </div>
 
         <motion.div
-          ref={buttonsRef}
           initial={{ opacity: 0, y: 18 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="relative border border-white/[0.12] bg-[rgba(7,7,10,0.78)] shadow-[0_-24px_80px_rgba(0,0,0,0.32)] backdrop-blur-xl lg:mx-20"
+          className="relative border border-white/[0.12] bg-[rgba(7,7,10,0.94)] shadow-[0_-24px_80px_rgba(0,0,0,0.32)] lg:mx-20"
           style={{
             clipPath:
               "polygon(0 14px, 26px 14px, 38px 0, calc(100% - 38px) 0, calc(100% - 26px) 14px, 100% 14px, 100% 100%, 0 100%)",
