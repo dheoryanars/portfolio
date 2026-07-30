@@ -1,5 +1,111 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-07-30 10:07 — [Codex] Simplified Equinox's floating visual
+
+**Done:** Removed the visible glass click-target box and rotating square orbit from Equinox. The companion now renders as one mouthless face with a restrained glow, status light, and energy line while preserving the original large pointer/touch target and adding a visible keyboard focus outline.
+
+**Verified:** Production build passes (`2021 modules transformed`). Playwright at 390x844 confirmed the simplified pet is clear, unobstructed, and correctly anchored without the stacked-box appearance. `git diff --check` passes with only line-ending warnings. No deployment was made.
+
+**Next:** Continue reviewing the upgraded guide locally at `http://127.0.0.1:5174/`, then confirm the WhatsApp number before committing and deploying.
+
+## 2026-07-30 10:01 — [Codex] Upgraded Equinox into a persistent portfolio guide
+
+**Done:** Rebuilt `VirtualPet.tsx` in five progressive layers. Added persisted mute/minimize controls and reduced-motion support; slower persistent energy, return-visit memory, explored-case memory, idle states, and richer mouthless animation; project recommendations, recruiter summary, home-section navigation, and contact routes; case-aware preset answers for problem, outcome, summary, and Dheoryan's role; and a typed local question field that uses portfolio-aware keyword matching without an external AI service or visitor-data collection. `App.tsx` now passes all current case metadata and navigation handlers into Equinox.
+
+**Verified:** Production build passes (`2021 modules transformed`). Playwright desktop and 390x844 mobile checks covered open/close, mute and minimize persistence, restore, contact links, home and case guide states, unread-case recommendations and navigation, case memory, preset Q&A, typed Q&A, message readability, and mobile fit. No horizontal page overflow or clipped Equinox content was observed. Local console errors are limited to the expected Cloudflare beacon CORS rejection on `127.0.0.1` and the existing missing `favicon.ico`. `git diff --check` passes with only line-ending warnings.
+
+**Next:** Review the local experience at `http://127.0.0.1:5174/`. Confirm the real WhatsApp number before production because the existing portfolio contact route remains `+62 812-3456-7890`. Commit and deploy only after Dheoryan approves the new guide behavior.
+
+## 2026-07-29 11:28 — [Codex] Added Modal and a real Dark confirmation workflow to DRP
+
+**Done:** Added native `Modal` (node `296:418`) to `02 Components`. It has `Size=Sm|Md`, editable Title and Body, a `Show secondary` boolean, nested DRP Button instances for Cancel/Create, token-bound surface/radius/elevation/border styling, and an Assets description covering focus trap, focus restoration, and action labeling. Added the missing semantic token `Background/Overlay` with explicit Light/Dark alpha values. Created `Desktop / Report creation modal` (node `297:510`) on `03 Patterns & Templates`, a Dark-mode workflow that uses the Modal instance over a semantic overlay, with native Button and Card instances behind it.
+
+**Verified:** Rendered the Modal size grid in Light mode and the full report-creation workflow in Dark mode. The overlay establishes hierarchy without obscuring the dialog; the new modal border maintains clear separation in Dark mode. Nested secondary and primary Button instances remain intact in the Modal component.
+
+**Next:** Add an Empty State pattern and Pagination only when a real list/table workflow requires them. Before publishing, document implementation-level keyboard/ARIA requirements in code documentation, decide ownership/versioning/release process, and perform a human final review in Figma. The library remains an evolving v0.1, not a publish-ready universal system.
+
+## 2026-07-29 11:14 — [Codex] Completed the DRP Light/Dark component audit
+
+**Done:** Added `Theme validation / Core components` (node `292:475`) to `03 Patterns & Templates`. It presents identical native Button, Checkbox, Badge, Tab, Toast, and Card instances in explicit Light and Dark semantic-mode containers. The existing mobile form remains the Light layout proof, while the operations dashboard remains the Dark layout proof for form, feedback, table, and navigation components.
+
+**Verified:** Rendered the side-by-side validation frame and visually checked semantic inheritance. Canvas, surfaces, text, borders, status colors, focus treatment, elevations, and action controls resolve coherently in both modes. Together with the existing component grids, Light mobile form, and Dark dashboard, every current DRP primitive has a visual Light and/or Dark validation path and no theme issue was found.
+
+**Next:** Do not add a Modal until a focused confirmation/task workflow requires it. Before publishing, add implementation-level keyboard/ARIA notes in code documentation, decide a library owner/versioning and release process, then perform a human final review in Figma. The library remains an evolving v0.1, not a publish-ready universal system.
+
+## 2026-07-29 11:11 — [Codex] Completed the DRP component documentation audit
+
+**Done:** Audited all 12 native Assets components on `02 Components`, then added or strengthened their Figma descriptions. Every component now explains intended use, editable properties, variants, and the relevant accessibility/interaction caveat. The newly documented assets are Toast, Card, Table Header, and Table Row; Button, inputs, feedback, selection, and navigation descriptions were tightened for consistent guidance.
+
+**Verified:** Programmatically confirmed zero undocumented assets. The library uses a coherent exposed-property convention: editable content first (Label, Title, Message, etc.), followed by capitalized variant properties such as State, Size, Tone, Variant, or Density. Checkbox and Switch retain distinct semantic properties (`Checked` and `On`) because they represent different interaction models.
+
+**Next:** Add a Modal only when a focused confirmation/task workflow needs one. Before publishing, finish the final Light/Dark audit across components and templates, then document implementation-level keyboard/ARIA requirements in the guide or connected code documentation. The library remains an evolving v0.1, not a publish-ready universal system.
+
+## 2026-07-29 11:09 — [Codex] Turned the DRP Start Here page into an operating guide
+
+**Done:** Extended `DRP Design System — Start Here` (node `232:400`) with a token-bound `Component use & accessibility` section. It now documents instance discipline, the feedback decision model (Alert vs Toast vs Badge), and release-level accessibility checks: logical keyboard order, visible focus, text alongside status color, and 44px touch targets for touch-first flows. The guide footer also sets the system-governance rule: a workaround repeated three times becomes a documented component or pattern.
+
+**Verified:** Rendered the new section and the entire 1440×1780 guide in Dark mode. Existing foundation, token architecture, usage steps, and new operating rules form a coherent, readable in-file onboarding guide.
+
+**Next:** Audit component descriptions and property naming across the full library, then add a Modal only when a focused confirmation/task workflow needs one. Before publishing, add keyboard/ARIA implementation notes alongside each component's Figma usage guidance and run a final Light/Dark audit. The library remains an evolving v0.1, not a publish-ready universal system.
+
+## 2026-07-29 11:00 — [Codex] Added table primitives and applied them in the DRP dashboard
+
+**Done:** Added native `Table Header` (node `283:400`) and `Table Row` (node `283:463`) components on `02 Components`. Table Header exposes editable column labels; Table Row has editable Name/Owner/Status/Updated cells plus `Density=Comfortable|Compact` and `State=Default|Hover|Selected`. Replaced the prior one-off Recent activity panel in `Desktop / Operations dashboard` (node `271:401`) with a token-bound `Project updates / Table` panel composed from one Table Header and three Table Row instances. Added a native Card instance for a system-coverage insight.
+
+**Verified:** Visually rendered the six Row variants, then the composed dark-mode table section and the whole dashboard. Header/row content, compact/comfortable density, selected-state focus treatment, Card, and all inherited Dark semantic tokens render cleanly. The dashboard now demonstrates real instances of Table Header, Table Row, and Card rather than only specimen grids.
+
+**Next:** Add a Modal only when a focused confirmation/task flow is needed; otherwise expand data-display capabilities with pagination, sortable column affordances, or an Empty State when a real app requirement calls for them. Before publishing, add component usage notes and accessibility guidance for all primitives, then audit naming and component-property consistency. The library remains an evolving v0.1, not a publish-ready universal system.
+
+## 2026-07-29 10:55 — [Codex] Added Toast and Card foundations to DRP
+
+**Done:** Added two native component sets to `02 Components`. `Toast` (node `280:448`) provides an ephemeral, elevated feedback message with semantic Info/Success/Warning/Danger tones, Standard (440px) and Compact (320px) sizes, editable `Title` and `Message`, plus a `Dismissible` boolean control. `Card` (node `282:412`) provides a token-bound content container with Elevated/Outlined variants and Standard (360px)/Compact (320px) sizes, plus editable `Title` and `Body`.
+
+**Verified:** Rendered and visually checked each complete grid. Toast uses the existing surface, text, border, feedback, icon, and Elevation/2 tokens; it has a clear tone rail and close affordance without becoming a persistent Alert. Card uses semantic surface/text/border variables plus spacing and radius tokens; Elevated and Outlined treatments are visibly distinct and both compact variants remain legible.
+
+**Next:** Add a Table/data-display primitive (including density and row state), then use Card and Table instances to replace selected one-off containers in the desktop dashboard. Add a Modal only once a real workflow needs confirmation or focused task completion. The library remains an evolving v0.1, not a publish-ready universal system.
+
+## 2026-07-29 10:50 — [Codex] Added responsive Alert sizing to DRP
+
+**Done:** Extended the native `Alert` component set (node `265:412`) with a `Size` variant property. It now has the complete `Tone` × `Size` matrix: Info, Success, Warning, and Danger in Standard (480px) and Compact (320px) sizes. Compact alerts reduce padding, spacing, and corner radius while retaining the existing editable `Title` and `Message` properties and all semantic color-token bindings.
+
+**Verified:** Rendered the full eight-variant grid from Figma and visually checked the result. The Compact variants are clean at a 320px content width and fit safely inside the existing 390px mobile layout convention. During implementation, Figma initially placed cloned variants outside the component set; this was corrected and the final schema confirms both `Size=Standard` and `Size=Compact` are native options of the same Alert set.
+
+**Next:** Add a Toast feedback primitive, then introduce a reusable Card and Table/data-display primitive. Use them to expand the desktop pattern only where those primitives improve a real workflow. The library remains an evolving v0.1, not a publish-ready universal system.
+
+## 2026-07-29 10:47 — [Codex] Proved DRP components in Light and Dark templates
+
+**Done:** Created `03 Patterns & Templates` in the shared DRP Figma file. Added `Desktop / Operations dashboard` (node `271:401`) in Dark mode and `Mobile / Project setup form` (node `273:425`) in Light mode. The desktop composition uses native Button, Tab, Alert, Text Field, Select, Badge, and Switch instances alongside token-bound layout frames. The mobile form uses native Text Field, Select, Checkbox, Switch, and Button instances.
+
+**Verified:** Rendered and visually checked both templates from Figma. The dashboard has a coherent Dark-mode operations view with filters, status, metrics, availability, and activity; the mobile form is clean, readable, and safely fits a 390px-wide screen. Component instances inherit their parent semantic Light/Dark modes, proving the system can compose consistently across themes and layouts.
+
+**Found:** Alert currently has a fixed 480px composition, so it is not suitable for narrow mobile screens until it receives a compact or responsive variant. It was deliberately excluded from the mobile proof.
+
+**Next:** Add responsive sizing to Alert (and optionally Text Field/Select), then add Toast/Modal and card/table primitives as product needs dictate. Do not publish the library as a universal system until those higher-level patterns are mature.
+
+## 2026-07-29 10:38 — [Codex] Added DRP select, switch, and tab primitives
+
+**Done:** Extended `02 Components` in the shared DRP Figma file with three native component sets: `Select` (node `267:424`, Default/Focus/Error/Disabled and editable Label, Value, Helper); `Switch` (node `268:419`, On/Off × Default/Disabled with editable Label); and `Tab` (node `269:412`, Active/Default/Disabled with editable Label). Added the semantic color tokens `Icon/Default`, `Icon/Disabled`, and `Icon/On action`, each with Light/Dark values and appropriate text/shape scopes, so control thumbs and future icons stay token-driven.
+
+**Verified:** Select, Switch, and Tab were each rendered from Figma and visually checked. Select preserves the Text Field grammar while adding a clear non-editable chevron; Switch distinguishes immediate settings from Checkbox form choices in its component description; Tab has an active indicator and clear disabled treatment. All components follow the existing `State=...` / capitalized variant convention.
+
+**Next:** Create `03 Patterns & Templates` and use only existing instances to compose a desktop dashboard and a mobile settings/form template. Add navigation primitives (top navigation and side navigation) as the system needs them during that proof step. Do not publish the library until templates verify the components work together in Light and Dark modes.
+
+## 2026-07-29 10:33 — [Codex] Extended DRP with core form and feedback components
+
+**Done:** Continued the shared DRP Figma library on page `02 Components`. Added four native, documented component sets: `Text Field` (node `258:420`, Default/Focus/Error/Disabled with editable Label, Value, and Helper); `Checkbox` (node `260:414`, checked/unchecked and default/disabled with editable Label); `Badge` (node `261:408`, Info/Success/Warning/Danger with editable Label); and `Alert` (node `265:412`, Info/Success/Warning/Danger with editable Title and Message). Extended the four semantic feedback-color variables to include `STROKE_COLOR`, allowing the same status tokens to drive component borders as well as text and fills.
+
+**Verified:** Each new component set was checked for correct variant layout and visually rendered from Figma. Text Field exposes its three intended editable text properties plus State. Checkbox, Badge, and Alert render their semantic status/disabled states correctly. The systems currently show in Figma's default Light mode in their component grids and remain token-bound so screen-level Light/Dark mode wrappers can resolve them contextually.
+
+**Next:** Build Select and Switch next, then establish navigation primitives (Tabs and top/side navigation). Afterwards create the `03 Patterns & Templates` page and prove the library by composing a dashboard and a mobile form from instances only. The library is still v0.1, not yet ready to be published as a complete universal system.
+
+## 2026-07-28 16:41 — [Codex] Began the native DRP Figma design-system library
+
+**Done:** Built the first real design-system layer directly in the shared DRP Figma file (`o5UL8n01EFgPLh7p4ozU4H`). The formerly blank `01 Introducing Design System` page now contains a token-bound, visually verified `DRP Design System — Start Here` guide (node `232:400`). Created 56 variables: hidden primitive neutrals/brand/feedback colors; semantic color tokens with Light and Dark modes; spacing; and radius. Added 10 reusable Inter text styles plus two elevation styles. Created a dedicated `02 Components` page and a native `Button` component set (node `237:424`) with 12 variants: Primary/Secondary × Sm/Md × Default/Hover/Disabled, editable `Label` text, token-bound colors, and component usage descriptions.
+
+**Found:** The chosen `01 Introducing Design System` page was intentionally empty, so it is safe to use as the system’s guide/foundation surface. Figma gives every new Frame a white default fill and `resize()` can disable text auto-sizing; both were caught through screenshots and corrected. The guide has been visually verified in Dark mode, and the Button component’s variant grid and editable-property schema were verified.
+
+**Next:** Build the remaining component families incrementally on `02 Components`: Text Field, Select, Checkbox/Switch, Badge, Alert/Toast, then cards/navigation. Add a `03 Patterns & Templates` page only after the core components are stable. The system is a working v0.1 foundation, not yet a complete Atlassian-scale library.
+
 ## 2026-07-20 17:27 — [Codex] Deployed Cloudflare Web Analytics to production
 
 **Done:** Committed the Cloudflare Web Analytics integration as `a0faf60` (`Add Cloudflare web analytics`) and pushed `main` to GitHub. The push advanced `origin/main` from `cdbdfeb` to `a0faf60`, triggering the linked Vercel production deployment.

@@ -4465,7 +4465,26 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
-      <VirtualPet caseStudy={petCaseStudy} />
+      <VirtualPet
+        caseStudy={petCaseStudy}
+        portfolioCases={WORKS.flatMap((work) => {
+          const meta = work.slug ? CASE_META[work.slug] : null;
+          return work.slug && meta
+            ? [
+                {
+                  slug: work.slug,
+                  title: work.title,
+                  category: work.category,
+                  year: work.year,
+                  problem: meta.problem,
+                  outcome: meta.outcome,
+                },
+              ]
+            : [];
+        })}
+        onNavigate={handleNavigate}
+        onHome={handleBack}
+      />
     </>
   );
 }
