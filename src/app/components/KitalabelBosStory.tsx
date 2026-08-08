@@ -348,12 +348,80 @@ function TrustSection() {
   );
 }
 
+const adoptionSignals = [
+  { value: "12", label: "Registered accounts", detail: "Across sales, admin, manager, and marketing" },
+  { value: "6", label: "Reusable roles", detail: "Permissions mapped to daily responsibilities" },
+  { value: "1,800+", label: "Customer records", detail: "WooCommerce customers in the operating model" },
+  { value: "240+", label: "Documented monthly orders", detail: "Operating volume that shaped the system scope" },
+] as const;
+
+const adoptionEvidence = [
+  {
+    src: "/case-studies/kitalabel-bos/adoption-log.png",
+    label: "Team member snapshot",
+    title: "The operating layer has real users",
+    body: "The production member log shows 12 registered accounts across four operational groups. Names are redacted in the portfolio asset.",
+  },
+  {
+    src: "/case-studies/kitalabel-bos/roles-log.png",
+    label: "Role configuration snapshot",
+    title: "Access reflects how the team works",
+    body: "Six reusable roles govern the 12 accounts, including seven Sales accounts and three Admin accounts, with explicit dashboard permissions.",
+  },
+] as const;
+
+function AdoptionSection() {
+  return (
+    <section className="bos-story-section bos-story-section-muted" data-name="bos-adoption-evidence">
+      <SectionHeading
+        index="06"
+        label="Adoption evidence"
+        title="The product moved beyond the design file."
+        body="The account and role records are visible in production. Customer and order volumes document the operating scale that shaped the system."
+      />
+
+      <div className="bos-adoption-stats" aria-label="KitaLabel Business OS adoption signals">
+        {adoptionSignals.map((signal) => (
+          <article key={signal.label}>
+            <strong>{signal.value}</strong>
+            <span>{signal.label}</span>
+            <p>{signal.detail}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="bos-adoption-evidence">
+        {adoptionEvidence.map((evidence) => (
+          <button
+            type="button"
+            className="bos-evidence-card"
+            data-preview-src={evidence.src}
+            data-preview-title={`KitaLabel Business OS - ${evidence.label}`}
+            aria-label={`Preview ${evidence.label}`}
+            key={evidence.src}
+          >
+            <span className="bos-evidence-image">
+              <img src={evidence.src} alt={`${evidence.label} from the deployed KitaLabel Business OS`} />
+            </span>
+            <span className="bos-evidence-copy">
+              <span className="bos-module-kicker">{evidence.label}</span>
+              <strong>{evidence.title}</strong>
+              <span>{evidence.body}</span>
+            </span>
+          </button>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function KitalabelBosStory() {
   return (
     <div className="bos-story" data-name="kitalabel-bos-product-story">
       <SystemFlowSection />
       <RecoverySection />
       <TrustSection />
+      <AdoptionSection />
       <style>{`
         .bos-story { width: 100%; color: #f2f1ec; }
         .bos-story-section { width: 100%; padding: 100px 64px; border-top: 1px solid rgba(242,241,236,.08); }
@@ -430,6 +498,22 @@ export default function KitalabelBosStory() {
         .bos-scope-list span { min-height: 52px; display: flex; gap: 10px; align-items: center; border-bottom: 1px solid rgba(242,241,236,.1); color: #c8c8c1; font-family: 'Space Grotesk', sans-serif; font-size: 14px; }
         .bos-scope-list svg { color: #cc6ef8; }
 
+        .bos-adoption-stats { width: 100%; max-width: 1152px; margin: 0 auto 24px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid rgba(242,241,236,.12); border-radius: 6px; overflow: hidden; }
+        .bos-adoption-stats article { min-height: 178px; display: flex; flex-direction: column; justify-content: center; padding: 24px; border-right: 1px solid rgba(242,241,236,.1); background: #101010; }
+        .bos-adoption-stats article:last-child { border-right: 0; }
+        .bos-adoption-stats strong { color: #cc6ef8; font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 600; line-height: 1; }
+        .bos-adoption-stats span { margin-top: 12px; color: #f2f1ec; font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; }
+        .bos-adoption-stats p { margin: 7px 0 0; color: #777770; font-family: 'Space Grotesk', sans-serif; font-size: 12px; line-height: 1.5; }
+        .bos-adoption-evidence { width: 100%; max-width: 1152px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+        .bos-evidence-card { min-width: 0; padding: 0; overflow: hidden; border: 1px solid rgba(242,241,236,.12); border-radius: 6px; background: #101010; color: #f2f1ec; text-align: left; cursor: zoom-in; transition: border-color .2s ease, background .2s ease; }
+        .bos-evidence-card:hover { border-color: rgba(204,110,248,.65); background: #141414; }
+        .bos-evidence-image { display: block; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid rgba(242,241,236,.1); background: #090909; }
+        .bos-evidence-image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+        .bos-evidence-copy { display: flex; flex-direction: column; padding: 24px; }
+        .bos-evidence-copy .bos-module-kicker { margin-bottom: 9px; }
+        .bos-evidence-copy > strong { font-family: 'Space Grotesk', sans-serif; font-size: 19px; font-weight: 600; line-height: 1.3; }
+        .bos-evidence-copy > span:last-child { margin-top: 9px; color: #9a9a93; font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 400; line-height: 1.55; }
+
         @media (max-width: 1023px) {
           .bos-story-section { padding: clamp(64px, 10vw, 88px) clamp(18px, 5vw, 40px); }
           .bos-story-heading { grid-template-columns: 1fr; gap: 24px; margin-bottom: 44px; }
@@ -442,7 +526,10 @@ export default function KitalabelBosStory() {
           .bos-flow-arrow svg:last-child { display: block; }
           .bos-flow-detail { grid-template-columns: 1fr; gap: 24px; padding: 28px; }
           .bos-stage-result { padding: 20px 0 0; border-left: 0; border-top: 1px solid rgba(204,110,248,.35); }
-          .bos-recovery-layout, .bos-trust-grid, .bos-scope-band { grid-template-columns: 1fr; }
+          .bos-recovery-layout, .bos-trust-grid, .bos-scope-band, .bos-adoption-evidence { grid-template-columns: 1fr; }
+          .bos-adoption-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .bos-adoption-stats article:nth-child(2) { border-right: 0; }
+          .bos-adoption-stats article:nth-child(-n+2) { border-bottom: 1px solid rgba(242,241,236,.1); }
           .bos-recovery-result { min-height: 380px; }
           .bos-result-status { margin-bottom: 0; }
           .bos-scope-band { gap: 36px; }
@@ -464,6 +551,9 @@ export default function KitalabelBosStory() {
           .bos-role-tabs { grid-template-columns: 1fr; }
           .bos-module-copy { min-height: 0; }
           .bos-scope-list { grid-template-columns: 1fr; }
+          .bos-adoption-stats { grid-template-columns: 1fr; }
+          .bos-adoption-stats article, .bos-adoption-stats article:nth-child(2) { min-height: 0; border-right: 0; border-bottom: 1px solid rgba(242,241,236,.1); }
+          .bos-adoption-stats article:last-child { border-bottom: 0; }
           .bos-metric-list > div, .bos-permission-list > div { align-items: flex-start; padding: 14px 0; }
         }
 

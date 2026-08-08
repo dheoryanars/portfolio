@@ -12,8 +12,6 @@ const productScreens = [
   { src: "/case-studies/kitalabel-bos/customer-detail.png", label: "Customer detail", caption: "Order history, spend, and reorder-cycle signals collected around one customer." },
   { src: "/case-studies/kitalabel-bos/reorder-cycle.png", label: "Reorder cycle", caption: "A focused view for identifying customers who are approaching or missing a repeat order." },
   { src: "/case-studies/kitalabel-bos/internal-calculator.png", label: "Calculator", caption: "Internal pricing tools stay close to the operational workflow instead of a separate spreadsheet." },
-  { src: "/case-studies/kitalabel-bos/adoption-log.png", label: "Team members — live", caption: "Not a mockup: the deployed product\u2019s own member log on an ordinary day. 12 registered accounts across sales, admin, manager, and marketing — the sales team active within the last 7 hours. Names redacted." },
-  { src: "/case-studies/kitalabel-bos/roles-log.png", label: "Team roles — live", caption: "Production access control: 6 reusable roles govern the 12 accounts — Sales (7), Admin (3), Manager, Marketing — each mapped to explicit dashboard permissions." },
   { src: "/case-studies/kitalabel-bos/team-role-edit.png", label: "Role permissions", caption: "Permission editing exposes exactly what each operational role can see and change." },
   { src: "/case-studies/kitalabel-bos/crm-settings.png", label: "CRM settings", caption: "Business rules and CRM behaviour are configured without leaving the system." },
   { src: "/case-studies/kitalabel-bos/external-mappings.png", label: "External mappings", caption: "External WooCommerce data is mapped into a stable internal operating model." },
@@ -2326,7 +2324,7 @@ function Section2() {
 function Frame129() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[24px] items-start relative shrink-0 w-full" data-name="Frame">
-      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">06 — Key Screens</p>
+      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">07 — Key Screens</p>
       <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-none min-w-full relative shrink-0 text-[#f2f1ec] text-[46px] w-[min-content]">The system, screen by screen</p>
     </div>
   );
@@ -11894,7 +11892,7 @@ function Section3() {
 function Frame660() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[24px] items-start relative shrink-0 w-full" data-name="Frame">
-      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">07 — Key Design Decisions</p>
+      <p className="font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">08 — Key Design Decisions</p>
       <p className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-none min-w-full relative shrink-0 text-[#f2f1ec] text-[46px] w-[min-content]">Why it works the way it does</p>
     </div>
   );
@@ -12068,8 +12066,8 @@ function Frame675() {
 function Frame676() {
   return (
     <div className="content-stretch flex flex-[1_0_0] flex-col gap-[12px] items-start min-w-px relative" data-name="Frame">
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px]">3</p>
-      <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px] uppercase">Team roles</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px]">12</p>
+      <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px] uppercase">Registered accounts</p>
     </div>
   );
 }
@@ -12077,8 +12075,8 @@ function Frame676() {
 function Frame677() {
   return (
     <div className="content-stretch flex flex-[1_0_0] flex-col gap-[12px] items-start min-w-px relative" data-name="Frame">
-      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px]">1</p>
-      <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px] uppercase">Unified OS</p>
+      <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px]">6</p>
+      <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px] uppercase">Production roles</p>
     </div>
   );
 }
@@ -12098,7 +12096,7 @@ function Frame672() {
 function Frame671() {
   return (
     <div className="content-stretch flex flex-col gap-[40px] items-start leading-[normal] relative shrink-0 w-full whitespace-nowrap" data-name="Frame">
-      <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px]">08 — Outcomes</p>
+      <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px]">09 — Outcomes</p>
       <Frame672 />
     </div>
   );
@@ -12109,7 +12107,7 @@ function Section5() {
     <div className="relative shrink-0 w-full" data-name="Section 05">
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[80px] items-start px-[64px] py-[100px] relative size-full">
         <Frame671 />
-        <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[1.6] relative shrink-0 text-[#9a9a93] text-[17px] w-[1152px]">The KitaLabel Business OS gave the team one platform to run their entire operation — from seeing revenue and churn risk at a glance, to pricing a quote with a competitor-aware margin calculator, to tracking which customers are overdue for a reorder. The design specification (18 pages, 10 business rules, full token set) gave engineering a complete source of truth to build from.</p>
+        <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[1.6] relative shrink-0 text-[#9a9a93] text-[17px] w-[1152px]">The KitaLabel Business OS gave the team one platform to run daily operations — from seeing revenue and reorder risk at a glance, to pricing a quote with a competitor-aware margin calculator, to tracing commerce events when an order needs attention. Production evidence now shows 12 registered accounts governed by 6 reusable roles. The design specification (18 pages, 10 business rules, full token set) gave engineering a complete source of truth to build from.</p>
       </div>
     </div>
   );

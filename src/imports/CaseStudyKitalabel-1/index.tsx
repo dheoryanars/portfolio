@@ -819,7 +819,7 @@ function Fe() {
           <p className="leading-[26px] mb-0">​</p>
           <p className="leading-[26px] mb-0">· Custom WordPress plugin (PHP + JavaScript)</p>
           <p className="leading-[26px] mb-0">· WooCommerce integration — cart, checkout, order hooks</p>
-          <p className="leading-[26px] mb-0">· Real-time price calculation logic in JS, connected to the backend pricing API</p>
+          <p className="leading-[26px] mb-0">· On-demand price calculation logic in JS, connected to the backend pricing API</p>
           <p className="leading-[26px] mb-0">· File upload handling with client-side validation</p>
           <p className="leading-[26px] mb-0">{`· "Ketentuan File Desain" modal built from the design spec I made`}</p>
           <p className="leading-[26px] mb-0">· Responsive adaptation for mobile 430px</p>
@@ -912,7 +912,7 @@ function B3() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[4px] items-start overflow-clip relative shrink-0 w-[320px]" data-name="b2">
       <p className="font-['Space_Mono:Bold',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#64dc82] text-[11px] whitespace-nowrap">The Decision</p>
-      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[320px]">{`Shape selector uses visual icons. Customers instantly see what shape they're ordering — the icon maps directly to what they'll receive in the box. Reduces wrong-shape orders.`}</p>
+      <p className="font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[20px] relative shrink-0 text-[#9a9a93] text-[13px] w-[320px]">{`Shape selector uses visual icons. Customers instantly see what shape they're ordering — the icon maps directly to what they'll receive in the box. This makes the selected product easier to verify before calculation.`}</p>
     </div>
   );
 }
@@ -1088,6 +1088,79 @@ function FlowStrip() {
         ))}
       </ol>
     </div>
+  );
+}
+
+const validationStates = [
+  {
+    number: "01",
+    label: "Specs ready",
+    title: "Cek Harga becomes the commitment point",
+    body: "The customer can explore eight production variables before asking the system for a real price.",
+  },
+  {
+    number: "02",
+    label: "Price current",
+    title: "Checkout uses a trusted result",
+    body: "Cart actions stay gated until the pricing service returns a valid result for the current specification.",
+  },
+  {
+    number: "03",
+    label: "Specs changed",
+    title: "The old result becomes stale",
+    body: "Changing a priced variable clears the previous state and changes the action to Perbarui Harga.",
+  },
+];
+
+function Validation() {
+  return (
+    <section className="bg-[#0a0a0a] content-stretch flex flex-col gap-[36px] items-start overflow-clip px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="production-validation">
+      <div className="flex items-end justify-between gap-[72px] w-full">
+        <div className="flex flex-col gap-[22px] max-w-[660px]">
+          <p className="font-['Space_Mono:Regular',sans-serif] text-[#cc6ef8] text-[12px] tracking-[1.92px]">06 - Production Validation</p>
+          <h2 className="font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[50px] text-[#f2f1ec] text-[46px] tracking-[-0.92px]">
+            The shipped states protect the price.
+          </h2>
+        </div>
+        <p className="font-['Space_Grotesk:Regular',sans-serif] leading-[26px] text-[#9a9a93] text-[16px] w-[390px]">
+          This is more than a polished configurator. The production plugin prevents customers from acting on an outdated result and routes each valid price into the right fulfilment path.
+        </p>
+      </div>
+
+      <div className="border border-[rgba(242,241,236,0.1)] rounded-[8px] overflow-hidden w-full">
+        <div className="grid grid-cols-3">
+          {validationStates.map((state, index) => (
+            <article
+              className={`bg-[#10100f] flex flex-col gap-[16px] min-h-[214px] p-[28px] ${index < validationStates.length - 1 ? "border-r border-[rgba(242,241,236,0.1)]" : ""}`}
+              key={state.number}
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-['Space_Mono:Regular',sans-serif] text-[#cc6ef8] text-[11px]">{state.number}</span>
+                <span className="border border-[rgba(204,110,248,0.3)] rounded-full px-[10px] py-[5px] font-['Space_Mono:Regular',sans-serif] text-[#9a9a93] text-[9px] uppercase">{state.label}</span>
+              </div>
+              <h3 className="font-['Space_Grotesk:Bold',sans-serif] font-bold leading-[24px] text-[#f2f1ec] text-[18px]">{state.title}</h3>
+              <p className="font-['Space_Grotesk:Regular',sans-serif] leading-[22px] text-[#9a9a93] text-[14px]">{state.body}</p>
+            </article>
+          ))}
+        </div>
+        <div className="bg-[#141414] border-t border-[rgba(242,241,236,0.1)] grid grid-cols-2">
+          <div className="flex items-center justify-between gap-[20px] p-[24px] border-r border-[rgba(242,241,236,0.1)]">
+            <div>
+              <p className="font-['Space_Mono:Regular',sans-serif] text-[#64dc82] text-[10px] uppercase">Eligible standard price</p>
+              <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold mt-[7px] text-[#f2f1ec] text-[17px]">Continue to cart and checkout</p>
+            </div>
+            <span className="font-['Space_Mono:Regular',sans-serif] text-[#64dc82] text-[12px]">SELF-SERVE</span>
+          </div>
+          <div className="flex items-center justify-between gap-[20px] p-[24px]">
+            <div>
+              <p className="font-['Space_Mono:Regular',sans-serif] text-[#f4c46e] text-[10px] uppercase">IDR 5,000,000+ or flagged job</p>
+              <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold mt-[7px] text-[#f2f1ec] text-[17px]">Continue with a structured RFQ</p>
+            </div>
+            <span className="font-['Space_Mono:Regular',sans-serif] text-[#f4c46e] text-[12px]">EXPERT REVIEW</span>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -1285,7 +1358,7 @@ function FlowRow() {
 function Flow() {
   return (
     <div className="bg-[#0a0a0a] content-stretch flex flex-col gap-[32px] items-start overflow-clip px-[22px] sm:px-[32px] lg:px-[64px] py-[72px] lg:py-[100px] relative shrink-0 w-full lg:w-[1280px]" data-name="flow">
-      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px]">06 — The Complete Flow</p>
+      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px]">07 — The Complete Flow</p>
       <p className="[word-break:break-word] font-['Space_Grotesk:Medium',sans-serif] font-medium leading-[38px] md:leading-[normal] relative shrink-0 text-[#f2f1ec] text-[34px] md:text-[46px] tracking-[-0.68px] md:tracking-[-0.92px] w-full">From configuration to checkout</p>
       <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[26px] md:leading-[28px] relative shrink-0 text-[#9a9a93] text-[15px] md:text-[17px] w-full max-w-[860px]">The full flow starts before checkout: customers configure production specs and calculate a real price. Values above IDR 5,000,000 route to RFQ; eligible self-service orders continue through file upload, cart, and payment.</p>
       <FlowStrip />
@@ -1298,8 +1371,8 @@ function S6() {
   return (
     <div className="bg-[#141414] h-[130px] relative rounded-[8px] shrink-0 w-[214.4px]" data-name="s">
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-center justify-center leading-[normal] overflow-clip px-[20px] py-[24px] relative rounded-[inherit] size-full whitespace-nowrap">
-        <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px] tracking-[-1.14px]">187+</p>
-        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">Hi-Fi screens</p>
+        <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px] tracking-[-1.14px]">2</p>
+        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">Fulfilment paths</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
@@ -1323,7 +1396,7 @@ function S8() {
     <div className="bg-[#141414] h-[130px] relative rounded-[8px] shrink-0 w-[214.4px]" data-name="s">
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-center justify-center leading-[normal] overflow-clip px-[20px] py-[24px] relative rounded-[inherit] size-full whitespace-nowrap">
         <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px] tracking-[-1.14px]">5</p>
-        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">Checkout steps</p>
+        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">Price tiers</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
@@ -1335,7 +1408,7 @@ function S9() {
     <div className="bg-[#141414] h-[130px] relative rounded-[8px] shrink-0 w-[214.4px]" data-name="s">
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-center justify-center leading-[normal] overflow-clip px-[20px] py-[24px] relative rounded-[inherit] size-full whitespace-nowrap">
         <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px] tracking-[-1.14px]">0</p>
-        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">Sales calls needed</p>
+        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">Standard handoffs</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
@@ -1347,7 +1420,7 @@ function S10() {
     <div className="bg-[#141414] h-[130px] relative rounded-[8px] shrink-0 w-[214.4px]" data-name="s">
       <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-center justify-center leading-[normal] overflow-clip px-[20px] py-[24px] relative rounded-[inherit] size-full whitespace-nowrap">
         <p className="font-['Space_Grotesk:Bold',sans-serif] font-bold relative shrink-0 text-[#cc6ef8] text-[38px] tracking-[-1.14px]">24/7</p>
-        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">Orders possible</p>
+        <p className="font-['Space_Mono:Regular',sans-serif] not-italic relative shrink-0 text-[#9a9a93] text-[11px]">Pricing access</p>
       </div>
       <div aria-hidden className="absolute border border-[rgba(242,241,236,0.1)] border-solid inset-0 pointer-events-none rounded-[8px]" />
     </div>
@@ -1369,9 +1442,9 @@ function SRow() {
 function Out() {
   return (
     <div className="bg-[#0c0c0b] content-stretch flex flex-col gap-[40px] items-start overflow-clip px-[64px] py-[100px] relative shrink-0 w-[1280px]" data-name="out">
-      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">07 — Outcomes</p>
+      <p className="[word-break:break-word] font-['Space_Mono:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cc6ef8] text-[12px] tracking-[1.92px] whitespace-nowrap">08 — Outcomes</p>
       <SRow />
-      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[28px] relative shrink-0 text-[#9a9a93] text-[17px] w-[1152px]">The calculator removed the sales team from standard orders entirely. Customers could configure, price, upload, and checkout independently — 24/7. This was also the first project where I shipped an AI-powered feature (the Design Editor, which used AI to generate label artwork from a prompt), and the first time I stepped into the Front-end Engineer role — implementing the plugin in WordPress, integrating WooCommerce cart hooks, and shipping the interaction logic in JavaScript.</p>
+      <p className="[word-break:break-word] font-['Space_Grotesk:Regular',sans-serif] font-normal leading-[28px] relative shrink-0 text-[#9a9a93] text-[17px] w-[1152px]">The calculator removed the required sales handoff for eligible standard orders. Customers can configure, price, upload, and checkout independently — 24/7 — while special designs and high-value jobs still reach expert review through a structured RFQ. This was also the first project where I shipped an AI-powered feature (the Design Editor, which used AI to generate label artwork from a prompt), and the first time I stepped into the Front-end Engineer role — implementing the plugin in WordPress, integrating WooCommerce cart hooks, and shipping the interaction logic in JavaScript.</p>
     </div>
   );
 }
@@ -1465,6 +1538,7 @@ export default function CaseStudyKitalabel() {
       <Sol />
       <AiFe />
       <Dec />
+      <Validation />
       <Flow />
       <Out />
       <NextWork />

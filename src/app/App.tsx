@@ -98,7 +98,7 @@ const MERGED_PUBLIC_STORY: Record<
 const CASE_META: Record<string, { problem: string; outcome: string }> = {
   "kitalabel-bos": {
     problem: "KitaLabel's internal operations ran across disconnected tools — no unified view of orders, pricing, customers, or production status. Staff context-switched between spreadsheets, WhatsApp, and ad-hoc dashboards to do basic work.",
-    outcome: "Unified operations into a single B2B OS — replacing 4 disconnected tools. Delivered as an AI-assisted development project in 2026; 6+ staff across sales, finance, production, and admin now run their day in it.",
+    outcome: "Unified orders, pricing, customer intelligence, team access, and integration health in one B2B operating layer. Production evidence shows 12 registered accounts governed by 6 reusable roles. The product was designed around a documented scale of 1,800+ customer records and 240+ monthly orders.",
   },
   "design-system": {
     problem: "The product team was designing the same components repeatedly across products — buttons, inputs, modals — each slightly different, none documented. Every new screen re-answered questions the team had already answered.",
@@ -118,7 +118,7 @@ const CASE_META: Record<string, { problem: string; outcome: string }> = {
   },
   kitalabel: {
     problem: "Sales collected each customer's label specifications, then handed the request to the Estimator PIC for pricing. Every quote entered that estimator's daily workload queue, so response time depended on how many estimates were already waiting.",
-    outcome: "Live on kitalabel.com since 2025: standard label pricing is self-serve and available 24/7, without waiting for a sales-to-estimator handoff.",
+    outcome: "Live on kitalabel.com since 2025: eligible standard label pricing is self-serve and available 24/7, without waiting for a sales-to-estimator handoff.",
   },
   sonar: {
     problem: "Solo outreach users had one question — did my email land? — but the only way to answer it was adopting a full ESP platform. The real design challenge wasn't adding capability; it was refusing it.",
@@ -147,9 +147,9 @@ const CASE_HERO_DETAILS: Record<string, CaseHeroDetail> = {
     previewCaption: "Orders, pricing, customers, and production status in one admin surface",
     tags: ["Admin OS", "AI-assisted", "Operations"],
     stats: [
-      { value: "4", label: "tools replaced" },
-      { value: "2026", label: "delivery" },
-      { value: "6+", label: "staff run their day in it" },
+      { value: "12", label: "registered accounts" },
+      { value: "6", label: "reusable roles" },
+      { value: "240+", label: "monthly orders" },
     ],
   },
   kitalabel: {
@@ -163,8 +163,8 @@ const CASE_HERO_DETAILS: Record<string, CaseHeroDetail> = {
     tags: ["Web plugin", "WooCommerce", "Pricing"],
     stats: [
       { value: "24/7", label: "pricing access" },
-      { value: "5", label: "quote tiers" },
-      { value: "0", label: "estimator handoff for standard jobs" },
+      { value: "5", label: "price tiers" },
+      { value: "0", label: "estimator handoff for eligible standard jobs" },
     ],
   },
   "readsee-dashboard": {
@@ -257,7 +257,7 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
     focus: [
       "Merged disconnected operational tools into one admin surface.",
       "Made order status, pricing, and production context easier to scan.",
-      "Used AI-assisted development to move faster from product logic to shipped UI.",
+      "Validated the operating model through production accounts, roles, and integration logs.",
     ],
     sections: [
       {
@@ -276,24 +276,25 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
         body: "Four blind spots drove the design: buyers who quote but never convert, customers overdue to reorder, production workload invisible until it jammed, and customer knowledge trapped in individual chat histories.",
       },
       {
-        kicker: "03 — Key Screens",
+        kicker: "07 — Key Screens",
         title: "From dashboard to team roles",
         body: "Each screen backs a daily routine: sales starts in the calculator, finance lives in order detail, production reads its workload off the dashboard, and admin controls pricing rules and team roles. The screens follow the jobs, not the org chart.",
       },
       {
-        kicker: "04 — Key Design Decisions",
+        kicker: "08 — Key Design Decisions",
         title: "Why it works the way it does",
         body: "Business pulse over raw data — the dashboard leads with what needs attention, not everything it knows. Sales insight lives inside the calculator, at the moment of quoting. And segmentation is the default customer view, because 'who should we call today?' is the real question.",
       },
       {
-        kicker: "05 — Outcomes",
+        kicker: "09 — Outcomes",
         title: "One source of truth",
-        body: "Shipped with documentation pages, business rules, role structure, and an engineering-ready spec — and 6+ staff across sales, finance, production, and admin now run their day in it.",
+        body: "Shipped with 18 documentation pages, 10 business rules, and an engineering-ready specification. The operating layer was designed around 1,800+ WooCommerce customer records and a documented volume of 240+ monthly orders without reducing every job to another passive dashboard.",
       },
     ],
     proof: [
-      "6+ staff run daily operations in it — sales, finance, production, admin.",
-      "Replaced 4 disconnected tools with one working surface.",
+      "12 registered production accounts governed by 6 reusable roles.",
+      "Designed around 1,800+ WooCommerce customer records and a documented volume of 240+ monthly orders.",
+      "Webhook events and sync logs preserve an auditable integration trail.",
     ],
   },
   kitalabel: {
@@ -323,7 +324,7 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       {
         kicker: "03 — The Solution",
         title: "A guided flow, not a form dump",
-        body: "The plugin walks the buyer through configuration step by step, repricing live at every change — and it runs inside WordPress and WooCommerce, where the store already lived, instead of demanding a new platform.",
+        body: "The plugin walks the buyer through configuration step by step, then reveals the real quantity-tier prices through an explicit Cek Harga action. It runs inside WordPress and WooCommerce, where the store already lived, instead of demanding a new platform.",
       },
       {
         kicker: "04 — Beyond Design",
@@ -333,21 +334,27 @@ const CASE_MOBILE_DETAILS: Record<string, CaseMobileDetail> = {
       {
         kicker: "05 — Key Design Decisions",
         title: "Why it works the way it does",
-        body: "The price updates on every change instead of hiding behind a 'get quote' button — exploration is the point. Artwork upload, promo codes, and checkout each follow the same rule: keep the buyer moving, never make them ask permission.",
+        body: "Price calculation is deliberate, not continuous. Cek Harga appears after the required specs are ready; changing a priced specification invalidates the old result and asks the customer to update it. Artwork upload, promo codes, and checkout then continue from a price the system can trust.",
       },
       {
-        kicker: "06 — The Complete Flow",
+        kicker: "06 — Production Validation",
+        title: "The shipped states protect the decision",
+        body: "The production plugin gates checkout behind a valid calculated price, marks the result stale when any specification changes, and switches eligible standard orders to checkout while prices at or above IDR 5,000,000 — or jobs the pricing service flags — move into RFQ.",
+      },
+      {
+        kicker: "07 — The Complete Flow",
         title: "From configuration to checkout",
         body: "Configure the label and check the real price first. Values above IDR 5,000,000 route to RFQ at the calculator; eligible orders continue through design upload, cart, promo, and payment without a sales call.",
       },
       {
-        kicker: "07 — Outcomes",
+        kicker: "08 — Outcomes",
         title: "Self-serve quoting, live",
-        body: "Live on kitalabel.com since 2025 — standard label pricing is available 24/7 without waiting for sales to request an estimate. Special designs can still be reviewed with a complete brief.",
+        body: "Live on kitalabel.com since 2025 — eligible standard label pricing is available 24/7 without waiting for sales to request an estimate. Special designs and high-value jobs still reach expert review with a structured brief.",
       },
     ],
     proof: [
       "Live in production on kitalabel.com — standard pricing without the Estimator PIC queue.",
+      "Checkout requires a current calculated price; changed specs invalidate the previous result.",
       "Designed and built by one person, AI-assisted, from flow to frontend.",
     ],
   },
@@ -686,6 +693,7 @@ const CASE_MOBILE_SECTION_ARTIFACTS: Record<string, MobileCaseArtifact[]> = {
     { src: "/case-studies/kitalabel/step-01.png", title: "Guided configuration", detail: "Production choices are collected in a clear sequence." },
     { src: "/case-studies/kitalabel/image-02.png", title: "Implemented calculator", detail: "The designed pricing surface was built into the existing store." },
     { src: "/case-studies/kitalabel/image-05.png", title: "Design-file guidance", detail: "Print requirements stay next to the upload decision." },
+    { src: "/case-studies/kitalabel/step-02.png", title: "Validated price state", detail: "Cek Harga creates the current result; changed specs require a fresh calculation." },
     { src: "/case-studies/kitalabel/step-04.png", title: "Configured cart", detail: "A priced label specification becomes a ready-to-checkout item." },
     { src: "/case-studies/kitalabel/step-06.png", title: "Completed payment", detail: "Eligible standard orders can finish without a sales call." },
   ],
@@ -3293,11 +3301,13 @@ function MobileCaseStudyArticle({
   meta,
   detail,
   onPreview,
+  sectionInterstitial,
 }: {
   work: WorkItem | null;
   meta: { problem: string; outcome: string } | null;
   detail: CaseMobileDetail | null;
   onPreview: (src: string, title: string) => void;
+  sectionInterstitial?: React.ReactNode;
 }) {
   if (!work || !meta || !detail) return null;
 
@@ -3620,21 +3630,24 @@ function MobileCaseStudyArticle({
               const artifact = sectionArtifacts[index] ?? firstArtifact;
 
               return (
-                <button
-                type="button"
-                onClick={() =>
-                  onPreview(artifact.src, `${work.title} · ${artifact.title}`)
-                }
-                aria-label={`Preview ${section.title}`}
-                key={`${section.kicker}-${section.title}`}
-                className="grid gap-4 overflow-hidden rounded text-left"
-                style={{
-                  border: "1px solid rgba(242,241,236,0.08)",
-                  background: "rgba(242,241,236,0.03)",
-                  cursor: "zoom-in",
-                  padding: 0,
-                }}
-              >
+                <React.Fragment key={`${section.kicker}-${section.title}`}>
+                  {index === 3 && sectionInterstitial && (
+                    <div className="-mx-5 md:-mx-8">{sectionInterstitial}</div>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      onPreview(artifact.src, `${work.title} · ${artifact.title}`)
+                    }
+                    aria-label={`Preview ${section.title}`}
+                    className="grid gap-4 overflow-hidden rounded text-left"
+                    style={{
+                      border: "1px solid rgba(242,241,236,0.08)",
+                      background: "rgba(242,241,236,0.03)",
+                      cursor: "zoom-in",
+                      padding: 0,
+                    }}
+                  >
                 <div
                   className="relative min-h-[132px] overflow-hidden"
                   style={{
@@ -3715,7 +3728,8 @@ function MobileCaseStudyArticle({
                     {section.body}
                   </p>
                 </div>
-                </button>
+                  </button>
+                </React.Fragment>
               );
             })}
           </div>
@@ -4569,8 +4583,10 @@ function CaseStudyPage({
           meta={currentMeta}
           detail={currentMobileDetail}
           onPreview={openPreview}
+          sectionInterstitial={
+            slug === "kitalabel-bos" ? <KitalabelBosStory /> : undefined
+          }
         />
-        {slug === "kitalabel-bos" && <KitalabelBosStory />}
       </div>
       <div className="case-study-preview-scope hidden lg:block">
       <ResponsiveCaseStudyFrame

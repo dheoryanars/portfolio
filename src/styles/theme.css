@@ -156,6 +156,9 @@
   [data-name="foot"] { display: none !important; }
   [data-name="fw"] { display: none !important; }
 
+  /* The calculator owns a distinct outcomes section; keep it while hiding imported footer CTAs. */
+  [data-name="case-study-kitalabel"] > [data-name="out"] { display: flex !important; }
+
   /* Hide all static back/next navigation links baked into case study imports */
   /* Targets tracking-[0.72px] + text-[#6f6f68] — covers "← Back to work", "← Back to portfolio", "Next project →" */
   .tracking-\[0\.72px\].text-\[\#6f6f68\] { display: none !important; }

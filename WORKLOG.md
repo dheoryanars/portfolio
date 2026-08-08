@@ -1,5 +1,53 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-08-08 22:21 — [Codex] Released the KitaLabel evidence and narrative corrections
+
+**Done:** Prepared the reviewed KitaLabel Price Calculator and KitaLabel Business OS improvements for production: production-state validation, restored Calculator Outcomes, the continuous Business OS mobile `00–09` story, adoption evidence without duplicate screenshots, and more precise evidence language. The release includes only the six tracked portfolio files involved in this work; local browser logs, build output, and unrelated untracked files remain excluded.
+
+**Verified:** The production Vite build passes with 2023 modules transformed and only the existing bundle-size advisory. Desktop and `390x844` browser QA found no broken images, horizontal overflow, console warnings, or console errors. Vercel remains connected to GitHub `main` and will auto-deploy this release from the push.
+
+**Next:** Smoke-test the two live routes at `https://dheoryan.vercel.app/#/work/kitalabel` and `https://dheoryan.vercel.app/#/work/kitalabel-bos` after Vercel finishes building.
+
+## 2026-08-08 21:16 — [Codex] Closed the remaining KitaLabel case-study evidence gaps
+
+**Done:** Restored the KitaLabel Price Calculator's imported desktop Outcomes section with a case-specific CSS override, while retaining the global removal of duplicate imported footers. Reordered the KitaLabel Business OS mobile narrative into one continuous `00–09` sequence by placing System Logic, Operational Recovery, Trust and Access, and Adoption Evidence between the existing context and key-screen sections. Removed the repeated member and role screenshots from the desktop screen gallery, relabeled static captures as snapshots, removed time-sensitive activity wording, and distinguished production account evidence from documented customer and monthly-order scale. Also changed Calculator wording from real-time to on-demand calculation, qualified self-service as applying to eligible standard labels, and replaced the unsupported wrong-shape reduction claim with a directly observable verification benefit.
+
+**Verified:** `npm run build` passes with 2023 modules transformed and only the existing bundle-size advisory. Browser QA passed at `1440x1000` and `390x844`: Calculator Outcomes computes to `display: flex`; Business OS reads `00, 01, 02, 03, 04, 05, 06, 07, 08, 09`; adoption and role screenshots render once per viewport; no old live/recency labels remain; both cases have no broken images, horizontal overflow, or browser warnings/errors.
+
+**Next:** Review the revised KitaLabel flagship stories locally. Add further research or outcome metrics only when a source, date, and measurement method are available. No commit or production deployment was made in this entry.
+
+## 2026-08-08 20:22 — [Codex] Re-reviewed the updated KitaLabel flagship cases
+
+**Done:** Audited the updated KitaLabel Price Calculator and KitaLabel Business OS stories again across source copy, desktop rendering, and `390x844` mobile rendering. Confirmed that the new Calculator production-state model and Business OS adoption evidence materially improve credibility, but found four remaining presentation and evidence issues: Calculator Outcomes is hidden on desktop by the global `[data-name="out"]` rule; the Business OS mobile article reaches Outcomes before restarting at System Logic; the adoption and roles screenshots appear twice in the desktop story; and several labels or claims remain time-sensitive or stronger than the visible evidence.
+
+**Verified:** Browser inspection confirmed Calculator's `production-validation` and flow sections are visible while its imported Outcomes section computes to `display: none`. On Business OS mobile, the visible Full Case Flow runs from `00 — The Problem` through `06 — Outcomes`, followed by the custom story restarting at `03 — System logic` through `06 — Adoption evidence`. On desktop, both `adoption-log.png` and `roles-log.png` render twice. The production member screenshot has redacted names, but wording such as `live` and `within the last seven hours` is tied to a static capture. No product code was changed during this review.
+
+**Next:** Restore a visible Calculator desktop Outcomes close, integrate the Business OS custom story into the mobile sequence before Outcomes, remove the repeated adoption screenshots from Key Screens, rename static evidence as a dated production snapshot, and soften unsupported causal wording such as `Reduces wrong-shape orders`. Confirm the capture date and source for `240+ monthly orders` before presenting it as current.
+
+## 2026-08-08 19:25 — [Codex] Added production validation to KitaLabel Calculator and Business OS
+
+**Done:** Corrected the KitaLabel Calculator narrative so every viewport now matches the shipped interaction: `Cek Harga` is deliberate, changing a priced specification invalidates the old result, checkout requires a current calculated price, and prices at or above IDR 5,000,000 (or jobs flagged by the pricing service) enter RFQ. Added a desktop Production Validation state model, updated the mobile evidence card, shifted the flow/outcome numbering, clarified that self-service applies to eligible standard jobs, and replaced vanity output counts with product-behaviour facts. For KitaLabel Business OS, added a responsive Adoption Evidence section with production screenshots, 12 registered accounts, 6 reusable roles, 1,800+ customer records, and 240+ monthly orders; aligned the hero, mobile story, proof list, key-screen numbering, and outcomes with those facts. The two adoption screenshots open through the shared case-study preview modal.
+
+**Verified:** The Calculator behavior was checked against the production WordPress plugin implementation: explicit `Cek Harga`, stale-price reset and `Perbarui Harga`, cart gating, and the IDR 5,000,000 RFQ threshold are present in code. `npm run build` passes with 2023 modules transformed and only the existing bundle-size advisory. Browser QA passed at desktop and `390x844`: both validation stories render, no images fail, no route introduces horizontal overflow, the Business OS evidence modal opens correctly, and no browser console errors were reported.
+
+**Next:** Review the two updated flagship cases locally. The next evidence pass should add only source-backed research or outcome material (for example interview findings, baseline timing, quote turnaround, conversion, or task-success evidence) supplied by Dheoryan; do not infer those metrics from the UI. No commit or production deployment was made in this entry.
+
+## 2026-08-08 18:38 — [Codex] Audited evidence gaps across all seven case studies
+
+**Done:** Reviewed the narrative, scope, role framing, decisions, proof, and outcomes of KitaLabel Business OS, KitaLabel Price Calculator, Read/See, CMIS Workflow Improvements, Universal Design System, Mailtarget App, and SONAR. Identified portfolio-wide gaps in research evidence, team and ownership context, decision trade-offs, measurable outcomes, strategic influence, accessibility, and annotated visual proof. Also found a factual contradiction in the KitaLabel Calculator story: the current copy says pricing updates on every change even though the designed behavior uses an explicit `Cek Harga` action.
+
+**Verified:** The audit was performed against the current `CASE_META`, `CASE_HERO_DETAILS`, and `CASE_MOBILE_DETAILS` content. The strongest current narratives are KitaLabel Calculator for a clear before/after workflow, CMIS for enterprise complexity, Read/See for systems thinking at scale, and Universal Design System for cross-product leverage. Their principal weakness is evidence quality rather than visual polish. No website code or production content was changed.
+
+**Next:** Correct the KitaLabel pricing-behavior contradiction first. Then strengthen two or three flagship cases with truthful baselines and outcomes, research findings, team structure, rejected alternatives, constraints, validation, and examples of influence. Keep the remaining cases shorter so the portfolio does not trade depth for quantity.
+
+## 2026-08-08 18:35 — [Codex] Assessed portfolio against Senior Product Designer expectations
+
+**Done:** Audited the portfolio's seven case studies, role history, case-study framing, and outcome claims against current Senior Product Designer expectations from GitLab and Atlassian. The portfolio demonstrates senior-level systems thinking, complex B2B workflow work, end-to-end shipping, design-system practice, and useful technical fluency. Its current evidence is best described as senior-ready or senior-leaning rather than unambiguously senior because roadmap influence, research synthesis, measurable user/business impact, cross-functional influence, and mentoring are under-documented.
+
+**Verified:** The assessment is grounded in the current portfolio copy and current official hiring criteria. GitLab emphasizes strategic roadmap influence, comprehensive research connected to outcomes, experience vision, data-backed quality advocacy, cross-boundary collaboration, systems contribution, and mentoring; its case-study guidance asks for role/team context, research synthesis, collaboration, and impact on key metrics. A current Atlassian Senior Product Designer listing asks for 5+ years plus concept-to-execution leadership, data and user-feedback iteration, scalable patterns, and enterprise customer engagement. No website code or production content was changed.
+
+**Next:** Strengthen one or two flagship case studies with truthful before/after outcome measures, research evidence, rejected alternatives and trade-offs, team structure, roadmap influence, and examples of raising other people's design quality. Position applications as Senior Product Designer for startup/SME, B2B systems, internal tools, and AI-assisted delivery roles; expect stronger proof requirements from mature global product organizations.
+
 ## 2026-08-08 16:54 — [Codex] Released corrected mobile case-study thumbnails to production
 
 **Done:** Committed and pushed the explicit mobile Full Case Flow thumbnail mappings for all seven case studies, including the corrected KitaLabel calculator Problem card and Read/See source/destination labels. GitHub `main` now contains release commit `697a0ac`, which triggered the connected Vercel production deployment.
