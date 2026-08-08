@@ -1,5 +1,13 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-08-08 16:54 — [Codex] Released corrected mobile case-study thumbnails to production
+
+**Done:** Committed and pushed the explicit mobile Full Case Flow thumbnail mappings for all seven case studies, including the corrected KitaLabel calculator Problem card and Read/See source/destination labels. GitHub `main` now contains release commit `697a0ac`, which triggered the connected Vercel production deployment.
+
+**Verified:** GitHub accepted `c5ab661..697a0ac` on `main`. Before release, the production Vite build passed with `2023 modules transformed`, all mapped images decoded at `390x844`, every mobile flow card used the available `333px` content width, and no case-study route introduced horizontal overflow.
+
+**Next:** Smoke-test the corrected Full Case Flow cards at `https://dheoryan.vercel.app/` after Vercel finishes building.
+
 ## 2026-08-08 14:39 — [Codex] Corrected mobile story thumbnails across every case study
 
 **Done:** Replaced the modulo-based mobile Full Case Flow image rotation with explicit section-to-artifact mappings for KitaLabel Business OS, KitaLabel Price Calculator, Read/See, CMIS Workflow Improvements, Universal Design System, Mailtarget App, and SONAR. Each mobile story card now uses evidence that matches its section instead of recycling a short generic thumbnail list. Also corrected the Read/See Visual Index labels so the Sources and Destinations screens are identified accurately.
