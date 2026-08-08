@@ -638,14 +638,14 @@ const CASE_MOBILE_ARTIFACTS: Record<string, MobileCaseArtifact[]> = {
     { src: "/case-studies/kitalabel-bos/internal-calculator.png", title: "Internal calculator", detail: "Pricing work stays inside the operating workflow." },
   ],
   kitalabel: [
-    { src: "/case-studies/kitalabel/image-01.png", title: "Configure specs", detail: "Customers build a label specification before pricing." },
-    { src: "/case-studies/kitalabel/image-02.png", title: "Check price", detail: "A deliberate action returns a production-aware price." },
-    { src: "/case-studies/kitalabel/image-03.png", title: "Upload files", detail: "Design requirements stay next to the order action." },
+    { src: "/case-studies/kitalabel/image-01.png", title: "KitaLabel storefront", detail: "The existing storefront introduced the printing service before self-serve pricing." },
+    { src: "/case-studies/kitalabel/image-02.png", title: "Pricing configurator", detail: "Customers combine production variables and see quantity-based prices." },
+    { src: "/case-studies/kitalabel/image-03.png", title: "Check price action", detail: "A deliberate action returns the production-aware price." },
   ],
   "readsee-dashboard": [
     { src: "/case-studies/readsee-dashboard/image-01.png", title: "Customer dashboard", detail: "The product starts with a readable customer-data overview." },
-    { src: "/case-studies/readsee-dashboard/image-02.png", title: "Audience workspace", detail: "Customer groups and their signals can be inspected in context." },
-    { src: "/case-studies/readsee-dashboard/image-03.png", title: "Activation flow", detail: "Data moves from insight into an actionable customer workflow." },
+    { src: "/case-studies/readsee-dashboard/image-02.png", title: "Source connection", detail: "Customer data enters the product through a guided source setup." },
+    { src: "/case-studies/readsee-dashboard/image-03.png", title: "Destination connection", detail: "A destination turns connected data into an activation channel." },
   ],
   "cmis-suite": [
     { src: "/case-studies/cmis-suite/image-01.png", title: "Document-form workspace", detail: "Upload, approval, and recap views keep each request and its current state easy to find." },
@@ -667,6 +667,76 @@ const CASE_MOBILE_ARTIFACTS: Record<string, MobileCaseArtifact[]> = {
     { src: "/case-studies/sonar/image-02.png", title: "SONAR landing page", detail: "The product value is explained in one clear entry point." },
     { src: "/case-studies/sonar/image-03.png", title: "Pricing architecture", detail: "Plan choice is communicated as a compact decision model." },
     { src: "/case-studies/sonar/image-04.png", title: "FAQ section", detail: "Questions are handled where a visitor needs reassurance." },
+  ],
+};
+
+const CASE_MOBILE_SECTION_ARTIFACTS: Record<string, MobileCaseArtifact[]> = {
+  "kitalabel-bos": [
+    { src: "/case-studies/kitalabel-bos/crm-orders.png", title: "Connected order queue", detail: "Order, customer, payment, and production status meet in one operational list." },
+    { src: "/case-studies/kitalabel-bos/main-dashboard.png", title: "Business operating layer", detail: "The dashboard combines revenue, customer health, reorder risk, and workload." },
+    { src: "/case-studies/kitalabel-bos/reorder-cycle.png", title: "Reorder risk visibility", detail: "Previously hidden repeat-order risk becomes a prioritized working queue." },
+    { src: "/case-studies/kitalabel-bos/internal-calculator.png", title: "Operational pricing", detail: "Sales can quote with customer context, margin guidance, and production rules together." },
+    { src: "/case-studies/kitalabel-bos/customer-detail.png", title: "Decision-ready customer context", detail: "Order history, spend, and reorder status stay visible at the customer level." },
+    { src: "/case-studies/kitalabel-bos/production-behavior-specs.png", title: "Documented operating rules", detail: "Production behavior and permissions were captured alongside the shipped screens." },
+  ],
+  kitalabel: [
+    { src: "/case-studies/kitalabel/image-02.png", title: "Pricing variables", detail: "The configurator makes the pricing complexity visible." },
+    { src: "/case-studies/kitalabel/image-01.png", title: "KitaLabel storefront", detail: "The printing business already had a working online storefront." },
+    { src: "/case-studies/kitalabel/image-03.png", title: "Check price action", detail: "Standard quotes no longer need to enter the estimator queue." },
+    { src: "/case-studies/kitalabel/step-01.png", title: "Guided configuration", detail: "Production choices are collected in a clear sequence." },
+    { src: "/case-studies/kitalabel/image-02.png", title: "Implemented calculator", detail: "The designed pricing surface was built into the existing store." },
+    { src: "/case-studies/kitalabel/image-05.png", title: "Design-file guidance", detail: "Print requirements stay next to the upload decision." },
+    { src: "/case-studies/kitalabel/step-04.png", title: "Configured cart", detail: "A priced label specification becomes a ready-to-checkout item." },
+    { src: "/case-studies/kitalabel/step-06.png", title: "Completed payment", detail: "Eligible standard orders can finish without a sales call." },
+  ],
+  "readsee-dashboard": [
+    { src: "/case-studies/readsee-dashboard/image-01.png", title: "Customer-data dashboard", detail: "A broad product scope resolves into one readable operating overview." },
+    { src: "/case-studies/readsee-dashboard/image-04.png", title: "Reusable data-table grammar", detail: "One table pattern carries filtering, states, and actions across product modules." },
+    { src: "/case-studies/readsee-website/image-03.png", title: "Signed-off information flow", detail: "Structure and navigation were settled before the high-fidelity product story." },
+    { src: "/case-studies/readsee-dashboard/image-06.png", title: "Customer profile activity", detail: "The same visual grammar supports dense identity, timeline, and event detail." },
+    { src: "/case-studies/readsee-dashboard/image-09.png", title: "Guided first value", detail: "Profile completion, learning resources, and rewards direct users toward connected data." },
+    { src: "/case-studies/readsee-dashboard/image-02.png", title: "Source connection module", detail: "The phased system covers the path from account setup through live data connections." },
+    { src: "/case-studies/readsee-website/image-02.png", title: "Public product story", detail: "Connect, collect, and activate become a buyer-facing narrative on the responsive site." },
+    { src: "/case-studies/readsee-website/image-08.png", title: "Responsive delivery", detail: "The product language carries through to a complete mobile marketing experience." },
+  ],
+  "cmis-suite": [
+    { src: "/case-studies/cmis-suite/image-01.png", title: "Live workflow improvement", detail: "The work starts from an existing request workspace rather than a greenfield product." },
+    { src: "/case-studies/cmis-suite/image-04.png", title: "DMS Phase 2 workspace", detail: "The document-form stream shows how the improvement work extends the existing platform." },
+    { src: "/case-studies/cmis-suite/image-04.png", title: "Document request workflow", detail: "A dedicated surface lets staff choose a form, upload its file, inspect approvers, and submit." },
+    { src: "/case-studies/cmis-suite/image-04.png", title: "Configured approval route", detail: "The approver table makes the review sequence explicit before submission." },
+    { src: "/case-studies/cmis-suite/image-03.png", title: "Visible approval progress", detail: "The expanded request shows completed decisions and the reviewer who acts next." },
+    { src: "/case-studies/cmis-suite/image-02.png", title: "Controlled document library", detail: "Approved and migrated records resolve into one effective-document library." },
+    { src: "/case-studies/cmis-suite/image-15.png", title: "Purchase request queue", detail: "The revamp replaces an overloaded live table with clearer filtering, status, and actions." },
+    { src: "/case-studies/cmis-suite/image-17.png", title: "Superior review workspace", detail: "Price, value, currency, and approval actions stay together in the review context." },
+    { src: "/case-studies/cmis-suite/image-23.png", title: "Versioned procurement workflow", detail: "The same calmer grammar carries across materials, tools, equipment, and non-tool requests." },
+    { src: "/case-studies/cmis-suite/image-25.png", title: "Legacy invoice handover", detail: "The old table exposes why courier ownership, status, and return paths needed redesign." },
+    { src: "/case-studies/cmis-suite/image-26.png", title: "Traceable TTI workspace", detail: "Finance groups invoices, prepares courier handover, and follows delivery state in one flow." },
+    { src: "/case-studies/cmis-suite/image-32.png", title: "Printed and digital proof", detail: "The courier document reconnects physical signatures and return notes to the digital record." },
+  ],
+  "design-system": [
+    { src: "/case-studies/design-system/image-03.png", title: "Fragmented component decisions", detail: "Repeated interface parts show why undocumented variants created daily rework." },
+    { src: "/case-studies/design-system/image-01.png", title: "One system overview", detail: "Foundations, components, patterns, and governance form one reusable source of truth." },
+    { src: "/case-studies/design-system/image-02.png", title: "Foundation tokens", detail: "Color, type, spacing, and radius move consistency below the screen level." },
+    { src: "/case-studies/design-system/image-03.png", title: "Reusable component library", detail: "Known controls and patterns replace one-off screen invention." },
+    { src: "/case-studies/design-system/image-03.png", title: "Atomic assembly", detail: "Atoms and molecules compose into maintainable organisms and product patterns." },
+    { src: "/case-studies/design-system/image-01.png", title: "Foundation across products", detail: "The system is proven by the Mailtarget, SONAR, and Read/See surfaces it supports." },
+  ],
+  "mailtarget-app": [
+    { src: "/case-studies/mailtarget-app/image-03.png", title: "One shared product language", detail: "A consistent activity surface represents the redesign away from fragmented product behavior." },
+    { src: "/case-studies/mailtarget-app/image-08.png", title: "Operations account controls", detail: "Team access and account activity serve the operational side of the same email product." },
+    { src: "/case-studies/mailtarget-app/image-04.png", title: "Safe Sandbox configuration", detail: "Authorized recipients and test credentials make the first integration controlled and understandable." },
+    { src: "/case-studies/mailtarget-app/image-02.png", title: "Competitor pattern audit", detail: "Common onboarding and trust patterns informed what to retain and what to improve." },
+    { src: "/case-studies/mailtarget-app/image-05.png", title: "Production sending controls", detail: "Domain status makes the graduation from testing to real delivery visible." },
+    { src: "/case-studies/mailtarget-web/image-01.png", title: "Public product story", detail: "The marketing site translates delivery, creation, and optimization into a clear evaluation path." },
+    { src: "/case-studies/mailtarget-app/image-07.png", title: "End-to-end account experience", detail: "Usage, plan, and billing remain part of the same consistent product story." },
+  ],
+  sonar: [
+    { src: "/case-studies/sonar/image-07.png", title: "The one-question product", detail: "A familiar Gmail context makes the email-open problem immediately understandable." },
+    { src: "/case-studies/sonar/image-07.png", title: "Deliberately narrow scope", detail: "The hero keeps the product centered on one extension and one clear promise." },
+    { src: "/case-studies/sonar/image-01.png", title: "Signals where users work", detail: "Opened, forwarded, and ignored states stay close to the inbox instead of a separate platform." },
+    { src: "/case-studies/sonar/image-02.png", title: "One-scroll product story", detail: "The responsive landing page explains the extension without turning it into a larger platform." },
+    { src: "/case-studies/sonar/image-03.png", title: "Three-tier pricing path", detail: "Free, Pro, and Advance create a compact trial-to-power decision." },
+    { src: "/case-studies/sonar/image-05.png", title: "Complete mobile launch story", detail: "The shipped mobile page preserves the same focused promise from hero to footer." },
   ],
 };
 
@@ -3238,6 +3308,7 @@ function MobileCaseStudyArticle({
       detail: "Project overview and product atmosphere.",
     },
   ];
+  const sectionArtifacts = CASE_MOBILE_SECTION_ARTIFACTS[work.slug] ?? artifacts;
   const firstArtifact = artifacts[0];
   const visualIndex = [
     { label: "Product overview", artifact: firstArtifact },
@@ -3546,7 +3617,7 @@ function MobileCaseStudyArticle({
           </h2>
           <div className="grid gap-6">
             {detail.sections.map((section, index) => {
-              const artifact = artifacts[index % artifacts.length];
+              const artifact = sectionArtifacts[index] ?? firstArtifact;
 
               return (
                 <button

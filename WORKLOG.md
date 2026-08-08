@@ -1,5 +1,77 @@
 # WORKLOG — Dheoryan Portfolio
 
+## 2026-08-08 14:39 — [Codex] Corrected mobile story thumbnails across every case study
+
+**Done:** Replaced the modulo-based mobile Full Case Flow image rotation with explicit section-to-artifact mappings for KitaLabel Business OS, KitaLabel Price Calculator, Read/See, CMIS Workflow Improvements, Universal Design System, Mailtarget App, and SONAR. Each mobile story card now uses evidence that matches its section instead of recycling a short generic thumbnail list. Also corrected the Read/See Visual Index labels so the Sources and Destinations screens are identified accurately.
+
+**Verified:** The production Vite build passes (`2023 modules transformed`) with only the existing bundle-size advisory, and `git diff --check` reports no whitespace errors beyond existing line-ending notices. At `390x844`, all seven routes render the expected number of Full Case Flow thumbnails (6, 8, 8, 12, 6, 7, and 6 respectively), every image decodes at its natural dimensions after lazy loading, every card spans the available `333px` content width, and no route introduces horizontal overflow. Visual review of the CMIS mobile flow confirmed the corrected evidence remains legible in the card treatment.
+
+**Next:** Review the corrected mobile stories locally at `http://127.0.0.1:5174/`. Commit and push together with the earlier KitaLabel calculator correction when approved so Vercel can deploy them.
+
+## 2026-08-08 11:54 — [Codex] Corrected KitaLabel calculator mobile story thumbnails
+
+**Done:** Separated KitaLabel's eight mobile Full Case Flow section images from its three-item Visual Index instead of cycling the same generic artifacts through the story. The Problem card now uses the pricing configurator, Context uses the storefront, Challenge uses the check-price action, and the remaining sections use relevant configuration, file-guidance, cart, and payment evidence. Corrected the Visual Index titles so they describe the images they actually reference.
+
+**Verified:** The production Vite build passes (`2023 modules transformed`) with only the existing bundle-size advisory. At `390x844`, the Problem card now renders `/case-studies/kitalabel/image-02.png` at its full `2304x1040` natural size rather than the homepage. All eight Full Case Flow images load successfully, the storefront appears only in the KitaLabel context card, and browser review confirmed the corrected image remains legible behind the mobile card overlay.
+
+**Next:** Review locally at `http://127.0.0.1:5174/#/work/kitalabel`. Commit and push when this correction is approved so Vercel can deploy it.
+
+## 2026-08-08 11:20 — [Codex] Audited production thumbnail parity on mobile
+
+**Done:** Compared the live Vercel portfolio at `1440x1000` and `390x844` across all seven case-study routes: KitaLabel Business OS, KitaLabel Price Calculator, Read/See, CMIS Workflow Improvements, Universal Design System, Mailtarget App, and SONAR. Also measured the homepage Selected Work thumbnail framing at both breakpoints.
+
+**Verified:** Every case-detail hero uses the same deployed source at both breakpoints, loads successfully at its `648x405` natural size, retains a centered `cover` treatment, and shows the same `16:9` crop on desktop and mobile. No image-loading warnings or browser errors were reported. Homepage cards are not crop-equivalent: desktop featured cards render at `586x200` and expose about 54.6% of each image's height, while mobile cards render at `285x200`, expose the full height, and crop about 10.9% from the width. Universal Design System, Mailtarget App, and SONAR have mobile cards but remain text-only archive rows on wide desktop, so there is no visible desktop homepage thumbnail counterpart for those three.
+
+**Next:** If homepage thumbnail parity is required, replace the fixed `200px` media height in `WorkCard` with a stable shared aspect ratio such as `16 / 9`; use `object-fit: contain` instead only if the requirement is to reveal every pixel without cropping.
+
+## 2026-08-06 00:00 — [Codex] Matched CV certification typography to the source design
+
+**Done:** Created `output/pdf/2026_Dheoryan_Product-Designer_CV_final_matched.pdf` using Space Grotesk for education/certification titles and Space Mono for the labels and footer, matching the fonts used by the original CV. Restored the compact panel's title and metadata scale to harmonize with Earlier Roles.
+
+**Verified:** Rendered the complete one-page A4 PDF at final resolution. The matching font treatment, full-width footer rule, clear certification spacing, and intact Earlier Roles content all pass visual inspection; required text remains selectable.
+
+**Next:** Use the new `_final_matched` PDF as the final CV version.
+
+## 2026-08-06 00:00 — [Codex] Issued cache-safe final CV PDF
+
+**Done:** Created `output/pdf/2026_Dheoryan_Product-Designer_CV_final.pdf` as a fresh final-file name to avoid stale PDF viewer caching.
+
+**Verified:** Rendered this exact file and checked the complete page: the footer contains one uninterrupted full-width rule, with no partial line above it; all certification and Earlier Roles text remains intact.
+
+**Next:** Use the new `_final` PDF file rather than the previously opened copy.
+
+## 2026-08-06 00:00 — [Codex] Corrected CV certification and footer layout
+
+**Done:** Rebuilt the bottom panel in `output/pdf/2026_Dheoryan_Product-Designer_CV.pdf` from the original CV, preserving all education, certification, and Earlier Roles text. Moved the footer lower and redrew it once, which gives the EF SET entry clear separation and removes the duplicated footer fragment.
+
+**Verified:** Rendered and visually inspected the complete A4 page. The certification stack is fully readable, the `Customer Experience` role remains intact, the footer clears every credential, and the final PDF has one page with selectable required text.
+
+**Next:** Use the corrected CV for applications. No portfolio-site content was changed.
+
+## 2026-08-06 00:00 — [Codex] Added Google Cloud Agentic AI certification to CV
+
+**Done:** Created `output/pdf/2026_Dheoryan_Product-Designer_CV.pdf` from the supplied CV. The compacted education and certification panel retains the degree, Product-Led Growth, and EF SET entries, and adds `Cloud Technical Series - Agentic AI Edition` with `Google Cloud · 22-23 Jul 2026`.
+
+**Verified:** Rendered the complete one-page A4 PDF and visually checked the updated panel for legibility, spacing, and footer clearance. Reopened the file successfully; the new certification text is selectable and the final PDF contains one unencrypted A4 page.
+
+**Next:** Use the updated PDF for applications. No portfolio-site content was changed.
+
+## 2026-08-04 — [Codex] Prepared Petrolink product-designer interview guidance
+
+**Done:** Researched Petrolink's public product positioning and prepared role-specific interview guidance for Dheoryan. The guidance focuses on their real-time oilfield data products, especially PetroVue dashboards, alerts, collaboration, and high-consequence operational decision-making.
+
+**Verified:** Petrolink's current public site describes a web-based visualization platform used by drilling engineers, geologists, and subsurface teams for remote well monitoring, customizable dashboards, alerts, and collaboration across rig and office teams.
+
+**Next:** Use the guidance to rehearse two concise portfolio case studies, a product-design process narrative, and questions for the prospective manager or design team.
+
+## 2026-08-03 09:24 — [Codex] Audited Cloudflare Web Analytics in production
+
+**Done:** Checked the repository markup and the live Vercel DOM for the Cloudflare Web Analytics beacon. Production serves `https://static.cloudflareinsights.com/beacon.min.js` as a module with token `2ec8375a6da84140aad0f156ac86fe06`; the deployed configuration also retains `"spa":false`.
+
+**Verified:** `https://dheoryan.vercel.app/` loaded to completion with the beacon present in the live document, the expected portfolio title, and no browser console warnings, CSP violations, or script-loading errors. The repository remains synchronized with `origin/main`; only existing untracked local helper and log files are present.
+
+**Next:** Initial production visits should continue to register. Hash-route transitions such as `#/work/...` are not separate page views while `spa:false` is enabled; add explicit route-level tracking only if per-case-study navigation metrics are required. Also verify the Cloudflare dashboard hostname/date filter and test once with privacy blockers disabled if recent traffic still appears absent.
+
 ## 2026-07-30 13:45 — [Codex] Released the optimized contact cockpit to production
 
 **Done:** Committed and pushed the complete Let's Talk refinement to `main`, triggering the linked Vercel production deployment. The release removes the animation bottlenecks, smooths cursor steering, reduces HUD copy, replaces text-heavy readouts with design-context diagrams, and includes the final connector and hierarchy-detail corrections. Local logs, screenshots, generated output, and helper files were excluded.
